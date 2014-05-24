@@ -1,0 +1,30 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+using System;
+using System.Linq.Expressions;
+
+namespace Linq.Extras
+{
+    public static class Infer
+    {
+<# for(int i = 0; i <= 4; i++) {
+        var types = Enumerable.Range(1, i).Select(x => "T" + x).Concat(new[] { "TResult" });
+        var typeList = string.Join(", ", types);
+#>
+        public static Func<<#= typeList #>> Func<<#= typeList #>>(Func<<#= typeList #>> func)
+        {
+            return func;
+        }
+
+        public static Expression<Func<<#= typeList #>>> Expr<<#= typeList #>>(Expression<Func<<#= typeList #>>> expr)
+        {
+            return expr;
+        }
+
+<# } #>
+    }
+}
