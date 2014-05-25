@@ -4,7 +4,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    public class ByKeyComparer<T, TKey> : IComparer<T>
+    sealed class ByKeyComparer<T, TKey> : IComparer<T>
     {
         private readonly Func<T, TKey> _keySelector;
         private readonly IComparer<TKey> _keyComparer;

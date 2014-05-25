@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Linq.Extras
 {
-    public class ByKeyEqualityComparer<TSource, TKey> : IEqualityComparer<TSource>
+    sealed class ByKeyEqualityComparer<TSource, TKey> : IEqualityComparer<TSource>
     {
         private readonly Func<TSource, TKey> _keySelector;
         private readonly IEqualityComparer<TKey> _keyComparer;

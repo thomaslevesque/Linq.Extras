@@ -187,3 +187,6 @@ FakesAssemblies/
 # Roslyn cache
 *.sln.ide/
 
+# NDepend output
+NDependOut/
+

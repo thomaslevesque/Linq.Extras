@@ -11,7 +11,7 @@ namespace Linq.Extras
             return new ReverseComparer<T>(comparer);
         }
 
-        class ReverseComparer<T> : IComparer<T>
+        sealed class ReverseComparer<T> : IComparer<T>
         {
             private readonly IComparer<T> _baseComparer;
 
