@@ -22,6 +22,7 @@ namespace Linq.Extras.Tests
         public void Test_MaxBy_EmptySequence()
         {
             var foos = new Foo[] { };
+// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.MaxBy(f => f.Value));
         }
 
@@ -51,6 +52,7 @@ namespace Linq.Extras.Tests
         public void Test_MinBy_EmptySequence()
         {
             var foos = new Foo[] { };
+// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.MinBy(f => f.Value));
         }
 
@@ -80,6 +82,7 @@ namespace Linq.Extras.Tests
         public void Test_Max_WithComparer_EmptySequence()
         {
             var foos = new Foo[] { };
+// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.Max(new FooComparer()));
         }
 
@@ -98,6 +101,7 @@ namespace Linq.Extras.Tests
         public void Test_Min_WithComparer_EmptySequence()
         {
             var foos = new Foo[] { };
+// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.Min(new FooComparer()));
         }
 
