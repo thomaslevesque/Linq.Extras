@@ -8,6 +8,7 @@ namespace Linq.Extras
 {
     partial class EnumerableEx
     {
+        [Pure]
         public static IEnumerable<TResult> RankBy<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -19,6 +20,7 @@ namespace Linq.Extras
             return source.RankByImpl(keySelector, null, false, resultSelector);
         }
 
+        [Pure]
         public static IEnumerable<TResult> RankBy<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -31,6 +33,7 @@ namespace Linq.Extras
             return source.RankByImpl(keySelector, keyComparer, false, resultSelector);
         }
 
+        [Pure]
         public static IEnumerable<TResult> RankByDescending<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -43,6 +46,7 @@ namespace Linq.Extras
             return source.RankByImpl(keySelector, keyComparer, true, resultSelector);
         }
 
+        [Pure]
         public static IEnumerable<TResult> RankByDescending<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -54,6 +58,7 @@ namespace Linq.Extras
             return source.RankByImpl(keySelector, null, true, resultSelector);
         }
 
+        [Pure]
         private static IEnumerable<TResult> RankByImpl<TSource, TKey, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector,
@@ -81,6 +86,7 @@ namespace Linq.Extras
             }
         }
 
+        [Pure]
         public static IEnumerable<TResult> DenseRankBy<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -92,6 +98,7 @@ namespace Linq.Extras
             return source.DenseRankByImpl(keySelector, null, false, resultSelector);
         }
 
+        [Pure]
         public static IEnumerable<TResult> DenseRankBy<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -104,6 +111,7 @@ namespace Linq.Extras
             return source.DenseRankByImpl(keySelector, keyComparer, false, resultSelector);
         }
 
+        [Pure]
         public static IEnumerable<TResult> DenseRankByDescending<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -116,6 +124,7 @@ namespace Linq.Extras
             return source.DenseRankByImpl(keySelector, keyComparer, true, resultSelector);
         }
 
+        [Pure]
         public static IEnumerable<TResult> DenseRankByDescending<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -127,6 +136,7 @@ namespace Linq.Extras
             return source.DenseRankByImpl(keySelector, null, true, resultSelector);
         }
 
+        [Pure]
         private static IEnumerable<TResult> DenseRankByImpl<TSource, TKey, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector,
@@ -152,6 +162,5 @@ namespace Linq.Extras
                 rank++;
             }
         }
-
     }
 }

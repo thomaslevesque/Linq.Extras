@@ -7,6 +7,7 @@ namespace Linq.Extras
 {
     partial class EnumerableEx
     {
+        [Pure]
         public static IEnumerable<TSource> DistinctUntilChanged<TSource>([NotNull] this IEnumerable<TSource> source)
         {
             source.CheckArgumentNull("source");
@@ -20,6 +21,7 @@ namespace Linq.Extras
         /// <param name="source">Séquence d'entrée</param>
         /// <param name="comparer">Comparateur à utiliser pour comparer les éléments. Si null, le comparateur par défaut sera utilisé</param>
         /// <returns>Une séquence qui contient seulement des valeurs contiguës distinctes</returns>
+        [Pure]
         public static IEnumerable<TSource> DistinctUntilChanged<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             IEqualityComparer<TSource> comparer)
@@ -36,6 +38,7 @@ namespace Linq.Extras
         /// <param name="source">Séquence d'entrée</param>
         /// <param name="keySelector">Fonction qui renvoie la clé à utiliser pour comparer les éléments</param>
         /// <returns>Une séquence qui contient seulement des valeurs contiguës distinctes</returns>
+        [Pure]
         public static IEnumerable<TSource> DistinctUntilChanged<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector)
@@ -54,6 +57,7 @@ namespace Linq.Extras
         /// <param name="keySelector">Fonction qui renvoie la clé à utiliser pour comparer les éléments</param>
         /// <param name="keyComparer">Comparateur à utiliser pour comparer les clés. Si null, le comparateur par défaut sera utilisé</param>
         /// <returns>Une séquence qui contient seulement des valeurs contiguës distinctes</returns>
+        [Pure]
         public static IEnumerable<TSource> DistinctUntilChanged<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -65,6 +69,7 @@ namespace Linq.Extras
             return source.DistinctUntilChangedImpl(keySelector, keyComparer);
         }
 
+        [Pure]
         private static IEnumerable<TSource> DistinctUntilChangedImpl<TSource, TKey>(
             this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector,
@@ -91,6 +96,7 @@ namespace Linq.Extras
             }
         }
 
+        [Pure]
         static T Identity<T>(T arg) { return arg; }
     }
 }

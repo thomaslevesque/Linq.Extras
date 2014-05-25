@@ -10,6 +10,7 @@ namespace Linq.Extras
     {
         #region Left
 
+        [Pure]
         public static IEnumerable<TResult> LeftOuterJoin<TOuter, TInner, TKey, TResult>(
             [NotNull] this IEnumerable<TOuter> outer,
             [NotNull] IEnumerable<TInner> inner,
@@ -20,6 +21,7 @@ namespace Linq.Extras
             return outer.LeftOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, default(TInner), null);
         }
 
+        [Pure]
         public static IEnumerable<TResult> LeftOuterJoin<TOuter, TInner, TKey, TResult>(
             [NotNull] this IEnumerable<TOuter> outer,
             [NotNull] IEnumerable<TInner> inner,
@@ -31,6 +33,7 @@ namespace Linq.Extras
             return outer.LeftOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, defaultInner, null);
         }
 
+        [Pure]
         public static IEnumerable<TResult> LeftOuterJoin<TOuter, TInner, TKey, TResult>(
             [NotNull] this IEnumerable<TOuter> outer,
             [NotNull] IEnumerable<TInner> inner,
@@ -42,6 +45,7 @@ namespace Linq.Extras
             return outer.LeftOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, default(TInner), keyComparer);
         }
 
+        [Pure]
         public static IEnumerable<TResult> LeftOuterJoin<TOuter, TInner, TKey, TResult>(
             [NotNull] this IEnumerable<TOuter> outer,
             [NotNull] IEnumerable<TInner> inner,
@@ -72,6 +76,7 @@ namespace Linq.Extras
 
         #region Right
 
+        [Pure]
         public static IEnumerable<TResult> RightOuterJoin<TOuter, TInner, TKey, TResult>(
             [NotNull] this IEnumerable<TOuter> outer,
             [NotNull] IEnumerable<TInner> inner,
@@ -82,6 +87,7 @@ namespace Linq.Extras
             return outer.RightOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, default(TOuter), null);
         }
 
+        [Pure]
         public static IEnumerable<TResult> RightOuterJoin<TOuter, TInner, TKey, TResult>(
             [NotNull] this IEnumerable<TOuter> outer,
             [NotNull] IEnumerable<TInner> inner,
@@ -93,6 +99,7 @@ namespace Linq.Extras
             return outer.RightOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, defaultOuter, null);
         }
 
+        [Pure]
         public static IEnumerable<TResult> RightOuterJoin<TOuter, TInner, TKey, TResult>(
             [NotNull] this IEnumerable<TOuter> outer,
             [NotNull] IEnumerable<TInner> inner,
@@ -104,6 +111,7 @@ namespace Linq.Extras
             return outer.RightOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, default(TOuter), keyComparer);
         }
 
+        [Pure]
         public static IEnumerable<TResult> RightOuterJoin<TOuter, TInner, TKey, TResult>(
             [NotNull] this IEnumerable<TOuter> outer,
             [NotNull] IEnumerable<TInner> inner,
@@ -127,6 +135,7 @@ namespace Linq.Extras
 
         #region Full
 
+        [Pure]
         public static IEnumerable<TResult> FullOuterJoin<TLeft, TRight, TKey, TResult>(
             [NotNull] this IEnumerable<TLeft> left,
             [NotNull] IEnumerable<TRight> right,
@@ -137,6 +146,7 @@ namespace Linq.Extras
             return left.FullOuterJoin(right, leftKeySelector, rightKeySelector, resultSelector, default(TLeft), default(TRight), null);
         }
 
+        [Pure]
         public static IEnumerable<TResult> FullOuterJoin<TLeft, TRight, TKey, TResult>(
             [NotNull] this IEnumerable<TLeft> left,
             [NotNull] IEnumerable<TRight> right,
@@ -149,6 +159,7 @@ namespace Linq.Extras
             return left.FullOuterJoin(right, leftKeySelector, rightKeySelector, resultSelector, defaultLeft, defaultRight, null);
         }
 
+        [Pure]
         public static IEnumerable<TResult> FullOuterJoin<TLeft, TRight, TKey, TResult>(
             [NotNull] this IEnumerable<TLeft> left,
             [NotNull] IEnumerable<TRight> right,
@@ -160,6 +171,7 @@ namespace Linq.Extras
             return left.FullOuterJoin(right, leftKeySelector, rightKeySelector, resultSelector, default(TLeft), default(TRight), keyComparer);
         }
 
+        [Pure]
         public static IEnumerable<TResult> FullOuterJoin<TLeft, TRight, TKey, TResult>(
             [NotNull] this IEnumerable<TLeft> left,
             [NotNull] IEnumerable<TRight> right,

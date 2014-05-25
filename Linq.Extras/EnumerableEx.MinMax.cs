@@ -8,6 +8,7 @@ namespace Linq.Extras
 {
     partial class EnumerableEx
     {
+        [Pure]
         public static TSource Max<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             IComparer<TSource> comparer)
@@ -16,6 +17,7 @@ namespace Linq.Extras
             return source.Extreme(comparer, 1);
         }
 
+        [Pure]
         public static TSource Min<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             IComparer<TSource> comparer)
@@ -24,6 +26,7 @@ namespace Linq.Extras
             return source.Extreme(comparer, -1);
         }
 
+        [Pure]
         private static TSource Extreme<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer, int sign)
         {
             comparer = comparer ?? Comparer<TSource>.Default;
@@ -43,16 +46,17 @@ namespace Linq.Extras
             }
 
             if (first)
-                ThrowEmptySequence();
+                throw EmptySequenceException();
 
             return extreme;
         }
 
-        private static void ThrowEmptySequence()
+        private static InvalidOperationException EmptySequenceException()
         {
-            throw new InvalidOperationException(Resources.SequenceHasMoreThanOneElement);
+            return new InvalidOperationException(Resources.SequenceContainsNoElements);
         }
 
+        [Pure]
         public static TSource MaxBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector)
@@ -63,6 +67,7 @@ namespace Linq.Extras
             return source.Max(comparer);
         }
 
+        [Pure]
         public static TSource MaxBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -74,6 +79,7 @@ namespace Linq.Extras
             return source.Max(comparer);
         }
 
+        [Pure]
         public static TSource MinBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector)
@@ -84,6 +90,7 @@ namespace Linq.Extras
             return source.Min(comparer);
         }
 
+        [Pure]
         public static TSource MinBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,

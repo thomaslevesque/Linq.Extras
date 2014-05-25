@@ -16,6 +16,7 @@ namespace Linq.Extras
         /// <param name="source">The sequence to return the first element of.</param>
         /// <param name="defaultValue">The default value to return if the sequence is empty.</param>
         /// <returns><c>defaultValue</c> if <c>source</c> is empty; otherwise, the first element in <c>source</c>.</returns>
+        [Pure]
         public static TSource FirstOrDefault<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             TSource defaultValue)
@@ -32,6 +33,7 @@ namespace Linq.Extras
         /// <param name="predicate">A function to test each element for a condition.</param>
         /// <param name="defaultValue">The default value to return if no matching element is found.</param>
         /// <returns><c>defaultValue</c> if source is empty or if no element passes the test specified by <c>predicate</c>; otherwise, the first element in <c>source</c> that passes the test specified by <c>predicate</c>.</returns>
+        [Pure]
         public static TSource FirstOrDefault<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, bool> predicate,
@@ -49,6 +51,7 @@ namespace Linq.Extras
         /// <param name="source">The sequence to return the last element of.</param>
         /// <param name="defaultValue">The default value to return if the sequence is empty.</param>
         /// <returns><c>defaultValue</c> if <c>source</c> is empty; otherwise, the last element in <c>source</c>.</returns>
+        [Pure]
         public static TSource LastOrDefault<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] TSource defaultValue)
@@ -65,6 +68,7 @@ namespace Linq.Extras
         /// <param name="predicate">A function to test each element for a condition.</param>
         /// <param name="defaultValue">The default value to return if no matching element is found.</param>
         /// <returns><c>defaultValue</c> if source is empty or if no element passes the test specified by <c>predicate</c>; otherwise, the last element in <c>source</c> that passes the test specified by <c>predicate</c>.</returns>
+        [Pure]
         public static TSource LastOrDefault<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, bool> predicate,
@@ -83,6 +87,7 @@ namespace Linq.Extras
         /// <param name="index">The zero-based index of the element to retrieve.</param>
         /// <param name="defaultValue">The default value to return if there is no element at the specified index.</param>
         /// <returns><c>defaultValue</c> if the index is outside the bounds of the source sequence; otherwise, the element at the specified position in the source sequence.</returns>
+        [Pure]
         public static TSource ElementAtOrDefault<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             int index,
@@ -102,6 +107,7 @@ namespace Linq.Extras
         /// <param name="source">The sequence to return the single element of.</param>
         /// <param name="defaultValue">The default value to return if the sequence is empty.</param>
         /// <returns>The single element of the input sequence, or <c>defaultValue</c> if the sequence contains no elements.</returns>
+        [Pure]
         public static TSource SingleOrDefault<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             TSource defaultValue)
@@ -132,6 +138,7 @@ namespace Linq.Extras
         /// <param name="predicate">A function to test an element for a condition.</param>
         /// <param name="defaultValue">The default value to return if the no element matches the predicate.</param>
         /// <returns>The single element of the input sequence that satisfies the condition, or <c>defaultValue</c> if no such element is found.</returns>
+        [Pure]
         public static TSource SingleOrDefault<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, bool> predicate,

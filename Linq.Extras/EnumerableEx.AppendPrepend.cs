@@ -14,6 +14,7 @@ namespace Linq.Extras
         /// <param name="source">The sequence to append an element to.</param>
         /// <param name="item">The element to append.</param>
         /// <returns>The source sequence followed by the appended element.</returns>
+        [Pure]
         public static IEnumerable<TSource> Append<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             TSource item)
@@ -29,6 +30,7 @@ namespace Linq.Extras
         /// <param name="source">The sequence to prepend an element to.</param>
         /// <param name="item">The element to prepend.</param>
         /// <returns>The source sequence preceded by the prepended element.</returns>
+        [Pure]
         public static IEnumerable<TSource> Prepend<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             TSource item)
