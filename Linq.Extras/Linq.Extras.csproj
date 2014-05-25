@@ -77,6 +77,9 @@
     <Compile Include="EnumerableEx.IntersectBy.cs">
       <DependentUpon>EnumerableEx.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnumerableEx.WithIndex.cs">
+      <DependentUpon>EnumerableEx.cs</DependentUpon>
+    </Compile>
     <None Include="Infer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Infer.cs</LastGenOutput>
