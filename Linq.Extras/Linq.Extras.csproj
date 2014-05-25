@@ -50,6 +50,7 @@
     <Compile Include="EnumerableEx.OrDefault.cs">
       <DependentUpon>EnumerableEx.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnumerableEx.OuterJoin.cs" />
     <Compile Include="ListEx.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
