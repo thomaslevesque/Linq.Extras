@@ -5,6 +5,8 @@ namespace Linq.Extras.Internal
 {
     static class ArgumentExtensions
     {
+        // ReSharper disable UnusedParameter.Global
+
         [ContractAnnotation("value:null => halt")]
         public static void CheckArgumentNull<T>(
             [NoEnumeration] this T value,
@@ -45,5 +47,7 @@ namespace Linq.Extras.Internal
             if (!Enum.IsDefined(value.GetType(), value))
                 throw new ArgumentOutOfRangeException(paramName);
         }
+
+        // ReSharper restore UnusedParameter.Global
     }
 }

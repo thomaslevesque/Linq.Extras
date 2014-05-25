@@ -35,11 +35,29 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Compile Include="EnumerableEx.OrDefault.cs" />
+    <Compile Include="ByKeyComparer.cs" />
+    <Compile Include="ByKeyEqualityComparer.cs" />
+    <Compile Include="ComparerEx.cs" />
+    <Compile Include="EnumerableEx.DistinctUntilChanged.cs">
+      <DependentUpon>EnumerableEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnumerableEx.MinMax.cs">
+      <DependentUpon>EnumerableEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnumerableEx.Misc.cs">
+      <DependentUpon>EnumerableEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnumerableEx.OrDefault.cs">
+      <DependentUpon>EnumerableEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListEx.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="EnumerableEx.RankBy.cs">
+      <DependentUpon>EnumerableEx.cs</DependentUpon>
     </Compile>
     <None Include="Infer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -51,9 +69,6 @@
       <DependentUpon>EnumerableEx.cs</DependentUpon>
     </Compile>
     <Compile Include="EnumerableEx.cs" />
-    <Compile Include="EnumerableEx.IsNullOrEmpty.cs">
-      <DependentUpon>EnumerableEx.cs</DependentUpon>
-    </Compile>
     <Compile Include="Infer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,6 +85,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

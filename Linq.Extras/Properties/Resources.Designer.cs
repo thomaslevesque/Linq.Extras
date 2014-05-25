@@ -61,11 +61,20 @@ namespace Linq.Extras.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sequence contains no elements..
+        /// </summary>
+        internal static string SequenceContainsNoElements {
+            get {
+                return ResourceManager.GetString("SequenceContainsNoElements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sequence contains more than one element..
         /// </summary>
-        internal static string InputSequenceHasMoreThanOneElement {
+        internal static string SequenceHasMoreThanOneElement {
             get {
-                return ResourceManager.GetString("InputSequenceHasMoreThanOneElement", resourceCulture);
+                return ResourceManager.GetString("SequenceHasMoreThanOneElement", resourceCulture);
             }
         }
     }

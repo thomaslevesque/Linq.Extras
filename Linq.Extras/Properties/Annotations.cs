@@ -8,8 +8,8 @@
 // ReSharper disable IntroduceOptionalParameters.Global
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
-
 // ReSharper disable CheckNamespace
+
 namespace JetBrains.Annotations
 {
     /// <summary>
@@ -27,7 +27,7 @@ namespace JetBrains.Annotations
       AttributeTargets.Method | AttributeTargets.Parameter |
       AttributeTargets.Property | AttributeTargets.Delegate |
       AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
-    public sealed class CanBeNullAttribute : Attribute { }
+    sealed class CanBeNullAttribute : Attribute { }
 
     /// <summary>
     /// Indicates that the value of the marked element could never be <c>null</c>
@@ -41,7 +41,7 @@ namespace JetBrains.Annotations
       AttributeTargets.Method | AttributeTargets.Parameter |
       AttributeTargets.Property | AttributeTargets.Delegate |
       AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
-    public sealed class NotNullAttribute : Attribute { }
+    sealed class NotNullAttribute : Attribute { }
 
     /// <summary>
     /// Indicates that the marked method builds string by format pattern and (optional) arguments.
@@ -58,7 +58,7 @@ namespace JetBrains.Annotations
     [AttributeUsage(
       AttributeTargets.Constructor | AttributeTargets.Method,
       AllowMultiple = false, Inherited = true)]
-    public sealed class StringFormatMethodAttribute : Attribute
+    sealed class StringFormatMethodAttribute : Attribute
     {
         /// <param name="formatParameterName">
         /// Specifies which parameter of an annotated method should be treated as format-string
@@ -83,7 +83,7 @@ namespace JetBrains.Annotations
     /// }
     /// </code></example>
     [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = true)]
-    public sealed class InvokerParameterNameAttribute : Attribute { }
+    sealed class InvokerParameterNameAttribute : Attribute { }
 
     /// <summary>
     /// Indicates that the method is contained in a type that implements
@@ -122,7 +122,7 @@ namespace JetBrains.Annotations
     /// </list>
     /// </example>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
+    sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
     {
         public NotifyPropertyChangedInvocatorAttribute() { }
         public NotifyPropertyChangedInvocatorAttribute(string parameterName)
@@ -176,7 +176,7 @@ namespace JetBrains.Annotations
     /// </code></item>
     /// </list></examples>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
-    public sealed class ContractAnnotationAttribute : Attribute
+    sealed class ContractAnnotationAttribute : Attribute
     {
         public ContractAnnotationAttribute([NotNull] string contract)
             : this(contract, false) { }
@@ -201,7 +201,7 @@ namespace JetBrains.Annotations
     /// }
     /// </code></example>
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
-    public sealed class LocalizationRequiredAttribute : Attribute
+    sealed class LocalizationRequiredAttribute : Attribute
     {
         public LocalizationRequiredAttribute() : this(true) { }
         public LocalizationRequiredAttribute(bool required)
@@ -234,7 +234,7 @@ namespace JetBrains.Annotations
     [AttributeUsage(
       AttributeTargets.Interface | AttributeTargets.Class |
       AttributeTargets.Struct, AllowMultiple = false, Inherited = true)]
-    public sealed class CannotApplyEqualityOperatorAttribute : Attribute { }
+    sealed class CannotApplyEqualityOperatorAttribute : Attribute { }
 
     /// <summary>
     /// When applied to a target attribute, specifies a requirement for any type marked
@@ -248,7 +248,7 @@ namespace JetBrains.Annotations
     /// </code></example>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
     [BaseTypeRequired(typeof(Attribute))]
-    public sealed class BaseTypeRequiredAttribute : Attribute
+    sealed class BaseTypeRequiredAttribute : Attribute
     {
         public BaseTypeRequiredAttribute([NotNull] Type baseType)
         {
@@ -265,7 +265,7 @@ namespace JetBrains.Annotations
     /// will not be marked as unused (as well as by other usage inspections)
     /// </summary>
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
-    public sealed class UsedImplicitlyAttribute : Attribute
+    sealed class UsedImplicitlyAttribute : Attribute
     {
         public UsedImplicitlyAttribute()
             : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default) { }
@@ -293,7 +293,7 @@ namespace JetBrains.Annotations
     /// (as well as by other usage inspections)
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-    public sealed class MeansImplicitUseAttribute : Attribute
+    sealed class MeansImplicitUseAttribute : Attribute
     {
         public MeansImplicitUseAttribute()
             : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default) { }
@@ -318,7 +318,7 @@ namespace JetBrains.Annotations
     }
 
     [Flags]
-    public enum ImplicitUseKindFlags
+    enum ImplicitUseKindFlags
     {
         Default = Access | Assign | InstantiatedWithFixedConstructorSignature,
         /// <summary>Only entity marked with attribute considered used</summary>
@@ -340,7 +340,7 @@ namespace JetBrains.Annotations
     /// or <see cref="UsedImplicitlyAttribute"/>
     /// </summary>
     [Flags]
-    public enum ImplicitUseTargetFlags
+    enum ImplicitUseTargetFlags
     {
         Default = Itself,
         Itself = 1,
@@ -355,7 +355,7 @@ namespace JetBrains.Annotations
     /// which should not be removed and so is treated as used
     /// </summary>
     [MeansImplicitUse]
-    public sealed class PublicAPIAttribute : Attribute
+    sealed class PublicAPIAttribute : Attribute
     {
         public PublicAPIAttribute() { }
         public PublicAPIAttribute([NotNull] string comment)
@@ -375,7 +375,7 @@ namespace JetBrains.Annotations
     /// while the method is executed
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter, Inherited = true)]
-    public sealed class InstantHandleAttribute : Attribute { }
+    sealed class InstantHandleAttribute : Attribute { }
 
     /// <summary>
     /// Indicates that a method does not make any observable state changes.
@@ -389,7 +389,7 @@ namespace JetBrains.Annotations
     /// }
     /// </code></example>
     [AttributeUsage(AttributeTargets.Method, Inherited = true)]
-    public sealed class PureAttribute : Attribute { }
+    sealed class PureAttribute : Attribute { }
 
     /// <summary>
     /// Indicates that a parameter is a path to a file or a folder
@@ -397,7 +397,7 @@ namespace JetBrains.Annotations
     /// starting from web root (~)
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
-    public class PathReferenceAttribute : Attribute
+    class PathReferenceAttribute : Attribute
     {
         public PathReferenceAttribute() { }
         public PathReferenceAttribute([PathReference] string basePath)
@@ -412,37 +412,37 @@ namespace JetBrains.Annotations
     // ASP.NET MVC attributes
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    public sealed class AspMvcAreaMasterLocationFormatAttribute : Attribute
+    sealed class AspMvcAreaMasterLocationFormatAttribute : Attribute
     {
         public AspMvcAreaMasterLocationFormatAttribute(string format) { }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    public sealed class AspMvcAreaPartialViewLocationFormatAttribute : Attribute
+    sealed class AspMvcAreaPartialViewLocationFormatAttribute : Attribute
     {
         public AspMvcAreaPartialViewLocationFormatAttribute(string format) { }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    public sealed class AspMvcAreaViewLocationFormatAttribute : Attribute
+    sealed class AspMvcAreaViewLocationFormatAttribute : Attribute
     {
         public AspMvcAreaViewLocationFormatAttribute(string format) { }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    public sealed class AspMvcMasterLocationFormatAttribute : Attribute
+    sealed class AspMvcMasterLocationFormatAttribute : Attribute
     {
         public AspMvcMasterLocationFormatAttribute(string format) { }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    public sealed class AspMvcPartialViewLocationFormatAttribute : Attribute
+    sealed class AspMvcPartialViewLocationFormatAttribute : Attribute
     {
         public AspMvcPartialViewLocationFormatAttribute(string format) { }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    public sealed class AspMvcViewLocationFormatAttribute : Attribute
+    sealed class AspMvcViewLocationFormatAttribute : Attribute
     {
         public AspMvcViewLocationFormatAttribute(string format) { }
     }
@@ -454,7 +454,7 @@ namespace JetBrains.Annotations
     /// <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
-    public sealed class AspMvcActionAttribute : Attribute
+    sealed class AspMvcActionAttribute : Attribute
     {
         public AspMvcActionAttribute() { }
         public AspMvcActionAttribute([NotNull] string anonymousProperty)
@@ -472,7 +472,7 @@ namespace JetBrains.Annotations
     /// <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcAreaAttribute : PathReferenceAttribute
+    sealed class AspMvcAreaAttribute : PathReferenceAttribute
     {
         public AspMvcAreaAttribute() { }
         public AspMvcAreaAttribute([NotNull] string anonymousProperty)
@@ -492,7 +492,7 @@ namespace JetBrains.Annotations
     /// <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
-    public sealed class AspMvcControllerAttribute : Attribute
+    sealed class AspMvcControllerAttribute : Attribute
     {
         public AspMvcControllerAttribute() { }
         public AspMvcControllerAttribute([NotNull] string anonymousProperty)
@@ -510,7 +510,7 @@ namespace JetBrains.Annotations
     /// <c>System.Web.Mvc.Controller.View(String, String)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcMasterAttribute : Attribute { }
+    sealed class AspMvcMasterAttribute : Attribute { }
 
     /// <summary>
     /// ASP.NET MVC attribute. Indicates that a parameter is an MVC model type.
@@ -518,7 +518,7 @@ namespace JetBrains.Annotations
     /// <c>System.Web.Mvc.Controller.View(String, Object)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcModelTypeAttribute : Attribute { }
+    sealed class AspMvcModelTypeAttribute : Attribute { }
 
     /// <summary>
     /// ASP.NET MVC attribute. If applied to a parameter, indicates that
@@ -528,14 +528,14 @@ namespace JetBrains.Annotations
     /// <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
-    public sealed class AspMvcPartialViewAttribute : PathReferenceAttribute { }
+    sealed class AspMvcPartialViewAttribute : PathReferenceAttribute { }
 
     /// <summary>
     /// ASP.NET MVC attribute. Allows disabling all inspections
     /// for MVC views within a class or a method.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public sealed class AspMvcSupressViewErrorAttribute : Attribute { }
+    sealed class AspMvcSupressViewErrorAttribute : Attribute { }
 
     /// <summary>
     /// ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
@@ -543,7 +543,7 @@ namespace JetBrains.Annotations
     /// <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcDisplayTemplateAttribute : Attribute { }
+    sealed class AspMvcDisplayTemplateAttribute : Attribute { }
 
     /// <summary>
     /// ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
@@ -551,7 +551,7 @@ namespace JetBrains.Annotations
     /// <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcEditorTemplateAttribute : Attribute { }
+    sealed class AspMvcEditorTemplateAttribute : Attribute { }
 
     /// <summary>
     /// ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
@@ -559,7 +559,7 @@ namespace JetBrains.Annotations
     /// <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcTemplateAttribute : Attribute { }
+    sealed class AspMvcTemplateAttribute : Attribute { }
 
     /// <summary>
     /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
@@ -568,7 +568,7 @@ namespace JetBrains.Annotations
     /// <c>System.Web.Mvc.Controller.View(Object)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
-    public sealed class AspMvcViewAttribute : PathReferenceAttribute { }
+    sealed class AspMvcViewAttribute : PathReferenceAttribute { }
 
     /// <summary>
     /// ASP.NET MVC attribute. When applied to a parameter of an attribute,
@@ -582,12 +582,12 @@ namespace JetBrains.Annotations
     /// }
     /// </code></example>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property)]
-    public sealed class AspMvcActionSelectorAttribute : Attribute { }
+    sealed class AspMvcActionSelectorAttribute : Attribute { }
 
     [AttributeUsage(
       AttributeTargets.Parameter | AttributeTargets.Property |
       AttributeTargets.Field, Inherited = true)]
-    public sealed class HtmlElementAttributesAttribute : Attribute
+    sealed class HtmlElementAttributesAttribute : Attribute
     {
         public HtmlElementAttributesAttribute() { }
         public HtmlElementAttributesAttribute([NotNull] string name)
@@ -602,7 +602,7 @@ namespace JetBrains.Annotations
     [AttributeUsage(
       AttributeTargets.Parameter | AttributeTargets.Field |
       AttributeTargets.Property, Inherited = true)]
-    public sealed class HtmlAttributeValueAttribute : Attribute
+    sealed class HtmlAttributeValueAttribute : Attribute
     {
         public HtmlAttributeValueAttribute([NotNull] string name)
         {
@@ -621,11 +621,11 @@ namespace JetBrains.Annotations
     /// <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method, Inherited = true)]
-    public sealed class RazorSectionAttribute : Attribute { }
+    sealed class RazorSectionAttribute : Attribute { }
 
     /// <summary>
     /// Indicates that IEnumerable, passed as parameter, is not enumerated.
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
-    internal sealed class NoEnumerationAttribute : Attribute { }
+    sealed class NoEnumerationAttribute : Attribute { }
 }

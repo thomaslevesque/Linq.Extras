@@ -117,7 +117,7 @@ namespace Linq.Extras
                 }
                 else
                 {
-                    throw new InvalidOperationException(Resources.InputSequenceHasMoreThanOneElement);
+                    throw new InvalidOperationException(Resources.SequenceHasMoreThanOneElement);
                 }
                 i++;
             }
