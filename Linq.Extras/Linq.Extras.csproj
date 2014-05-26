@@ -97,6 +97,9 @@
     <Compile Include="TakeEvery.cs">
       <DependentUpon>EnumerableExtensions.cs</DependentUpon>
     </Compile>
+    <Compile Include="ToCollections.cs">
+      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+    </Compile>
     <Compile Include="UnionBy.cs">
       <DependentUpon>EnumerableExtensions.cs</DependentUpon>
     </Compile>

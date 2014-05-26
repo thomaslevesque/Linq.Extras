@@ -42,7 +42,7 @@ namespace Linq.Extras
         private static IEnumerable<TResult> BreadthFirstFlattenIterator<TNode, TResult>(this IEnumerable<TNode> source,
             Func<TNode, IEnumerable<TNode>> childrenSelector, Func<TNode, int, TResult> resultSelector)
         {
-            var queue = new Queue<NodeWithLevel<TNode>>(source.Select(n => new NodeWithLevel<TNode>(n, 0)));
+            var queue = source.Select(n => new NodeWithLevel<TNode>(n, 0)).ToQueue();
             while (queue.Count > 0)
             {
                 var item = queue.Dequeue();
@@ -57,7 +57,7 @@ namespace Linq.Extras
         private static IEnumerable<TResult> DepthFirstFlattenIterator<TNode, TResult>(this IEnumerable<TNode> source,
             Func<TNode, IEnumerable<TNode>> childrenSelector, Func<TNode, int, TResult> resultSelector)
         {
-            var list = new LinkedList<NodeWithLevel<TNode>>(source.Select(n => new NodeWithLevel<TNode>(n, 0)));
+            var list = source.Select(n => new NodeWithLevel<TNode>(n, 0)).ToLinkedList();
             while (list.Count > 0)
             {
                 var current = list.First.Value;

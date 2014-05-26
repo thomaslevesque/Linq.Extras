@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
 
@@ -27,6 +28,12 @@ namespace Linq.Extras
         {
             source.CheckArgumentNull("source");
             return new HashSet<TSource>(source, comparer);
+        }
+
+        public static LinkedList<TSource> ToLinkedList<TSource>([NotNull] this IEnumerable<TSource> source)
+        {
+            source.CheckArgumentNull("source");
+            return new LinkedList<TSource>(source);
         }
     }
 }
