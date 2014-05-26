@@ -86,9 +86,7 @@ namespace Linq.Extras
                 _level = level;
             }
 
-            // ReSharper disable MemberHidesStaticFromOuterClass
             public TNode Node
-                // ReSharper restore MemberHidesStaticFromOuterClass
             {
                 get { return _node; }
             }
