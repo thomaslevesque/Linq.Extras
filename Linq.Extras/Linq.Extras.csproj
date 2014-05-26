@@ -63,6 +63,9 @@
     <Compile Include="Flatten.cs">
       <DependentUpon>EnumerableExtensions.cs</DependentUpon>
     </Compile>
+    <Compile Include="ToHierarchy.cs">
+      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+    </Compile>
     <Compile Include="IndexOfSequence.cs">
       <DependentUpon>EnumerableExtensions.cs</DependentUpon>
     </Compile>

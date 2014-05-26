@@ -31,12 +31,22 @@ namespace Linq.Extras
         }
 
         [Pure]
+        public static IEnumerable<TResult> Flatten<TNode, TResult>(
+            [NotNull] this IEnumerable<TNode> source,
+            [NotNull] Func<TNode, IEnumerable<TNode>> childrenSelector,
+            TreeTraversalMode traversalMode,
+            [NotNull] Func<TNode, TResult> resultSelector)
+        {
+            return source.Flatten(childrenSelector, traversalMode, (x, _) => resultSelector(x));
+        }
+
+        [Pure]
         public static IEnumerable<TNode> Flatten<TNode>(
             [NotNull] this IEnumerable<TNode> source,
             [NotNull] Func<TNode, IEnumerable<TNode>> childrenSelector,
             TreeTraversalMode traversalMode)
         {
-            return Flatten(source, childrenSelector, traversalMode, (x, _) => x);
+            return source.Flatten(childrenSelector, traversalMode, (x, _) => x);
         }
 
         private static IEnumerable<TResult> BreadthFirstFlattenIterator<TNode, TResult>(this IEnumerable<TNode> source,
@@ -86,6 +96,7 @@ namespace Linq.Extras
                 _level = level;
             }
 
+            // ReSharper disable once MemberHidesStaticFromOuterClass
             public TNode Node
             {
                 get { return _node; }
