@@ -44,7 +44,7 @@
     <Compile Include="CommonPrefix.cs">
       <DependentUpon>EnumerableExtensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComparerEx.cs" />
+    <Compile Include="ComparerExtensions.cs" />
     <Compile Include="AppendPrepend.cs">
       <DependentUpon>EnumerableExtensions.cs</DependentUpon>
     </Compile>
@@ -58,6 +58,9 @@
       <DependentUpon>EnumerableExtensions.cs</DependentUpon>
     </Compile>
     <Compile Include="Batch.cs">
+      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flatten.cs">
       <DependentUpon>EnumerableExtensions.cs</DependentUpon>
     </Compile>
     <Compile Include="IndexOfSequence.cs">
