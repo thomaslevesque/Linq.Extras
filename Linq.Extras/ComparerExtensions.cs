@@ -3,7 +3,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    public static class ComparerEx
+    public static class ComparerExtensions
     {
         public static IComparer<T> Reverse<T>(this IComparer<T> comparer)
         {

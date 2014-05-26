@@ -6,8 +6,9 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
+        [Pure]
         public static bool SequenceEqualBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IEnumerable<TSource> other,
@@ -16,6 +17,7 @@ namespace Linq.Extras
             return source.SequenceEqualBy(other, keySelector, null);
         }
 
+        [Pure]
         public static bool SequenceEqualBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IEnumerable<TSource> other,

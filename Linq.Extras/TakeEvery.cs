@@ -5,15 +5,17 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
+        [Pure]
         public static IEnumerable<TSource> TakeEvery<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             int frequency)
         {
             return source.TakeEvery(frequency, 0);
         }
-
+        
+        [Pure]
         public static IEnumerable<TSource> TakeEvery<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             int frequency,

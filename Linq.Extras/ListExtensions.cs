@@ -6,7 +6,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    public static class ListEx
+    public static class ListExtensions
     {
         public static void Shuffle<T>([NotNull] this IList<T> list)
         {

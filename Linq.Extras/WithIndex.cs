@@ -1,16 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
-        public static IEnumerable<IndexedItem<TSource>> WithIndex<TSource>(this IEnumerable<TSource> source)
+        [Pure]
+        public static IEnumerable<IndexedItem<TSource>> WithIndex<TSource>(
+            [NotNull] this IEnumerable<TSource> source)
         {
             return source.Select((item, index) => new IndexedItem<TSource>(index, item));
         }
 
-        public static IEnumerable<TSource> WithoutIndex<TSource>(this IEnumerable<IndexedItem<TSource>> source)
+        [Pure]
+        public static IEnumerable<TSource> WithoutIndex<TSource>(
+            [NotNull] this IEnumerable<IndexedItem<TSource>> source)
         {
             return source.Select(indexed => indexed.Value);
         }

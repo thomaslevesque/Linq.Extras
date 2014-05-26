@@ -5,8 +5,9 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
+        [Pure]
         public static int IndexOfSequence<T>(
             [NotNull] this IEnumerable<T> source,
             [NotNull] IEnumerable<T> sequence)
@@ -14,6 +15,7 @@ namespace Linq.Extras
             return source.IndexOfSequence(sequence, null);
         }
 
+        [Pure]
         public static int IndexOfSequence<T>(
             [NotNull] this IEnumerable<T> source,
             [NotNull] IEnumerable<T> sequence,

@@ -6,8 +6,9 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
+        [Pure]
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector)
@@ -15,6 +16,7 @@ namespace Linq.Extras
             return source.DistinctBy(keySelector, null);
         }
 
+        [Pure]
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,

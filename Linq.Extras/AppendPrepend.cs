@@ -5,7 +5,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
         /// <summary>
         /// Appends the specified element to the specified sequence.

@@ -6,7 +6,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
         [Pure]
         public static IEnumerable<TResult> RankBy<TSource, TKey, TResult>(

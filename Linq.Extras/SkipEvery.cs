@@ -5,8 +5,9 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
+        [Pure]
         public static IEnumerable<TSource> SkipEvery<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             int frequency)
@@ -14,6 +15,7 @@ namespace Linq.Extras
             return source.SkipEvery(frequency, 0);
         }
 
+        [Pure]
         public static IEnumerable<TSource> SkipEvery<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             int frequency,

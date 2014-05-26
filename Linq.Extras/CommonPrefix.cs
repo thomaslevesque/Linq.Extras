@@ -4,8 +4,9 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
+        [Pure]
         public static IEnumerable<T> CommonPrefix<T>(
             [NotNull] this IEnumerable<T> source,
             [NotNull] IEnumerable<T> other)
@@ -16,6 +17,7 @@ namespace Linq.Extras
             return source.CommonPrefixImpl(other, null);
         }
 
+        [Pure]
         public static IEnumerable<T> CommonPrefix<T>(
             [NotNull] this IEnumerable<T> source,
             [NotNull] IEnumerable<T> other,

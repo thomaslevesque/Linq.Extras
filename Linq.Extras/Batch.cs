@@ -5,8 +5,9 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableEx
+    partial class EnumerableExtensions
     {
+        [Pure]
         public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             int count)
