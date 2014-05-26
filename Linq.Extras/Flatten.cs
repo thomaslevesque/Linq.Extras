@@ -8,6 +8,7 @@ namespace Linq.Extras
 {
     partial class EnumerableExtensions
     {
+        [Pure]
         public static IEnumerable<TResult> Flatten<TNode, TResult>(
             [NotNull] this IEnumerable<TNode> source,
             [NotNull] Func<TNode, IEnumerable<TNode>> childrenSelector,
@@ -29,6 +30,7 @@ namespace Linq.Extras
             }
         }
 
+        [Pure]
         public static IEnumerable<TNode> Flatten<TNode>(
             [NotNull] this IEnumerable<TNode> source,
             [NotNull] Func<TNode, IEnumerable<TNode>> childrenSelector,
