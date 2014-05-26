@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
 
@@ -37,6 +38,12 @@ namespace Linq.Extras
             T tmp = list[index1];
             list[index1] = list[index2];
             list[index2] = tmp;
+        }
+
+        public static IList<TSource> AsReadOnly<TSource>(
+            [NotNull] this IList<TSource> source)
+        {
+            return new ReadOnlyCollection<TSource>(source);
         }
     }
 }
