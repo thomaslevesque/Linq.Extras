@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 
 namespace Linq.Extras
 {
-    partial class EnumerableExtensions
+    partial class XEnumerable
     {
         /// <summary>
         /// Indicates whether a sequence is null or empty.

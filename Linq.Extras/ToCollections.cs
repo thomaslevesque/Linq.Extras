@@ -5,7 +5,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableExtensions
+    partial class XEnumerable
     {
         public static Queue<TSource> ToQueue<TSource>([NotNull] this IEnumerable<TSource> source)
         {

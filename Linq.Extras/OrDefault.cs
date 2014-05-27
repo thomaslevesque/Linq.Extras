@@ -7,7 +7,7 @@ using Linq.Extras.Properties;
 
 namespace Linq.Extras
 {
-    partial class EnumerableExtensions
+    partial class XEnumerable
     {
         /// <summary>
         /// Returns the first element of a sequence or the specified default value if the sequence contains no elements.

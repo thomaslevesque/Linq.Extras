@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 
 namespace Linq.Extras
 {
-    partial class EnumerableExtensions
+    partial class XEnumerable
     {
         [Pure]
         public static IEnumerable<IndexedItem<TSource>> WithIndex<TSource>(

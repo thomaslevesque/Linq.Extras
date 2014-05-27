@@ -6,7 +6,7 @@ using Linq.Extras.Properties;
 
 namespace Linq.Extras
 {
-    partial class EnumerableExtensions
+    partial class XEnumerable
     {
         [Pure]
         public static TSource Max<TSource>(

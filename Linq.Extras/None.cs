@@ -6,7 +6,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableExtensions
+    partial class XEnumerable
     {
         [Pure]
         public static bool None<TSource>([NotNull] this IEnumerable<TSource> source)

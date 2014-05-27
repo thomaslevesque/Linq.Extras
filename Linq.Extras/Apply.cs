@@ -5,7 +5,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
-    partial class EnumerableExtensions
+    partial class XEnumerable
     {
         public static IEnumerable<T> Apply<T>(
             [NotNull] this IEnumerable<T> source,

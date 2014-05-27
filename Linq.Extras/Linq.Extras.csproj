@@ -37,77 +37,83 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <Compile Include="Apply.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="ByKeyComparer.cs" />
     <Compile Include="ByKeyEqualityComparer.cs" />
     <Compile Include="CommonPrefix.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComparerExtensions.cs" />
+    <Compile Include="XComparer.cs" />
     <Compile Include="AppendPrepend.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="DistinctBy.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="DistinctUntilChanged.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="ExceptBy.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="Batch.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="Flatten.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generate.cs">
+      <DependentUpon>XEnumerable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndexOf.cs">
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="ToHierarchy.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="IndexOfSequence.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="IntersectBy.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="IsNullOrEmpty.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListExtensions.cs" />
+    <Compile Include="XList.cs" />
     <Compile Include="MinMax.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="None.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="OrDefault.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="OuterJoin.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="RankBy.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="SequenceEqualBy.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="SkipEvery.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="TakeEvery.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="ToCollections.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="UnionBy.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="WithIndex.cs">
-      <DependentUpon>EnumerableExtensions.cs</DependentUpon>
+      <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -120,7 +126,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="XEnumerable.cs" />
     <Compile Include="Infer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
