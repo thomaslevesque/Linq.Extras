@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 
 namespace Linq.Extras.Tests.XEnumerableTests
@@ -12,7 +13,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var foos = GetFoos();
             foos.Shuffle();
-            var fooWithMaxValue = foos.MaxBy(f => f.Value);
+            var fooWithMaxValue = foos.MaxBy(_getFooValue);
             var expected = "xyz";
             var actual = fooWithMaxValue.Value;
             Assert.AreEqual(expected, actual);
@@ -23,7 +24,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var foos = new Foo[] { };
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Assert.Throws<InvalidOperationException>(() => foos.MaxBy(f => f.Value));
+            Assert.Throws<InvalidOperationException>(() => foos.MaxBy(_getFooValue));
         }
 
         [Test]
@@ -31,7 +32,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var foos = GetFoos();
             foos.Shuffle();
-            var fooWithMaxValue = foos.MaxBy(f => f.Value, Comparer<string>.Default.Reverse());
+            var fooWithMaxValue = foos.MaxBy(_getFooValue, Comparer<string>.Default.Reverse());
             var expected = "abcd";
             var actual = fooWithMaxValue.Value;
             Assert.AreEqual(expected, actual);
@@ -42,7 +43,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var foos = GetFoos();
             foos.Shuffle();
-            var fooWithMinValue = foos.MinBy(f => f.Value);
+            var fooWithMinValue = foos.MinBy(_getFooValue);
             var expected = "abcd";
             var actual = fooWithMinValue.Value;
             Assert.AreEqual(expected, actual);
@@ -53,7 +54,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var foos = new Foo[] { };
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Assert.Throws<InvalidOperationException>(() => foos.MinBy(f => f.Value));
+            Assert.Throws<InvalidOperationException>(() => foos.MinBy(_getFooValue));
         }
 
         [Test]
@@ -61,7 +62,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var foos = GetFoos();
             foos.Shuffle();
-            var fooWithMinValue = foos.MinBy(f => f.Value, Comparer<string>.Default.Reverse());
+            var fooWithMinValue = foos.MinBy(_getFooValue, Comparer<string>.Default.Reverse());
             var expected = "xyz";
             var actual = fooWithMinValue.Value;
             Assert.AreEqual(expected, actual);
@@ -119,11 +120,14 @@ namespace Linq.Extras.Tests.XEnumerableTests
                    };
         }
 
+        private static readonly Func<Foo, string> _getFooValue = f => f.Value;
+
         private class Foo
         {
             public string Value { get; set; }
         }
 
+        [ExcludeFromCodeCoverage]
         private class FooComparer : IComparer<Foo>
         {
             public int Compare(Foo x, Foo y)

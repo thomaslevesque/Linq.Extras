@@ -33,7 +33,7 @@ namespace Linq.Extras
         {
             list.CheckArgumentNull("list");
             index1.CheckArgumentOutOfRange("index1", 0, list.Count - 1);
-            index1.CheckArgumentOutOfRange("index2", 0, list.Count - 1);
+            index2.CheckArgumentOutOfRange("index2", 0, list.Count - 1);
 
             T tmp = list[index1];
             list[index1] = list[index2];
