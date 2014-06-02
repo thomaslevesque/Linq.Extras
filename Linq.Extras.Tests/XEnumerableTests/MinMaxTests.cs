@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace Linq.Extras.Tests
+namespace Linq.Extras.Tests.XEnumerableTests
 {
     [TestFixture]
     class MinMaxTests
@@ -22,7 +22,7 @@ namespace Linq.Extras.Tests
         public void Test_MaxBy_EmptySequence()
         {
             var foos = new Foo[] { };
-// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.MaxBy(f => f.Value));
         }
 
@@ -52,7 +52,7 @@ namespace Linq.Extras.Tests
         public void Test_MinBy_EmptySequence()
         {
             var foos = new Foo[] { };
-// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.MinBy(f => f.Value));
         }
 
@@ -82,7 +82,7 @@ namespace Linq.Extras.Tests
         public void Test_Max_WithComparer_EmptySequence()
         {
             var foos = new Foo[] { };
-// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.Max(new FooComparer()));
         }
 
@@ -101,30 +101,30 @@ namespace Linq.Extras.Tests
         public void Test_Min_WithComparer_EmptySequence()
         {
             var foos = new Foo[] { };
-// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.Min(new FooComparer()));
         }
 
         private static IList<Foo> GetFoos()
         {
             return new List<Foo>
-            {
-                new Foo { Value = "abcd" },
-                new Foo { Value = "efgh" },
-                new Foo { Value = "ijkl" },
-                new Foo { Value = "mnop" },
-                new Foo { Value = "qrst" },
-                new Foo { Value = "uvw" },
-                new Foo { Value = "xyz" }
-            };
+                   {
+                       new Foo { Value = "abcd" },
+                       new Foo { Value = "efgh" },
+                       new Foo { Value = "ijkl" },
+                       new Foo { Value = "mnop" },
+                       new Foo { Value = "qrst" },
+                       new Foo { Value = "uvw" },
+                       new Foo { Value = "xyz" }
+                   };
         }
 
-        class Foo
+        private class Foo
         {
             public string Value { get; set; }
         }
 
-        class FooComparer : IComparer<Foo>
+        private class FooComparer : IComparer<Foo>
         {
             public int Compare(Foo x, Foo y)
             {

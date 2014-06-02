@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Linq.Extras
 {
+    // There is nothing to test here; the methods in this class just return their parameter, to take advantage
+    // of generic type inference.
+    [ExcludeFromCodeCoverage]
     public static class Infer
     {
         public static Func<TResult> Func<TResult>(Func<TResult> func)
