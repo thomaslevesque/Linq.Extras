@@ -11,7 +11,10 @@ namespace Linq.Extras.Tests.XListTests
         public void AsReadOnly_Returns_List_With_Same_Items()
         {
             var items = new List<int> { 4, 8, 15, 16, 23, 42 };
-            var result = items.AsReadOnly();
+
+            // Use as a static method, because full .NET already has a AsReadOnly instance method
+            var result = XList.AsReadOnly(items);
+
             CollectionAssert.AreEqual(items, result);
         }
 
@@ -19,7 +22,10 @@ namespace Linq.Extras.Tests.XListTests
         public void AsReadOnly_Returns_A_List_That_Throws_On_Attempt_To_Modify()
         {
             var items = new List<int> { 4, 8, 15, 16, 23, 42 };
-            IList<int> result = items.AsReadOnly();
+
+            // Use as a static method, because full .NET already has a AsReadOnly instance method
+            IList<int> result = XList.AsReadOnly(items);
+            
             Assert.Throws<NotSupportedException>(result.Clear);
             Assert.Throws<NotSupportedException>(() => result.Add(99));
             Assert.Throws<NotSupportedException>(() => result.Insert(1, 99));
@@ -32,7 +38,9 @@ namespace Linq.Extras.Tests.XListTests
         public void AsReadOnly_Returns_A_List_That_Reflects_Changes_In_The_Original_List()
         {
             var items = new List<int> { 4, 8, 15, 16, 23, 42 };
-            var result = items.AsReadOnly();
+
+            // Use as a static method, because full .NET already has a AsReadOnly instance method
+            var result = XList.AsReadOnly(items);
 
             // Make some random changes in the original list
             items.Remove(16);

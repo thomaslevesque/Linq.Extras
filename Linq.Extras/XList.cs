@@ -40,7 +40,7 @@ namespace Linq.Extras
             list[index2] = tmp;
         }
 
-        public static IList<TSource> AsReadOnly<TSource>(
+        public static ReadOnlyCollection<TSource> AsReadOnly<TSource>(
             [NotNull] this IList<TSource> source)
         {
             return new ReadOnlyCollection<TSource>(source);
