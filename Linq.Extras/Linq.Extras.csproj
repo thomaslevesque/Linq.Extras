@@ -39,8 +39,6 @@
     <Compile Include="Apply.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
-    <Compile Include="ByKeyComparer.cs" />
-    <Compile Include="ByKeyEqualityComparer.cs" />
     <Compile Include="CommonPrefix.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
@@ -82,6 +80,7 @@
     <Compile Include="IsNullOrEmpty.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
+    <Compile Include="XEqualityComparer.cs" />
     <Compile Include="XList.cs" />
     <Compile Include="MinMax.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>

@@ -8,6 +8,7 @@ namespace Linq.Extras
 {
     partial class XEnumerable
     {
+        [Pure]
         public static IEnumerable<INode<TSource>> ToHierarchy<TSource, TId>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TId> idSelector,
@@ -16,6 +17,7 @@ namespace Linq.Extras
             return ToHierarchy(source, idSelector, parentIdSelector, default(TId));
         }
 
+        [Pure]
         public static IEnumerable<INode<TSource>> ToHierarchy<TSource, TId>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TId> idSelector,

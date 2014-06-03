@@ -63,7 +63,7 @@ namespace Linq.Extras
         {
             source.CheckArgumentNull("source");
             keySelector.CheckArgumentNull("keySelector");
-            var comparer = ByKeyComparer.Create(keySelector);
+            var comparer = XComparer.By(keySelector);
             return source.Max(comparer);
         }
 
@@ -75,7 +75,7 @@ namespace Linq.Extras
         {
             source.CheckArgumentNull("source");
             keySelector.CheckArgumentNull("keySelector");
-            var comparer = ByKeyComparer.Create(keySelector, keyComparer);
+            var comparer = XComparer.By(keySelector, keyComparer);
             return source.Max(comparer);
         }
 
@@ -86,7 +86,7 @@ namespace Linq.Extras
         {
             source.CheckArgumentNull("source");
             keySelector.CheckArgumentNull("keySelector");
-            var comparer = ByKeyComparer.Create(keySelector);
+            var comparer = XComparer.By(keySelector);
             return source.Min(comparer);
         }
 
@@ -98,7 +98,7 @@ namespace Linq.Extras
         {
             source.CheckArgumentNull("source");
             keySelector.CheckArgumentNull("keySelector");
-            var comparer = ByKeyComparer.Create(keySelector, keyComparer);
+            var comparer = XComparer.By(keySelector, keyComparer);
             return source.Min(comparer);
         }
     }

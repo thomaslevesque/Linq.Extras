@@ -27,7 +27,7 @@ namespace Linq.Extras
             source.CheckArgumentNull("source");
             other.CheckArgumentNull("other");
             keySelector.CheckArgumentNull("keySelector");
-            var comparer = ByKeyEqualityComparer<TSource>.Create(keySelector, keyComparer);
+            var comparer = XEqualityComparer.By(keySelector, keyComparer);
             return source.Union(other, comparer);
         }
     }

@@ -4071,5 +4071,16 @@ warnif count > 0 from n in Application.Namespaces where
 select new { n, n.NbLinesOfCode } ]]></Query>
       </Group>
     </Group>
+    <Group Name="Custom" Active="True" ShownInReport="False">
+      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Impure public methods (or not marked as Pure)</Name>
+let pure = Types.Single(t => t.FullName == "JetBrains.Annotations.PureAttribute")
+from t in JustMyCode.Types
+where t.IsPubliclyVisible
+from m in t.Methods
+where m.IsPubliclyVisible
+&& !m.IsSpecialName
+&& !m.HasAttribute(pure)
+select m]]></Query>
+    </Group>
   </Queries>
 </NDepend>

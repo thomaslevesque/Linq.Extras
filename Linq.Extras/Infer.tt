@@ -7,6 +7,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Linq.Extras
 {
@@ -19,11 +20,13 @@ namespace Linq.Extras
         var types = Enumerable.Range(1, i).Select(x => "T" + x).Concat(new[] { "TResult" });
         var typeList = string.Join(", ", types);
 #>
+        [Pure]
         public static Func<<#= typeList #>> Func<<#= typeList #>>(Func<<#= typeList #>> func)
         {
             return func;
         }
 
+        [Pure]
         public static Expression<Func<<#= typeList #>>> Expr<<#= typeList #>>(Expression<Func<<#= typeList #>>> expr)
         {
             return expr;
