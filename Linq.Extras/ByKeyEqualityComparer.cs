@@ -8,7 +8,7 @@ namespace Linq.Extras
         private readonly Func<TSource, TKey> _keySelector;
         private readonly IEqualityComparer<TKey> _keyComparer;
 
-        public ByKeyEqualityComparer(Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        public ByKeyEqualityComparer(Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
         {
             _keySelector = keySelector;
             _keyComparer = keyComparer ?? EqualityComparer<TKey>.Default;

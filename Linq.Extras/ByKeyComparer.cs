@@ -9,11 +9,6 @@ namespace Linq.Extras
         private readonly Func<T, TKey> _keySelector;
         private readonly IComparer<TKey> _keyComparer;
 
-        public ByKeyComparer(Func<T, TKey> keySelector)
-            : this(keySelector, null)
-        {
-        }
-
         public ByKeyComparer(Func<T, TKey> keySelector, IComparer<TKey> keyComparer)
         {
             keySelector.CheckArgumentNull("keySelector");

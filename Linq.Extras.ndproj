@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <NDepend AppName="Linq.Extras" Platform="DotNet">
-  <OutputDir KeepXmlFiles="False">D:\Docs\GitHub\Linq.Extras\NDependOut1</OutputDir>
+  <OutputDir KeepXmlFiles="False">D:\Docs\GitHub\Linq.Extras\NDependOut</OutputDir>
   <Assemblies>
     <Name>Linq.Extras</Name>
   </Assemblies>
@@ -10,8 +10,8 @@
     <Name>System</Name>
   </FrameworkAssemblies>
   <Dirs>
-    <Dir>D:\Docs\GitHub\Linq.Extras\Linq.Extras\bin\Debug</Dir>
     <Dir>C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727</Dir>
+    <Dir>D:\Docs\GitHub\Linq.Extras\Linq.Extras\bin\Debug</Dir>
   </Dirs>
   <Report Kind="0" SectionsEnabled="45055" XslPath="" Flags="64512" />
   <BuildComparisonSetting ProjectMode="DontCompare" BuildMode="MostRecentAnalysisResultAvailable" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="1" FocusOnRecentRulesViolations="False" />
@@ -945,6 +945,7 @@ select new { t, unmanagedResourcesTypeFields }]]></Query>
 // when its instances are lightweight values.
 //
 warnif count > 0 from t in JustMyCode.Types where 
+  t.FullName != "Linq.Extras.XEnumerable+NodeWithLevel<TNode>" && // Not a good candidate
   t.IsClass &&
  !t.IsGeneratedByCompiler &&
  !t.IsStatic &&
@@ -971,7 +972,7 @@ select new { t, t.SizeOfInst, t.InstanceFields } // Must derive directly from Sy
   //                      that are intended to be sub-classed by 
   //                      your clients.
   ]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid namespaces with few types</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid namespaces with few types</Name>
 warnif count > 0 from n in JustMyCode.Namespaces 
 let types = n.ChildTypes.Where(t => !t.IsGeneratedByCompiler)
 where 
@@ -1004,7 +1005,8 @@ select new { t, t.NbLinesOfCode, t.Visibility }
 // instead, use namespaces.]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Declare types in namespaces</Name>
 warnif count > 0 from n in Application.Namespaces where 
-  n.Name == ""
+  n.Name == "" &&
+  n.ChildTypes.Any(t => !t.IsGeneratedByCompiler)
 select new { n, n.ChildTypes, n.NbLinesOfCode } 
 
 // Types are declared within namespaces to 
@@ -1270,7 +1272,7 @@ select new {
    // if dalTypesUsed is empty, it means that the uiType is part of the DAL
    dalTypesUsed
 }]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Assemblies with poor cohesion (RelationalCohesion)</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Assemblies with poor cohesion (RelationalCohesion)</Name>
 warnif count > 0 from a in Application.Assemblies where 
   a.NbTypes > 20 && // Relational Cohesion metrics is relevant only if there are several types 
   (a.RelationalCohesion < 1.5 || 
@@ -1981,7 +1983,11 @@ let canMethodBeConsideredAsDeadProc = new Func<IMethod, bool>(
          !m.HasAttribute("System.Runtime.Serialization.OnDeserializedAttribute".AllowNoMatch()) &&
 
          // If you don't want to link NDepend.API.dll, you can use your own IsNotDeadCodeAttribute and adapt this rule.
-         !m.HasAttribute("NDepend.Attributes.IsNotDeadCodeAttribute".AllowNoMatch()))
+         !m.HasAttribute("NDepend.Attributes.IsNotDeadCodeAttribute".AllowNoMatch()) &&
+
+         // Ignore code with no source
+         m.SourceDecls.Any()
+)
 
 // Get methods unused
 let methodsUnused = 
@@ -3833,6 +3839,11 @@ from f in Application.Fields where
   // Eliminate "components" generated in Windows Form Conrol context
   f.Name == "components" && f.ParentType.DeriveFrom("System.Windows.Forms.Control".AllowNoMatch())
 select f]]></Query>
+      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Discard ReSharper annotations</Name>
+notmycode 
+from n in Application.Namespaces
+where n.Name == "JetBrains.Annotations"
+select n]]></Query>
     </Group>
     <Group Name="Statistics" Active="False" ShownInReport="False">
       <Query Active="True" DisplayList="False" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Most used types (Rank)</Name>
@@ -4061,5 +4072,4 @@ select new { n, n.NbLinesOfCode } ]]></Query>
       </Group>
     </Group>
   </Queries>
-  <WarnFilter />
 </NDepend>
