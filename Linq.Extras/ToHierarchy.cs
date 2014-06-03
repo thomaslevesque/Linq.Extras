@@ -56,7 +56,7 @@ namespace Linq.Extras
             return roots;
         }
 
-        private class Node<T> : INode<T>
+        private sealed class Node<T> : INode<T>
         {
             public T Item { get; set; }
             public IList<INode<T>> Children { get; set; }

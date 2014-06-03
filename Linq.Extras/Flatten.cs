@@ -85,7 +85,7 @@ namespace Linq.Extras
             }
         }
 
-        private class NodeWithLevel<TNode>
+        private sealed class NodeWithLevel<TNode>
         {
             private readonly TNode _node;
             private readonly int _level;

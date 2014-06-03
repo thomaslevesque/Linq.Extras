@@ -7,7 +7,7 @@ namespace Linq.Extras
     partial class XEnumerable
     {
         [Pure]
-        public static IEnumerable<IndexedItem<TSource>> WithIndex<TSource>(
+        public static IEnumerable<IIndexedItem<TSource>> WithIndex<TSource>(
             [NotNull] this IEnumerable<TSource> source)
         {
             return source.Select((item, index) => new IndexedItem<TSource>(index, item));
@@ -15,21 +15,27 @@ namespace Linq.Extras
 
         [Pure]
         public static IEnumerable<TSource> WithoutIndex<TSource>(
-            [NotNull] this IEnumerable<IndexedItem<TSource>> source)
+            [NotNull] this IEnumerable<IIndexedItem<TSource>> source)
         {
             return source.Select(indexed => indexed.Value);
         }
+
+        sealed class IndexedItem<T> : IIndexedItem<T>
+        {
+            public IndexedItem(int index, T value)
+            {
+                Index = index;
+                Value = value;
+            }
+
+            public int Index { get; private set; }
+            public T Value { get; private set; }
+        }
     }
 
-    public class IndexedItem<T>
+    public interface IIndexedItem<T>
     {
-        public IndexedItem(int index, T value)
-        {
-            Index = index;
-            Value = value;
-        }
-
-        public int Index { get; private set; }
-        public T Value { get; private set; }
+        int Index { get; }
+        T Value { get; }
     }
 }
