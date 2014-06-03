@@ -5,6 +5,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
+    [PublicAPI]
     public static class XEqualityComparer
     {
         [Pure]
@@ -54,6 +55,7 @@ namespace Linq.Extras
         #endregion
     }
 
+    [PublicAPI]
     public static class XEqualityComparer<T>
     {
         [Pure]

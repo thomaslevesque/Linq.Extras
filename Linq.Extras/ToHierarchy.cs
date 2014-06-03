@@ -66,12 +66,4 @@ namespace Linq.Extras
             public INode<T> Parent { get; set; }
         }
     }
-
-    public interface INode<T>
-    {
-        T Item { get; }
-        IList<INode<T>> Children { get; }
-        int Level { get; }
-        INode<T> Parent { get; }
-    }
 }

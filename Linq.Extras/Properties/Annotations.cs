@@ -355,6 +355,7 @@ namespace JetBrains.Annotations
     /// which should not be removed and so is treated as used
     /// </summary>
     [MeansImplicitUse]
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = false)]
     sealed class PublicAPIAttribute : Attribute
     {
         public PublicAPIAttribute() { }

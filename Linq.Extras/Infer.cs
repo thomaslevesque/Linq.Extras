@@ -8,6 +8,7 @@ namespace Linq.Extras
     // There is nothing to test here; the methods in this class just return their parameter, to take advantage
     // of generic type inference.
     [ExcludeFromCodeCoverage]
+    [PublicAPI]
     public static class Infer
     {
         [Pure]

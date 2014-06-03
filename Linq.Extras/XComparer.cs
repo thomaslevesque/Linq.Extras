@@ -6,6 +6,7 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
+    [PublicAPI]
     public static class XComparer
     {
         [Pure]
@@ -173,6 +174,7 @@ namespace Linq.Extras
 
     }
 
+    [PublicAPI]
     public static class XComparer<T>
     {
         [Pure]

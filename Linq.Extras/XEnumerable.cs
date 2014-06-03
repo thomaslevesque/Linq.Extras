@@ -6,6 +6,7 @@ namespace Linq.Extras
     /// <summary>
     /// Provides extension and helper methods that work on sequences and collections.
     /// </summary>
+    [PublicAPI]
     public static partial class XEnumerable
     {
         [Pure]

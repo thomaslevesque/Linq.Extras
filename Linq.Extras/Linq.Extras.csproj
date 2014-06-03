@@ -42,7 +42,10 @@
     <Compile Include="CommonPrefix.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
+    <Compile Include="IIndexedItem.cs" />
+    <Compile Include="INode.cs" />
     <Compile Include="Internal\ExcludeFromCodeCoverageAttribute.cs" />
+    <Compile Include="TreeTraversalMode.cs" />
     <Compile Include="XComparer.cs" />
     <Compile Include="AppendPrepend.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>

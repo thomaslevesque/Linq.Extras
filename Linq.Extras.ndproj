@@ -2065,11 +2065,12 @@ where types.Count() > 0 || methods.Count() > 0 || fields.Count() > 0
 select new { tAttr, types , methods, fields }]]></Query>
     </Group>
     <Group Name="Visibility" Active="True" ShownInReport="False">
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Methods that could have a lower visibility</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Methods that could have a lower visibility</Name>
 warnif count > 0 from m in JustMyCode.Methods where 
   m.Visibility != m.OptimalVisibility &&
   !m.HasAttribute("NDepend.Attributes.CannotDecreaseVisibilityAttribute".AllowNoMatch()) &&
   !m.HasAttribute("NDepend.Attributes.IsNotDeadCodeAttribute".AllowNoMatch()) &&
+
   // If you don't want to link NDepend.API.dll, you can use your own attributes and adapt this rule.
   
   // Eliminate default constructor from the result.
@@ -2093,6 +2094,7 @@ warnif count > 0 from t in JustMyCode.Types where
   // If you don't want to link NDepend.API.dll, you can use your own attributes and adapt this rule.
  !t.HasAttribute("NDepend.Attributes.CannotDecreaseVisibilityAttribute".AllowNoMatch()) &&
  !t.HasAttribute("NDepend.Attributes.IsNotDeadCodeAttribute".AllowNoMatch()) &&
+ !t.HasAttribute("JetBrains.Annotations.PublicAPIAttribute") &&
 
   // Static types that define only const fields cannot be seen as used in IL code.
   // They don't have to be tagged with CannotDecreaseVisibilityAttribute.
@@ -2131,7 +2133,7 @@ select new { f,
 // not be applied for types used directly by tests.
 
 warnif count > 0 
-from t in Application.Types
+from t in JustMyCode.Types
 where !t.IsGeneratedByCompiler &&
       !t.IsNested &&
       !t.IsPubliclyVisible &&
@@ -2200,7 +2202,7 @@ let ctors = t.Constructors.Where(c => !c.IsProtected && !c.IsPrivate)
 where ctors.Count() > 0
 select new { t, ctors }
 ]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[//<Name>Avoid public methods not publicly visible</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[//<Name>Avoid public methods not publicly visible</Name>
 // Matched methods are declared public but are not publicly visible by assemblies consumers.
 // Their visibility level must be decreased.
 
@@ -2342,7 +2344,7 @@ select new { t, t.NbLinesOfCode, mutableFields }
 // http://codebetter.com/blogs/patricksmacchia/archive/2008/01/13/immutable-types-understand-them-and-use-them.aspx
 ]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Property Getters should be immutable</Name>
-warnif count > 0 from m in Application.Methods where
+warnif count > 0 from m in JustMyCode.Methods where
   m.IsPropertyGetter &&
   ( ( !m.IsStatic && m.ChangesObjectState) ||
     (  m.IsStatic && m.ChangesTypeState) )
@@ -2558,7 +2560,7 @@ select new { m, m.NbLinesOfCode }
 // introduced with .NET v4.0.]]></Query>
     </Group>
     <Group Name="Naming Conventions" Active="True" ShownInReport="False">
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Instance fields should be prefixed with a 'm_'</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Instance fields should be prefixed with a 'm_'</Name>
 warnif count > 0 from f in Application.Fields where 
   !f.NameLike (@"^m_") && 
   !f.IsStatic && 
@@ -2571,7 +2573,7 @@ select new { f, f.SizeOfInst }
 // This naming convention provokes debate.
 // Don't hesitate to customize the regex of 
 // NameLike to your preference.]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Static fields should be prefixed with a 's_'</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Static fields should be prefixed with a 's_'</Name>
 warnif count > 0 from f in Application.Fields where 
   !f.NameLike (@"^s_") && 
    f.IsStatic && 
@@ -2669,7 +2671,7 @@ select new { f, f.SizeOfInst }
 // addition does not cause the values of the 
 // original members to change.]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid types with name too long</Name>
-warnif count > 0 from t in Application.Types 
+warnif count > 0 from t in JustMyCode.Types 
 where !t.IsGeneratedByCompiler
 
 where t.SimpleName.Length > 35 
@@ -2698,7 +2700,7 @@ select new { m, m.SimpleName }
 // with the interface name.
       ]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid fields with name too long</Name>
-warnif count > 0 from f in Application.Fields where
+warnif count > 0 from f in JustMyCode.Fields where
  !f.IsGeneratedByCompiler &&
   f.Name.Length > 35
 select f
@@ -2837,7 +2839,7 @@ select new { t = @group.First(),
 warnif count > 0 
 
 // Build a lookup indexed by source files, values being a sequence of types defined in the source file.
-let lookup = Application.Types.Where(t => 
+let lookup = JustMyCode.Types.Where(t => 
                                 t.SourceFileDeclAvailable && 
                                // except nested types and types generated by compilers!
                                !t.IsGeneratedByCompiler &&                               
@@ -2848,7 +2850,7 @@ let lookup = Application.Types.Where(t =>
             // We use multi-key, since a type can be declared in multiple source files.
            .ToMultiKeyLookup(t => t.SourceDecls.Select(d => d.SourceFile))
  
-from @group in lookup where @group.Count() > 1
+from @group in lookup where @group.Select(t => t.SimpleName).Distinct().Count() > 1
    let sourceFile = @group.Key
 
    // CQLinq doesn't let indexing result with sourceFile 
@@ -2874,6 +2876,7 @@ let dirCorresponding = n.Name.Replace('.', ' ')
 // Look at source file decl of JustMyCode type's declared in n
 from t in n.ChildTypes
 where JustMyCode.Contains(t) && t.SourceFileDeclAvailable
+&& t.FullName != "System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"
 from decl in t.SourceDecls
 let sourceFilePath = decl.SourceFile.FilePath.ToString()
 
@@ -2881,7 +2884,7 @@ let sourceFilePath = decl.SourceFile.FilePath.ToString()
 where !sourceFilePath.Replace('.',' ').Replace('\\',' ').Contains(dirCorresponding)
 
 select new { t, dirCorresponding , sourceFilePath  } ]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Types with source files stored in the same directory, should be declared in the same namespace</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Types with source files stored in the same directory, should be declared in the same namespace</Name>
 warnif count > 0 
 
 // Group JustMyCode types in a lookup 
@@ -3025,7 +3028,7 @@ select a
 // compliance with CLSCompliantAttribute. If the 
 // attribute is not present on an assembly, the 
 // assembly is not compliant.]]></Query>
-        <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Mark assemblies with ComVisible</Name>
+        <Query Active="False" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Mark assemblies with ComVisible</Name>
 warnif count > 0 from a in Application.Assemblies where 
   !a.HasAttribute ("System.Runtime.InteropServices.ComVisibleAttribute".AllowNoMatch())
 select a
@@ -3211,6 +3214,7 @@ let collectionTypes = Types.ThatImplementAny(collectionInterfaces)
 from propGetter in Application.Methods.Where(
                           m => m.IsPropertyGetter && 
                           m.ReturnType != null &&
+                          m.ParentType.IsPubliclyVisible &&
                           collectionTypes.Contains(m.ReturnType))
 
 let propSetter = propGetter.ParentType.Methods.WithSimpleName(
@@ -4073,13 +4077,12 @@ select new { n, n.NbLinesOfCode } ]]></Query>
     </Group>
     <Group Name="Custom" Active="True" ShownInReport="False">
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Impure public methods (or not marked as Pure)</Name>
-let pure = Types.Single(t => t.FullName == "JetBrains.Annotations.PureAttribute")
 from t in JustMyCode.Types
 where t.IsPubliclyVisible
 from m in t.Methods
 where m.IsPubliclyVisible
 && !m.IsSpecialName
-&& !m.HasAttribute(pure)
+&& !m.HasAttribute("JetBrains.Annotations.PureAttribute".AllowNoMatch())
 select m]]></Query>
     </Group>
   </Queries>

@@ -32,10 +32,4 @@ namespace Linq.Extras
             public T Value { get; private set; }
         }
     }
-
-    public interface IIndexedItem<T>
-    {
-        int Index { get; }
-        T Value { get; }
-    }
 }
