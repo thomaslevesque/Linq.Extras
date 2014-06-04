@@ -77,8 +77,14 @@ namespace Linq.Extras
             rightKeySelector.CheckArgumentNull("rightKeySelector");
             resultSelector.CheckArgumentNull("resultSelector");
 
+            // First gather items from right in a lookup by key to access them quickly
             var rightLookup = right.ToLookup(rightKeySelector, keyComparer);
+            
+            // To keep track of which keys have already been used
             var usedKeys = new HashSet<TKey>(keyComparer);
+
+            // Pair each item from left with each matching item from right
+            // (or with the default value if there is no matching item in right)
             foreach (var leftItem in left)
             {
                 var key = leftKeySelector(leftItem);
@@ -88,6 +94,9 @@ namespace Linq.Extras
                     yield return resultSelector(key, leftItem, rightItem);
                 }
             }
+
+            // Unused items from right don't have a matching item in left
+            // Pair them with the default value
             foreach (var g in rightLookup)
             {
                 if (usedKeys.Contains(g.Key))

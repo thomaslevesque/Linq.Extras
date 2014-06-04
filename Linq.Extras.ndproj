@@ -169,7 +169,7 @@ select new { m, m.CyclomaticComplexity,
 // http://www.NDepend.com/Metrics.aspx#ILNestingDepth]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Methods potentially poorly commented</Name>
 warnif count > 0 from m in JustMyCode.Methods where 
-  m.PercentageComment < 20 && 
+  m.PercentageComment < 15 && 
   m.NbLinesOfCode > 20  
   orderby m.PercentageComment ascending
 select new { m, m.PercentageComment, m.NbLinesOfCode, m.NbLinesOfComment }
@@ -239,7 +239,8 @@ select new { t, t.InstanceMethods, t.StaticMethods }
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Types with too many fields</Name>
 warnif count > 0 from t in JustMyCode.Types where 
   t.Fields.Count() > 20 && 
-  !t.IsEnumeration 
+  !t.IsEnumeration &&
+  !t.IsGeneratedByCompiler
   orderby t.Fields.Count() descending
 select new { t, t.InstanceFields, t.StaticFields, t.SizeOfInst }
 
@@ -1024,7 +1025,7 @@ select m
     ]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Instances size shouldn't be too big</Name>
 warnif count > 0 from t in JustMyCode.Types where 
-  t.SizeOfInst > 64 
+  t.SizeOfInst > 64 && !t.IsGeneratedByCompiler
   orderby t.SizeOfInst descending
 select new { t, t.SizeOfInst, t.InstanceFields }
 
