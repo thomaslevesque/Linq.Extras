@@ -16,44 +16,9 @@ namespace Linq.Extras
             [NotNull] IEnumerable<TInner> inner,
             [NotNull] Func<TOuter, TKey> outerKeySelector,
             [NotNull] Func<TInner, TKey> innerKeySelector,
-            [NotNull] Func<TOuter, TInner, TResult> resultSelector)
-        {
-            return outer.LeftOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, default(TInner), null);
-        }
-
-        [Pure]
-        public static IEnumerable<TResult> LeftOuterJoin<TOuter, TInner, TKey, TResult>(
-            [NotNull] this IEnumerable<TOuter> outer,
-            [NotNull] IEnumerable<TInner> inner,
-            [NotNull] Func<TOuter, TKey> outerKeySelector,
-            [NotNull] Func<TInner, TKey> innerKeySelector,
             [NotNull] Func<TOuter, TInner, TResult> resultSelector,
-            TInner defaultInner)
-        {
-            return outer.LeftOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, defaultInner, null);
-        }
-
-        [Pure]
-        public static IEnumerable<TResult> LeftOuterJoin<TOuter, TInner, TKey, TResult>(
-            [NotNull] this IEnumerable<TOuter> outer,
-            [NotNull] IEnumerable<TInner> inner,
-            [NotNull] Func<TOuter, TKey> outerKeySelector,
-            [NotNull] Func<TInner, TKey> innerKeySelector,
-            [NotNull] Func<TOuter, TInner, TResult> resultSelector,
-            IEqualityComparer<TKey> keyComparer)
-        {
-            return outer.LeftOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, default(TInner), keyComparer);
-        }
-
-        [Pure]
-        public static IEnumerable<TResult> LeftOuterJoin<TOuter, TInner, TKey, TResult>(
-            [NotNull] this IEnumerable<TOuter> outer,
-            [NotNull] IEnumerable<TInner> inner,
-            [NotNull] Func<TOuter, TKey> outerKeySelector,
-            [NotNull] Func<TInner, TKey> innerKeySelector,
-            [NotNull] Func<TOuter, TInner, TResult> resultSelector,
-            TInner defaultInner,
-            IEqualityComparer<TKey> keyComparer)
+            TInner defaultInner = default(TInner),
+            IEqualityComparer<TKey> keyComparer = null)
         {
             outer.CheckArgumentNull("outer");
             inner.CheckArgumentNull("inner");
@@ -61,15 +26,10 @@ namespace Linq.Extras
             innerKeySelector.CheckArgumentNull("innerKeySelector");
             resultSelector.CheckArgumentNull("resultSelector");
 
-            return outer.GroupJoin(
-                            inner,
-                            outerKeySelector,
-                            innerKeySelector,
-                            (left, tmp) => new { left, tmp },
-                            keyComparer)
-                        .SelectMany(
-                            g => g.tmp.DefaultIfEmpty(defaultInner),
-                            (g, right) => resultSelector(g.left, right));
+            return from o in outer
+                   join i in inner on outerKeySelector(o) equals innerKeySelector(i) into tmp
+                   from i in tmp.DefaultIfEmpty()
+                   select resultSelector(o, i);
         }
 
         #endregion
@@ -82,44 +42,9 @@ namespace Linq.Extras
             [NotNull] IEnumerable<TInner> inner,
             [NotNull] Func<TOuter, TKey> outerKeySelector,
             [NotNull] Func<TInner, TKey> innerKeySelector,
-            [NotNull] Func<TOuter, TInner, TResult> resultSelector)
-        {
-            return outer.RightOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, default(TOuter), null);
-        }
-
-        [Pure]
-        public static IEnumerable<TResult> RightOuterJoin<TOuter, TInner, TKey, TResult>(
-            [NotNull] this IEnumerable<TOuter> outer,
-            [NotNull] IEnumerable<TInner> inner,
-            [NotNull] Func<TOuter, TKey> outerKeySelector,
-            [NotNull] Func<TInner, TKey> innerKeySelector,
             [NotNull] Func<TOuter, TInner, TResult> resultSelector,
-            TOuter defaultOuter)
-        {
-            return outer.RightOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, defaultOuter, null);
-        }
-
-        [Pure]
-        public static IEnumerable<TResult> RightOuterJoin<TOuter, TInner, TKey, TResult>(
-            [NotNull] this IEnumerable<TOuter> outer,
-            [NotNull] IEnumerable<TInner> inner,
-            [NotNull] Func<TOuter, TKey> outerKeySelector,
-            [NotNull] Func<TInner, TKey> innerKeySelector,
-            [NotNull] Func<TOuter, TInner, TResult> resultSelector,
-            IEqualityComparer<TKey> keyComparer)
-        {
-            return outer.RightOuterJoin(inner, outerKeySelector, innerKeySelector, resultSelector, default(TOuter), keyComparer);
-        }
-
-        [Pure]
-        public static IEnumerable<TResult> RightOuterJoin<TOuter, TInner, TKey, TResult>(
-            [NotNull] this IEnumerable<TOuter> outer,
-            [NotNull] IEnumerable<TInner> inner,
-            [NotNull] Func<TOuter, TKey> outerKeySelector,
-            [NotNull] Func<TInner, TKey> innerKeySelector,
-            [NotNull] Func<TOuter, TInner, TResult> resultSelector,
-            TOuter defaultOuter,
-            IEqualityComparer<TKey> keyComparer)
+            TOuter defaultOuter = default(TOuter),
+            IEqualityComparer<TKey> keyComparer = null)
         {
             outer.CheckArgumentNull("outer");
             inner.CheckArgumentNull("inner");
