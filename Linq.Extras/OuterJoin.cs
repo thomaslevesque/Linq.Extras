@@ -141,46 +141,10 @@ namespace Linq.Extras
             [NotNull] IEnumerable<TRight> right,
             [NotNull] Func<TLeft, TKey> leftKeySelector,
             [NotNull] Func<TRight, TKey> rightKeySelector,
-            [NotNull] Func<TKey, TLeft, TRight, TResult> resultSelector)
-        {
-            return left.FullOuterJoin(right, leftKeySelector, rightKeySelector, resultSelector, default(TLeft), default(TRight), null);
-        }
-
-        [Pure]
-        public static IEnumerable<TResult> FullOuterJoin<TLeft, TRight, TKey, TResult>(
-            [NotNull] this IEnumerable<TLeft> left,
-            [NotNull] IEnumerable<TRight> right,
-            [NotNull] Func<TLeft, TKey> leftKeySelector,
-            [NotNull] Func<TRight, TKey> rightKeySelector,
             [NotNull] Func<TKey, TLeft, TRight, TResult> resultSelector,
-            TLeft defaultLeft,
-            TRight defaultRight)
-        {
-            return left.FullOuterJoin(right, leftKeySelector, rightKeySelector, resultSelector, defaultLeft, defaultRight, null);
-        }
-
-        [Pure]
-        public static IEnumerable<TResult> FullOuterJoin<TLeft, TRight, TKey, TResult>(
-            [NotNull] this IEnumerable<TLeft> left,
-            [NotNull] IEnumerable<TRight> right,
-            [NotNull] Func<TLeft, TKey> leftKeySelector,
-            [NotNull] Func<TRight, TKey> rightKeySelector,
-            [NotNull] Func<TKey, TLeft, TRight, TResult> resultSelector,
-            IEqualityComparer<TKey> keyComparer)
-        {
-            return left.FullOuterJoin(right, leftKeySelector, rightKeySelector, resultSelector, default(TLeft), default(TRight), keyComparer);
-        }
-
-        [Pure]
-        public static IEnumerable<TResult> FullOuterJoin<TLeft, TRight, TKey, TResult>(
-            [NotNull] this IEnumerable<TLeft> left,
-            [NotNull] IEnumerable<TRight> right,
-            [NotNull] Func<TLeft, TKey> leftKeySelector,
-            [NotNull] Func<TRight, TKey> rightKeySelector,
-            [NotNull] Func<TKey, TLeft, TRight, TResult> resultSelector,
-            TLeft defaultLeft,
-            TRight defaultRight,
-            IEqualityComparer<TKey> keyComparer)
+            TLeft defaultLeft = default(TLeft),
+            TRight defaultRight = default(TRight),
+            IEqualityComparer<TKey> keyComparer = null)
         {
             left.CheckArgumentNull("left");
             right.CheckArgumentNull("right");
@@ -188,11 +152,27 @@ namespace Linq.Extras
             rightKeySelector.CheckArgumentNull("rightKeySelector");
             resultSelector.CheckArgumentNull("resultSelector");
 
-            // ReSharper disable PossibleMultipleEnumeration
-            var leftJoin = left.LeftOuterJoin(right, leftKeySelector, rightKeySelector, (l, r) => new { key = leftKeySelector(l), l, r }, defaultRight, keyComparer).Select(x => resultSelector(x.key, x.l, x.r));
-            var rightJoin = left.RightOuterJoin(right, leftKeySelector, rightKeySelector, (l, r) => new { key = rightKeySelector(r), l, r }, defaultLeft, keyComparer).Select(x => resultSelector(x.key, x.l, x.r));
-            // ReSharper restore PossibleMultipleEnumeration
-            return leftJoin.Union(rightJoin);
+            var rightLookup = right.ToLookup(rightKeySelector, keyComparer);
+            var usedKeys = new HashSet<TKey>(keyComparer);
+            foreach (var leftItem in left)
+            {
+                var key = leftKeySelector(leftItem);
+                usedKeys.Add(key);
+                foreach (var rightItem in rightLookup[key].DefaultIfEmpty(defaultRight))
+                {
+                    yield return resultSelector(key, leftItem, rightItem);
+                }
+            }
+            foreach (var g in rightLookup)
+            {
+                if (usedKeys.Contains(g.Key))
+                    continue;
+
+                foreach (var rightItem in g)
+                {
+                    yield return resultSelector(g.Key, defaultLeft, rightItem);
+                }
+            }
         }
 
         #endregion
