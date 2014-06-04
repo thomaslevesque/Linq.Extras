@@ -46,24 +46,6 @@ namespace Linq.Extras
         }
 
         [Pure]
-        public static IComparer<T> By<T, TKey>(
-            T dummy,
-            [NotNull] Func<T, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
-        {
-            return By(keySelector, keyComparer);
-        }
-
-        [Pure]
-        public static IComparer<T> ByDescending<T, TKey>(
-            T dummy,
-            [NotNull] Func<T, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
-        {
-            return ByDescending(keySelector, keyComparer);
-        }
-
-        [Pure]
         public static IComparer<T> ByDescending<T, TKey>(
             [NotNull] Func<T, TKey> keySelector,
             IComparer<TKey> keyComparer = null)
@@ -89,6 +71,22 @@ namespace Linq.Extras
         {
             comparer.CheckArgumentNull("comparer");
             return comparer.ChainWith(ByDescending(keySelector, keyComparer));
+        }
+
+        [Pure]
+        public static T Min<T>([NotNull] this IComparer<T> comparer, T x, T y)
+        {
+            comparer.CheckArgumentNull("comparer");
+            int cmp = comparer.Compare(x, y);
+            return cmp <= 0 ? x : y;
+        }
+
+        [Pure]
+        public static T Max<T>([NotNull] this IComparer<T> comparer, T x, T y)
+        {
+            comparer.CheckArgumentNull("comparer");
+            int cmp = comparer.Compare(x, y);
+            return cmp >= 0 ? x : y;
         }
 
         #region Comparers

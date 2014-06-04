@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssertExtensions.cs" />
+    <Compile Include="XComparerTests\ChainWithTests.cs" />
     <Compile Include="XComparerTests\ReverseTests.cs" />
     <Compile Include="XEnumerableTests\AppendPrependTests.cs" />
     <Compile Include="XEnumerableTests\MinMaxTests.cs" />

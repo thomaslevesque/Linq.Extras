@@ -17,16 +17,6 @@ namespace Linq.Extras
             return new ByKeyEqualityComparer<T, TKey>(keySelector, keyComparer);
         }
 
-        // ReSharper disable once UnusedParameter.Global
-        [Pure]
-        public static IEqualityComparer<T> By<T, TKey>(
-            T dummy,
-            [NotNull] Func<T, TKey> keySelector,
-            IEqualityComparer<TKey> keyComparer = null)
-        {
-            return By(keySelector, keyComparer);
-        }
-
         #region Comparers
 
         sealed class ByKeyEqualityComparer<TSource, TKey> : IEqualityComparer<TSource>
