@@ -12,21 +12,24 @@ namespace Linq.Extras.Tests.XListTests
         {
             IList<int> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Assert.Throws<ArgumentNullException>(() => list.Swap(0, 1)).Assert().Verifies(e => e.ParamName == "list");
+            var ex = Assert.Throws<ArgumentNullException>(() => list.Swap(0, 1));
+            Assert.AreEqual("list", ex.ParamName);
         }
 
         [Test]
-        public void Swap_Throws_If_Index_Is_Out_Of_Range()
+        [TestCase(-1, 1, "index1")]
+        [TestCase(3, 1, "index1")]
+        [TestCase(int.MinValue, 1, "index1")]
+        [TestCase(int.MaxValue, 1, "index1")]
+        [TestCase(1, -1, "index2")]
+        [TestCase(1, 3, "index2")]
+        [TestCase(1, int.MinValue, "index2")]
+        [TestCase(1, int.MaxValue, "index2")]
+        public void Swap_Throws_If_Index_Is_Out_Of_Range(int index1, int index2, string name)
         {
-            IList<int> list = new [] { 1, 2, 3};
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(-1, 1)).Assert().Verifies(e => e.ParamName == "index1");
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(3, 1)).Assert().Verifies(e => e.ParamName == "index1");
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(int.MinValue, 1)).Assert().Verifies(e => e.ParamName == "index1");
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(int.MaxValue, 1)).Assert().Verifies(e => e.ParamName == "index1");
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(1, -1)).Assert().Verifies(e => e.ParamName == "index2");
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(1, 3)).Assert().Verifies(e => e.ParamName == "index2");
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(1, int.MinValue)).Assert().Verifies(e => e.ParamName == "index2");
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(1, int.MaxValue)).Assert().Verifies(e => e.ParamName == "index2");
+            IList<int> list = new[] { 1, 2, 3 };
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(index1, index2));
+            Assert.AreEqual(name, ex.ParamName);
         }
 
         [Test]
