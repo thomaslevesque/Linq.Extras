@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
@@ -173,6 +174,7 @@ namespace Linq.Extras
     }
 
     [PublicAPI]
+    [ExcludeFromCodeCoverage] // Nothing to test here, these are just shorcuts for convenience
     public static class XComparer<T>
     {
         [Pure]
