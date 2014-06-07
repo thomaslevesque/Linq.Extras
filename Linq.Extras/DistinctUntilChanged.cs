@@ -7,70 +7,45 @@ namespace Linq.Extras
 {
     partial class XEnumerable
     {
-        [Pure]
-        public static IEnumerable<TSource> DistinctUntilChanged<TSource>([NotNull] this IEnumerable<TSource> source)
-        {
-            source.CheckArgumentNull("source");
-            return source.DistinctUntilChangedImpl(Identity, null);
-        }
-
         /// <summary>
-        /// Renvoie une séquence qui contient seulement des valeurs contiguës distinctes selon le comparateur spécifié.
+        /// Returns a sequance with distinct elements from the input sequence based on the specified comparer.
         /// </summary>
-        /// <typeparam name="TSource">Type des éléments de la séquence</typeparam>
-        /// <param name="source">Séquence d'entrée</param>
-        /// <param name="comparer">Comparateur à utiliser pour comparer les éléments. Si null, le comparateur par défaut sera utilisé</param>
-        /// <returns>Une séquence qui contient seulement des valeurs contiguës distinctes</returns>
+        /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
+        /// <param name="source">The sequence to return distinct elements from.</param>
+        /// <param name="comparer">A comparer used to test equality between elements (can be null).</param>
+        /// <returns>A sequence that contains only distinct contiguous elements</returns>
         [Pure]
         public static IEnumerable<TSource> DistinctUntilChanged<TSource>(
             [NotNull] this IEnumerable<TSource> source,
-            IEqualityComparer<TSource> comparer)
+            IEqualityComparer<TSource> comparer = null)
         {
             source.CheckArgumentNull("source");
-            return source.DistinctUntilChangedImpl(Identity, comparer);
+            return source.DistinctUntilChangedByImpl(Identity, comparer);
         }
 
         /// <summary>
-        /// Renvoie une séquence qui contient seulement des valeurs contiguës distinctes selon le comparateur spécifié.
+        /// Returns a sequance with distinct elements from the input sequence based on the specified key and key comparer.
         /// </summary>
-        /// <typeparam name="TSource">Type des éléments de la séquence</typeparam>
-        /// <typeparam name="TKey">Type de la clé de comparaison</typeparam>
-        /// <param name="source">Séquence d'entrée</param>
-        /// <param name="keySelector">Fonction qui renvoie la clé à utiliser pour comparer les éléments</param>
-        /// <returns>Une séquence qui contient seulement des valeurs contiguës distinctes</returns>
+        /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
+        /// <typeparam name="TKey">The type of the key used for testing equality between elements.</typeparam>
+        /// <param name="source">The sequence to return distinct elements from.</param>
+        /// <param name="keySelector">A delegate that returns the key used to test equality between elements.</param>
+        /// <param name="keyComparer">A comparer used to test equality between keys (can be null).</param>
+        /// <returns>A sequence whose elements have distinct values for the specified key.</returns>
         [Pure]
-        public static IEnumerable<TSource> DistinctUntilChanged<TSource, TKey>(
-            [NotNull] this IEnumerable<TSource> source,
-            [NotNull] Func<TSource, TKey> keySelector)
-        {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
-            return source.DistinctUntilChangedImpl(keySelector, null);
-        }
-
-        /// <summary>
-        /// Renvoie une séquence qui contient seulement des valeurs contiguës distinctes selon le comparateur spécifié.
-        /// </summary>
-        /// <typeparam name="TSource">Type des éléments de la séquence</typeparam>
-        /// <typeparam name="TKey">Type de la clé de comparaison</typeparam>
-        /// <param name="source">Séquence d'entrée</param>
-        /// <param name="keySelector">Fonction qui renvoie la clé à utiliser pour comparer les éléments</param>
-        /// <param name="keyComparer">Comparateur à utiliser pour comparer les clés. Si null, le comparateur par défaut sera utilisé</param>
-        /// <returns>Une séquence qui contient seulement des valeurs contiguës distinctes</returns>
-        [Pure]
-        public static IEnumerable<TSource> DistinctUntilChanged<TSource, TKey>(
+        public static IEnumerable<TSource> DistinctUntilChangedBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
-            IEqualityComparer<TKey> keyComparer)
+            IEqualityComparer<TKey> keyComparer = null)
         {
             source.CheckArgumentNull("source");
             keySelector.CheckArgumentNull("keySelector");
 
-            return source.DistinctUntilChangedImpl(keySelector, keyComparer);
+            return source.DistinctUntilChangedByImpl(keySelector, keyComparer);
         }
 
         [Pure]
-        private static IEnumerable<TSource> DistinctUntilChangedImpl<TSource, TKey>(
+        private static IEnumerable<TSource> DistinctUntilChangedByImpl<TSource, TKey>(
             this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector,
             IEqualityComparer<TKey> keyComparer)
