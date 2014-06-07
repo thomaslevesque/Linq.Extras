@@ -7,38 +7,19 @@ namespace Linq.Extras
     partial class XEnumerable
     {
         /// <summary>
-        /// Returns the common prefix of two sequences.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
-        /// <param name="source">The first sequence.</param>
-        /// <param name="other">The second sequence.</param>
-        /// <returns>A sequence consisting of the first elements of <c>source</c> that match the first elements of <c>other</c>.
-        /// The resulting sequence ends when the two input sequence start to differ.</returns>
-        [Pure]
-        public static IEnumerable<TSource> CommonPrefix<TSource>(
-            [NotNull] this IEnumerable<TSource> source,
-            [NotNull] IEnumerable<TSource> other)
-        {
-            source.CheckArgumentNull("source");
-            other.CheckArgumentNull("other");
-
-            return source.CommonPrefixImpl(other, null);
-        }
-
-        /// <summary>
         /// Returns the common prefix of two sequences, according to the specified comparer.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
         /// <param name="source">The first sequence.</param>
         /// <param name="other">The second sequence.</param>
-        /// <param name="comparer">The comparer used to test items for equality.</param>
+        /// <param name="comparer">The comparer used to test items for equality (can be null).</param>
         /// <returns>A sequence consisting of the first elements of <c>source</c> that match the first elements of <c>other</c>.
         /// The resulting sequence ends when the two input sequence start to differ.</returns>
         [Pure]
         public static IEnumerable<TSource> CommonPrefix<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IEnumerable<TSource> other,
-            IEqualityComparer<TSource> comparer)
+            IEqualityComparer<TSource> comparer = null)
         {
             source.CheckArgumentNull("source");
             other.CheckArgumentNull("other");
