@@ -55,6 +55,7 @@
     <Compile Include="XEnumerableTests\AppendPrependTests.cs" />
     <Compile Include="XEnumerableTests\BatchTests.cs" />
     <Compile Include="XEnumerableTests\CommonPrefixTests.cs" />
+    <Compile Include="XEnumerableTests\ExceptByTests.cs" />
     <Compile Include="XEnumerableTests\DistinctByTests.cs" />
     <Compile Include="XEnumerableTests\DistinctUntilChangedByTests.cs" />
     <Compile Include="XEnumerableTests\MinMaxTests.cs" />
