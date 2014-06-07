@@ -10,14 +10,14 @@ namespace Linq.Extras
         [Pure]
         public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(
             [NotNull] this IEnumerable<TSource> source,
-            int count)
+            int size)
         {
             source.CheckArgumentNull("source");
-            count.CheckArgumentOutOfRange("count", 1, int.MaxValue);
+            size.CheckArgumentOutOfRange("size", 1, int.MaxValue);
 
             return source
                 .WithIndex()
-                .GroupBy(x => x.Index / count)
+                .GroupBy(x => x.Index / size)
                 .Select(g => g.WithoutIndex());
         }
     }
