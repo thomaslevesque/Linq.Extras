@@ -6,10 +6,18 @@ namespace Linq.Extras
 {
     partial class XEnumerable
     {
+        /// <summary>
+        /// Returns the common prefix of two sequences.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
+        /// <param name="source">The first sequence.</param>
+        /// <param name="other">The second sequence.</param>
+        /// <returns>A sequence consisting of the first elements of <c>source</c> that match the first elements of <c>other</c>.
+        /// The resulting sequence ends when the two input sequence start to differ.</returns>
         [Pure]
-        public static IEnumerable<T> CommonPrefix<T>(
-            [NotNull] this IEnumerable<T> source,
-            [NotNull] IEnumerable<T> other)
+        public static IEnumerable<TSource> CommonPrefix<TSource>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] IEnumerable<TSource> other)
         {
             source.CheckArgumentNull("source");
             other.CheckArgumentNull("other");
@@ -17,11 +25,20 @@ namespace Linq.Extras
             return source.CommonPrefixImpl(other, null);
         }
 
+        /// <summary>
+        /// Returns the common prefix of two sequences, according to the specified comparer.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
+        /// <param name="source">The first sequence.</param>
+        /// <param name="other">The second sequence.</param>
+        /// <param name="comparer">The comparer used to test items for equality.</param>
+        /// <returns>A sequence consisting of the first elements of <c>source</c> that match the first elements of <c>other</c>.
+        /// The resulting sequence ends when the two input sequence start to differ.</returns>
         [Pure]
-        public static IEnumerable<T> CommonPrefix<T>(
-            [NotNull] this IEnumerable<T> source,
-            [NotNull] IEnumerable<T> other,
-            IEqualityComparer<T> comparer)
+        public static IEnumerable<TSource> CommonPrefix<TSource>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] IEnumerable<TSource> other,
+            IEqualityComparer<TSource> comparer)
         {
             source.CheckArgumentNull("source");
             other.CheckArgumentNull("other");
@@ -29,11 +46,11 @@ namespace Linq.Extras
             return source.CommonPrefixImpl(other, comparer);
         }
 
-        private static IEnumerable<T> CommonPrefixImpl<T>(this IEnumerable<T> source, IEnumerable<T> other, IEqualityComparer<T> comparer)
+        private static IEnumerable<TSource> CommonPrefixImpl<TSource>(this IEnumerable<TSource> source, IEnumerable<TSource> other, IEqualityComparer<TSource> comparer)
         {
-            comparer = comparer ?? EqualityComparer<T>.Default;
+            comparer = comparer ?? EqualityComparer<TSource>.Default;
 
-            using (IEnumerator<T> en1 = source.GetEnumerator(),
+            using (IEnumerator<TSource> en1 = source.GetEnumerator(),
                                   en2 = other.GetEnumerator())
             {
                 while (en1.MoveNext() && en2.MoveNext())
