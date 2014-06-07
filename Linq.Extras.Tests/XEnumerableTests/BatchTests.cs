@@ -12,7 +12,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Batch_Throws_If_Source_Is_Null()
         {
-            IEnumerable<string> source = null;
+            IEnumerable<int> source = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
             var ex = Assert.Throws<ArgumentNullException>(() => source.Batch(10));

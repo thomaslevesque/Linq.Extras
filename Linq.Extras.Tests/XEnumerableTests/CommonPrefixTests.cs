@@ -50,7 +50,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Test]
-        public void CommonPrefix_Uses_The_Provided_Comparer()
+        public void CommonPrefix_Uses_The_Specified_Comparer()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 };
             var other = new[] { -4, 8, -15, -99, -123, 999 };
