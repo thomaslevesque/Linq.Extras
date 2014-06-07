@@ -36,9 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Compile Include="Apply.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
     <Compile Include="CommonPrefix.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
