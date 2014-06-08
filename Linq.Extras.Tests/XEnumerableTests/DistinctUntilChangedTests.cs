@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace Linq.Extras.Tests.XEnumerableTests
 {
     [TestFixture]
-    class DistinctUntilChangedByTests
+    class DistinctUntilChangedTests
     {
         [Test]
         public void DistinctUntilChanged_Throws_If_Source_Is_Null()
