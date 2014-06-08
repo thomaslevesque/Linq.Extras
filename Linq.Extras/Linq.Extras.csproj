@@ -40,6 +40,9 @@
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="IIndexedItem.cs" />
+    <Compile Include="IndexOfSubstring.cs">
+      <DependentUpon>XEnumerable.cs</DependentUpon>
+    </Compile>
     <Compile Include="INode.cs" />
     <Compile Include="Internal\ExcludeFromCodeCoverageAttribute.cs" />
     <Compile Include="TreeTraversalMode.cs" />
@@ -69,9 +72,6 @@
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="ToHierarchy.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IndexOfSequence.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
     <Compile Include="IntersectBy.cs">

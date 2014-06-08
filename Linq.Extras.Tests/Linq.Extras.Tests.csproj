@@ -60,6 +60,7 @@
     <Compile Include="XEnumerableTests\DistinctUntilChangedByTests.cs" />
     <Compile Include="XEnumerableTests\FlattenTests.cs" />
     <Compile Include="XEnumerableTests\GenerateTests.cs" />
+    <Compile Include="XEnumerableTests\IndexOfSubstringTests.cs" />
     <Compile Include="XEnumerableTests\IndexOfTests.cs" />
     <Compile Include="XEnumerableTests\MinMaxTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
