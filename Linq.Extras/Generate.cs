@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
 
@@ -43,15 +44,7 @@ namespace Linq.Extras
         public static IEnumerable<TElement> Generate<TElement>([NotNull] Func<int, TElement> generator)
         {
             generator.CheckArgumentNull("generator");
-            return GenerateIterator(generator);
-        }
-
-        private static IEnumerable<TElement> GenerateIterator<TElement>(Func<int, TElement> generator)
-        {
-            for (int i = 0; i < int.MaxValue; i++)
-            {
-                yield return generator(i);
-            }
+            return Enumerable.Range(0, int.MaxValue).Select(generator);
         }
     }
 }
