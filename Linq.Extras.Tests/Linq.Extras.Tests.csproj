@@ -58,11 +58,12 @@
     <Compile Include="XEnumerableTests\CommonPrefixTests.cs" />
     <Compile Include="XEnumerableTests\ExceptByTests.cs" />
     <Compile Include="XEnumerableTests\DistinctByTests.cs" />
-    <Compile Include="XEnumerableTests\DistinctUntilChangedByTests.cs" />
+    <Compile Include="XEnumerableTests\DistinctUntilChangedTests.cs" />
     <Compile Include="XEnumerableTests\FlattenTests.cs" />
     <Compile Include="XEnumerableTests\GenerateTests.cs" />
     <Compile Include="XEnumerableTests\IndexOfSubstringTests.cs" />
     <Compile Include="XEnumerableTests\IndexOfTests.cs" />
+    <Compile Include="XEnumerableTests\IntersectByTests.cs" />
     <Compile Include="XEnumerableTests\MinMaxTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XListTests\AsReadOnlyTests.cs" />

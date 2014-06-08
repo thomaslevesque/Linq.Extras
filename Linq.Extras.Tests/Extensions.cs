@@ -44,6 +44,7 @@ namespace Linq.Extras.Tests
             }
         }
 
+        [ExcludeFromCodeCoverage]
         class NoEnumerationEnumerable<TSource> : IEnumerable<TSource>
         {
             private readonly string _message;

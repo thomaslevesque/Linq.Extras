@@ -23,7 +23,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void IndexOfSubstring_Throws_If_Substring_Is_Null()
         {
-            var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
+            var source = Enumerable.Empty<int>().ForbidEnumeration();
             IEnumerable<int> substring = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -34,7 +34,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void IndexOfSubstring_Returns_Zero_If_Source_And_Substring_Are_Empty()
         {
-            var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
+            var source = Enumerable.Empty<int>().ForbidEnumeration();
             var substring = Enumerable.Empty<int>().ForbidMultipleEnumeration();
             int index = source.IndexOfSubstring(substring);
             index.Should().Be(0);
@@ -43,7 +43,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void IndexOfSubstring_Returns_Zero_If_Source_Is_Not_Empty_And_Substring_Is_Empty()
         {
-            var source = new[] { 1, 2, 3 }.ForbidMultipleEnumeration();
+            var source = new[] { 1, 2, 3 }.ForbidEnumeration();
             var substring = Enumerable.Empty<int>().ForbidMultipleEnumeration();
             int index = source.IndexOfSubstring(substring);
             index.Should().Be(0);

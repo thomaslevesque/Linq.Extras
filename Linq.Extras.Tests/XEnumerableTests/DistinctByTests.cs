@@ -23,7 +23,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void DistinctBy_Throws_If_KeySelector_Is_Null()
         {
-            var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
+            var source = Enumerable.Empty<int>().ForbidEnumeration();
             Func<int, string> keySelector = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
