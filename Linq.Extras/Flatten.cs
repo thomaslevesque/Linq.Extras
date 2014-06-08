@@ -8,6 +8,17 @@ namespace Linq.Extras
 {
     partial class XEnumerable
     {
+        /// <summary>
+        /// Returns a flattened sequence from a graph or hierarchy of elements, using the specified children selector,
+        /// and in the specified traversal order.
+        /// </summary>
+        /// <typeparam name="TNode">The type of the elements in the source hierarchy.</typeparam>
+        /// <typeparam name="TResult">The types of the elements in the output sequence.</typeparam>
+        /// <param name="source">The source hierarchy to flatten.</param>
+        /// <param name="childrenSelector">The delegate used to retrieve the children of an element.</param>
+        /// <param name="traversalMode">The traversal order.</param>
+        /// <param name="resultSelector">The delegate used to project each node of the hierarchy to a result element. It accepts the node and its level as paramaters.</param>
+        /// <returns>A flat sequence of elements produced from the elements in the source hierarchy.</returns>
         [Pure]
         public static IEnumerable<TResult> Flatten<TNode, TResult>(
             [NotNull] this IEnumerable<TNode> source,
@@ -30,6 +41,17 @@ namespace Linq.Extras
             }
         }
 
+        /// <summary>
+        /// Returns a flattened sequence from a graph or hierarchy of elements, using the specified children selector,
+        /// and in the specified traversal order.
+        /// </summary>
+        /// <typeparam name="TNode">The type of the elements in the source hierarchy.</typeparam>
+        /// <typeparam name="TResult">The types of the elements in the output sequence.</typeparam>
+        /// <param name="source">The source hierarchy to flatten.</param>
+        /// <param name="childrenSelector">The delegate used to retrieve the children of an element.</param>
+        /// <param name="traversalMode">The traversal order.</param>
+        /// <param name="resultSelector">The delegate used to project each node of the hierarchy to a result element. It accepts the node as a paramater.</param>
+        /// <returns>A flat sequence of elements produced from the elements in the source hierarchy.</returns>
         [Pure]
         public static IEnumerable<TResult> Flatten<TNode, TResult>(
             [NotNull] this IEnumerable<TNode> source,
@@ -37,9 +59,19 @@ namespace Linq.Extras
             TreeTraversalMode traversalMode,
             [NotNull] Func<TNode, TResult> resultSelector)
         {
+            resultSelector.CheckArgumentNull("resultSelector");
             return source.Flatten(childrenSelector, traversalMode, (x, _) => resultSelector(x));
         }
 
+        /// <summary>
+        /// Returns a flattened sequence from a graph or hierarchy of elements, using the specified children selector,
+        /// and in the specified traversal order.
+        /// </summary>
+        /// <typeparam name="TNode">The type of the elements in the source hierarchy.</typeparam>
+        /// <param name="source">The source hierarchy to flatten.</param>
+        /// <param name="childrenSelector">The delegate used to retrieve the children of an element.</param>
+        /// <param name="traversalMode">The traversal order.</param>
+        /// <returns>A flat sequence of the elements in the source hierarchy.</returns>
         [Pure]
         public static IEnumerable<TNode> Flatten<TNode>(
             [NotNull] this IEnumerable<TNode> source,
