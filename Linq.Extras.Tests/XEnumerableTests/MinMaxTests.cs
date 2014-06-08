@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Linq.Extras.Tests.XEnumerableTests
@@ -9,17 +10,17 @@ namespace Linq.Extras.Tests.XEnumerableTests
     class MinMaxTests
     {
         [Test]
-        public void Test_MaxBy()
+        public void MaxBy_Throws_If_Source_Is_Null()
         {
-            var foos = GetFoos().ForbidMultipleEnumeration();
-            var fooWithMaxValue = foos.MaxBy(_getFooValue);
-            var expected = "xyz";
-            var actual = fooWithMaxValue.Value;
-            Assert.AreEqual(expected, actual);
+            IEnumerable<Foo> source = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.MaxBy(_getFooValue));
+            ex.ParamName.Should().Be("source");
         }
 
         [Test]
-        public void Test_MaxBy_EmptySequence()
+        public void MaxBy_Throws_If_Source_Is_Empty()
         {
             var foos = new Foo[] { }.ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -27,27 +28,59 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Test]
-        public void Test_MaxBy_WithComparer()
+        public void MaxBy_Throws_If_KeySelector_Is_Null()
+        {
+            var source = GetFoos().ForbidEnumeration();
+            Func<Foo, string> keySelector = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.MaxBy(keySelector));
+            ex.ParamName.Should().Be("keySelector");
+        }
+
+        [Test]
+        public void MaxBy_Returns_Item_With_Max_Value_For_Key()
+        {
+            var foos = GetFoos().ForbidMultipleEnumeration();
+            var fooWithMaxValue = foos.MaxBy(_getFooValue);
+            var expected = "xyz";
+            var actual = fooWithMaxValue.Value;
+            actual.Should().Be(expected);
+        }
+
+        [Test]
+        public void MaxBy_Returns_Item_With_Max_Value_For_Key_Based_On_Comparer()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMaxValue = foos.MaxBy(_getFooValue, Comparer<string>.Default.Reverse());
             var expected = "abcd";
             var actual = fooWithMaxValue.Value;
-            Assert.AreEqual(expected, actual);
+            actual.Should().Be(expected);
         }
 
         [Test]
-        public void Test_MinBy()
+        public void MinBy_Throws_If_Source_Is_Null()
         {
-            var foos = GetFoos().ForbidMultipleEnumeration();
-            var fooWithMinValue = foos.MinBy(_getFooValue);
-            var expected = "abcd";
-            var actual = fooWithMinValue.Value;
-            Assert.AreEqual(expected, actual);
+            IEnumerable<Foo> source = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.MinBy(_getFooValue));
+            ex.ParamName.Should().Be("source");
         }
 
         [Test]
-        public void Test_MinBy_EmptySequence()
+        public void MinBy_Throws_If_KeySelector_Is_Null()
+        {
+            var source = GetFoos().ForbidEnumeration();
+            Func<Foo, string> keySelector = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.MinBy(keySelector));
+            ex.ParamName.Should().Be("keySelector");
+        }
+
+        [Test]
+        public void MinBy_Throws_If_Source_Is_Empty()
         {
             var foos = new Foo[] { }.ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -55,27 +88,59 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Test]
-        public void Test_MinBy_WithComparer()
+        public void MinBy_Returns_Item_With_Min_Value_For_Key()
+        {
+            var foos = GetFoos().ForbidMultipleEnumeration();
+            var fooWithMinValue = foos.MinBy(_getFooValue);
+            var expected = "abcd";
+            var actual = fooWithMinValue.Value;
+            actual.Should().Be(expected);
+        }
+
+        [Test]
+        public void MinBy_Returns_Item_With_Min_Value_For_Key_Based_On_Comparer()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMinValue = foos.MinBy(_getFooValue, Comparer<string>.Default.Reverse());
             var expected = "xyz";
             var actual = fooWithMinValue.Value;
-            Assert.AreEqual(expected, actual);
+            actual.Should().Be(expected);
         }
 
         [Test]
-        public void Test_Max_WithComparer()
+        public void Max_Throws_If_Source_Is_Null()
+        {
+            IEnumerable<Foo> source = null;
+            var comparer = XComparer.By(_getFooValue);
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.Max(comparer));
+            ex.ParamName.Should().Be("source");
+        }
+
+        [Test]
+        public void Max_Throws_If_Comparer_Is_Null()
+        {
+            var source = GetFoos().ForbidEnumeration();
+            IComparer<Foo> comparer = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.Max(comparer));
+            ex.ParamName.Should().Be("comparer");
+        }
+
+        [Test]
+        public void Max_Return_Max_Value_Based_On_Comparer()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMaxValue = foos.Max(new FooComparer());
             var expected = "xyz";
             var actual = fooWithMaxValue.Value;
-            Assert.AreEqual(expected, actual);
+            actual.Should().Be(expected);
         }
 
         [Test]
-        public void Test_Max_WithComparer_EmptySequence()
+        public void Max_Throws_If_Source_Is_Empty()
         {
             var foos = new Foo[] { }.ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -83,17 +148,39 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Test]
-        public void Test_Min_WithComparer()
+        public void Min_Throws_If_Source_Is_Null()
+        {
+            IEnumerable<Foo> source = null;
+            var comparer = XComparer.By(_getFooValue);
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.Min(comparer));
+            ex.ParamName.Should().Be("source");
+        }
+
+        [Test]
+        public void Min_Throws_If_Comparer_Is_Null()
+        {
+            var source = GetFoos().ForbidEnumeration();
+            IComparer<Foo> comparer = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.Min(comparer));
+            ex.ParamName.Should().Be("comparer");
+        }
+
+        [Test]
+        public void Min_Return_Min_Value_Based_On_Comparer()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMinValue = foos.Min(new FooComparer());
             var expected = "abcd";
             var actual = fooWithMinValue.Value;
-            Assert.AreEqual(expected, actual);
+            actual.Should().Be(expected);
         }
 
         [Test]
-        public void Test_Min_WithComparer_EmptySequence()
+        public void Min_Throws_If_Source_Is_Empty()
         {
             var foos = new Foo[] { }.ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
