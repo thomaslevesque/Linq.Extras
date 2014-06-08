@@ -14,5 +14,11 @@ namespace Linq.Extras
         {
             yield return item;
         }
+
+        [Pure]
+        public static IEnumerable<TSource> Empty<TSource>()
+        {
+            yield break;
+        }
     }
 }

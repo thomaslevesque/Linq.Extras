@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Linq.Extras.Tests
 {
@@ -12,9 +13,19 @@ namespace Linq.Extras.Tests
             return new SingleEnumerationEnumerable<TSource>(source, message);
         }
 
+        public static IEnumerable ForbidMultipleEnumeration(this IEnumerable source, string message = "Sequence shouldn't be enumerated more than once.")
+        {
+            return new SingleEnumerationEnumerable<object>(source.Cast<object>(), message);
+        }
+
         public static IEnumerable<TSource> ForbidEnumeration<TSource>(this IEnumerable<TSource> source, string message = "Sequence shouldn't be enumerated.")
         {
             return new NoEnumerationEnumerable<TSource>(message);
+        }
+
+        public static IEnumerable ForbidEnumeration(this IEnumerable source, string message = "Sequence shouldn't be enumerated.")
+        {
+            return new NoEnumerationEnumerable<object>(message);
         }
 
         [ExcludeFromCodeCoverage]
