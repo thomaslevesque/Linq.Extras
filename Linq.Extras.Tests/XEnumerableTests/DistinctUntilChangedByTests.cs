@@ -23,7 +23,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void DistinctUntilChanged_Returns_Distinct_Contiguous_Elements()
         {
-            var source = new[] { 1, 1, 1, 2, 3, 3, 1, 3, 2, 2 };
+            var source = new[] { 1, 1, 1, 2, 3, 3, 1, 3, 2, 2 }.ForbidMultipleEnumeration();
             var result = source.DistinctUntilChanged();
             result.Should().BeEquivalentTo(new[] { 1, 2, 3, 1, 3, 2 });
         }
@@ -31,7 +31,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void DistinctUntilChanged_Uses_Specified_Comparer()
         {
-            var source = new[] { -1, 1, -1, 2, 3, -3, 1, 3, -2, 2 };
+            var source = new[] { -1, 1, -1, 2, 3, -3, 1, 3, -2, 2 }.ForbidMultipleEnumeration();
             var comparer = XEqualityComparer<int>.By(Math.Abs);
             var result = source.DistinctUntilChanged(comparer);
             result.Should().BeEquivalentTo(new[] { -1, 2, 3, 1, 3, -2 });
@@ -50,7 +50,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void DistinctUntilChangedBy_Throws_If_KeySelector_Is_Null()
         {
-            var source = Enumerable.Empty<int>();
+            var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
             Func<int, int> keySelector = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -71,7 +71,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Foo(0, 3),
                              new Foo(2, 0),
                              new Foo(2, 2)
-                         };
+                         }.ForbidMultipleEnumeration();
 
             var result = source.DistinctUntilChangedBy(f => f.X);
             result.Should().BeEquivalentTo(
@@ -98,7 +98,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Foo(0, 3),
                              new Foo(2, 0),
                              new Foo(-2, 2)
-                         };
+                         }.ForbidMultipleEnumeration();
 
             var comparer = XEqualityComparer<int>.By(Math.Abs);
             var result = source.DistinctUntilChangedBy(f => f.X, comparer);

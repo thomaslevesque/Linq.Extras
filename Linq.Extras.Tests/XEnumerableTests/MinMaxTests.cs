@@ -11,8 +11,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_MaxBy()
         {
-            var foos = GetFoos();
-            foos.Shuffle();
+            var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMaxValue = foos.MaxBy(_getFooValue);
             var expected = "xyz";
             var actual = fooWithMaxValue.Value;
@@ -22,7 +21,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_MaxBy_EmptySequence()
         {
-            var foos = new Foo[] { };
+            var foos = new Foo[] { }.ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.MaxBy(_getFooValue));
         }
@@ -30,8 +29,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_MaxBy_WithComparer()
         {
-            var foos = GetFoos();
-            foos.Shuffle();
+            var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMaxValue = foos.MaxBy(_getFooValue, Comparer<string>.Default.Reverse());
             var expected = "abcd";
             var actual = fooWithMaxValue.Value;
@@ -41,8 +39,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_MinBy()
         {
-            var foos = GetFoos();
-            foos.Shuffle();
+            var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMinValue = foos.MinBy(_getFooValue);
             var expected = "abcd";
             var actual = fooWithMinValue.Value;
@@ -52,7 +49,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_MinBy_EmptySequence()
         {
-            var foos = new Foo[] { };
+            var foos = new Foo[] { }.ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.MinBy(_getFooValue));
         }
@@ -60,8 +57,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_MinBy_WithComparer()
         {
-            var foos = GetFoos();
-            foos.Shuffle();
+            var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMinValue = foos.MinBy(_getFooValue, Comparer<string>.Default.Reverse());
             var expected = "xyz";
             var actual = fooWithMinValue.Value;
@@ -71,8 +67,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_Max_WithComparer()
         {
-            var foos = GetFoos();
-            foos.Shuffle();
+            var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMaxValue = foos.Max(new FooComparer());
             var expected = "xyz";
             var actual = fooWithMaxValue.Value;
@@ -82,7 +77,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_Max_WithComparer_EmptySequence()
         {
-            var foos = new Foo[] { };
+            var foos = new Foo[] { }.ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.Max(new FooComparer()));
         }
@@ -90,8 +85,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_Min_WithComparer()
         {
-            var foos = GetFoos();
-            foos.Shuffle();
+            var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMinValue = foos.Min(new FooComparer());
             var expected = "abcd";
             var actual = fooWithMinValue.Value;
@@ -101,14 +95,14 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Test_Min_WithComparer_EmptySequence()
         {
-            var foos = new Foo[] { };
+            var foos = new Foo[] { }.ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.Min(new FooComparer()));
         }
 
-        private static IList<Foo> GetFoos()
+        private static IEnumerable<Foo> GetFoos()
         {
-            return new List<Foo>
+            var foos = new List<Foo>
                    {
                        new Foo { Value = "abcd" },
                        new Foo { Value = "efgh" },
@@ -118,6 +112,8 @@ namespace Linq.Extras.Tests.XEnumerableTests
                        new Foo { Value = "uvw" },
                        new Foo { Value = "xyz" }
                    };
+            foos.Shuffle();
+            return foos;
         }
 
         private static readonly Func<Foo, string> _getFooValue = f => f.Value;

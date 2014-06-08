@@ -23,7 +23,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void DistinctBy_Throws_If_KeySelector_Is_Null()
         {
-            var source = Enumerable.Empty<int>();
+            var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
             Func<int, string> keySelector = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -42,7 +42,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Foo(2, 5),
                              new Foo(2, 0),
                              new Foo(2, 2)
-                         };
+                         }.ForbidMultipleEnumeration();
             var result = source.DistinctBy(f => f.X);
             result.Should().BeEquivalentTo(
                 new[]
@@ -64,7 +64,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Foo(-2, 5),
                              new Foo(-2, 0),
                              new Foo(2, 2)
-                         };
+                         }.ForbidMultipleEnumeration();
             var comparer = XEqualityComparer<int>.By(Math.Abs);
             var result = source.DistinctBy(f => f.X, comparer);
             result.Should().BeEquivalentTo(

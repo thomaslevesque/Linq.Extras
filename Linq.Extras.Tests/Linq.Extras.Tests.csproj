@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
     <Compile Include="XComparerTests\ByTests.cs" />
     <Compile Include="XComparerTests\ChainWithTests.cs" />
     <Compile Include="XComparerTests\MinMaxTests.cs" />

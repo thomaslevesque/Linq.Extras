@@ -22,7 +22,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void IndexOf_Returns_MinusOne_If_Element_Is_Not_Found()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             int index = source.IndexOf(99);
             index.Should().Be(-1);
         }
@@ -30,7 +30,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void IndexOf_Returns_Index_Of_First_Element_If_Found()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8 , 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             int index = source.IndexOf(42);
             index.Should().Be(5);
         }
@@ -38,7 +38,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void IndexOf_Throws_If_Predicate_Is_Null()
         {
-            var source = Enumerable.Empty<int>();
+            var source = Enumerable.Empty<int>().ForbidEnumeration();
             Func<int, bool> predicate = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -49,7 +49,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void IndexOf_Returns_MinusOne_If_No_Element_Matches_Predicate()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             int index = source.IndexOf(i => i % 12 == 0);
             index.Should().Be(-1);
         }
@@ -57,7 +57,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void IndexOf_Returns_Index_Of_First_Element_That_Matches_Predicate()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             int index = source.IndexOf(i => i % 7 == 0);
             index.Should().Be(5);
         }
@@ -75,7 +75,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void LastIndexOf_Returns_MinusOne_If_Element_Is_Not_Found()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             int index = source.LastIndexOf(99);
             index.Should().Be(-1);
         }
@@ -83,7 +83,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void LastIndexOf_Returns_Index_Of_Last_Element_If_Found()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             int index = source.LastIndexOf(42);
             index.Should().Be(11);
         }
@@ -91,7 +91,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void LastIndexOf_Throws_If_Predicate_Is_Null()
         {
-            var source = Enumerable.Empty<int>();
+            var source = Enumerable.Empty<int>().ForbidEnumeration();
             Func<int, bool> predicate = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -102,7 +102,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void LastIndexOf_Returns_MinusOne_If_No_Element_Matches_Predicate()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             int index = source.LastIndexOf(i => i % 12 == 0);
             index.Should().Be(-1);
         }
@@ -110,7 +110,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void LastIndexOf_Returns_Index_Of_Last_Element_That_Matches_Predicate()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             int index = source.LastIndexOf(i => i % 7 == 0);
             index.Should().Be(11);
         }

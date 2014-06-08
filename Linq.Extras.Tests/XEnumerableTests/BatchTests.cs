@@ -22,7 +22,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Batch_Throws_If_Size_Is_Negative_Or_Zero()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidEnumeration();
             // ReSharper disable ReturnValueOfPureMethodIsNotUsed
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => source.Batch(-1));
             ex.ParamName.Should().Be("size");
@@ -34,7 +34,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Batch_Returns_Batches_Of_Specified_Size()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             var batches = source.Batch(2).ToArray();
             batches.Should().HaveCount(3);
             batches[0].Should().BeEquivalentTo(new[] { 4, 8 });
@@ -45,7 +45,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Batch_Returns_Smaller_Last_Batch_If_Count_Not_Divisible_By_Size()
         {
-            var source = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             var batches = source.Batch(4).ToArray();
             batches.Should().HaveCount(2);
             batches[0].Should().BeEquivalentTo(new[] { 4, 8, 15, 16 });

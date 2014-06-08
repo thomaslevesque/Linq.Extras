@@ -8,7 +8,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Append_Adds_Item_At_End_Of_Sequence()
         {
-            var input = new[] { 4, 8, 15, 16, 23 };
+            var input = new[] { 4, 8, 15, 16, 23 }.ForbidMultipleEnumeration();
             var item = 42;
             var expected = new[] { 4, 8, 15, 16, 23, 42 };
             var actual = input.Append(item);
@@ -18,7 +18,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Prepend_Insert_Item_At_Beginning_Of_Sequence()
         {
-            var input = new[] { 8, 15, 16, 23, 42 };
+            var input = new[] { 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             var item = 4;
             var expected = new[] { 4, 8, 15, 16, 23, 42 };
             var actual = input.Prepend(item);

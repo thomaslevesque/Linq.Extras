@@ -23,7 +23,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_Throws_If_ChildrenSelector_Is_Null()
         {
-            IEnumerable<Foo> source = Enumerable.Empty<Foo>();
+            IEnumerable<Foo> source = Enumerable.Empty<Foo>().ForbidEnumeration();
             Func<Foo, IEnumerable<Foo>> childrenSelector = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -34,7 +34,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_Throws_If_ResultSelector_Is_Null()
         {
-            IEnumerable<Foo> source = Enumerable.Empty<Foo>();
+            var source = Enumerable.Empty<Foo>().ForbidEnumeration();
             Func<Foo, int> resultSelector = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -45,7 +45,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_Throws_If_ResultSelector_With_Level_Is_Null()
         {
-            IEnumerable<Foo> source = Enumerable.Empty<Foo>();
+            var source = Enumerable.Empty<Foo>().ForbidEnumeration();
             Func<Foo, int, int> resultSelector = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -56,7 +56,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_Throws_If_TraversalMode_Is_Invalid()
         {
-            IEnumerable<Foo> source = Enumerable.Empty<Foo>();
+            var source = Enumerable.Empty<Foo>().ForbidEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => source.Flatten(f => f.Children, (TreeTraversalMode)42));
             ex.ParamName.Should().Be("traversalMode");
@@ -65,7 +65,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_Returns_Flat_Sequence_Of_Nodes_DepthFirst()
         {
-            var source = GetFoos();
+            var source = GetFoos().ForbidMultipleEnumeration();
             var result = source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst);
             var expected = new[] { 1, 2, 3, 4, 5, 6, 7 };
             var actual = result.Select(f => f.Id);
@@ -75,7 +75,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_Returns_Flat_Sequence_Of_Nodes_BreadthFirst()
         {
-            var source = GetFoos();
+            var source = GetFoos().ForbidMultipleEnumeration();
             var result = source.Flatten(f => f.Children, TreeTraversalMode.BreadthFirst);
             var expected = new[] { 1, 6, 2, 3, 7, 4, 5 };
             var actual = result.Select(f => f.Id);
@@ -85,7 +85,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_With_ResultSelector_Returns_Flat_Sequence_DepthFirst()
         {
-            var source = GetFoos();
+            var source = GetFoos().ForbidMultipleEnumeration();
             var actual = source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst, f => f.Id);
             var expected = new[] { 1, 2, 3, 4, 5, 6, 7 };
             actual.Should().BeEquivalentTo(expected);
@@ -94,7 +94,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_With_ResultSelector_Returns_Flat_Sequence_BreadthFirst()
         {
-            var source = GetFoos();
+            var source = GetFoos().ForbidMultipleEnumeration();
             var actual = source.Flatten(f => f.Children, TreeTraversalMode.BreadthFirst, f => f.Id);
             var expected = new[] { 1, 6, 2, 3, 7, 4, 5 };
             actual.Should().BeEquivalentTo(expected);
@@ -103,7 +103,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_With_ResultSelector_With_Level_Returns_Flat_Sequence_DepthFirst()
         {
-            var source = GetFoos();
+            var source = GetFoos().ForbidMultipleEnumeration();
             var actual = source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst, (f, level) => new { f.Id, Level = level});
             IEnumerable expected = new[]
                            {
@@ -121,7 +121,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void Flatten_With_ResultSelector_With_Level_Returns_Flat_Sequence_BreadthFirst()
         {
-            var source = GetFoos();
+            var source = GetFoos().ForbidMultipleEnumeration();
             var actual = source.Flatten(f => f.Children, TreeTraversalMode.BreadthFirst, (f, level) => new { f.Id, Level = level });
             IEnumerable expected = new[]
                            {

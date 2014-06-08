@@ -14,7 +14,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         public void ExceptBy_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
-            IEnumerable<int> other = Enumerable.Empty<int>();
+            IEnumerable<int> other = Enumerable.Empty<int>().ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
             var ex = Assert.Throws<ArgumentNullException>(() => source.ExceptBy(other, Math.Abs));
@@ -24,7 +24,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void ExceptBy_Throws_If_Other_Is_Null()
         {
-            IEnumerable<int> source = Enumerable.Empty<int>();
+            IEnumerable<int> source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
             IEnumerable<int> other = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -35,8 +35,8 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Test]
         public void ExceptBy_Throws_If_KeySelector_Is_Null()
         {
-            var source = Enumerable.Empty<int>();
-            var other = Enumerable.Empty<int>();
+            var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
+            var other = Enumerable.Empty<int>().ForbidMultipleEnumeration();
             Func<int, string> keySelector = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -55,12 +55,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Foo(2, 5),
                              new Foo(2, 0),
                              new Foo(3, 2)
-                         };
+                         }.ForbidMultipleEnumeration();
             var other = new[]
                         {
                             new Foo(0, 7),
                             new Foo(1, 0),
-                        };
+                        }.ForbidMultipleEnumeration();
             var result = source.ExceptBy(other, f => f.X);
             result.Should().BeEquivalentTo(
                 new[]
@@ -81,14 +81,14 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Foo(-2, 5),
                              new Foo(-2, 0),
                              new Foo(3, 2)
-                         };
-            var others = new[]
+                         }.ForbidMultipleEnumeration();
+            var other = new[]
                          {
                              new Foo(2, 5),
                              new Foo(-3, 2)
-                         };
+                         }.ForbidMultipleEnumeration();
             var comparer = XEqualityComparer<int>.By(Math.Abs);
-            var result = source.ExceptBy(others, f => f.X, comparer);
+            var result = source.ExceptBy(other, f => f.X, comparer);
             result.Should().BeEquivalentTo(
                 new[]
                 {
