@@ -30,7 +30,7 @@ namespace Linq.Extras.Tests
                 var call = Expression.Call(realCall.Method, args);
                 var lambda = Expression.Lambda<TestDelegate>(call);
                 var action = lambda.Compile();
-                var ex = Assert.Throws<ArgumentNullException>(action);
+                var ex = Assert.Throws<ArgumentNullException>(action, "Expected ArgumentNullException for parameter '{0}', but none was thrown.", paramName);
                 ex.ParamName.Should().Be(paramName);
             }
         }
