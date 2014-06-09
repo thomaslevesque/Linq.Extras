@@ -80,7 +80,7 @@ namespace Linq.Extras
         }
 
         /// <summary>
-        /// Returns the element at a specified index in a sequence or the specified default value if the index is out of range.
+        /// Returns the element at a specified index in a sequence, or the specified default value if the index is out of range.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
         /// <param name="source">The sequence to return an element from.</param>
