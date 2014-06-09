@@ -56,6 +56,7 @@
     <Compile Include="XEnumerableTests\AppendPrependTests.cs" />
     <Compile Include="XEnumerableTests\BatchTests.cs" />
     <Compile Include="XEnumerableTests\CommonPrefixTests.cs" />
+    <Compile Include="XEnumerableTests\ElementAtOrDefaultTests.cs" />
     <Compile Include="XEnumerableTests\ExceptByTests.cs" />
     <Compile Include="XEnumerableTests\DistinctByTests.cs" />
     <Compile Include="XEnumerableTests\DistinctUntilChangedTests.cs" />
@@ -65,9 +66,12 @@
     <Compile Include="XEnumerableTests\IndexOfTests.cs" />
     <Compile Include="XEnumerableTests\IntersectByTests.cs" />
     <Compile Include="XEnumerableTests\IsNullOrEmptyTests.cs" />
+    <Compile Include="XEnumerableTests\LastOrDefaultTests.cs" />
     <Compile Include="XEnumerableTests\MinMaxTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XEnumerableTests\NoneTests.cs" />
+    <Compile Include="XEnumerableTests\FirstOrDefaultTests.cs" />
+    <Compile Include="XEnumerableTests\SingleOrDefaultTests.cs" />
     <Compile Include="XListTests\AsReadOnlyTests.cs" />
     <Compile Include="XListTests\ShuffleTests.cs" />
     <Compile Include="XListTests\SwapTests.cs" />
