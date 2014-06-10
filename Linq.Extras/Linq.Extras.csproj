@@ -100,12 +100,6 @@
     <Compile Include="SequenceEqualBy.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
-    <Compile Include="SkipEvery.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TakeEvery.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
     <Compile Include="ToCollections.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
