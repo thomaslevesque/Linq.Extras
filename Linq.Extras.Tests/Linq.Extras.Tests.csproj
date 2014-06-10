@@ -69,6 +69,7 @@
     <Compile Include="XEnumerableTests\IntersectByTests.cs" />
     <Compile Include="XEnumerableTests\IsNullOrEmptyTests.cs" />
     <Compile Include="XEnumerableTests\LastOrDefaultTests.cs" />
+    <Compile Include="XEnumerableTests\RankByTests.cs" />
     <Compile Include="XEnumerableTests\RightOuterJoinTests.cs" />
     <Compile Include="XEnumerableTests\LeftOuterJoinTests.cs" />
     <Compile Include="XEnumerableTests\MinMaxTests.cs" />
