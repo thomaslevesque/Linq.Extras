@@ -78,6 +78,7 @@
     <Compile Include="XEnumerableTests\FirstOrDefaultTests.cs" />
     <Compile Include="XEnumerableTests\SequenceEqualByTests.cs" />
     <Compile Include="XEnumerableTests\SingleOrDefaultTests.cs" />
+    <Compile Include="XEnumerableTests\ToCollectionsTests.cs" />
     <Compile Include="XListTests\AsReadOnlyTests.cs" />
     <Compile Include="XListTests\ShuffleTests.cs" />
     <Compile Include="XListTests\SwapTests.cs" />
