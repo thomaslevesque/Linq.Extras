@@ -4085,6 +4085,13 @@ where m.IsPubliclyVisible
 && !m.IsSpecialName
 && !m.HasAttribute("JetBrains.Annotations.PureAttribute".AllowNoMatch())
 select m]]></Query>
+      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Overloaded public methods</Name>
+from m in JustMyCode.Methods
+where m.IsPubliclyVisible
+group m by m.SimpleName into overloads
+where overloads.Count() > 1
+from m in overloads
+select m]]></Query>
     </Group>
   </Queries>
 </NDepend>
