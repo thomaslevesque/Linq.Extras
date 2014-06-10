@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Linq.Extras.Tests.XEnumerableTests
@@ -29,6 +30,28 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.RankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            result.Should().BeEquivalentTo(
+                "1. David",
+                "2. Bob",
+                "3. Emily",
+                "4. Alice",
+                "5. Charlie");
+        }
+
+        [Test]
+        public void RankBy_Uses_Specified_Key_Comparer()
+        {
+            var source = new[]
+                         {
+                             new Player("Alice", -42),
+                             new Player("Bob", -25),
+                             new Player("Charlie", 75),
+                             new Player("David", -17),
+                             new Player("Emily", 31)
+                         }.ForbidMultipleEnumeration();
+            var keyComparer = XComparer<int>.By(Math.Abs);
+
+            var result = source.RankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
             result.Should().BeEquivalentTo(
                 "1. David",
                 "2. Bob",
@@ -90,6 +113,28 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Test]
+        public void RankByDescending_Uses_Specified_Key_Comparer()
+        {
+            var source = new[]
+                         {
+                             new Player("Alice", -42),
+                             new Player("Bob", 25),
+                             new Player("Charlie", -75),
+                             new Player("David", -17),
+                             new Player("Emily", 31)
+                         }.ForbidMultipleEnumeration();
+            var keyComparer = XComparer<int>.By(Math.Abs);
+
+            var result = source.RankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
+            result.Should().BeEquivalentTo(
+                "1. Charlie",
+                "2. Alice",
+                "3. Emily",
+                "4. Bob",
+                "5. David");
+        }
+
+        [Test]
         public void RankByDescending_Associates_Item_With_Rank_WithDraws()
         {
             var source = new[]
@@ -142,6 +187,28 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Test]
+        public void DenseRankBy_Uses_Specified_Key_Comparer()
+        {
+            var source = new[]
+                         {
+                             new Player("Alice", -42),
+                             new Player("Bob", -25),
+                             new Player("Charlie", 75),
+                             new Player("David", -17),
+                             new Player("Emily", 31)
+                         }.ForbidMultipleEnumeration();
+            var keyComparer = XComparer<int>.By(Math.Abs);
+
+            var result = source.DenseRankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
+            result.Should().BeEquivalentTo(
+                "1. David",
+                "2. Bob",
+                "3. Emily",
+                "4. Alice",
+                "5. Charlie");
+        }
+
+        [Test]
         public void DenseRankBy_Associates_Item_With_Rank_WithDraws()
         {
             var source = new[]
@@ -185,6 +252,28 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.DenseRankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            result.Should().BeEquivalentTo(
+                "1. Charlie",
+                "2. Alice",
+                "3. Emily",
+                "4. Bob",
+                "5. David");
+        }
+
+        [Test]
+        public void DenseRankByDescending_Uses_Specified_Key_Comparer()
+        {
+            var source = new[]
+                         {
+                             new Player("Alice", -42),
+                             new Player("Bob", 25),
+                             new Player("Charlie", -75),
+                             new Player("David", -17),
+                             new Player("Emily", 31)
+                         }.ForbidMultipleEnumeration();
+            var keyComparer = XComparer<int>.By(Math.Abs);
+
+            var result = source.DenseRankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
             result.Should().BeEquivalentTo(
                 "1. Charlie",
                 "2. Alice",
