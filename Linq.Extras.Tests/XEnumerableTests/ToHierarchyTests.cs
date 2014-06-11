@@ -29,17 +29,34 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Foo(5, "2"),
                              new Foo(6, "2.1", 5)
                          }.ForbidMultipleEnumeration();
+
             var hierarchy = source.ToHierarchy(f => f.Id, f => f.ParentId).ToArray();
+            
             hierarchy.Should().HaveCount(2);
+            
             hierarchy[0].Item.Name.Should().Be("1");
+            hierarchy[0].Parent.Should().BeNull();
             hierarchy[0].Children.Should().HaveCount(2);
-            hierarchy[0].Children[0].Item.Name.Should().Be("1.1");
-            hierarchy[0].Children[1].Item.Name.Should().Be("1.2");
+
+            hierarchy[0].Children[0].Item.Name.Should().Be("1.1").Should();
+            hierarchy[0].Children[0].Parent.Should().BeSameAs(hierarchy[0]);
             hierarchy[0].Children[0].Children.Should().HaveCount(1);
+
+            hierarchy[0].Children[1].Item.Name.Should().Be("1.2");
+            hierarchy[0].Children[1].Parent.Should().BeSameAs(hierarchy[0]);
+            hierarchy[0].Children[1].Children.Should().BeEmpty();
+
             hierarchy[0].Children[0].Children[0].Item.Name.Should().Be("1.1.1");
+            hierarchy[0].Children[0].Children[0].Parent.Should().BeSameAs(hierarchy[0].Children[0]);
+            hierarchy[0].Children[0].Children[0].Children.Should().BeEmpty();
+            
             hierarchy[1].Item.Name.Should().Be("2");
+            hierarchy[1].Parent.Should().BeNull();
             hierarchy[1].Children.Should().HaveCount(1);
+
             hierarchy[1].Children[0].Item.Name.Should().Be("2.1");
+            hierarchy[1].Children[0].Parent.Should().BeSameAs(hierarchy[1]);
+            hierarchy[1].Children[0].Children.Should().BeEmpty();
         }
 
         class Foo
