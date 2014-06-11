@@ -36,7 +36,7 @@ namespace Linq.Extras
             source.CheckArgumentNull("source");
             predicate.CheckArgumentNull("predicate");
             return source.WithIndex()
-                .Where(i => predicate(i.Value))
+                .Where(i => predicate(i.Item))
                 .Select(i => i.Index)
                 .FirstOrDefault(-1);
         }
@@ -69,7 +69,7 @@ namespace Linq.Extras
             source.CheckArgumentNull("source");
             predicate.CheckArgumentNull("predicate");
             return source.WithIndex()
-                .Where(i => predicate(i.Value))
+                .Where(i => predicate(i.Item))
                 .Select(i => i.Index)
                 .LastOrDefault(-1);
         }

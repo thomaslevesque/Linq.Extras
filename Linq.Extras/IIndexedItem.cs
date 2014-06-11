@@ -6,6 +6,6 @@ namespace Linq.Extras
     public interface IIndexedItem<T>
     {
         int Index { get; }
-        T Value { get; }
+        T Item { get; }
     }
 }

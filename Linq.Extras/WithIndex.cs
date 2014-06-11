@@ -6,6 +6,12 @@ namespace Linq.Extras
 {
     partial class XEnumerable
     {
+        /// <summary>
+        /// Associates an index to each element of the source sequence.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
+        /// <param name="source">The source sequence.</param>
+        /// <returns>A sequence of elements paired with their index in the sequence.</returns>
         [Pure]
         public static IEnumerable<IIndexedItem<TSource>> WithIndex<TSource>(
             [NotNull] this IEnumerable<TSource> source)
@@ -13,23 +19,29 @@ namespace Linq.Extras
             return source.Select((item, index) => new IndexedItem<TSource>(index, item));
         }
 
+        /// <summary>
+        /// Removes the indexes from a sequence of indexed elements, returning only the elements themselves.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the indexed elements.</typeparam>
+        /// <param name="source">The sequence to remove the indexes from.</param>
+        /// <returns>A sequence of elements without their associated indexes.</returns>
         [Pure]
         public static IEnumerable<TSource> WithoutIndex<TSource>(
             [NotNull] this IEnumerable<IIndexedItem<TSource>> source)
         {
-            return source.Select(indexed => indexed.Value);
+            return source.Select(indexed => indexed.Item);
         }
 
         sealed class IndexedItem<T> : IIndexedItem<T>
         {
-            public IndexedItem(int index, T value)
+            public IndexedItem(int index, T item)
             {
                 Index = index;
-                Value = value;
+                Item = item;
             }
 
             public int Index { get; private set; }
-            public T Value { get; private set; }
+            public T Item { get; private set; }
         }
     }
 }
