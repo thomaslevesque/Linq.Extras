@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Linq.Extras.Tests.XListTests
@@ -9,24 +10,13 @@ namespace Linq.Extras.Tests.XListTests
     class ShuffleTests
     {
         [Test]
-        public void Shuffle_Throws_If_List_Argument_Is_Null()
+        public void Shuffle_Throws_If_List_Is_Null()
         {
             IList<int> list = null;
-            // ReSharper disable AssignNullToNotNullAttribute
-            // ReSharper disable ConvertClosureToMethodGroup
-            Assert.Throws<ArgumentNullException>(() => list.Shuffle());
-            Assert.Throws<ArgumentNullException>(() => list.Shuffle(new Random()));
-            // ReSharper restore AssignNullToNotNullAttribute
-            // ReSharper restore ConvertClosureToMethodGroup
-        }
-
-        [Test]
-        public void Shuffle_Throws_If_Random_Argument_Is_Null()
-        {
-            IList<int> list = new[] { 1, 2, 3 };
-            Random rnd = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Assert.Throws<ArgumentNullException>(() => list.Shuffle(rnd));
+            // ReSharper disable once ConvertClosureToMethodGroup
+            var ex = Assert.Throws<ArgumentNullException>(() => list.Shuffle());
+            ex.ParamName.Should().Be("list");
         }
 
         // Since the Shuffle method is random by nature, the shuffled list could be in the same order as the original list;
@@ -44,8 +34,8 @@ namespace Linq.Extras.Tests.XListTests
             var original = numbers.ToList();
             numbers.Shuffle(rnd);
 
-            CollectionAssert.AreEquivalent(original, numbers);
-            CollectionAssert.AreNotEqual(original, numbers);
+            numbers.Should().BeEquivalentTo(original);
+            numbers.Should().NotEqual(original);
         }
 
         // Since we don't control the Random seed, we can't prevent the shuffled list from being in the same order
@@ -60,7 +50,7 @@ namespace Linq.Extras.Tests.XListTests
             var original = numbers.ToList();
             numbers.Shuffle();
 
-            CollectionAssert.AreEquivalent(original, numbers);
+            numbers.Should().BeEquivalentTo(original);
         }
 
     }

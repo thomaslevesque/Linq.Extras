@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Linq.Extras.Tests.XListTests
@@ -8,12 +9,12 @@ namespace Linq.Extras.Tests.XListTests
     class SwapTests
     {
         [Test]
-        public void Swap_Throws_If_List_Argument_Is_Null()
+        public void Swap_Throws_If_List_Is_Null()
         {
             IList<int> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             var ex = Assert.Throws<ArgumentNullException>(() => list.Swap(0, 1));
-            Assert.AreEqual("list", ex.ParamName);
+            ex.ParamName.Should().Be("list");
         }
 
         [Test]
@@ -29,7 +30,7 @@ namespace Linq.Extras.Tests.XListTests
         {
             IList<int> list = new[] { 1, 2, 3 };
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => list.Swap(index1, index2));
-            Assert.AreEqual(name, ex.ParamName);
+            ex.ParamName.Should().Be(name);
         }
 
         [Test]
@@ -40,7 +41,7 @@ namespace Linq.Extras.Tests.XListTests
         public void Swap_Swaps_Positions_Of_Items(int[] input, int index1, int index2, int[] expected)
         {
             input.Swap(index1, index2);
-            CollectionAssert.AreEqual(input, expected);
+            input.Should().Equal(expected);
         }
     }
 }

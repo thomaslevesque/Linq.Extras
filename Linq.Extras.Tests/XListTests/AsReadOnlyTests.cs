@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Linq.Extras.Tests.XListTests
@@ -8,6 +9,16 @@ namespace Linq.Extras.Tests.XListTests
     class AsReadOnlyTests
     {
         [Test]
+        public void AsReadOnly_Throws_If_List_IsNull()
+        {
+            IList<int> list = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
+            var ex = Assert.Throws<ArgumentNullException>(() => list.AsReadOnly());
+            ex.ParamName.Should().Be("list");
+        }
+
+        [Test]
         public void AsReadOnly_Returns_List_With_Same_Items()
         {
             var items = new List<int> { 4, 8, 15, 16, 23, 42 };
@@ -15,7 +26,7 @@ namespace Linq.Extras.Tests.XListTests
             // Use as a static method, because full .NET already has a AsReadOnly instance method
             var result = XList.AsReadOnly(items);
 
-            CollectionAssert.AreEqual(items, result);
+            result.Should().Equal(items);
         }
 
         [Test]
@@ -23,7 +34,7 @@ namespace Linq.Extras.Tests.XListTests
         {
             var items = new List<int> { 4, 8, 15, 16, 23, 42 };
 
-            // Use as a static method, because full .NET already has a AsReadOnly instance method
+            // Call as a static method, because full .NET already has a AsReadOnly instance method which would be used instead
             IList<int> result = XList.AsReadOnly(items);
             
             Assert.Throws<NotSupportedException>(result.Clear);
@@ -49,7 +60,7 @@ namespace Linq.Extras.Tests.XListTests
             items.Swap(2, 3);
 
             // The read-only collection is only a view of the original, it should reflect the changes
-            CollectionAssert.AreEqual(items, result);
+            result.Should().Equal(items);
         }
 
 

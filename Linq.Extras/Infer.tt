@@ -11,22 +11,45 @@ using JetBrains.Annotations;
 
 namespace Linq.Extras
 {
-    // There is nothing to test here; the methods in this class just return their parameter, to take advantage
-    // of generic type inference.
-    [ExcludeFromCodeCoverage]
+    /// <summary>
+    /// Provides helper methods to create functions and expression trees from lambda expressions, by taking advantage of generic type inference.
+    /// </summary>
+    [ExcludeFromCodeCoverage] // There is nothing to test here; the methods in this class just return their parameter, to take advantage of generic type inference.
     [PublicAPI]
     public static class Infer
     {
-<# for(int i = 0; i <= 4; i++) {
+<#
+    var ordinals = new[]{"first", "second", "third", "fourth"};
+    for(int i = 0; i <= 4; i++) {
         var types = Enumerable.Range(1, i).Select(x => "T" + x).Concat(new[] { "TResult" });
         var typeList = string.Join(", ", types);
 #>
+        /// <summary>
+        /// Returns a <c>Func&lt;<#= typeList #>&gt;</c>.
+        /// </summary>
+<# for (int j = 0; j < i; j++) { #>
+        /// <typeparam name="T<#= j + 1 #>">The type of the <#= ordinals[j] #> parameter.</typeparam>
+<# } #>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="func">A lambda expression representing the function to return.</param>
+        /// <returns>The function passed as parameter.</returns>
+        /// <remarks>This method just returns its parameter. It's only a helper to take advantage of generic type inference.</remarks>
         [Pure]
         public static Func<<#= typeList #>> Func<<#= typeList #>>(Func<<#= typeList #>> func)
         {
             return func;
         }
 
+        /// <summary>
+        /// Returns an <c>Expression&lt;Func&lt;<#= typeList #>&gt;&gt;</c>.
+        /// </summary>
+<# for (int j = 0; j < i; j++) { #>
+        /// <typeparam name="T<#= j + 1 #>">The type of the <#= ordinals[j] #> parameter.</typeparam>
+<# } #>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="expr">A lambda expression representing the function whose expression tree will be returned.</param>
+        /// <returns>The expression passed as parameter.</returns>
+        /// <remarks>This method just returns its parameter. It's only a helper to take advantage of generic type inference.</remarks>
         [Pure]
         public static Expression<Func<<#= typeList #>>> Expr<<#= typeList #>>(Expression<Func<<#= typeList #>>> expr)
         {

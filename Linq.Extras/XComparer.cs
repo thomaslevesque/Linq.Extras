@@ -7,9 +7,18 @@ using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
+    /// <summary>
+    /// Provides extension and helper methods to create, combine and work with comparers.
+    /// </summary>
     [PublicAPI]
     public static class XComparer
     {
+        /// <summary>
+        /// Returns a comparer that has the reverse logic of the original comparer.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <param name="comparer">The original comparer.</param>
+        /// <returns>A comparer with the reverse logic of the original one.</returns>
         [Pure]
         public static IComparer<T> Reverse<T>([NotNull] this IComparer<T> comparer)
         {
@@ -17,6 +26,14 @@ namespace Linq.Extras
             return new ReverseComparer<T>(comparer);
         }
 
+        /// <summary>
+        /// Chains two comparers. The resulting comparer will first compare items using <c>comparer</c>,
+        /// and if it's not enough to decide which is greater, it will use <c>nextComparer</c> to decide.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <param name="comparer">The primary comparer.</param>
+        /// <param name="nextComparer">The secondary comparer.</param>
+        /// <returns>A comparer that will use the primary comparer, then the secondary comparer if necessary.</returns>
         [Pure]
         public static IComparer<T> ChainWith<T>(
             [NotNull] this IComparer<T> comparer,
@@ -37,6 +54,14 @@ namespace Linq.Extras
             return new ChainedComparer<T>(new[] { comparer, nextComparer });
         }
 
+        /// <summary>
+        /// Creates a comparer with ascending order based on the specified comparison key and key comparer.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <typeparam name="TKey">The type of the comparison key.</typeparam>
+        /// <param name="keySelector">A function that returns the comparison key.</param>
+        /// <param name="keyComparer">An optional comparer used to compare the keys.</param>
+        /// <returns>A comparer based on the specified comparison key and key comparer.</returns>
         [Pure]
         public static IComparer<T> By<T, TKey>(
             [NotNull] Func<T, TKey> keySelector,
@@ -46,6 +71,14 @@ namespace Linq.Extras
             return new ByKeyComparer<T, TKey>(keySelector, keyComparer);
         }
 
+        /// <summary>
+        /// Creates a comparer with descending order based on the specified comparison key and key comparer.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <typeparam name="TKey">The type of the comparison key.</typeparam>
+        /// <param name="keySelector">A function that returns the comparison key.</param>
+        /// <param name="keyComparer">An optional comparer used to compare the keys.</param>
+        /// <returns>A comparer based on the specified comparison key and key comparer.</returns>
         [Pure]
         public static IComparer<T> ByDescending<T, TKey>(
             [NotNull] Func<T, TKey> keySelector,
@@ -54,6 +87,15 @@ namespace Linq.Extras
             return By(keySelector, keyComparer).Reverse();
         }
 
+        /// <summary>
+        /// Chains a secondary comparer with ascending order based on the specified key to an existing comparer.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <typeparam name="TKey">The type of the comparison key.</typeparam>
+        /// <param name="comparer">The primary comparer.</param>
+        /// <param name="keySelector">A function that returns the comparison key.</param>
+        /// <param name="keyComparer">An optional comparer used to compare the keys.</param>
+        /// <returns>A comparer that will use the primary comparer, then the secondary comparer if necessary.</returns>
         [Pure]
         public static IComparer<T> ThenBy<T, TKey>(
             [NotNull] this IComparer<T> comparer,
@@ -64,6 +106,15 @@ namespace Linq.Extras
             return comparer.ChainWith(By(keySelector, keyComparer));
         }
 
+        /// <summary>
+        /// Chains a secondary comparer with descending order based on the specified key to an existing comparer.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <typeparam name="TKey">The type of the comparison key.</typeparam>
+        /// <param name="comparer">The primary comparer.</param>
+        /// <param name="keySelector">A function that returns the comparison key.</param>
+        /// <param name="keyComparer">An optional comparer used to compare the keys.</param>
+        /// <returns>A comparer that will use the primary comparer, then the secondary comparer if necessary.</returns>
         [Pure]
         public static IComparer<T> ThenByDescending<T, TKey>(
             [NotNull] this IComparer<T> comparer,
@@ -74,6 +125,14 @@ namespace Linq.Extras
             return comparer.ChainWith(ByDescending(keySelector, keyComparer));
         }
 
+        /// <summary>
+        /// Returns the lesser of two items according to <c>comparer</c>.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <param name="comparer">The comparer that performs the comparison.</param>
+        /// <param name="x">The first object to compare.</param>
+        /// <param name="y">The second object to compare.</param>
+        /// <returns><c>x</c> if <c>x</c> is lesser than or equal to <c>y</c>; otherwise, <c>y</c>.</returns>
         [Pure]
         public static T Min<T>([NotNull] this IComparer<T> comparer, T x, T y)
         {
@@ -82,6 +141,14 @@ namespace Linq.Extras
             return cmp <= 0 ? x : y;
         }
 
+        /// <summary>
+        /// Returns the greater of two items according to <c>comparer</c>.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <param name="comparer">The comparer that performs the comparison.</param>
+        /// <param name="x">The first object to compare.</param>
+        /// <param name="y">The second object to compare.</param>
+        /// <returns><c>x</c> if <c>x</c> is greater than or equal to <c>y</c>; otherwise, <c>y</c>.</returns>
         [Pure]
         public static T Max<T>([NotNull] this IComparer<T> comparer, T x, T y)
         {
@@ -173,10 +240,21 @@ namespace Linq.Extras
 
     }
 
+    /// <summary>
+    /// Provides helper methods to create comparers by taking advantage of generic type inference
+    /// </summary>
+    /// <typeparam name="T">The type of the objects to compare.</typeparam>
     [PublicAPI]
     [ExcludeFromCodeCoverage] // Nothing to test here, these are just shorcuts for convenience
     public static class XComparer<T>
     {
+        /// <summary>
+        /// Creates a comparer with ascending order based on the specified comparison key and key comparer.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the comparison key.</typeparam>
+        /// <param name="keySelector">A function that returns the comparison key.</param>
+        /// <param name="keyComparer">An optional comparer used to compare the keys.</param>
+        /// <returns>A comparer based on the specified comparison key and key comparer.</returns>
         [Pure]
         public static IComparer<T> By<TKey>(
             [NotNull] Func<T, TKey> keySelector,
@@ -185,6 +263,13 @@ namespace Linq.Extras
             return XComparer.By(keySelector, keyComparer);
         }
 
+        /// <summary>
+        /// Creates a comparer with descending order based on the specified comparison key and key comparer.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the comparison key.</typeparam>
+        /// <param name="keySelector">A function that returns the comparison key.</param>
+        /// <param name="keyComparer">An optional comparer used to compare the keys.</param>
+        /// <returns>A comparer based on the specified comparison key and key comparer.</returns>
         [Pure]
         public static IComparer<T> ByDescending<TKey>(
             [NotNull] Func<T, TKey> keySelector,
