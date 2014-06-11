@@ -44,13 +44,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Foo(2, 2)
                          }.ForbidMultipleEnumeration();
             var result = source.DistinctBy(f => f.X);
-            result.Should().BeEquivalentTo(
-                new[]
-                {
+            result.Should().Equal(
                     new Foo(0, 1),
                     new Foo(1, 3),
                     new Foo(2, 5)
-                });
+                );
         }
 
         [Test]
@@ -67,13 +65,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
             var comparer = XEqualityComparer<int>.By(Math.Abs);
             var result = source.DistinctBy(f => f.X, comparer);
-            result.Should().BeEquivalentTo(
-                new[]
-                {
+            result.Should().Equal(
                     new Foo(0, 1),
                     new Foo(1, 3),
                     new Foo(-2, 5)
-                });
+                );
         }
 
         [ExcludeFromCodeCoverage]

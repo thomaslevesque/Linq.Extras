@@ -33,7 +33,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             var other = new[] { 4, 8, 15, 99, 123, 999 }.ForbidMultipleEnumeration();
             var result = source.CommonPrefix(other);
-            result.Should().BeEquivalentTo(new[] { 4, 8, 15 });
+            result.Should().Equal(4, 8, 15);
         }
 
         [Test]
@@ -64,7 +64,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var comparer = XEqualityComparer<int>.By(Math.Abs);
 
             var result = source.CommonPrefix(other, comparer);
-            result.Should().BeEquivalentTo(new[] { 4, 8, 15 });
+            result.Should().Equal(4, 8, 15);
         }
     }
 }

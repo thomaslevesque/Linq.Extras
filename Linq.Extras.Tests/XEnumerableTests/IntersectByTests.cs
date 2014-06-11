@@ -61,12 +61,10 @@ namespace Linq.Extras.Tests.XEnumerableTests
                             new Foo(1, 0),
                         }.ForbidMultipleEnumeration();
             var result = source.IntersectBy(other, f => f.X);
-            result.Should().BeEquivalentTo(
-                new[]
-                {
+            result.Should().Equal(
                     new Foo(0, 1),
                     new Foo(1, 3)
-                });
+                );
         }
 
         [Test]
@@ -88,12 +86,10 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
             var comparer = XEqualityComparer<int>.By(Math.Abs);
             var result = source.IntersectBy(other, f => f.X, comparer);
-            result.Should().BeEquivalentTo(
-                new[]
-                {
+            result.Should().Equal(
                     new Foo(-2, 5),
-                    new Foo(3, 2),
-                });
+                    new Foo(3, 2)
+                );
         }
 
         [ExcludeFromCodeCoverage]

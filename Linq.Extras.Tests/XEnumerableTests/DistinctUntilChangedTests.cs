@@ -25,7 +25,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var source = new[] { 1, 1, 1, 2, 3, 3, 1, 3, 2, 2 }.ForbidMultipleEnumeration();
             var result = source.DistinctUntilChanged();
-            result.Should().BeEquivalentTo(new[] { 1, 2, 3, 1, 3, 2 });
+            result.Should().Equal(1, 2, 3, 1, 3, 2);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = new[] { -1, 1, -1, 2, 3, -3, 1, 3, -2, 2 }.ForbidMultipleEnumeration();
             var comparer = XEqualityComparer<int>.By(Math.Abs);
             var result = source.DistinctUntilChanged(comparer);
-            result.Should().BeEquivalentTo(new[] { -1, 2, 3, 1, 3, -2 });
+            result.Should().Equal(-1, 2, 3, 1, 3, -2);
         }
 
         [Test]
@@ -74,15 +74,13 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.DistinctUntilChangedBy(f => f.X);
-            result.Should().BeEquivalentTo(
-                new[]
-                {
+            result.Should().Equal(
                     new Foo(0, 1),
                     new Foo(1, 3),
                     new Foo(2, 5),
                     new Foo(0, 3),
-                    new Foo(2, 0),
-                });
+                    new Foo(2, 0)
+                );
         }
 
         [Test]
@@ -102,15 +100,13 @@ namespace Linq.Extras.Tests.XEnumerableTests
 
             var comparer = XEqualityComparer<int>.By(Math.Abs);
             var result = source.DistinctUntilChangedBy(f => f.X, comparer);
-            result.Should().BeEquivalentTo(
-                new[]
-                {
+            result.Should().Equal(
                     new Foo(0, 1),
                     new Foo(-1, 3),
                     new Foo(2, 5),
                     new Foo(0, 3),
-                    new Foo(2, 0),
-                });
+                    new Foo(2, 0)
+                );
         }
 
 

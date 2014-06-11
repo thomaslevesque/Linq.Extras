@@ -37,9 +37,9 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             var batches = source.Batch(2).ToArray();
             batches.Should().HaveCount(3);
-            batches[0].Should().BeEquivalentTo(new[] { 4, 8 });
-            batches[1].Should().BeEquivalentTo(new[] { 15, 16 });
-            batches[2].Should().BeEquivalentTo(new[] { 23, 42 });
+            batches[0].Should().Equal(4, 8);
+            batches[1].Should().Equal(15, 16);
+            batches[2].Should().Equal(23, 42);
         }
 
         [Test]
@@ -48,8 +48,8 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
             var batches = source.Batch(4).ToArray();
             batches.Should().HaveCount(2);
-            batches[0].Should().BeEquivalentTo(new[] { 4, 8, 15, 16 });
-            batches[1].Should().BeEquivalentTo(new[] { 23, 42 });
+            batches[0].Should().Equal(4, 8, 15, 16);
+            batches[1].Should().Equal(23, 42);
         }
     }
 }

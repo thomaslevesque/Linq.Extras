@@ -32,7 +32,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var sequence = XEnumerable.Generate(0, previous => previous + 2);
             var expected = new[] { 0, 2, 4, 6, 8 };
             var actual = sequence.Take(5);
-            actual.Should().BeEquivalentTo(expected);
+            actual.Should().Equal(expected);
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var sequence = XEnumerable.Generate(index => index * 2);
             var expected = new[] { 0, 2, 4, 6, 8 };
             var actual = sequence.Take(5);
-            actual.Should().BeEquivalentTo(expected);
+            actual.Should().Equal(expected);
         }
     }
 }

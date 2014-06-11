@@ -24,7 +24,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var left = new[] { "hello", "!"};
             var right = new[] { "hello", "world", "!" };
             var result = left.LeftOuterJoin(right, x => x.Length, y => y.Length, (x, y) => x + y);
-            result.Should().BeEquivalentTo("hellohello", "helloworld", "!!");
+            result.Should().Equal("hellohello", "helloworld", "!!");
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var left = new[] { "hello", "!" };
             var right = new[] { "hello", "world" };
             var result = left.LeftOuterJoin(right, x => x.Length, y => y.Length, (x, y) => x + y, "?");
-            result.Should().BeEquivalentTo("hellohello", "helloworld", "!?");
+            result.Should().Equal("hellohello", "helloworld", "!?");
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var right = new[] { "HELLO", "world" };
             var comparer = StringComparer.CurrentCultureIgnoreCase;
             var result = left.LeftOuterJoin(right, x => x, y => y, (x, y) => x + y, "?", comparer);
-            result.Should().BeEquivalentTo("helloHELLO", "!?");
+            result.Should().Equal("helloHELLO", "!?");
         }
     }
 }

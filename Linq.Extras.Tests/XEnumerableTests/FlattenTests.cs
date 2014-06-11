@@ -69,7 +69,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var result = source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst);
             var expected = new[] { 1, 2, 3, 4, 5, 6, 7 };
             var actual = result.Select(f => f.Id);
-            actual.Should().BeEquivalentTo(expected);
+            actual.Should().Equal(expected);
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var result = source.Flatten(f => f.Children, TreeTraversalMode.BreadthFirst);
             var expected = new[] { 1, 6, 2, 3, 7, 4, 5 };
             var actual = result.Select(f => f.Id);
-            actual.Should().BeEquivalentTo(expected);
+            actual.Should().Equal(expected);
         }
 
         [Test]
@@ -88,7 +88,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = GetFoos().ForbidMultipleEnumeration();
             var actual = source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst, f => f.Id);
             var expected = new[] { 1, 2, 3, 4, 5, 6, 7 };
-            actual.Should().BeEquivalentTo(expected);
+            actual.Should().Equal(expected);
         }
 
         [Test]
@@ -97,7 +97,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = GetFoos().ForbidMultipleEnumeration();
             var actual = source.Flatten(f => f.Children, TreeTraversalMode.BreadthFirst, f => f.Id);
             var expected = new[] { 1, 6, 2, 3, 7, 4, 5 };
-            actual.Should().BeEquivalentTo(expected);
+            actual.Should().Equal(expected);
         }
 
         [Test]
@@ -115,7 +115,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                                new { Id = 6, Level = 0 },
                                new { Id = 7, Level = 1 },
                            };
-            actual.Should().BeEquivalentTo(expected);
+            actual.Should().Equal(expected);
         }
 
         [Test]
@@ -133,7 +133,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                                new { Id = 4, Level = 2 },
                                new { Id = 5, Level = 2 },
                            };
-            actual.Should().BeEquivalentTo(expected);
+            actual.Should().Equal(expected);
         }
 
         private static IEnumerable<Foo> GetFoos()

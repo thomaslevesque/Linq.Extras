@@ -30,7 +30,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.RankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. David",
                 "2. Bob",
                 "3. Emily",
@@ -52,7 +52,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var keyComparer = XComparer<int>.By(Math.Abs);
 
             var result = source.RankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. David",
                 "2. Bob",
                 "3. Emily",
@@ -73,7 +73,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.RankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. David",
                 "2. Bob",
                 "2. Charlie",
@@ -104,7 +104,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.RankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. Charlie",
                 "2. Alice",
                 "3. Emily",
@@ -126,7 +126,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var keyComparer = XComparer<int>.By(Math.Abs);
 
             var result = source.RankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. Charlie",
                 "2. Alice",
                 "3. Emily",
@@ -147,7 +147,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.RankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. Alice",
                 "1. Emily",
                 "3. Bob",
@@ -178,7 +178,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.DenseRankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. David",
                 "2. Bob",
                 "3. Emily",
@@ -200,7 +200,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var keyComparer = XComparer<int>.By(Math.Abs);
 
             var result = source.DenseRankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. David",
                 "2. Bob",
                 "3. Emily",
@@ -221,7 +221,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.DenseRankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. David",
                 "2. Bob",
                 "2. Charlie",
@@ -252,7 +252,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.DenseRankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. Charlie",
                 "2. Alice",
                 "3. Emily",
@@ -274,7 +274,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var keyComparer = XComparer<int>.By(Math.Abs);
 
             var result = source.DenseRankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. Charlie",
                 "2. Alice",
                 "3. Emily",
@@ -295,7 +295,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
 
             var result = source.DenseRankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
-            result.Should().BeEquivalentTo(
+            result.Should().Equal(
                 "1. Alice",
                 "1. Emily",
                 "2. Bob",
