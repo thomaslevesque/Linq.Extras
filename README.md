@@ -52,11 +52,13 @@ var ranking = players.RankByDescending(player => player.Score, (player, rank) =>
 
 Produces the following results
 
+```
 1. Joe (42)
 2. Liz (23)
 2. Ben (23)
 4. Ann (16)
 5. Bob (15)
+```
 
 ### `LeftOuterJoin`, `RightOuterJoin`, `FullOuterJoin`
 
