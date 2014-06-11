@@ -8,21 +8,22 @@ namespace Linq.Extras
 {
     partial class XEnumerable
     {
-        [Pure]
-        public static IEnumerable<INode<TSource>> ToHierarchy<TSource, TId>(
-            [NotNull] this IEnumerable<TSource> source,
-            [NotNull] Func<TSource, TId> idSelector,
-            [NotNull] Func<TSource, TId> parentIdSelector)
-        {
-            return ToHierarchy(source, idSelector, parentIdSelector, default(TId));
-        }
-
+        /// <summary>
+        /// Builds a hierarchy from a flat sequence of elements, based on an Id/ParentId relation.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements in <c>source</c>.</typeparam>
+        /// <typeparam name="TId">The type of the elements' identifier.</typeparam>
+        /// <param name="source">The flat sequence of elements to build a hierarchy from.</param>
+        /// <param name="idSelector">A function that returns the id of an element.</param>
+        /// <param name="parentIdSelector">A function that returns the parent id of an element.</param>
+        /// <param name="rootParentId">The parent id of the root elements (0 or -1, for instance).</param>
+        /// <returns>A sequence containing the root nodes of the hierarchy. Each node in the hierarchy has a collection of child nodes and a link to the parent node.</returns>
         [Pure]
         public static IEnumerable<INode<TSource>> ToHierarchy<TSource, TId>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TId> idSelector,
             [NotNull] Func<TSource, TId> parentIdSelector,
-            TId rootParentId)
+            TId rootParentId = default(TId))
         {
             source.CheckArgumentNull("source");
             idSelector.CheckArgumentNull("idSelector");

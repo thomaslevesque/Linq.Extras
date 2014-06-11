@@ -66,6 +66,7 @@
     <Compile Include="XEnumerableTests\GenerateTests.cs" />
     <Compile Include="XEnumerableTests\IndexOfSubstringTests.cs" />
     <Compile Include="XEnumerableTests\IndexOfTests.cs" />
+    <Compile Include="XEnumerableTests\ToHierarchyTests.cs" />
     <Compile Include="XEnumerableTests\UnionByTests.cs" />
     <Compile Include="XEnumerableTests\IntersectByTests.cs" />
     <Compile Include="XEnumerableTests\IsNullOrEmptyTests.cs" />
