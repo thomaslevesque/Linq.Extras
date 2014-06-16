@@ -58,7 +58,7 @@ namespace Linq.Extras
     }
 
     /// <summary>
-    /// Provides h helper method to create equality comparers by taking advantage of generic type inference
+    /// Provides a helper method to create equality comparers by taking advantage of generic type inference
     /// </summary>
     /// <typeparam name="T">The type of the objects to compare.</typeparam>
     [PublicAPI]
