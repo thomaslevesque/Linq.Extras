@@ -1,6 +1,8 @@
 Linq.Extras
 ===========
 
+*Full API documentation is available [here](http://thomaslevesque.github.io/Linq.Extras/doc/)*
+
 A set of extension and helper methods to complement the ones from `System.Linq.Enumerable`.
 
 Some of these methods are just shortcuts for common Linq operations (e.g. `Append`, `IsNullOrEmpty`), or improvements to
