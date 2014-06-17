@@ -3,7 +3,7 @@ using System.Resources;
 using System.Reflection;
 
 [assembly: AssemblyTitle("Linq.Extras")]
-[assembly: AssemblyDescription("Extra extension methods for sequences")]
+[assembly: AssemblyDescription("A set of helper and extension methods to complement the System.Linq namespace.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Thomas Levesque")]
 [assembly: AssemblyProduct("Linq.Extras")]
