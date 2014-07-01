@@ -8,7 +8,7 @@ namespace Linq.Extras
     partial class XEnumerable
     {
         /// <summary>
-        /// Returns a sequance with distinct elements from the input sequence based on the specified comparer.
+        /// Returns a sequence with distinct contiguous elements from the input sequence based on the specified comparer.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
         /// <param name="source">The sequence to return distinct elements from.</param>
@@ -24,7 +24,7 @@ namespace Linq.Extras
         }
 
         /// <summary>
-        /// Returns a sequance with distinct elements from the input sequence based on the specified key and key comparer.
+        /// Returns a sequence with distinct contiguous elements from the input sequence based on the specified key and key comparer.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
         /// <typeparam name="TKey">The type of the key used for testing equality between elements.</typeparam>

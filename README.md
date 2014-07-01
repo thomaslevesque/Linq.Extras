@@ -76,7 +76,7 @@ var result = left.OuterJoin(right, x => x.Id, y => y.Id, (id, x, y) => new { x, 
 
 ### `ToHierarchy`
 
-Transform a flat sequence of items into a hierarchy. Each node is of type `INode<T>` and exposes its children and parent.
+Transforms a flat sequence of items into a hierarchy. Each node is of type `INode<T>` and exposes its children and parent.
 
 ```csharp
 var roots = items.ToHierarchy(i => i.Id, i => i.ParentId);
@@ -84,7 +84,7 @@ var roots = items.ToHierarchy(i => i.Id, i => i.ParentId);
 
 ### `Flatten`
 
-Transform a hierarchy of objects to a flat sequence.
+Transforms a hierarchy of objects to a flat sequence.
 
 ```csharp
 var flat = roots.Flatten(node => node.Children, TreeTraversalMode.DepthFirst);
