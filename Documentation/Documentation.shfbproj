@@ -28,7 +28,7 @@
       <Argument Key="defaultLanguage" Value="cs" />
     </TransformComponentArguments>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\Linq.Extras\Linq.Extras.csproj" xmlns="" />
+      <DocumentationSource sourceFile="..\Linq.Extras\Linq.Extras.csproj" configuration="Release" />
     </DocumentationSources>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <HelpFileFormat>HtmlHelp1, Website</HelpFileFormat>
