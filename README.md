@@ -1,7 +1,14 @@
 Linq.Extras
 ===========
 
-*Full API documentation is available [here](http://thomaslevesque.github.io/Linq.Extras/doc/)*
+*Full API documentation is available:*
+* *[online (HTML)](http://thomaslevesque.github.io/Linq.Extras/doc/)*
+* *[offline (CHM)](http://thomaslevesque.github.io/Linq.Extras/doc/Linq.Extras.chm)*
+
+*[Install from NuGet](https://www.nuget.org/packages/Linq.Extras):*
+```
+PM> Install-Package Linq.Extras 
+```
 
 A set of extension and helper methods to complement the ones from `System.Linq.Enumerable`.
 
