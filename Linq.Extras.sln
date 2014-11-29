@@ -1,21 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras", "Linq.Extras\Linq.Extras.csproj", "{93E26A7D-E074-4B93-9B74-24414A12FB3B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0179FA49-AFDB-429D-823D-F895E4C3393D}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.md = LICENSE.md
+		NuGet\Linq.Extras.nuspec = NuGet\Linq.Extras.nuspec
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras.Tests", "Linq.Extras.Tests\Linq.Extras.Tests.csproj", "{B4C8C58A-33D3-4F6C-BA38-FFE8B6A6EE8C}"
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{86E2B0AA-E343-4846-8661-E09365D68C99}"
-EndProject
-Project("{E09DD79A-4488-4AB9-8D3F-A7EEE78BF432}") = "NuGet", "NuGet\NuGet.nuproj", "{64B66BAA-3101-4189-BB04-2337A2275D68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +32,6 @@ Global
 		{B4C8C58A-33D3-4F6C-BA38-FFE8B6A6EE8C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{86E2B0AA-E343-4846-8661-E09365D68C99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{86E2B0AA-E343-4846-8661-E09365D68C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64B66BAA-3101-4189-BB04-2337A2275D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64B66BAA-3101-4189-BB04-2337A2275D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
