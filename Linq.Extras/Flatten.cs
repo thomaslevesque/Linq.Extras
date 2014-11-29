@@ -13,7 +13,7 @@ namespace Linq.Extras
         /// and in the specified traversal order.
         /// </summary>
         /// <typeparam name="TNode">The type of the elements in the source hierarchy.</typeparam>
-        /// <typeparam name="TResult">The types of the elements in the output sequence.</typeparam>
+        /// <typeparam name="TResult">The type of the elements in the output sequence.</typeparam>
         /// <param name="source">The source hierarchy to flatten.</param>
         /// <param name="childrenSelector">The delegate used to retrieve the children of an element.</param>
         /// <param name="traversalMode">The traversal order.</param>
@@ -46,7 +46,7 @@ namespace Linq.Extras
         /// and in the specified traversal order.
         /// </summary>
         /// <typeparam name="TNode">The type of the elements in the source hierarchy.</typeparam>
-        /// <typeparam name="TResult">The types of the elements in the output sequence.</typeparam>
+        /// <typeparam name="TResult">The type of the elements in the output sequence.</typeparam>
         /// <param name="source">The source hierarchy to flatten.</param>
         /// <param name="childrenSelector">The delegate used to retrieve the children of an element.</param>
         /// <param name="traversalMode">The traversal order.</param>
