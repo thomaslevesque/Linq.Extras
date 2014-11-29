@@ -94,5 +94,43 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var linkedList = source.ToLinkedList();
             linkedList.Should().Equal(items);
         }
+
+        [Test]
+        public void ToArray_Throws_If_Source_Is_Null()
+        {
+            IEnumerable<int> source = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.ToArray(42));
+            ex.ParamName.Should().Be("source");
+        }
+
+        [Test]
+        public void ToArray_Returns_An_Array_With_The_Same_Items_As_Source()
+        {
+            var items = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = items.ForbidMultipleEnumeration();
+            var array = source.ToArray(items.Length);
+            array.Should().Equal(items);
+        }
+
+        [Test]
+        public void ToList_Throws_If_Source_Is_Null()
+        {
+            IEnumerable<int> source = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            var ex = Assert.Throws<ArgumentNullException>(() => source.ToList(42));
+            ex.ParamName.Should().Be("source");
+        }
+
+        [Test]
+        public void ToList_Returns_A_List_With_The_Same_Items_As_Source()
+        {
+            var items = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = items.ForbidMultipleEnumeration();
+            var list = source.ToList(items.Length);
+            list.Should().Equal(items);
+        }
     }
 }
