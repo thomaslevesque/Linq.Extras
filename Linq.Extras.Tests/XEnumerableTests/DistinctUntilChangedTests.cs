@@ -21,7 +21,15 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Test]
-        public void DistinctUntilChanged_Returns_Distinct_Contiguous_Elements()
+        public void DistinctUntilChanged_Returns_Empty_Sequence_If_Source_Is_Empty()
+        {
+            var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
+            var result = source.DistinctUntilChanged();
+            result.Should().BeEmpty();
+        }
+
+        [Test]
+        public void DistinctUntilChanged_Returns_Distinct_Adjacent_Elements()
         {
             var source = new[] { 1, 1, 1, 2, 3, 3, 1, 3, 2, 2 }.ForbidMultipleEnumeration();
             var result = source.DistinctUntilChanged();
@@ -59,7 +67,15 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Test]
-        public void DistinctUntilChangedBy_Returns_Distinct_Contiguous_Elements()
+        public void DistinctUntilChangedBy_Returns_Empty_Sequence_If_Source_Is_Empty()
+        {
+            var source = Enumerable.Empty<Foo>().ForbidMultipleEnumeration();
+            var result = source.DistinctUntilChangedBy(f => f.X);
+            result.Should().BeEmpty();
+        }
+
+        [Test]
+        public void DistinctUntilChangedBy_Returns_Distinct_Adjacent_Elements()
         {
             var source = new[]
                          {

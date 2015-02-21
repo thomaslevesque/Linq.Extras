@@ -41,6 +41,9 @@
     <Compile Include="CommonPrefix.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>
     </Compile>
+    <Compile Include="GroupUntilChanged.cs">
+      <DependentUpon>XEnumerable.cs</DependentUpon>
+    </Compile>
     <Compile Include="IIndexedItem.cs" />
     <Compile Include="IndexOfSubstring.cs">
       <DependentUpon>XEnumerable.cs</DependentUpon>

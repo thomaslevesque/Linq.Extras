@@ -8,12 +8,12 @@ namespace Linq.Extras
     partial class XEnumerable
     {
         /// <summary>
-        /// Returns a sequence with distinct contiguous elements from the input sequence based on the specified comparer.
+        /// Returns a sequence with distinct adjacent elements from the input sequence based on the specified comparer.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
         /// <param name="source">The sequence to return distinct elements from.</param>
         /// <param name="comparer">A comparer used to test equality between elements (can be null).</param>
-        /// <returns>A sequence that contains only distinct contiguous elements</returns>
+        /// <returns>A sequence that contains only distinct adjacent elements</returns>
         [Pure]
         public static IEnumerable<TSource> DistinctUntilChanged<TSource>(
             [NotNull] this IEnumerable<TSource> source,
@@ -24,14 +24,14 @@ namespace Linq.Extras
         }
 
         /// <summary>
-        /// Returns a sequence with distinct contiguous elements from the input sequence based on the specified key and key comparer.
+        /// Returns a sequence with distinct adjacent elements from the input sequence based on the specified key and key comparer.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
         /// <typeparam name="TKey">The type of the key used for testing equality between elements.</typeparam>
         /// <param name="source">The sequence to return distinct elements from.</param>
         /// <param name="keySelector">A delegate that returns the key used to test equality between elements.</param>
         /// <param name="keyComparer">A comparer used to test equality between keys (can be null).</param>
-        /// <returns>A sequence whose elements have distinct values for the specified key.</returns>
+        /// <returns>A sequence whose elements have distinct adjacent values for the specified key.</returns>
         [Pure]
         public static IEnumerable<TSource> DistinctUntilChangedBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
