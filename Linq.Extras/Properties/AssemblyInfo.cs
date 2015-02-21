@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Resources;
 using System.Reflection;
+using System.Resources;
+using Linq.Extras.Properties;
 
 [assembly: AssemblyTitle("Linq.Extras")]
 [assembly: AssemblyDescription("A set of helper and extension methods to complement the System.Linq namespace.")]
@@ -12,5 +13,13 @@ using System.Reflection;
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 [assembly: CLSCompliant(true)]
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyVersion(VersionInfo.Version)]
+[assembly: AssemblyFileVersion(VersionInfo.Version)]
+
+namespace Linq.Extras.Properties
+{
+    static class VersionInfo
+    {
+        public const string Version = "1.0.2.0";
+    }
+}
