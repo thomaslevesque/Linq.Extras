@@ -69,24 +69,15 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [ExcludeFromCodeCoverage]
         class Indexed<T> : IIndexedItem<T>
         {
-            private readonly T _item;
-            private readonly int _index;
-
             public Indexed(T item, int index)
             {
-                _item = item;
-                _index = index;
+                Item = item;
+                Index = index;
             }
 
-            public int Index
-            {
-                get { return _index; }
-            }
+            public int Index { get; }
 
-            public T Item
-            {
-                get { return _item; }
-            }
+            public T Item { get; }
         }
     }
 }

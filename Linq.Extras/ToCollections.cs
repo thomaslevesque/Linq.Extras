@@ -17,7 +17,7 @@ namespace Linq.Extras
         [Pure]
         public static Queue<TSource> ToQueue<TSource>([NotNull] this IEnumerable<TSource> source)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return new Queue<TSource>(source);
         }
 
@@ -30,7 +30,7 @@ namespace Linq.Extras
         [Pure]
         public static Stack<TSource> ToStack<TSource>([NotNull] this IEnumerable<TSource> source)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return new Stack<TSource>(source);
         }
 
@@ -45,7 +45,7 @@ namespace Linq.Extras
         [Pure]
         public static HashSet<TSource> ToHashSet<TSource>([NotNull] this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer = null)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return new HashSet<TSource>(source, comparer);
         }
 
@@ -58,7 +58,7 @@ namespace Linq.Extras
         [Pure]
         public static LinkedList<TSource> ToLinkedList<TSource>([NotNull] this IEnumerable<TSource> source)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return new LinkedList<TSource>(source);
         }
 
@@ -81,8 +81,8 @@ namespace Linq.Extras
         [Pure]
         public static TSource[] ToArray<TSource>([NotNull] this IEnumerable<TSource> source, int count)
         {
-            source.CheckArgumentNull("source");
-            count.CheckArgumentOutOfRange("count", 0, int.MaxValue);
+            source.CheckArgumentNull(nameof(source));
+            count.CheckArgumentOutOfRange(nameof(count), 0, int.MaxValue);
             var array = new TSource[count];
             int i = 0;
             foreach (var item in source)
@@ -110,13 +110,10 @@ namespace Linq.Extras
         [Pure]
         public static List<TSource> ToList<TSource>([NotNull] this IEnumerable<TSource> source, int count)
         {
-            source.CheckArgumentNull("source");
-            count.CheckArgumentOutOfRange("count", 0, int.MaxValue);
+            source.CheckArgumentNull(nameof(source));
+            count.CheckArgumentOutOfRange(nameof(count), 0, int.MaxValue);
             var list = new List<TSource>(count);
-            foreach (var item in source)
-            {
-                list.Add(item);
-            }
+            list.AddRange(source);
             return list;
         }
     }

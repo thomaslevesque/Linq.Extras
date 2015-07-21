@@ -21,8 +21,8 @@ namespace Linq.Extras
             [NotNull] IEnumerable<TSource> other,
             IEqualityComparer<TSource> comparer = null)
         {
-            source.CheckArgumentNull("source");
-            other.CheckArgumentNull("other");
+            source.CheckArgumentNull(nameof(source));
+            other.CheckArgumentNull(nameof(other));
 
             return source.CommonPrefixImpl(other, comparer);
         }

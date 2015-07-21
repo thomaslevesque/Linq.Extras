@@ -20,8 +20,8 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IComparer<TSource> comparer)
         {
-            source.CheckArgumentNull("source");
-            comparer.CheckArgumentNull("comparer");
+            source.CheckArgumentNull(nameof(source));
+            comparer.CheckArgumentNull(nameof(comparer));
             return source.Extreme(comparer, 1);
         }
 
@@ -37,8 +37,8 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IComparer<TSource> comparer)
         {
-            source.CheckArgumentNull("source");
-            comparer.CheckArgumentNull("comparer");
+            source.CheckArgumentNull(nameof(source));
+            comparer.CheckArgumentNull(nameof(comparer));
             return source.Extreme(comparer, -1);
         }
 
@@ -87,8 +87,8 @@ namespace Linq.Extras
             [NotNull] Func<TSource, TKey> keySelector,
             IComparer<TKey> keyComparer = null)
         {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
+            source.CheckArgumentNull(nameof(source));
+            keySelector.CheckArgumentNull(nameof(keySelector));
             var comparer = XComparer.By(keySelector, keyComparer);
             return source.Max(comparer);
         }
@@ -108,8 +108,8 @@ namespace Linq.Extras
             [NotNull] Func<TSource, TKey> keySelector,
             IComparer<TKey> keyComparer = null)
         {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
+            source.CheckArgumentNull(nameof(source));
+            keySelector.CheckArgumentNull(nameof(keySelector));
             var comparer = XComparer.By(keySelector, keyComparer);
             return source.Min(comparer);
         }

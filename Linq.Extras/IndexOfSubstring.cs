@@ -22,8 +22,8 @@ namespace Linq.Extras
             [NotNull] IEnumerable<TSource> substring,
             IEqualityComparer<TSource> comparer = null)
         {
-            source.CheckArgumentNull("source");
-            substring.CheckArgumentNull("substring");
+            source.CheckArgumentNull(nameof(source));
+            substring.CheckArgumentNull(nameof(substring));
 
             comparer = comparer ?? EqualityComparer<TSource>.Default;
 

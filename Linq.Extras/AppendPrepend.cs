@@ -19,7 +19,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             TSource item)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return source.Concat(new[] { item });
         }
 
@@ -35,7 +35,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             TSource item)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return new[] { item }.Concat(source);
         }
     }

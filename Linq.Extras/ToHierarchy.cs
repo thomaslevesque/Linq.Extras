@@ -25,9 +25,9 @@ namespace Linq.Extras
             [NotNull] Func<TSource, TId> parentIdSelector,
             TId rootParentId = default(TId))
         {
-            source.CheckArgumentNull("source");
-            idSelector.CheckArgumentNull("idSelector");
-            parentIdSelector.CheckArgumentNull("parentIdSelector");
+            source.CheckArgumentNull(nameof(source));
+            idSelector.CheckArgumentNull(nameof(idSelector));
+            parentIdSelector.CheckArgumentNull(nameof(parentIdSelector));
             
             return ToHierarchyImpl(source, idSelector, parentIdSelector, rootParentId);
         }

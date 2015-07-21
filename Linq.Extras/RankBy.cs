@@ -52,9 +52,9 @@ namespace Linq.Extras
             [NotNull] Func<TSource, int, TResult> resultSelector,
             IComparer<TKey> keyComparer = null)
         {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
-            resultSelector.CheckArgumentNull("resultSelector");
+            source.CheckArgumentNull(nameof(source));
+            keySelector.CheckArgumentNull(nameof(keySelector));
+            resultSelector.CheckArgumentNull(nameof(resultSelector));
             return source.RankByImpl(keySelector, resultSelector, keyComparer, false);
         }
 
@@ -79,9 +79,9 @@ namespace Linq.Extras
             [NotNull] Func<TSource, int, TResult> resultSelector,
             IComparer<TKey> keyComparer = null)
         {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
-            resultSelector.CheckArgumentNull("resultSelector");
+            source.CheckArgumentNull(nameof(source));
+            keySelector.CheckArgumentNull(nameof(keySelector));
+            resultSelector.CheckArgumentNull(nameof(resultSelector));
             return source.RankByImpl(keySelector, resultSelector, keyComparer, true);
         }
 
@@ -156,9 +156,9 @@ namespace Linq.Extras
             [NotNull] Func<TSource, int, TResult> resultSelector,
             IComparer<TKey> keyComparer = null)
         {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
-            resultSelector.CheckArgumentNull("resultSelector");
+            source.CheckArgumentNull(nameof(source));
+            keySelector.CheckArgumentNull(nameof(keySelector));
+            resultSelector.CheckArgumentNull(nameof(resultSelector));
             return source.DenseRankByImpl(keySelector, resultSelector, keyComparer, false);
         }
 
@@ -183,9 +183,9 @@ namespace Linq.Extras
             [NotNull] Func<TSource, int, TResult> resultSelector,
             IComparer<TKey> keyComparer = null)
         {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
-            resultSelector.CheckArgumentNull("resultSelector");
+            source.CheckArgumentNull(nameof(source));
+            keySelector.CheckArgumentNull(nameof(keySelector));
+            resultSelector.CheckArgumentNull(nameof(resultSelector));
             return source.DenseRankByImpl(keySelector, resultSelector, keyComparer, true);
         }
 

@@ -2,7 +2,7 @@
 namespace System.Diagnostics.CodeAnalysis
 {
     [AttributeUsageAttribute(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Event,
-        Inherited = false, AllowMultiple = false)]
+        Inherited = false)]
     sealed class ExcludeFromCodeCoverageAttribute : Attribute
     {
     }

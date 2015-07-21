@@ -22,7 +22,7 @@ namespace Linq.Extras
             [NotNull] this IList<T> list,
             Random random = null)
         {
-            list.CheckArgumentNull("list");
+            list.CheckArgumentNull(nameof(list));
             random = random ?? new Random();
 
             for (int i = list.Count - 1; i > 0; i--)
@@ -44,9 +44,9 @@ namespace Linq.Extras
             int index1,
             int index2)
         {
-            list.CheckArgumentNull("list");
-            index1.CheckArgumentOutOfRange("index1", 0, list.Count - 1);
-            index2.CheckArgumentOutOfRange("index2", 0, list.Count - 1);
+            list.CheckArgumentNull(nameof(list));
+            index1.CheckArgumentOutOfRange(nameof(index1), 0, list.Count - 1);
+            index2.CheckArgumentOutOfRange(nameof(index2), 0, list.Count - 1);
 
             T tmp = list[index1];
             list[index1] = list[index2];

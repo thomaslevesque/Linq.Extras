@@ -17,7 +17,7 @@ namespace Linq.Extras
         [Pure]
         public static bool None<TSource>([NotNull] this IEnumerable<TSource> source)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return !source.Any();
         }
 
@@ -33,8 +33,8 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, bool> predicate)
         {
-            source.CheckArgumentNull("source");
-            predicate.CheckArgumentNull("predicate");
+            source.CheckArgumentNull(nameof(source));
+            predicate.CheckArgumentNull(nameof(predicate));
             return !source.Any(predicate);
         }
     }

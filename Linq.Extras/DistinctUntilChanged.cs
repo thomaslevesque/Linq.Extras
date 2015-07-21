@@ -19,7 +19,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             IEqualityComparer<TSource> comparer = null)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return source.DistinctUntilChangedByImpl(Identity, comparer);
         }
 
@@ -38,8 +38,8 @@ namespace Linq.Extras
             [NotNull] Func<TSource, TKey> keySelector,
             IEqualityComparer<TKey> keyComparer = null)
         {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
+            source.CheckArgumentNull(nameof(source));
+            keySelector.CheckArgumentNull(nameof(keySelector));
 
             return source.DistinctUntilChangedByImpl(keySelector, keyComparer);
         }

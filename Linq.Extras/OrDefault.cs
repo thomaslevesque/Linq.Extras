@@ -21,7 +21,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             TSource defaultValue)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return source.DefaultIfEmpty(defaultValue).First();
         }
 
@@ -39,8 +39,8 @@ namespace Linq.Extras
             [NotNull] Func<TSource, bool> predicate,
             TSource defaultValue)
         {
-            source.CheckArgumentNull("source");
-            predicate.CheckArgumentNull("predicate");
+            source.CheckArgumentNull(nameof(source));
+            predicate.CheckArgumentNull(nameof(predicate));
             return source.Where(predicate).FirstOrDefault(defaultValue);
         }
 
@@ -56,7 +56,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] TSource defaultValue)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return source.DefaultIfEmpty(defaultValue).Last();
         }
 
@@ -74,8 +74,8 @@ namespace Linq.Extras
             [NotNull] Func<TSource, bool> predicate,
             TSource defaultValue)
         {
-            source.CheckArgumentNull("source");
-            predicate.CheckArgumentNull("predicate");
+            source.CheckArgumentNull(nameof(source));
+            predicate.CheckArgumentNull(nameof(predicate));
             return source.Where(predicate).LastOrDefault(defaultValue);
         }
 
@@ -93,9 +93,9 @@ namespace Linq.Extras
             int index,
             TSource defaultValue)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             if (index < 0)
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));
 
             return source.Skip(index).DefaultIfEmpty(defaultValue).First();
         }
@@ -112,7 +112,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             TSource defaultValue)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             int i = 0;
             TSource value = defaultValue;
             foreach (var item in source)
@@ -144,8 +144,8 @@ namespace Linq.Extras
             [NotNull] Func<TSource, bool> predicate,
             TSource defaultValue)
         {
-            source.CheckArgumentNull("source");
-            predicate.CheckArgumentNull("predicate");
+            source.CheckArgumentNull(nameof(source));
+            predicate.CheckArgumentNull(nameof(predicate));
             return source.Where(predicate).SingleOrDefault(defaultValue);
         }
 

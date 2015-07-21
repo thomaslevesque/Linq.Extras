@@ -25,7 +25,7 @@ namespace Linq.Extras
             [NotNull] Func<T, TKey> keySelector,
             IEqualityComparer<TKey> keyComparer = null)
         {
-            keySelector.CheckArgumentNull("keySelector");
+            keySelector.CheckArgumentNull(nameof(keySelector));
             return new ByKeyEqualityComparer<T, TKey>(keySelector, keyComparer);
         }
 
@@ -38,7 +38,7 @@ namespace Linq.Extras
 
             public ByKeyEqualityComparer([NotNull] Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
             {
-                keySelector.CheckArgumentNull("keySelector");
+                keySelector.CheckArgumentNull(nameof(keySelector));
                 _keySelector = keySelector;
                 _keyComparer = keyComparer ?? EqualityComparer<TKey>.Default;
             }

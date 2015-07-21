@@ -26,9 +26,9 @@ namespace Linq.Extras
             TreeTraversalMode traversalMode,
             [NotNull] Func<TNode, int, TResult> resultSelector)
         {
-            source.CheckArgumentNull("source");
-            childrenSelector.CheckArgumentNull("childrenSelector");
-            resultSelector.CheckArgumentNull("resultSelector");
+            source.CheckArgumentNull(nameof(source));
+            childrenSelector.CheckArgumentNull(nameof(childrenSelector));
+            resultSelector.CheckArgumentNull(nameof(resultSelector));
 
             switch (traversalMode)
             {
@@ -37,7 +37,7 @@ namespace Linq.Extras
                 case TreeTraversalMode.BreadthFirst:
                     return source.BreadthFirstFlattenIterator(childrenSelector, resultSelector);
                 default:
-                    throw new ArgumentOutOfRangeException("traversalMode");
+                    throw new ArgumentOutOfRangeException(nameof(traversalMode));
             }
         }
 
@@ -59,7 +59,7 @@ namespace Linq.Extras
             TreeTraversalMode traversalMode,
             [NotNull] Func<TNode, TResult> resultSelector)
         {
-            resultSelector.CheckArgumentNull("resultSelector");
+            resultSelector.CheckArgumentNull(nameof(resultSelector));
             return source.Flatten(childrenSelector, traversalMode, (x, _) => resultSelector(x));
         }
 
@@ -119,25 +119,16 @@ namespace Linq.Extras
 
         private sealed class NodeWithLevel<TNode>
         {
-            private readonly TNode _node;
-            private readonly int _level;
-
             public NodeWithLevel(TNode node, int level)
             {
-                _node = node;
-                _level = level;
+                Node = node;
+                Level = level;
             }
 
             // ReSharper disable once MemberHidesStaticFromOuterClass
-            public TNode Node
-            {
-                get { return _node; }
-            }
+            public TNode Node { get; }
 
-            public int Level
-            {
-                get { return _level; }
-            }
+            public int Level { get; }
         }
     }
 }

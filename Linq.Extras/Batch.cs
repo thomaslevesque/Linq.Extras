@@ -19,8 +19,8 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             int size)
         {
-            source.CheckArgumentNull("source");
-            size.CheckArgumentOutOfRange("size", 1, int.MaxValue);
+            source.CheckArgumentNull(nameof(source));
+            size.CheckArgumentOutOfRange(nameof(size), 1, int.MaxValue);
 
             return source
                 .WithIndex()

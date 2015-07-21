@@ -35,11 +35,11 @@ namespace Linq.Extras
             TRight defaultRight = default(TRight),
             IEqualityComparer<TKey> keyComparer = null)
         {
-            left.CheckArgumentNull("left");
-            right.CheckArgumentNull("right");
-            leftKeySelector.CheckArgumentNull("leftKeySelector");
-            rightKeySelector.CheckArgumentNull("rightKeySelector");
-            resultSelector.CheckArgumentNull("resultSelector");
+            left.CheckArgumentNull(nameof(left));
+            right.CheckArgumentNull(nameof(right));
+            leftKeySelector.CheckArgumentNull(nameof(leftKeySelector));
+            rightKeySelector.CheckArgumentNull(nameof(rightKeySelector));
+            resultSelector.CheckArgumentNull(nameof(resultSelector));
 
             return
                 left.GroupJoin(right, leftKeySelector, rightKeySelector, (o, tmp) => new { o, tmp }, keyComparer)
@@ -75,11 +75,11 @@ namespace Linq.Extras
             TLeft defaultLeft = default(TLeft),
             IEqualityComparer<TKey> keyComparer = null)
         {
-            left.CheckArgumentNull("left");
-            right.CheckArgumentNull("right");
-            leftKeySelector.CheckArgumentNull("leftKeySelector");
-            rightKeySelector.CheckArgumentNull("rightKeySelector");
-            resultSelector.CheckArgumentNull("resultSelector");
+            left.CheckArgumentNull(nameof(left));
+            right.CheckArgumentNull(nameof(right));
+            leftKeySelector.CheckArgumentNull(nameof(leftKeySelector));
+            rightKeySelector.CheckArgumentNull(nameof(rightKeySelector));
+            resultSelector.CheckArgumentNull(nameof(resultSelector));
 
             // This is actually the same as a left outer join, with the left and right sequences swapped
             return right.LeftOuterJoin(left, rightKeySelector, leftKeySelector, (i, o) => resultSelector(o, i), defaultLeft, keyComparer);
@@ -116,11 +116,11 @@ namespace Linq.Extras
             TRight defaultRight = default(TRight),
             IEqualityComparer<TKey> keyComparer = null)
         {
-            left.CheckArgumentNull("left");
-            right.CheckArgumentNull("right");
-            leftKeySelector.CheckArgumentNull("leftKeySelector");
-            rightKeySelector.CheckArgumentNull("rightKeySelector");
-            resultSelector.CheckArgumentNull("resultSelector");
+            left.CheckArgumentNull(nameof(left));
+            right.CheckArgumentNull(nameof(right));
+            leftKeySelector.CheckArgumentNull(nameof(leftKeySelector));
+            rightKeySelector.CheckArgumentNull(nameof(rightKeySelector));
+            resultSelector.CheckArgumentNull(nameof(resultSelector));
 
             return left.FullOuterJoinIterator(right, leftKeySelector, rightKeySelector, resultSelector, defaultLeft, defaultRight, keyComparer);
         }

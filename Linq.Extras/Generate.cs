@@ -18,7 +18,7 @@ namespace Linq.Extras
         [Pure]
         public static IEnumerable<TElement> Generate<TElement>(TElement seed, [NotNull] Func<TElement, TElement> generator)
         {
-            generator.CheckArgumentNull("generator");
+            generator.CheckArgumentNull(nameof(generator));
             return GenerateIterator(seed, generator);
         }
 
@@ -43,7 +43,7 @@ namespace Linq.Extras
         [Pure]
         public static IEnumerable<TElement> Generate<TElement>([NotNull] Func<int, TElement> generator)
         {
-            generator.CheckArgumentNull("generator");
+            generator.CheckArgumentNull(nameof(generator));
             return Enumerable.Range(0, int.MaxValue).Select(generator);
         }
     }

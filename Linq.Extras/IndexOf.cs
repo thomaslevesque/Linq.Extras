@@ -33,8 +33,8 @@ namespace Linq.Extras
         [Pure]
         public static int IndexOf<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Func<TSource, bool> predicate)
         {
-            source.CheckArgumentNull("source");
-            predicate.CheckArgumentNull("predicate");
+            source.CheckArgumentNull(nameof(source));
+            predicate.CheckArgumentNull(nameof(predicate));
             return source.WithIndex()
                 .Where(i => predicate(i.Item))
                 .Select(i => i.Index)
@@ -66,8 +66,8 @@ namespace Linq.Extras
         [Pure]
         public static int LastIndexOf<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Func<TSource, bool> predicate)
         {
-            source.CheckArgumentNull("source");
-            predicate.CheckArgumentNull("predicate");
+            source.CheckArgumentNull(nameof(source));
+            predicate.CheckArgumentNull(nameof(predicate));
             return source.WithIndex()
                 .Where(i => predicate(i.Item))
                 .Select(i => i.Index)

@@ -40,8 +40,8 @@ namespace Linq.Extras
                 Item = item;
             }
 
-            public int Index { get; private set; }
-            public T Item { get; private set; }
+            public int Index { get; }
+            public T Item { get; }
         }
     }
 }

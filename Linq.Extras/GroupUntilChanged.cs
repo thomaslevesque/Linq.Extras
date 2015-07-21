@@ -21,7 +21,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             IEqualityComparer<TSource> comparer = null)
         {
-            source.CheckArgumentNull("source");
+            source.CheckArgumentNull(nameof(source));
             return source.GroupUntilChangedByImpl(Identity, comparer);
         }
 
@@ -40,8 +40,8 @@ namespace Linq.Extras
             [NotNull] Func<TSource, TKey> keySelector,
             IEqualityComparer<TKey> keyComparer = null)
         {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
+            source.CheckArgumentNull(nameof(source));
+            keySelector.CheckArgumentNull(nameof(keySelector));
             return source.GroupUntilChangedByImpl(keySelector, keyComparer);
         }
 
@@ -80,12 +80,11 @@ namespace Linq.Extras
 
         class Grouping<TKey, TElement> : IGrouping<TKey, TElement>
         {
-            private readonly TKey _key;
             private readonly IEnumerable<TElement> _elements;
 
             public Grouping(TKey key, IEnumerable<TElement> elements)
             {
-                _key = key;
+                Key = key;
                 _elements = elements;
             }
 
@@ -99,10 +98,7 @@ namespace Linq.Extras
                 return GetEnumerator();
             }
 
-            public TKey Key
-            {
-                get { return _key; }
-            }
+            public TKey Key { get; }
         }
         
     }

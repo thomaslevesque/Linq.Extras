@@ -7,7 +7,7 @@ namespace Linq.Extras
     /// </summary>
     /// <typeparam name="T">The type of the element.</typeparam>
     [PublicAPI]
-    public interface IIndexedItem<T>
+    public interface IIndexedItem<out T>
     {
         /// <summary>
         /// The index of the element in a sequence.

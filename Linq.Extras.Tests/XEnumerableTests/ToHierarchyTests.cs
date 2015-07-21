@@ -67,9 +67,9 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 ParentId = parentId;
                 Name = name;
             }
-            public int Id { get; private set; }
-            public int? ParentId { get; private set; }
-            public string Name { get; private set; }
+            public int Id { get; }
+            public int? ParentId { get; }
+            public string Name { get; }
         }
     }
 }

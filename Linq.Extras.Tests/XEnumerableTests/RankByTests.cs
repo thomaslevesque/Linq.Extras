@@ -29,7 +29,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Player("Emily", 31)
                          }.ForbidMultipleEnumeration();
 
-            var result = source.RankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            var result = source.RankBy(p => p.Score, (player, rank) => $"{rank}. {player.Name}");
             result.Should().Equal(
                 "1. David",
                 "2. Bob",
@@ -51,7 +51,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
             var keyComparer = XComparer<int>.By(Math.Abs);
 
-            var result = source.RankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
+            var result = source.RankBy(p => p.Score, (player, rank) => $"{rank}. {player.Name}", keyComparer);
             result.Should().Equal(
                 "1. David",
                 "2. Bob",
@@ -72,7 +72,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Player("Emily", 42)
                          }.ForbidMultipleEnumeration();
 
-            var result = source.RankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            var result = source.RankBy(p => p.Score, (player, rank) => $"{rank}. {player.Name}");
             result.Should().Equal(
                 "1. David",
                 "2. Bob",
@@ -103,7 +103,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Player("Emily", 31)
                          }.ForbidMultipleEnumeration();
 
-            var result = source.RankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            var result = source.RankByDescending(p => p.Score, (player, rank) => $"{rank}. {player.Name}");
             result.Should().Equal(
                 "1. Charlie",
                 "2. Alice",
@@ -125,7 +125,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
             var keyComparer = XComparer<int>.By(Math.Abs);
 
-            var result = source.RankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
+            var result = source.RankByDescending(p => p.Score, (player, rank) => $"{rank}. {player.Name}", keyComparer);
             result.Should().Equal(
                 "1. Charlie",
                 "2. Alice",
@@ -146,7 +146,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Player("Emily", 42)
                          }.ForbidMultipleEnumeration();
 
-            var result = source.RankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            var result = source.RankByDescending(p => p.Score, (player, rank) => $"{rank}. {player.Name}");
             result.Should().Equal(
                 "1. Alice",
                 "1. Emily",
@@ -177,7 +177,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Player("Emily", 31)
                          }.ForbidMultipleEnumeration();
 
-            var result = source.DenseRankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            var result = source.DenseRankBy(p => p.Score, (player, rank) => $"{rank}. {player.Name}");
             result.Should().Equal(
                 "1. David",
                 "2. Bob",
@@ -199,7 +199,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
             var keyComparer = XComparer<int>.By(Math.Abs);
 
-            var result = source.DenseRankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
+            var result = source.DenseRankBy(p => p.Score, (player, rank) => $"{rank}. {player.Name}", keyComparer);
             result.Should().Equal(
                 "1. David",
                 "2. Bob",
@@ -220,7 +220,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Player("Emily", 42)
                          }.ForbidMultipleEnumeration();
 
-            var result = source.DenseRankBy(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            var result = source.DenseRankBy(p => p.Score, (player, rank) => $"{rank}. {player.Name}");
             result.Should().Equal(
                 "1. David",
                 "2. Bob",
@@ -251,7 +251,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Player("Emily", 31)
                          }.ForbidMultipleEnumeration();
 
-            var result = source.DenseRankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            var result = source.DenseRankByDescending(p => p.Score, (player, rank) => $"{rank}. {player.Name}");
             result.Should().Equal(
                 "1. Charlie",
                 "2. Alice",
@@ -273,7 +273,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                          }.ForbidMultipleEnumeration();
             var keyComparer = XComparer<int>.By(Math.Abs);
 
-            var result = source.DenseRankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name), keyComparer);
+            var result = source.DenseRankByDescending(p => p.Score, (player, rank) => $"{rank}. {player.Name}", keyComparer);
             result.Should().Equal(
                 "1. Charlie",
                 "2. Alice",
@@ -294,7 +294,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                              new Player("Emily", 42)
                          }.ForbidMultipleEnumeration();
 
-            var result = source.DenseRankByDescending(p => p.Score, (player, rank) => string.Format("{0}. {1}", rank, player.Name));
+            var result = source.DenseRankByDescending(p => p.Score, (player, rank) => $"{rank}. {player.Name}");
             result.Should().Equal(
                 "1. Alice",
                 "1. Emily",
@@ -311,8 +311,8 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 Score = score;
             }
 
-            public string Name { get; private set; }
-            public int Score { get; private set; }
+            public string Name { get; }
+            public int Score { get; }
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Linq.Extras
         [Pure]
         public static IComparer<T> Reverse<T>([NotNull] this IComparer<T> comparer)
         {
-            comparer.CheckArgumentNull("comparer");
+            comparer.CheckArgumentNull(nameof(comparer));
             return new ReverseComparer<T>(comparer);
         }
 
@@ -39,8 +39,8 @@ namespace Linq.Extras
             [NotNull] this IComparer<T> comparer,
             [NotNull] IComparer<T> nextComparer)
         {
-            comparer.CheckArgumentNull("comparer");
-            nextComparer.CheckArgumentNull("nextComparer");
+            comparer.CheckArgumentNull(nameof(comparer));
+            nextComparer.CheckArgumentNull(nameof(nextComparer));
 
             // Optimized to avoid nested chained comparers
             var chained = comparer as ChainedComparer<T>;
@@ -67,7 +67,7 @@ namespace Linq.Extras
             [NotNull] Func<T, TKey> keySelector,
             IComparer<TKey> keyComparer = null)
         {
-            keySelector.CheckArgumentNull("keySelector");
+            keySelector.CheckArgumentNull(nameof(keySelector));
             return new ByKeyComparer<T, TKey>(keySelector, keyComparer);
         }
 
@@ -102,7 +102,7 @@ namespace Linq.Extras
             [NotNull] Func<T, TKey> keySelector,
             IComparer<TKey> keyComparer = null)
         {
-            comparer.CheckArgumentNull("comparer");
+            comparer.CheckArgumentNull(nameof(comparer));
             return comparer.ChainWith(By(keySelector, keyComparer));
         }
 
@@ -121,7 +121,7 @@ namespace Linq.Extras
             [NotNull] Func<T, TKey> keySelector,
             IComparer<TKey> keyComparer = null)
         {
-            comparer.CheckArgumentNull("comparer");
+            comparer.CheckArgumentNull(nameof(comparer));
             return comparer.ChainWith(ByDescending(keySelector, keyComparer));
         }
 
@@ -136,7 +136,7 @@ namespace Linq.Extras
         [Pure]
         public static T Min<T>([NotNull] this IComparer<T> comparer, T x, T y)
         {
-            comparer.CheckArgumentNull("comparer");
+            comparer.CheckArgumentNull(nameof(comparer));
             int cmp = comparer.Compare(x, y);
             return cmp <= 0 ? x : y;
         }
@@ -152,7 +152,7 @@ namespace Linq.Extras
         [Pure]
         public static T Max<T>([NotNull] this IComparer<T> comparer, T x, T y)
         {
-            comparer.CheckArgumentNull("comparer");
+            comparer.CheckArgumentNull(nameof(comparer));
             int cmp = comparer.Compare(x, y);
             return cmp >= 0 ? x : y;
         }
@@ -166,7 +166,7 @@ namespace Linq.Extras
 
             public ByKeyComparer([NotNull] Func<T, TKey> keySelector, IComparer<TKey> keyComparer)
             {
-                keySelector.CheckArgumentNull("keySelector");
+                keySelector.CheckArgumentNull(nameof(keySelector));
                 _keySelector = keySelector;
                 _keyComparer = keyComparer ?? Comparer<TKey>.Default;
             }
@@ -183,7 +183,7 @@ namespace Linq.Extras
 
             public ReverseComparer([NotNull] IComparer<T> baseComparer)
             {
-                baseComparer.CheckArgumentNull("baseComparer");
+                baseComparer.CheckArgumentNull(nameof(baseComparer));
                 _baseComparer = baseComparer;
             }
 
@@ -199,40 +199,34 @@ namespace Linq.Extras
 
             public ChainedComparer([NotNull] IComparer<T>[] comparers)
             {
-                comparers.CheckArgumentNull("comparers");
+                comparers.CheckArgumentNull(nameof(comparers));
                 _comparers = comparers;
             }
 
             public ChainedComparer([NotNull] ChainedComparer<T> first, [NotNull] IComparer<T> next)
             {
-                first.CheckArgumentNull("first");
-                next.CheckArgumentNull("next");
+                first.CheckArgumentNull(nameof(first));
+                next.CheckArgumentNull(nameof(next));
                 _comparers = first._comparers.Append(next).ToArray();
             }
 
             public ChainedComparer([NotNull] IComparer<T> first, [NotNull] ChainedComparer<T> next)
             {
-                first.CheckArgumentNull("first");
-                next.CheckArgumentNull("next");
+                first.CheckArgumentNull(nameof(first));
+                next.CheckArgumentNull(nameof(next));
                 _comparers = next._comparers.Prepend(first).ToArray();
             }
 
             public ChainedComparer([NotNull] ChainedComparer<T> first, [NotNull] ChainedComparer<T> next)
             {
-                first.CheckArgumentNull("first");
-                next.CheckArgumentNull("next");
+                first.CheckArgumentNull(nameof(first));
+                next.CheckArgumentNull(nameof(next));
                 _comparers = first._comparers.Concat(next._comparers).ToArray();
             }
 
             public int Compare(T x, T y)
             {
-                foreach (var comparer in _comparers)
-                {
-                    int cmp = comparer.Compare(x, y);
-                    if (cmp != 0)
-                        return cmp;
-                }
-                return 0;
+                return _comparers.Select(comparer => comparer.Compare(x, y)).FirstOrDefault(cmp => cmp != 0);
             }
         }
 

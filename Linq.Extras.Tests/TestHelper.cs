@@ -12,7 +12,7 @@ namespace Linq.Extras.Tests
         {
             var realCall = expr.Body as MethodCallExpression;
             if (realCall == null)
-                throw new ArgumentException("Expression body is not a method call", "expr");
+                throw new ArgumentException("Expression body is not a method call", nameof(expr));
 
             var realArgs = realCall.Arguments;
             var paramIndexes = realCall.Method.GetParameters()

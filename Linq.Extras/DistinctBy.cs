@@ -23,8 +23,8 @@ namespace Linq.Extras
             [NotNull] Func<TSource, TKey> keySelector,
             IEqualityComparer<TKey> keyComparer = null)
         {
-            source.CheckArgumentNull("source");
-            keySelector.CheckArgumentNull("keySelector");
+            source.CheckArgumentNull(nameof(source));
+            keySelector.CheckArgumentNull(nameof(keySelector));
             var comparer = XEqualityComparer.By(keySelector, keyComparer);
             return source.Distinct(comparer);
         }

@@ -102,10 +102,10 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 Y = y;
             }
 
-            public int X { get; private set; }
+            public int X { get; }
             // ReSharper disable once MemberCanBePrivate.Local
             // ReSharper disable once UnusedAutoPropertyAccessor.Local
-            public int Y { get; private set; }
+            public int Y { get;  }
         }
     }
 }
