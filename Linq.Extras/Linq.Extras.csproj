@@ -13,8 +13,8 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile328</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -123,6 +123,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Infer.cs</LastGenOutput>
     </None>
+    <None Include="Linq.Extras.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="XEnumerable.cs" />
@@ -150,7 +152,12 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterBuild">
+    <Copy SkipUnchangedFiles="true" SourceFiles="$(OutDir)$(TargetName).dll" DestinationFiles="$(OutDir)nupkg\lib\dotnet\$(TargetName).dll" />
+    <Copy SkipUnchangedFiles="true" SourceFiles="$(OutDir)$(TargetName).xml" DestinationFiles="$(OutDir)nupkg\lib\dotnet\$(TargetName).xml" />
+    <Copy SkipUnchangedFiles="true" SourceFiles="$(OutDir)$(TargetName).dll" DestinationFiles="$(OutDir)nupkg\lib\portable-net45+win8+wpa81+wp8\$(TargetName).dll" />
+    <Copy SkipUnchangedFiles="true" SourceFiles="$(OutDir)$(TargetName).xml" DestinationFiles="$(OutDir)nupkg\lib\portable-net45+win8+wpa81+wp8\$(TargetName).xml" />
+    <Exec Command="$(SolutionDir)packages\NuGet.CommandLine.2.8.6\tools\NuGet.exe pack Linq.Extras.nuspec -BasePath $(OutDir)nupkg -OutputDirectory $(OutDir)" WorkingDirectory="$(ProjectDir)" Outputs="$(OutDir)*.nupkg" />
+  </Target>
 </Project>

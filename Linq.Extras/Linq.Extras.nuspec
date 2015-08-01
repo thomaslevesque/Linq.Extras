@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Linq.Extras</id>
+    <version>1.0.3</version>
+    <title>Linq.Extras</title>
+    <authors>Thomas Levesque</authors>
+    <description>A set of helper and extension methods to complement the System.Linq namespace. NuGet 2.8.6 or later.</description>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>http://thomaslevesque.github.io/Linq.Extras/</projectUrl>
+    <tags>linq</tags>
+    <releaseNotes>
+      - 1.0.3: fixed up NuGet package for compatibility with NuGet v3 and project.json (note: requires NuGet 2.8.6 or later)
+      - 1.0.2: added GroupUntilChanged and GroupUntilChangedBy
+      - 1.0.1: added ToArray and ToList with count parameter (perf optimization)
+      - 1.0.0: initial release
+    </releaseNotes>
+    <dependencies>
+      <group targetFramework="net" />
+      <group targetFramework="win" />
+      <group targetFramework="wp" />
+      <group targetFramework="wpa" />
+      <group targetFramework="MonoAndroid" />
+      <group targetFramework="MonoTouch" />
+      <group targetFramework="Xamarin.iOS" />
+      <group targetFramework="portable-net45+win8+wpa81+wp8" />
+      <group targetFramework="uap">
+        <dependency id="System.Runtime" version="4.0.0.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.0.0" />
+        <dependency id="System.Linq" version="4.0.0.0" />
+        <dependency id="System.Collections" version="4.0.0.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.0.0" />
+        <dependency id="System.Linq.Expressions" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Tools" version="4.0.0.0" />
+        <dependency id="System.Globalization" version="4.0.0.0" />
+        <dependency id="System.Reflection" version="4.0.0.0" />
+      </group>
+      <group targetFramework="dotnet">
+        <dependency id="System.Runtime" version="4.0.0.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.0.0" />
+        <dependency id="System.Linq" version="4.0.0.0" />
+        <dependency id="System.Collections" version="4.0.0.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.0.0" />
+        <dependency id="System.Linq.Expressions" version="4.0.0.0" />
+        <dependency id="System.Diagnostics.Tools" version="4.0.0.0" />
+        <dependency id="System.Globalization" version="4.0.0.0" />
+        <dependency id="System.Reflection" version="4.0.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
