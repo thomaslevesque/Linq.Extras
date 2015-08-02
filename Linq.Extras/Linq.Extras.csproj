@@ -152,12 +152,7 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  -->
   <Target Name="AfterBuild">
-    <Copy SkipUnchangedFiles="true" SourceFiles="$(OutDir)$(TargetName).dll" DestinationFiles="$(OutDir)nupkg\lib\dotnet\$(TargetName).dll" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="$(OutDir)$(TargetName).xml" DestinationFiles="$(OutDir)nupkg\lib\dotnet\$(TargetName).xml" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="$(OutDir)$(TargetName).dll" DestinationFiles="$(OutDir)nupkg\lib\portable-net45+win8+wpa81+wp8\$(TargetName).dll" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="$(OutDir)$(TargetName).xml" DestinationFiles="$(OutDir)nupkg\lib\portable-net45+win8+wpa81+wp8\$(TargetName).xml" />
-    <Exec Command="$(SolutionDir)packages\NuGet.CommandLine.2.8.6\tools\NuGet.exe pack Linq.Extras.nuspec -BasePath $(OutDir)nupkg -OutputDirectory $(OutDir)" WorkingDirectory="$(ProjectDir)" Outputs="$(OutDir)*.nupkg" />
   </Target>
+  -->
 </Project>

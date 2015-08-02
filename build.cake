@@ -50,15 +50,30 @@ Task("Test")
     NUnit(new[] { $"{projectName}.Tests/bin/{configuration}/{projectName}.Tests.dll" });
 });
 
-Task("Push")
-    .WithCriteria(configuration == "Release")
+Task("Pack")
     .IsDependentOn("Test")
     .Does(() =>
 {
-    if (string.IsNullOrEmpty(version))
-        throw new ArgumentNullException("version");
-    //NuGetPush
-    Information($"{projectName}/bin/{configuration}/{projectName}.{version}.nupkg");
+    string outDir = $"{projectName}/bin/{configuration}";
+    string nupkgDir = $"{outDir}/nupkg";
+    var targets = new[] { $"dotnet", $"portable-net45+win8+wpa81+wp8" };
+    var files = new[] { $"{projectName}.dll", $"{projectName}.xml" };
+    CreateDirectory(nupkgDir);
+    foreach (var target in targets)
+    {
+        string targetDir = $"{nupkgDir}/lib/{target}";
+        CreateDirectory(targetDir);
+        foreach (var file in files)
+        {
+            CopyFileToDirectory($"{outDir}/{file}", targetDir);
+        }
+    }
+    var packSettings = new NuGetPackSettings
+    {
+        BasePath = nupkgDir,
+        OutputDirectory = outDir
+    };
+    NuGetPack($"{projectName}/{projectName}.nuspec", packSettings);
 });
 
 ///////////////////////////////////////////////////////////////////////////////
