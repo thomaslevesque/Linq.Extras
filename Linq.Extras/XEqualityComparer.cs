@@ -36,9 +36,8 @@ namespace Linq.Extras
             private readonly Func<TSource, TKey> _keySelector;
             private readonly IEqualityComparer<TKey> _keyComparer;
 
-            public ByKeyEqualityComparer([NotNull] Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
+            public ByKeyEqualityComparer(Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
             {
-                keySelector.CheckArgumentNull(nameof(keySelector));
                 _keySelector = keySelector;
                 _keyComparer = keyComparer ?? EqualityComparer<TKey>.Default;
             }

@@ -164,9 +164,8 @@ namespace Linq.Extras
             private readonly Func<T, TKey> _keySelector;
             private readonly IComparer<TKey> _keyComparer;
 
-            public ByKeyComparer([NotNull] Func<T, TKey> keySelector, IComparer<TKey> keyComparer)
+            public ByKeyComparer(Func<T, TKey> keySelector, IComparer<TKey> keyComparer)
             {
-                keySelector.CheckArgumentNull(nameof(keySelector));
                 _keySelector = keySelector;
                 _keyComparer = keyComparer ?? Comparer<TKey>.Default;
             }
@@ -181,9 +180,8 @@ namespace Linq.Extras
         {
             private readonly IComparer<T> _baseComparer;
 
-            public ReverseComparer([NotNull] IComparer<T> baseComparer)
+            public ReverseComparer(IComparer<T> baseComparer)
             {
-                baseComparer.CheckArgumentNull(nameof(baseComparer));
                 _baseComparer = baseComparer;
             }
 
@@ -197,30 +195,23 @@ namespace Linq.Extras
         {
             private readonly IComparer<T>[] _comparers;
 
-            public ChainedComparer([NotNull] IComparer<T>[] comparers)
+            public ChainedComparer(IComparer<T>[] comparers)
             {
-                comparers.CheckArgumentNull(nameof(comparers));
                 _comparers = comparers;
             }
 
-            public ChainedComparer([NotNull] ChainedComparer<T> first, [NotNull] IComparer<T> next)
+            public ChainedComparer(ChainedComparer<T> first, IComparer<T> next)
             {
-                first.CheckArgumentNull(nameof(first));
-                next.CheckArgumentNull(nameof(next));
                 _comparers = first._comparers.Append(next).ToArray();
             }
 
-            public ChainedComparer([NotNull] IComparer<T> first, [NotNull] ChainedComparer<T> next)
+            public ChainedComparer(IComparer<T> first, ChainedComparer<T> next)
             {
-                first.CheckArgumentNull(nameof(first));
-                next.CheckArgumentNull(nameof(next));
                 _comparers = next._comparers.Prepend(first).ToArray();
             }
 
-            public ChainedComparer([NotNull] ChainedComparer<T> first, [NotNull] ChainedComparer<T> next)
+            public ChainedComparer(ChainedComparer<T> first, ChainedComparer<T> next)
             {
-                first.CheckArgumentNull(nameof(first));
-                next.CheckArgumentNull(nameof(next));
                 _comparers = first._comparers.Concat(next._comparers).ToArray();
             }
 
