@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Linq.Extras</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>Linq.Extras</title>
     <authors>Thomas Levesque</authors>
     <description>A set of helper and extension methods to complement the System.Linq namespace. NuGet 2.8.6 or later.</description>
@@ -10,6 +10,7 @@
     <projectUrl>http://thomaslevesque.github.io/Linq.Extras/</projectUrl>
     <tags>linq</tags>
     <releaseNotes>
+      - 1.0.4: added XComparer.FromComparison method
       - 1.0.3: fixed up NuGet package for compatibility with NuGet v3 and project.json (note: requires NuGet 2.8.6 or later)
       - 1.0.2: added GroupUntilChanged and GroupUntilChangedBy
       - 1.0.1: added ToArray and ToList with count parameter (perf optimization)
