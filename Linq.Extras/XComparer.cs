@@ -126,6 +126,18 @@ namespace Linq.Extras
         }
 
         /// <summary>
+        /// Creates a comparer that uses the specified <see cref="Comparison{T}"/> delegate to compare objects.
+        /// </summary>
+        /// <param name="comparison">The <see cref="Comparison{T}"/> delegate used to compare objects.</param>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <returns>A comparer that uses the specified <see cref="Comparison{T}"/> delegate to compare objects.</returns>
+        public static IComparer<T> FromComparison<T>([NotNull] Comparison<T> comparison)
+        {
+            comparison.CheckArgumentNull(nameof(comparison));
+            return new DelegateComparer<T>(comparison);
+        }
+
+        /// <summary>
         /// Returns the lesser of two items according to <c>comparer</c>.
         /// </summary>
         /// <typeparam name="T">The type of the objects to compare.</typeparam>
@@ -221,6 +233,18 @@ namespace Linq.Extras
             }
         }
 
+        sealed class DelegateComparer<T> : IComparer<T>
+        {
+            private readonly Comparison<T> _comparison;
+
+            public DelegateComparer(Comparison<T> comparison)
+            {
+                _comparison = comparison;
+            }
+
+            public int Compare(T x, T y) => _comparison(x, y);
+        }
+
         #endregion
 
     }
@@ -261,6 +285,16 @@ namespace Linq.Extras
             IComparer<TKey> keyComparer = null)
         {
             return XComparer.ByDescending(keySelector, keyComparer);
+        }
+
+        /// <summary>
+        /// Creates a comparer that uses the specified <see cref="Comparison{T}"/> delegate to compare objects.
+        /// </summary>
+        /// <param name="comparison">The <see cref="Comparison{T}"/> delegate used to compare objects.</param>
+        /// <returns>A comparer that uses the specified <see cref="Comparison{T}"/> delegate to compare objects.</returns>
+        public static IComparer<T> FromComparison([NotNull] Comparison<T> comparison)
+        {
+            return XComparer.FromComparison(comparison);
         }
     }
 }
