@@ -42,16 +42,15 @@ namespace Linq.Extras
             comparer.CheckArgumentNull(nameof(comparer));
             nextComparer.CheckArgumentNull(nameof(nextComparer));
 
-            // Optimized to avoid nested chained comparers
-            var chained = comparer as ChainedComparer<T>;
-            var nextChained = nextComparer as ChainedComparer<T>;
-            if (chained != null && nextChained != null)
-                return new ChainedComparer<T>(chained, nextChained);
-            if (chained != null)
-                return new ChainedComparer<T>(chained, nextComparer);
-            if (nextChained != null)
-                return new ChainedComparer<T>(comparer, nextChained);
-            return new ChainedComparer<T>(new[] { comparer, nextComparer });
+            var comparers = GetComparers(comparer);
+            var nextComparers = GetComparers(nextComparer);
+
+            return new ChainedComparer<T>(comparers.Concat(nextComparers).ToArray());
+        }
+
+        private static IEnumerable<IComparer<T>> GetComparers<T>(IComparer<T> comparer)
+        {
+            return (comparer as IChainedComparer<T>)?.Comparers ?? XEnumerable.Unit(comparer);
         }
 
         /// <summary>
@@ -203,33 +202,23 @@ namespace Linq.Extras
             }
         }
 
-        sealed class ChainedComparer<T> : IComparer<T>
+        private interface IChainedComparer<T> : IComparer<T>
         {
-            private readonly IComparer<T>[] _comparers;
+            IEnumerable<IComparer<T>> Comparers { get; }
+        }
 
-            public ChainedComparer(IComparer<T>[] comparers)
-            {
-                _comparers = comparers;
-            }
+        sealed class ChainedComparer<T> : IChainedComparer<T>
+        {
+            public IEnumerable<IComparer<T>> Comparers { get; }
 
-            public ChainedComparer(ChainedComparer<T> first, IComparer<T> next)
+            public ChainedComparer(IEnumerable<IComparer<T>> comparers)
             {
-                _comparers = first._comparers.Append(next).ToArray();
-            }
-
-            public ChainedComparer(IComparer<T> first, ChainedComparer<T> next)
-            {
-                _comparers = next._comparers.Prepend(first).ToArray();
-            }
-
-            public ChainedComparer(ChainedComparer<T> first, ChainedComparer<T> next)
-            {
-                _comparers = first._comparers.Concat(next._comparers).ToArray();
+                Comparers = comparers.ToArray();
             }
 
             public int Compare(T x, T y)
             {
-                return _comparers.Select(comparer => comparer.Compare(x, y)).FirstOrDefault(cmp => cmp != 0);
+                return Comparers.Select(comparer => comparer.Compare(x, y)).FirstOrDefault(cmp => cmp != 0);
             }
         }
 
