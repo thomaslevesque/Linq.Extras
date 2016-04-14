@@ -18,9 +18,7 @@ namespace Linq.Extras
         public static bool IsNullOrEmpty<TSource>(
             this IEnumerable<TSource> source)
         {
-            if (source == null)
-                return true;
-            return !source.Any();
+            return source == null || !source.Any();
         }
 
         /// <summary>
