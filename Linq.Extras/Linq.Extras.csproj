@@ -123,8 +123,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Infer.cs</LastGenOutput>
     </None>
-    <None Include="Linq.Extras.nuspec" />
-    <None Include="packages.config" />
+    <None Include="Linq.Extras.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="XEnumerable.cs" />

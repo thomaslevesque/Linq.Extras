@@ -1,3 +1,5 @@
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.1
+
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -47,7 +49,7 @@ Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    NUnit(new[] { $"{projectName}.Tests/bin/{configuration}/{projectName}.Tests.dll" });
+    NUnit3(new[] { $"{projectName}.Tests/bin/{configuration}/{projectName}.Tests.dll" });
 });
 
 Task("Pack")
