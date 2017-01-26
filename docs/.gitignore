@@ -1,0 +1,9 @@
+Documentation/
+Linq.Extras/
+Linq.Extras.Tests/
+NDependOut/
+packages/
+NuGet/
+*.suo
+doc/LastBuild.log
+
