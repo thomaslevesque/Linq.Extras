@@ -78,6 +78,13 @@ Task("Pack")
     NuGetPack($"{projectName}/{projectName}.nuspec", packSettings);
 });
 
+Task("Doc")
+    .Does(() =>
+{
+    CleanDirectory("Documentation/Help");
+    MSBuild("Documentation/Documentation.shfbproj");
+});
+
 ///////////////////////////////////////////////////////////////////////////////
 // TARGETS
 ///////////////////////////////////////////////////////////////////////////////

@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Portable Library 4.0 (Legacy)</FrameworkVersion>
-    <OutputPath>.\Help\</OutputPath>
+    <OutputPath>..\docs\doc</OutputPath>
     <HtmlHelpName>Linq.Extras</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
