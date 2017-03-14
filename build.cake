@@ -6,26 +6,9 @@
 
 var target = Argument<string>("target", "Default");
 var configuration = Argument<string>("configuration", "Release");
-var version = Argument<string>("version", null);
+
 var projectName = "Linq.Extras";
 var solutionFile = $"./{projectName}.sln";
-
-
-///////////////////////////////////////////////////////////////////////////////
-// SETUP / TEARDOWN
-///////////////////////////////////////////////////////////////////////////////
-
-Setup(context =>
-{
-    // Executed BEFORE the first task.
-    Information("Running tasks...");
-});
-
-Teardown(context =>
-{
-    // Executed AFTER the last task.
-    Information("Finished running tasks.");
-});
 
 ///////////////////////////////////////////////////////////////////////////////
 // TASK DEFINITIONS
@@ -37,8 +20,12 @@ Task("Clean")
     CleanDirectory($"./{projectName}/bin/{configuration}");
 });
 
+Task("Restore")
+    .Does(() => NuGetRestore("."));
+
 Task("Build")
     .IsDependentOn("Clean")
+    .IsDependentOn("Restore")
     .Does(() =>
 {
     MSBuild(solutionFile,
