@@ -40,7 +40,7 @@ Task("Test")
 });
 
 Task("Pack")
-    .IsDependentOn("Test")
+    .IsDependentOn("Build")
     .Does(() =>
 {
     string outDir = $"{projectName}/bin/{configuration}";
@@ -77,7 +77,8 @@ Task("Doc")
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Test");
+    .IsDependentOn("Test")
+    .IsDependentOn("Pack");
 
 ///////////////////////////////////////////////////////////////////////////////
 // EXECUTION
