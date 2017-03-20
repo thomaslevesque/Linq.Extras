@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras", "Linq.Extras\Linq.Extras.csproj", "{93E26A7D-E074-4B93-9B74-24414A12FB3B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0179FA49-AFDB-429D-823D-F895E4C3393D}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras", "Linq.Extras\Linq.Extras.csproj", "{93E26A7D-E074-4B93-9B74-24414A12FB3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras.Tests", "Linq.Extras.Tests\Linq.Extras.Tests.csproj", "{B4C8C58A-33D3-4F6C-BA38-FFE8B6A6EE8C}"
 EndProject
