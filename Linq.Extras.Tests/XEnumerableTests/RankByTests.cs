@@ -1,13 +1,12 @@
 ﻿using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class RankByTests
+    public class RankByTests
     {
-        [Test]
+        [Fact]
         public void RankBy_Throws_When_Argument_Is_Null()
         {
             var source = XEnumerable.Empty<int>().ForbidEnumeration();
@@ -17,7 +16,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "source", "keySelector", "resultSelector");
         }
 
-        [Test]
+        [Fact]
         public void RankBy_Associates_Item_With_Rank_NoDraws()
         {
             var source = new[]
@@ -38,7 +37,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "5. Charlie");
         }
 
-        [Test]
+        [Fact]
         public void RankBy_Uses_Specified_Key_Comparer()
         {
             var source = new[]
@@ -60,7 +59,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "5. Charlie");
         }
 
-        [Test]
+        [Fact]
         public void RankBy_Associates_Item_With_Rank_WithDraws()
         {
             var source = new[]
@@ -81,7 +80,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "4. Emily");
         }
 
-        [Test]
+        [Fact]
         public void RankByDescending_Throws_When_Argument_Is_Null()
         {
             var source = XEnumerable.Empty<int>().ForbidEnumeration();
@@ -91,7 +90,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "source", "keySelector", "resultSelector");
         }
 
-        [Test]
+        [Fact]
         public void RankByDescending_Associates_Item_With_Rank_NoDraws()
         {
             var source = new[]
@@ -112,7 +111,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "5. David");
         }
 
-        [Test]
+        [Fact]
         public void RankByDescending_Uses_Specified_Key_Comparer()
         {
             var source = new[]
@@ -134,7 +133,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "5. David");
         }
 
-        [Test]
+        [Fact]
         public void RankByDescending_Associates_Item_With_Rank_WithDraws()
         {
             var source = new[]
@@ -155,7 +154,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "5. David");
         }
 
-        [Test]
+        [Fact]
         public void DenseRankBy_Throws_When_Argument_Is_Null()
         {
             var source = XEnumerable.Empty<int>().ForbidEnumeration();
@@ -165,7 +164,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "source", "keySelector", "resultSelector");
         }
 
-        [Test]
+        [Fact]
         public void DenseRankBy_Associates_Item_With_Rank_NoDraws()
         {
             var source = new[]
@@ -186,7 +185,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "5. Charlie");
         }
 
-        [Test]
+        [Fact]
         public void DenseRankBy_Uses_Specified_Key_Comparer()
         {
             var source = new[]
@@ -208,7 +207,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "5. Charlie");
         }
 
-        [Test]
+        [Fact]
         public void DenseRankBy_Associates_Item_With_Rank_WithDraws()
         {
             var source = new[]
@@ -229,7 +228,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "3. Emily");
         }
 
-        [Test]
+        [Fact]
         public void DenseRankByDescending_Throws_When_Argument_Is_Null()
         {
             var source = XEnumerable.Empty<int>().ForbidEnumeration();
@@ -239,7 +238,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "source", "keySelector", "resultSelector");
         }
 
-        [Test]
+        [Fact]
         public void DenseRankByDescending_Associates_Item_With_Rank_NoDraws()
         {
             var source = new[]
@@ -260,7 +259,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "5. David");
         }
 
-        [Test]
+        [Fact]
         public void DenseRankByDescending_Uses_Specified_Key_Comparer()
         {
             var source = new[]
@@ -282,7 +281,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "5. David");
         }
 
-        [Test]
+        [Fact]
         public void DenseRankByDescending_Associates_Item_With_Rank_WithDraws()
         {
             var source = new[]

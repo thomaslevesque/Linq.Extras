@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class IndexOfTests
+    public class IndexOfTests
     {
-        [Test]
+        [Fact]
         public void IndexOf_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -19,7 +18,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void IndexOf_Returns_MinusOne_If_Element_Is_Not_Found()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -27,7 +26,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             index.Should().Be(-1);
         }
 
-        [Test]
+        [Fact]
         public void IndexOf_Returns_Index_Of_First_Element_If_Found()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -35,7 +34,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             index.Should().Be(5);
         }
 
-        [Test]
+        [Fact]
         public void IndexOf_Throws_If_Predicate_Is_Null()
         {
             var source = Enumerable.Empty<int>().ForbidEnumeration();
@@ -46,7 +45,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("predicate");
         }
 
-        [Test]
+        [Fact]
         public void IndexOf_Returns_MinusOne_If_No_Element_Matches_Predicate()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -54,7 +53,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             index.Should().Be(-1);
         }
 
-        [Test]
+        [Fact]
         public void IndexOf_Returns_Index_Of_First_Element_That_Matches_Predicate()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -62,7 +61,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             index.Should().Be(5);
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOf_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -72,7 +71,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOf_Returns_MinusOne_If_Element_Is_Not_Found()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -80,7 +79,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             index.Should().Be(-1);
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOf_Returns_Index_Of_Last_Element_If_Found()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -88,7 +87,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             index.Should().Be(11);
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOf_Throws_If_Predicate_Is_Null()
         {
             var source = Enumerable.Empty<int>().ForbidEnumeration();
@@ -99,7 +98,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("predicate");
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOf_Returns_MinusOne_If_No_Element_Matches_Predicate()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -107,7 +106,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             index.Should().Be(-1);
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOf_Returns_Index_Of_Last_Element_That_Matches_Predicate()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class BatchTests
+    public class BatchTests
     {
-        [Test]
+        [Fact]
         public void Batch_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -19,7 +18,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void Batch_Throws_If_Size_Is_Negative_Or_Zero()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidEnumeration();
@@ -31,7 +30,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             // ReSharper restore ReturnValueOfPureMethodIsNotUsed
         }
 
-        [Test]
+        [Fact]
         public void Batch_Returns_Batches_Of_Specified_Size()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -42,7 +41,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             batches[2].Should().Equal(23, 42);
         }
 
-        [Test]
+        [Fact]
         public void Batch_Returns_Smaller_Last_Batch_If_Count_Not_Divisible_By_Size()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();

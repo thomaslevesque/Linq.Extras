@@ -1,13 +1,12 @@
 ﻿using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class ToHierarchyTests
+    public class ToHierarchyTests
     {
-        [Test]
+        [Fact]
         public void ToHierarchy_Throws_If_Argument_Is_Null()
         {
             var source = XEnumerable.Empty<Foo>().ForbidEnumeration();
@@ -17,7 +16,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "source", "idSelector", "parentIdSelector");
         }
 
-        [Test]
+        [Fact]
         public void ToHierarchy_Returns_Hierarchy_Of_Nodes()
         {
             var source = new[]

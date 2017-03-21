@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class MinMaxTests
+    public class MinMaxTests
     {
-        [Test]
+        [Fact]
         public void MaxBy_Throws_If_Source_Is_Null()
         {
             IEnumerable<Foo> source = null;
@@ -19,7 +18,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void MaxBy_Throws_If_Source_Is_Empty()
         {
             var foos = new Foo[] { }.ForbidMultipleEnumeration();
@@ -27,7 +26,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             Assert.Throws<InvalidOperationException>(() => foos.MaxBy(_getFooValue));
         }
 
-        [Test]
+        [Fact]
         public void MaxBy_Throws_If_KeySelector_Is_Null()
         {
             var source = GetFoos().ForbidEnumeration();
@@ -38,7 +37,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("keySelector");
         }
 
-        [Test]
+        [Fact]
         public void MaxBy_Returns_Item_With_Max_Value_For_Key()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
@@ -48,7 +47,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Be(expected);
         }
 
-        [Test]
+        [Fact]
         public void MaxBy_Returns_Item_With_Max_Value_For_Key_Based_On_Comparer()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
@@ -58,7 +57,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Be(expected);
         }
 
-        [Test]
+        [Fact]
         public void MinBy_Throws_If_Source_Is_Null()
         {
             IEnumerable<Foo> source = null;
@@ -68,7 +67,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void MinBy_Throws_If_KeySelector_Is_Null()
         {
             var source = GetFoos().ForbidEnumeration();
@@ -79,7 +78,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("keySelector");
         }
 
-        [Test]
+        [Fact]
         public void MinBy_Throws_If_Source_Is_Empty()
         {
             var foos = new Foo[] { }.ForbidMultipleEnumeration();
@@ -87,7 +86,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             Assert.Throws<InvalidOperationException>(() => foos.MinBy(_getFooValue));
         }
 
-        [Test]
+        [Fact]
         public void MinBy_Returns_Item_With_Min_Value_For_Key()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
@@ -97,7 +96,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Be(expected);
         }
 
-        [Test]
+        [Fact]
         public void MinBy_Returns_Item_With_Min_Value_For_Key_Based_On_Comparer()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
@@ -107,7 +106,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Be(expected);
         }
 
-        [Test]
+        [Fact]
         public void Max_Throws_If_Source_Is_Null()
         {
             IEnumerable<Foo> source = null;
@@ -118,7 +117,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void Max_Throws_If_Comparer_Is_Null()
         {
             var source = GetFoos().ForbidEnumeration();
@@ -129,7 +128,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("comparer");
         }
 
-        [Test]
+        [Fact]
         public void Max_Return_Max_Value_Based_On_Comparer()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
@@ -139,7 +138,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Be(expected);
         }
 
-        [Test]
+        [Fact]
         public void Max_Throws_If_Source_Is_Empty()
         {
             var foos = new Foo[] { }.ForbidMultipleEnumeration();
@@ -147,7 +146,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             Assert.Throws<InvalidOperationException>(() => foos.Max(new FooComparer()));
         }
 
-        [Test]
+        [Fact]
         public void Min_Throws_If_Source_Is_Null()
         {
             IEnumerable<Foo> source = null;
@@ -158,7 +157,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void Min_Throws_If_Comparer_Is_Null()
         {
             var source = GetFoos().ForbidEnumeration();
@@ -169,7 +168,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("comparer");
         }
 
-        [Test]
+        [Fact]
         public void Min_Return_Min_Value_Based_On_Comparer()
         {
             var foos = GetFoos().ForbidMultipleEnumeration();
@@ -179,7 +178,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Be(expected);
         }
 
-        [Test]
+        [Fact]
         public void Min_Throws_If_Source_Is_Empty()
         {
             var foos = new Foo[] { }.ForbidMultipleEnumeration();

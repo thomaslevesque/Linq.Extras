@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class ToCollectionsTests
+    public class ToCollectionsTests
     {
-        [Test]
+        [Fact]
         public void ToQueue_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -19,7 +18,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void ToQueue_Returns_A_Queue_With_The_Same_Items_As_Source()
         {
             var items = new[] { 4, 8, 15, 16, 23, 42 };
@@ -28,7 +27,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             queue.Should().Equal(items);
         }
 
-        [Test]
+        [Fact]
         public void ToStack_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -38,7 +37,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void ToStack_Returns_A_Stack_With_The_Same_Items_As_Source()
         {
             var items = new[] { 4, 8, 15, 16, 23, 42 };
@@ -47,7 +46,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             stack.Should().Equal(items.Reverse());
         }
 
-        [Test]
+        [Fact]
         public void ToHashSet_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -57,7 +56,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void ToHashSet_Returns_A_HashSet_With_The_Same_Items_As_Source()
         {
             var items = new[] { 4, 8, 15, 16, 23, 42 };
@@ -66,7 +65,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             hashSet.Should().Equal(items);
         }
 
-        [Test]
+        [Fact]
         public void ToHashSet_Uses_The_Provided_Comparer()
         {
             var items = new[] { 4, -8, 15, 16, -23, 42 };
@@ -76,7 +75,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             hashSet.Should().Equal(items, comparer.Equals);
         }
 
-        [Test]
+        [Fact]
         public void ToLinkedList_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -86,7 +85,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void ToLinkedList_Returns_A_LinkedList_With_The_Same_Items_As_Source()
         {
             var items = new[] { 4, 8, 15, 16, 23, 42 };
@@ -95,7 +94,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             linkedList.Should().Equal(items);
         }
 
-        [Test]
+        [Fact]
         public void ToArray_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -105,7 +104,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void ToArray_Returns_An_Array_With_The_Same_Items_As_Source()
         {
             var items = new[] { 4, 8, 15, 16, 23, 42 };
@@ -114,7 +113,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             array.Should().Equal(items);
         }
 
-        [Test]
+        [Fact]
         public void ToList_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -124,7 +123,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void ToList_Returns_A_List_With_The_Same_Items_As_Source()
         {
             var items = new[] { 4, 8, 15, 16, 23, 42 };

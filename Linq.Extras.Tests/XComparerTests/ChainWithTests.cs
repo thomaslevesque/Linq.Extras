@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XComparerTests
 {
-    [TestFixture]
-    class ChainWithTests
+    public class ChainWithTests
     {
-        [Test]
+        [Fact]
         public void ChainWith_Uses_Next_Comparer_If_First_Returns_Zero()
         {
             var a = new Foo { X = 0, Y = 0 };
@@ -18,12 +17,12 @@ namespace Linq.Extras.Tests.XComparerTests
 
             int expected = -1;
             int actual = comparer.Compare(a, b);
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
 
-            Assert.AreEqual(1, next.CallCount);
+            Assert.Equal(1, next.CallCount);
         }
 
-        [Test]
+        [Fact]
         public void ChainWith_Doesnt_Use_Next_Comparer_If_First_Returns_NonZero()
         {
             var a = new Foo { X = 0, Y = 0 };
@@ -35,12 +34,12 @@ namespace Linq.Extras.Tests.XComparerTests
 
             int expected = -1;
             int actual = comparer.Compare(a, b);
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
 
-            Assert.AreEqual(0, next.CallCount);
+            Assert.Equal(0, next.CallCount);
         }
 
-        [Test]
+        [Fact]
         public void Chaining_Multiple_Comparers_Works_As_Well()
         {
             var a = new Foo { X = 0, Y = 0 , Z = 1};
@@ -56,20 +55,20 @@ namespace Linq.Extras.Tests.XComparerTests
             var comparer = first.ChainWith(second).ChainWith(third);
             int expected = 1;
             int actual = comparer.Compare(a, b);
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
 
 
             // first.(second.third)
             comparer = first.ChainWith(second.ChainWith(third));
             expected = 1;
             actual = comparer.Compare(a, b);
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
 
             // (first.second).(first.second)
             comparer = first.ChainWith(second).ChainWith(first.ChainWith(second));
             expected = 0;
             actual = comparer.Compare(a, b);
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         class Foo

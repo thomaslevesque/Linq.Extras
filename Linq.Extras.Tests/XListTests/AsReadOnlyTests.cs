@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XListTests
 {
-    [TestFixture]
-    class AsReadOnlyTests
+    public class AsReadOnlyTests
     {
-        [Test]
+        [Fact]
         public void AsReadOnly_Throws_If_List_IsNull()
         {
             IList<int> list = null;
@@ -18,7 +17,7 @@ namespace Linq.Extras.Tests.XListTests
             ex.ParamName.Should().Be("list");
         }
 
-        [Test]
+        [Fact]
         public void AsReadOnly_Returns_List_With_Same_Items()
         {
             var items = new List<int> { 4, 8, 15, 16, 23, 42 };
@@ -29,7 +28,7 @@ namespace Linq.Extras.Tests.XListTests
             result.Should().Equal(items);
         }
 
-        [Test]
+        [Fact]
         public void AsReadOnly_Returns_A_List_That_Throws_On_Attempt_To_Modify()
         {
             var items = new List<int> { 4, 8, 15, 16, 23, 42 };
@@ -37,7 +36,7 @@ namespace Linq.Extras.Tests.XListTests
             // Call as a static method, because full .NET already has a AsReadOnly instance method which would be used instead
             IList<int> result = XList.AsReadOnly(items);
             
-            Assert.Throws<NotSupportedException>(result.Clear);
+            Assert.Throws<NotSupportedException>(() => result.Clear());
             Assert.Throws<NotSupportedException>(() => result.Add(99));
             Assert.Throws<NotSupportedException>(() => result.Insert(1, 99));
             Assert.Throws<NotSupportedException>(() => result.RemoveAt(0));
@@ -45,7 +44,7 @@ namespace Linq.Extras.Tests.XListTests
             Assert.Throws<NotSupportedException>(() => result[0] = 99);
         }
 
-        [Test]
+        [Fact]
         public void AsReadOnly_Returns_A_List_That_Reflects_Changes_In_The_Original_List()
         {
             var items = new List<int> { 4, 8, 15, 16, 23, 42 };

@@ -1,13 +1,12 @@
 ﻿using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XComparerTests
 {
-    [TestFixture]
     public class FromComparisonTests
     {
-        [Test]
+        [Fact]
         public void FromComparison_Returns_A_Comparer_Based_On_A_Comparison()
         {
             var a = new Foo { Name = "foo" };

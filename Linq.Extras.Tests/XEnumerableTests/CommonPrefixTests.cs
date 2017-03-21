@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class CommonPrefixTests
+    public class CommonPrefixTests
     {
-        [Test]
+        [Fact]
         public void CommonPrefix_Throws_If_Source_Or_Other_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -27,7 +26,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             // ReSharper restore ReturnValueOfPureMethodIsNotUsed
         }
 
-        [Test]
+        [Fact]
         public void CommonPrefix_Returns_Common_Prefix_Of_Two_Sequences()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -36,7 +35,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().Equal(4, 8, 15);
         }
 
-        [Test]
+        [Fact]
         public void CommonPrefix_Returns_Empty_Sequence_If_Source_Is_Empty()
         {
             var source = new int[] { }.ForbidMultipleEnumeration();
@@ -46,7 +45,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Count().Should().Be(0);
         }
 
-        [Test]
+        [Fact]
         public void CommonPrefix_Returns_Empty_Sequence_If_Other_Is_Empty()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -56,7 +55,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Count().Should().Be(0);
         }
 
-        [Test]
+        [Fact]
         public void CommonPrefix_Uses_The_Specified_Comparer()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();

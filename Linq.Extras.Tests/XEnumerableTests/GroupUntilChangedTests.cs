@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class GroupUntilChangedTests
+    public class GroupUntilChangedTests
     {
-        [Test]
+        [Fact]
         public void GroupUntilChanged_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -20,7 +19,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void GroupUntilChanged_Returns_Empty_Sequence_If_Source_Is_Empty()
         {
             var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
@@ -28,7 +27,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().BeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void GroupUntilChanged_Returns_Groupings_Of_Adjacent_Elements()
         {
             var source = new[] { 1, 1, 1, 2, 3, 3, 1, 3, 2, 2 }.ForbidMultipleEnumeration();
@@ -48,7 +47,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result[5].Should().Equal(2, 2);
         }
 
-        [Test]
+        [Fact]
         public void GroupUntilChanged_Uses_Specified_Comparer()
         {
             var source = new[] { -1, 1, -1, 2, 3, -3, 1, 3, -2, 2 }.ForbidMultipleEnumeration();
@@ -69,7 +68,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result[5].Should().Equal(-2, 2);
         }
 
-        [Test]
+        [Fact]
         public void GroupUntilChangedBy_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -79,7 +78,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void GroupUntilChangedBy_Throws_If_KeySelector_Is_Null()
         {
             var source = Enumerable.Empty<int>().ForbidEnumeration();
@@ -90,7 +89,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("keySelector");
         }
 
-        [Test]
+        [Fact]
         public void GroupUntilChangedBy_Returns_Empty_Sequence_If_Source_Is_Empty()
         {
             var source = Enumerable.Empty<Foo>().ForbidMultipleEnumeration();
@@ -98,7 +97,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().BeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void GroupUntilChangedBy_Returns_Groupings_Of_Adjacent_Elements()
         {
             var source = new[]
@@ -127,7 +126,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result[4].Should().Equal(new Foo(2, 0), new Foo(2, 2));
         }
 
-        [Test]
+        [Fact]
         public void GroupUntilChangedBy_Uses_Specified_Comparer()
         {
             var source = new[]

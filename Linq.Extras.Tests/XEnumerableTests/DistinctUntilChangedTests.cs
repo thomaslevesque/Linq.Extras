@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class DistinctUntilChangedTests
+    public class DistinctUntilChangedTests
     {
-        [Test]
+        [Fact]
         public void DistinctUntilChanged_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -20,7 +19,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void DistinctUntilChanged_Returns_Empty_Sequence_If_Source_Is_Empty()
         {
             var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
@@ -28,7 +27,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().BeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void DistinctUntilChanged_Returns_Distinct_Adjacent_Elements()
         {
             var source = new[] { 1, 1, 1, 2, 3, 3, 1, 3, 2, 2 }.ForbidMultipleEnumeration();
@@ -36,7 +35,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().Equal(1, 2, 3, 1, 3, 2);
         }
 
-        [Test]
+        [Fact]
         public void DistinctUntilChanged_Uses_Specified_Comparer()
         {
             var source = new[] { -1, 1, -1, 2, 3, -3, 1, 3, -2, 2 }.ForbidMultipleEnumeration();
@@ -45,7 +44,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().Equal(-1, 2, 3, 1, 3, -2);
         }
 
-        [Test]
+        [Fact]
         public void DistinctUntilChangedBy_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -55,7 +54,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void DistinctUntilChangedBy_Throws_If_KeySelector_Is_Null()
         {
             var source = Enumerable.Empty<int>().ForbidEnumeration();
@@ -66,7 +65,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("keySelector");
         }
 
-        [Test]
+        [Fact]
         public void DistinctUntilChangedBy_Returns_Empty_Sequence_If_Source_Is_Empty()
         {
             var source = Enumerable.Empty<Foo>().ForbidMultipleEnumeration();
@@ -74,7 +73,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().BeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void DistinctUntilChangedBy_Returns_Distinct_Adjacent_Elements()
         {
             var source = new[]
@@ -99,7 +98,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 );
         }
 
-        [Test]
+        [Fact]
         public void DistinctUntilChangedBy_Uses_Specified_Comparer()
         {
             var source = new[]
