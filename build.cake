@@ -1,66 +1,76 @@
-///////////////////////////////////////////////////////////////////////////////
-// ARGUMENTS
-///////////////////////////////////////////////////////////////////////////////
+using System.Xml.Linq;
 
 var target = Argument<string>("target", "Default");
 var configuration = Argument<string>("configuration", "Release");
 
 var projectName = "Linq.Extras";
-
-///////////////////////////////////////////////////////////////////////////////
-// TASK DEFINITIONS
-///////////////////////////////////////////////////////////////////////////////
+var libraryProject = $"{projectName}/{projectName}.csproj";
+var testProject = $"{projectName}.Tests/{projectName}.Tests.csproj";
+var outDir = $"{projectName}/bin/{configuration}";
 
 Task("Clean")
     .Does(() =>
-{
-    CleanDirectory($"./{projectName}/bin/{configuration}");
-});
+    {
+        CleanDirectory(outDir);
+    });
 
-Task("Restore")
-    .Does(() => DotNetCoreRestore());
+Task("Restore").Does(DotNetCoreRestore);
+
+Task("JustBuild")
+    .Does(() =>
+    {
+        DotNetCoreBuild(".", new DotNetCoreBuildSettings { Configuration = configuration });
+    });
+
+Task("JustTest")
+    .Does(() =>
+    {
+        DotNetCoreTest(testProject, new DotNetCoreTestSettings { Configuration = configuration });
+    });
+    
+Task("JustPack")
+    .Does(() =>
+    {
+        DotNetCorePack(libraryProject, new DotNetCorePackSettings { Configuration = configuration });
+    });
+
+Task("JustPush")
+    .Does(() =>
+    {
+        var doc = XDocument.Load(libraryProject);
+        string version = doc.Root.Elements("PropertyGroup").Elements("Version").First().Value;
+        string package = $"{projectName}/bin/{configuration}/{projectName}.{version}.nupkg";
+        NuGetPush(package, new NuGetPushSettings());
+    });
+
+Task("Doc")
+    .Does(() =>
+    {
+        CleanDirectory("Documentation/Help");
+        MSBuild("Documentation/Documentation.shfbproj");
+    });
+
+// High level tasks
 
 Task("Build")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
-    .Does(() =>
-{
-    DotNetCoreBuild(".", new DotNetCoreBuildSettings { Configuration = configuration });
-});
+    .IsDependentOn("JustBuild");
 
 Task("Test")
     .IsDependentOn("Build")
-    .Does(() =>
-{
-    DotNetCoreTest(
-        $"{projectName}.Tests/{projectName}.Tests.csproj",
-        new DotNetCoreTestSettings { Configuration = configuration });
-});
+    .IsDependentOn("JustTest");
 
 Task("Pack")
     .IsDependentOn("Build")
-    .Does(() =>
-{
-    DotNetCorePack(projectName, new DotNetCorePackSettings { Configuration = configuration });
-});
+    .IsDependentOn("JustPack");
 
-Task("Doc")
-    .Does(() =>
-{
-    CleanDirectory("Documentation/Help");
-    MSBuild("Documentation/Documentation.shfbproj");
-});
-
-///////////////////////////////////////////////////////////////////////////////
-// TARGETS
-///////////////////////////////////////////////////////////////////////////////
+Task("Push")
+    .IsDependentOn("Pack")
+    .IsDependentOn("JustPush");
 
 Task("Default")
     .IsDependentOn("Test")
     .IsDependentOn("Pack");
-
-///////////////////////////////////////////////////////////////////////////////
-// EXECUTION
-///////////////////////////////////////////////////////////////////////////////
 
 RunTarget(target);
