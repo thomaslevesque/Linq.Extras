@@ -1,159 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{93E26A7D-E074-4B93-9B74-24414A12FB3B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Linq.Extras</RootNamespace>
-    <AssemblyName>Linq.Extras</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Project Information">
+    <TargetFrameworks>netstandard1.0;net45</TargetFrameworks>
+    <Version>1.1.0</Version>
+    <Description>A set of helper and extension methods to complement the System.Linq namespace.</Description>
+    <Authors>Thomas Levesque</Authors>
+    <PackageLicenseUrl>https://github.com/thomaslevesque/Linq.Extras/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/thomaslevesque/Linq.Extras/</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/thomaslevesque/Linq.Extras/blob/master/RELEASENOTES.md</PackageReleaseNotes>
+    <PackageTags>linq</PackageTags>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Debug\Linq.Extras.xml</DocumentationFile>
+
+  <PropertyGroup Label="Build settings">
+    <DocumentationFile>$(OutputPath)\Linq.Extras.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Linq.Extras.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
+    <DefineConstants>$(DefineConstants);NETCORE</DefineConstants>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <Compile Include="CommonPrefix.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GroupUntilChanged.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IIndexedItem.cs" />
-    <Compile Include="IndexOfSubstring.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="INode.cs" />
-    <Compile Include="Internal\ExcludeFromCodeCoverageAttribute.cs" />
-    <Compile Include="TreeTraversalMode.cs" />
-    <Compile Include="XComparer.cs" />
-    <Compile Include="AppendPrepend.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DistinctBy.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DistinctUntilChanged.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ExceptBy.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Batch.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Flatten.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generate.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IndexOf.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ToHierarchy.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IntersectBy.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IsNullOrEmpty.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XEqualityComparer.cs" />
-    <Compile Include="XList.cs" />
-    <Compile Include="MinMax.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="None.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OrDefault.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OuterJoin.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RankBy.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SequenceEqualBy.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ToCollections.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UnionBy.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WithIndex.cs">
-      <DependentUpon>XEnumerable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Infer.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Infer.cs</LastGenOutput>
-    </None>
-    <None Include="Linq.Extras.nuspec">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="XEnumerable.cs" />
-    <Compile Include="Infer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Infer.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Internal\ArgumentExtensions.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

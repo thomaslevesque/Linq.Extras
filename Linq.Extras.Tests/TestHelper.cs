@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Linq.Expressions;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests
 {
     static class TestHelper
     {
-        public static void AssertThrowsWhenArgumentNull(Expression<TestDelegate> expr, params string[] paramNames)
+        public static void AssertThrowsWhenArgumentNull(Expression<Action> expr, params string[] paramNames)
         {
             var realCall = expr.Body as MethodCallExpression;
             if (realCall == null)
@@ -28,9 +28,9 @@ namespace Linq.Extras.Tests
                 var args = realArgs.ToArray();
                 args[paramIndexes[paramName]] = Expression.Constant(null, paramTypes[paramName]);
                 var call = Expression.Call(realCall.Object, realCall.Method, args);
-                var lambda = Expression.Lambda<TestDelegate>(call);
+                var lambda = Expression.Lambda<Action>(call);
                 var action = lambda.Compile();
-                var ex = Assert.Throws<ArgumentNullException>(action, "Expected ArgumentNullException for parameter '{0}', but none was thrown.", paramName);
+                var ex = Assert.Throws<ArgumentNullException>(paramName, action);
                 ex.ParamName.Should().Be(paramName);
             }
         }

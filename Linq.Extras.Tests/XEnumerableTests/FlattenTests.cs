@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class FlattenTests
+    public class FlattenTests
     {
-        [Test]
+        [Fact]
         public void Flatten_Throws_If_Source_Is_Null()
         {
             IEnumerable<Foo> source = null;
@@ -20,7 +19,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void Flatten_Throws_If_ChildrenSelector_Is_Null()
         {
             IEnumerable<Foo> source = Enumerable.Empty<Foo>().ForbidEnumeration();
@@ -31,7 +30,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("childrenSelector");
         }
 
-        [Test]
+        [Fact]
         public void Flatten_Throws_If_ResultSelector_Is_Null()
         {
             var source = Enumerable.Empty<Foo>().ForbidEnumeration();
@@ -42,7 +41,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("resultSelector");
         }
 
-        [Test]
+        [Fact]
         public void Flatten_Throws_If_ResultSelector_With_Level_Is_Null()
         {
             var source = Enumerable.Empty<Foo>().ForbidEnumeration();
@@ -53,7 +52,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("resultSelector");
         }
 
-        [Test]
+        [Fact]
         public void Flatten_Throws_If_TraversalMode_Is_Invalid()
         {
             var source = Enumerable.Empty<Foo>().ForbidEnumeration();
@@ -62,7 +61,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("traversalMode");
         }
 
-        [Test]
+        [Fact]
         public void Flatten_Returns_Flat_Sequence_Of_Nodes_DepthFirst()
         {
             var source = GetFoos().ForbidMultipleEnumeration();
@@ -72,7 +71,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Equal(expected);
         }
 
-        [Test]
+        [Fact]
         public void Flatten_Returns_Flat_Sequence_Of_Nodes_BreadthFirst()
         {
             var source = GetFoos().ForbidMultipleEnumeration();
@@ -82,7 +81,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Equal(expected);
         }
 
-        [Test]
+        [Fact]
         public void Flatten_With_ResultSelector_Returns_Flat_Sequence_DepthFirst()
         {
             var source = GetFoos().ForbidMultipleEnumeration();
@@ -91,7 +90,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Equal(expected);
         }
 
-        [Test]
+        [Fact]
         public void Flatten_With_ResultSelector_Returns_Flat_Sequence_BreadthFirst()
         {
             var source = GetFoos().ForbidMultipleEnumeration();
@@ -100,7 +99,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Equal(expected);
         }
 
-        [Test]
+        [Fact]
         public void Flatten_With_ResultSelector_With_Level_Returns_Flat_Sequence_DepthFirst()
         {
             var source = GetFoos().ForbidMultipleEnumeration();
@@ -118,7 +117,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Equal(expected);
         }
 
-        [Test]
+        [Fact]
         public void Flatten_With_ResultSelector_With_Level_Returns_Flat_Sequence_BreadthFirst()
         {
             var source = GetFoos().ForbidMultipleEnumeration();

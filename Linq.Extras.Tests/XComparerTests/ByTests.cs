@@ -1,12 +1,11 @@
 ﻿using System;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XComparerTests
 {
-    [TestFixture]
-    class ByTests
+    public class ByTests
     {
-        [Test]
+        [Fact]
         public void By_Returns_A_Comparer_Based_On_Key()
         {
             var a = new Foo { X = 0, Y = 0 };
@@ -17,10 +16,10 @@ namespace Linq.Extras.Tests.XComparerTests
 
             int expected = -1;
             int actual = comparer.Compare(a, b);
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
-        [Test]
+        [Fact]
         public void ByDescending_Returns_A_Descending_Comparer_Based_On_Key()
         {
             var a = new Foo { X = 0, Y = 0 };
@@ -31,10 +30,10 @@ namespace Linq.Extras.Tests.XComparerTests
 
             int expected = 1;
             int actual = comparer.Compare(a, b);
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
-        [Test]
+        [Fact]
         public void ThenBy_Returns_A_Comparer_Based_On_First_Then_Second_Key()
         {
             var a = new Foo { X = 0, Y = 0 };
@@ -46,10 +45,10 @@ namespace Linq.Extras.Tests.XComparerTests
 
             int expected = -1;
             int actual = comparer.Compare(a, b);
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
-        [Test]
+        [Fact]
         public void ThenByDescending_Returns_A_Comparer_Based_On_First_Then_Descending_Second_Key()
         {
             var a = new Foo { X = 0, Y = 0 };
@@ -61,7 +60,7 @@ namespace Linq.Extras.Tests.XComparerTests
 
             int expected = 1;
             int actual = comparer.Compare(a, b);
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         class Foo

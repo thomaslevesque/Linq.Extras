@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class IsNullOrEmptyTests
+    public class IsNullOrEmptyTests
     {
-        [Test]
+        [Fact]
         public static void IsNullOrEmpty_Generic_Returns_True_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -19,7 +18,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             // ReSharper restore ConditionIsAlwaysTrueOrFalse
         }
 
-        [Test]
+        [Fact]
         public static void IsNullOrEmpty_Generic_Returns_True_If_Source_Is_Empty()
         {
             var source = Enumerable.Empty<int>().ForbidMultipleEnumeration();
@@ -27,7 +26,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public static void IsNullOrEmpty_Generic_Returns_False_If_Source_Is_Not_Empty()
         {
             var source = XEnumerable.Unit(42).ForbidMultipleEnumeration();
@@ -35,7 +34,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().BeFalse();
         }
 
-        [Test]
+        [Fact]
         public static void IsNullOrEmpty_NonGeneric_Returns_True_If_Source_Is_Null()
         {
             IEnumerable source = null;
@@ -45,7 +44,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             // ReSharper restore ConditionIsAlwaysTrueOrFalse
         }
 
-        [Test]
+        [Fact]
         public static void IsNullOrEmpty_NonGeneric_Returns_True_If_Source_Is_Empty()
         {
             IEnumerable source = XEnumerable.Empty<int>().ForbidMultipleEnumeration();
@@ -53,7 +52,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public static void IsNullOrEmpty_NonGeneric_Returns_True_If_Source_Is_Empty_Collection()
         {
             IEnumerable source = new int[0];
@@ -61,7 +60,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public static void IsNullOrEmpty_NonGeneric_Returns_False_If_Source_Is_Not_Empty()
         {
             IEnumerable source = XEnumerable.Unit(42).ForbidMultipleEnumeration();
@@ -69,7 +68,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().BeFalse();
         }
 
-        [Test]
+        [Fact]
         public static void IsNullOrEmpty_NonGeneric_Returns_False_If_Source_Is_Non_Empty_Collection()
         {
             IEnumerable source = new[] { 42 };

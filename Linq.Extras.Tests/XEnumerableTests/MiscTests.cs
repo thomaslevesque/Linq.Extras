@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class MiscTests
+    public class MiscTests
     {
-        [Test]
+        [Fact]
         public void Unit_Returns_Sequence_With_Single_Element()
         {
             var result = XEnumerable.Unit(42);
@@ -15,7 +14,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().HaveCount(1);
         }
 
-        [Test]
+        [Fact]
         public void Empty_Returns_Empty_Sequence()
         {
             var result = XEnumerable.Empty<int>();

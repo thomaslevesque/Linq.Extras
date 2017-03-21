@@ -1,13 +1,12 @@
 ﻿using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class RightOuterJoinTests
+    public class RightOuterJoinTests
     {
-        [Test]
+        [Fact]
         public void RightOuterJoin_Throws_If_Argument_Null()
         {
             var left = XEnumerable.Empty<int>().ForbidEnumeration();
@@ -18,7 +17,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "left", "right", "leftKeySelector", "rightKeySelector", "resultSelector");
         }
 
-        [Test]
+        [Fact]
         public void RightOuterJoin_Joins_Elements_Of_Both_Sequence()
         {
             var left = new[] { "hello", "world", "!" };
@@ -27,7 +26,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().Equal("hellohello", "worldhello", "!!");
         }
 
-        [Test]
+        [Fact]
         public void RightOuterJoin_Uses_Specified_Default_Value_For_Elements_Missing_In_Left()
         {
             var left = new[] { "hello", "world" };
@@ -36,7 +35,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().Equal("hellohello", "worldhello", "?!");
         }
 
-        [Test]
+        [Fact]
         public void RightOuterJoin_Uses_Specified_Key_Comparer()
         {
             var left = new[] { "HELLO", "world" };

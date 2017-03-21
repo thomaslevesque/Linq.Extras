@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class ExceptByTests
+    public class ExceptByTests
     {
-        [Test]
+        [Fact]
         public void ExceptBy_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -21,7 +20,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void ExceptBy_Throws_If_Other_Is_Null()
         {
             IEnumerable<int> source = Enumerable.Empty<int>().ForbidEnumeration();
@@ -32,7 +31,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("other");
         }
 
-        [Test]
+        [Fact]
         public void ExceptBy_Throws_If_KeySelector_Is_Null()
         {
             var source = Enumerable.Empty<int>().ForbidEnumeration();
@@ -44,7 +43,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("keySelector");
         }
 
-        [Test]
+        [Fact]
         public void ExceptBy_Returns_Items_From_Source_Not_In_Other_Based_On_The_Key()
         {
             var source = new[]
@@ -68,7 +67,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 );
         }
 
-        [Test]
+        [Fact]
         public void ExceptBy_Uses_The_Specified_Key_Comparer()
         {
             var source = new[]

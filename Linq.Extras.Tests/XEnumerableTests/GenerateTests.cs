@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class GenerateTests
+    public class GenerateTests
     {
-        [Test]
+        [Fact]
         public void Generate_Throws_If_Generator_Is_Null()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -17,7 +16,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("generator");
         }
 
-        [Test]
+        [Fact]
         public void Generate_By_Index_Throws_If_Generator_Is_Null()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -26,7 +25,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("generator");
         }
 
-        [Test]
+        [Fact]
         public void Generate_Returns_Sequence_Of_Values_Based_On_Previous_Value()
         {
             var sequence = XEnumerable.Generate(0, previous => previous + 2);
@@ -35,7 +34,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             actual.Should().Equal(expected);
         }
 
-        [Test]
+        [Fact]
         public void Generate_By_Index_Returns_Sequence_Of_Values_Based_On_Index()
         {
             var sequence = XEnumerable.Generate(index => index * 2);

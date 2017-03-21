@@ -1,12 +1,11 @@
 ﻿using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class SequenceEqualByTests
+    public class SequenceEqualByTests
     {
-        [Test]
+        [Fact]
         public void SequenceEqualBy_Throws_If_Argument_Is_Null()
         {
             var source = XEnumerable.Empty<string>().ForbidEnumeration();
@@ -17,7 +16,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 "source", "other", "keySelector");
         }
 
-        [Test]
+        [Fact]
         public void SequenceEqualBy_Returns_True_If_Both_Sequences_Are_Empty()
         {
             var source = XEnumerable.Empty<string>().ForbidMultipleEnumeration();
@@ -25,7 +24,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             source.SequenceEqualBy(other, s => s.Length).Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void SequenceEqualBy_Returns_False_If_Sequences_Have_Different_Lengths()
         {
             var source = new[] { "hello", "world" }.ForbidMultipleEnumeration();
@@ -33,7 +32,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             source.SequenceEqualBy(other, s => s.Length).Should().BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void SequenceEqualBy_Returns_True_If_Sequences_Have_Same_Lengths_And_Same_Keys()
         {
             var source = new[] { "hello", "!" }.ForbidMultipleEnumeration();

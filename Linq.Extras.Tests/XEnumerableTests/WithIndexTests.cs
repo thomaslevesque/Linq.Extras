@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
 {
-    [TestFixture]
-    class WithIndexTests
+    public class WithIndexTests
     {
-        [Test]
+        [Fact]
         public void WithIndex_Throws_If_Source_Is_Null()
         {
             IEnumerable<int> source = null;
@@ -19,7 +18,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void WithIndex_Associates_An_Index_With_Each_Item()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 }.ForbidMultipleEnumeration();
@@ -35,7 +34,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 }, HaveSameIndexAndItem);
         }
 
-        [Test]
+        [Fact]
         public void WithoutIndex_Throws_If_Source_Is_Null()
         {
             IEnumerable<IIndexedItem<int>> source = null;
@@ -45,7 +44,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             ex.ParamName.Should().Be("source");
         }
 
-        [Test]
+        [Fact]
         public void WithoutIndex_Removes_Index_From_Sequence()
         {
             var source = new[]
