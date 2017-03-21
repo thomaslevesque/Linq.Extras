@@ -1,5 +1,3 @@
-#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.1
-
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -8,7 +6,6 @@ var target = Argument<string>("target", "Default");
 var configuration = Argument<string>("configuration", "Release");
 
 var projectName = "Linq.Extras";
-var solutionFile = $"./{projectName}.sln";
 
 ///////////////////////////////////////////////////////////////////////////////
 // TASK DEFINITIONS
@@ -21,48 +18,30 @@ Task("Clean")
 });
 
 Task("Restore")
-    .Does(() => NuGetRestore("."));
+    .Does(() => DotNetCoreRestore());
 
 Task("Build")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
     .Does(() =>
 {
-    MSBuild(solutionFile,
-        settings => settings.SetConfiguration(configuration));
+    DotNetCoreBuild(".", new DotNetCoreBuildSettings { Configuration = configuration });
 });
 
 Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    NUnit3(new[] { $"{projectName}.Tests/bin/{configuration}/{projectName}.Tests.dll" });
+    DotNetCoreTest(
+        $"{projectName}.Tests/{projectName}.Tests.csproj",
+        new DotNetCoreTestSettings { Configuration = configuration });
 });
 
 Task("Pack")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    string outDir = $"{projectName}/bin/{configuration}";
-    string nupkgDir = $"{outDir}/nupkg";
-    var targets = new[] { $"dotnet", $"portable-net45+win8+wpa81+wp8" };
-    var files = new[] { $"{projectName}.dll", $"{projectName}.xml" };
-    CreateDirectory(nupkgDir);
-    foreach (var target in targets)
-    {
-        string targetDir = $"{nupkgDir}/lib/{target}";
-        CreateDirectory(targetDir);
-        foreach (var file in files)
-        {
-            CopyFileToDirectory($"{outDir}/{file}", targetDir);
-        }
-    }
-    var packSettings = new NuGetPackSettings
-    {
-        BasePath = nupkgDir,
-        OutputDirectory = outDir
-    };
-    NuGetPack($"{projectName}/{projectName}.nuspec", packSettings);
+    DotNetCorePack(projectName, new DotNetCorePackSettings { Configuration = configuration });
 });
 
 Task("Doc")
