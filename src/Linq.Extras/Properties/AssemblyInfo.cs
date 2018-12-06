@@ -1,3 +1,8 @@
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Linq.Extras.Tests")]
+[assembly: InternalsVisibleTo("Linq.Extras.Tests, PublicKey="
+    + "0024000004800000940000000602000000240000525341310004000001000100194513077862cb"
+    + "65369e385ed5c4a2b5d43172eb58f5d7c537918e1be5559e396c8b4f1b6ff1172911c75f241311"
+    + "8d4fd28e0905a9ecf0a004efc07a625522c1222431d06789a8c860335382253c688a70eaba2419"
+    + "b1bb8c5c9705154446b522a2e752433313ad9c3ae83fb0f2cba3e549ff224eea1f494c9d1b4a4c"
+    + "705811b1")]

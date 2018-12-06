@@ -12,6 +12,8 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyOriginatorKeyFile>..\..\Linq.Extras.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
     <MinVerVerbosity>quiet</MinVerVerbosity>
   </PropertyGroup>
 
