@@ -17,4 +17,12 @@
     <ProjectReference Include="../Linq.Extras/Linq.Extras.csproj" />
   </ItemGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp1.0'">
+    <DefineConstants>$(DefineConstants);FEATURE_APPEND_PREPEND</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <DefineConstants>$(DefineConstants);FEATURE_APPEND_PREPEND</DefineConstants>
+  </PropertyGroup>
+
 </Project>

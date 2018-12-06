@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !FEATURE_APPEND_PREPEND
+using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
@@ -48,3 +49,4 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
     }
 }
+#endif

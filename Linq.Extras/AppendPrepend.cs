@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if !FEATURE_APPEND_PREPEND
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
@@ -40,3 +41,4 @@ namespace Linq.Extras
         }
     }
 }
+#endif
