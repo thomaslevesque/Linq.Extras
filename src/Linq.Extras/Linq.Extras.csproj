@@ -7,7 +7,7 @@
     <Authors>Thomas Levesque</Authors>
     <PackageLicenseUrl>https://github.com/thomaslevesque/Linq.Extras/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/thomaslevesque/Linq.Extras/</PackageProjectUrl>
-    <PackageReleaseNotes>https://github.com/thomaslevesque/Linq.Extras/blob/master/RELEASENOTES.md</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/thomaslevesque/Linq.Extras/releases</PackageReleaseNotes>
     <PackageTags>linq</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
