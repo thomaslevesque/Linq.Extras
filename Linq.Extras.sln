@@ -10,11 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		RELEASENOTES.md = RELEASENOTES.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras", "Linq.Extras\Linq.Extras.csproj", "{93E26A7D-E074-4B93-9B74-24414A12FB3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras", "src\Linq.Extras\Linq.Extras.csproj", "{93E26A7D-E074-4B93-9B74-24414A12FB3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras.Tests", "Linq.Extras.Tests\Linq.Extras.Tests.csproj", "{B4C8C58A-33D3-4F6C-BA38-FFE8B6A6EE8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras.Tests", "tests\Linq.Extras.Tests\Linq.Extras.Tests.csproj", "{B4C8C58A-33D3-4F6C-BA38-FFE8B6A6EE8C}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{86E2B0AA-E343-4846-8661-E09365D68C99}"
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "docs\Documentation.shfbproj", "{86E2B0AA-E343-4846-8661-E09365D68C99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
