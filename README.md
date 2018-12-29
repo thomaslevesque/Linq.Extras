@@ -43,7 +43,7 @@ Return the item of a sequence that has the min or max value for the specified ke
 
 ```csharp
 var winner = players.MaxBy(p => p.Score);
-Console.WriteLine("The winner is {0} with {1} points!", p.Name, p.Score);
+Console.WriteLine("The winner is {0} with {1} points!", winner.Name, winner.Score);
 ```
 
 Unlike the well known approach of sorting the list and taking the first item, this method doesn't need sorting and operates in O(n).
