@@ -1,14 +1,10 @@
-Linq.Extras
-===========
+# Linq.Extras
 
-*Full API documentation is available:*
-* *[online (HTML)](http://thomaslevesque.github.io/Linq.Extras/doc/)*
-* *[offline (CHM)](http://thomaslevesque.github.io/Linq.Extras/doc/Linq.Extras.chm)*
-
-*[Install from NuGet](https://www.nuget.org/packages/Linq.Extras):*
-```
-PM> Install-Package Linq.Extras 
-```
+[![NuGet version](https://img.shields.io/nuget/v/Linq.Extras.svg)](https://www.nuget.org/packages/Linq.Extras)
+[![AppVeyor build](https://img.shields.io/appveyor/ci/thomaslevesque/linq-extras.svg)](https://ci.appveyor.com/project/thomaslevesque/linq-extras)
+[![AppVeyor tests](https://img.shields.io/appveyor/tests/thomaslevesque/linq-extras.svg)](https://ci.appveyor.com/project/thomaslevesque/linq-extras/build/tests)
+[![Docs (online)](https://img.shields.io/badge/docs-online%20(HTML)-blue.svg)](https://thomaslevesque.github.io/Linq.Extras/doc/)
+[![Docs (offline)](https://img.shields.io/badge/docs-offline%20(CHM)-blue.svg)](https://thomaslevesque.github.io/Linq.Extras/doc/Linq.Extras.chm)
 
 A set of extension and helper methods to complement the ones from `System.Linq.Enumerable`.
 
