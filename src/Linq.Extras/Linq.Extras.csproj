@@ -5,7 +5,7 @@
     <TargetFrameworks>netstandard1.0;netstandard1.6;netstandard2.0;net45;net471</TargetFrameworks>
     <Description>A set of helper and extension methods to complement the System.Linq namespace.</Description>
     <Authors>Thomas Levesque</Authors>
-    <PackageLicenseUrl>https://github.com/thomaslevesque/Linq.Extras/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/thomaslevesque/Linq.Extras/</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/thomaslevesque/Linq.Extras/releases</PackageReleaseNotes>
     <PackageTags>linq</PackageTags>
