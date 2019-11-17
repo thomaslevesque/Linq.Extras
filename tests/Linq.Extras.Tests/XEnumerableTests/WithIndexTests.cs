@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -9,13 +10,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class WithIndexTests
     {
         [Fact]
-        public void WithIndex_Throws_If_Source_Is_Null()
+        public void WithIndex_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.WithIndex());
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.WithIndex());
         }
 
         [Fact]
@@ -35,13 +34,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void WithoutIndex_Throws_If_Source_Is_Null()
+        public void WithoutIndex_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<IIndexedItem<int>> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<IIndexedItem<int>>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.WithoutIndex());
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.WithoutIndex());
         }
 
         [Fact]
@@ -61,12 +58,15 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void Deconstruct_Throws_If_IndexedItem_Is_Null()
+        public void Deconstruct_Throws_If_Argument_Is_Null()
         {
-            IIndexedItem<int> indexedItem = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => indexedItem.Deconstruct(out _, out _));
-            ex.ParamName.Should().Be(nameof(indexedItem));
+            // Note: can't use AssertThrowsWhenArgumentNull on a method with ref/out parameters
+            IIndexedItem<int>? indexedItem = null;
+            int item;
+            int index;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action action = () => indexedItem!.Deconstruct(out item, out index);
+            action.ShouldThrow<ArgumentNullException>("because parameter indexedItem is not nullable");
         }
 
         [Fact]

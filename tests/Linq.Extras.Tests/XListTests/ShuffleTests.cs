@@ -9,13 +9,10 @@ namespace Linq.Extras.Tests.XListTests
     public class ShuffleTests
     {
         [Fact]
-        public void Shuffle_Throws_If_List_Is_Null()
+        public void Shuffle_Throws_If_Argument_Is_Null()
         {
-            IList<int> list = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ConvertClosureToMethodGroup
-            var ex = Assert.Throws<ArgumentNullException>(() => list.Shuffle());
-            ex.ParamName.Should().Be("list");
+            IList<int> list = new List<int>();
+            TestHelper.AssertThrowsWhenArgumentNull(() => list.Shuffle(null));
         }
 
         // Since the Shuffle method is random by nature, the shuffled list could be in the same order as the original list;

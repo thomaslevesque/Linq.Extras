@@ -13,7 +13,7 @@ namespace Linq.Extras.Internal
             [InvokerParameterName] string paramName)
             where T : class
         {
-            if (value == null)
+            if (value is null)
                 throw new ArgumentNullException(paramName);
         }
 

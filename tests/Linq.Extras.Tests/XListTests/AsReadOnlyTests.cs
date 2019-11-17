@@ -8,13 +8,10 @@ namespace Linq.Extras.Tests.XListTests
     public class AsReadOnlyTests
     {
         [Fact]
-        public void AsReadOnly_Throws_If_List_IsNull()
+        public void AsReadOnly_Throws_If_Argument_Is_Null()
         {
-            IList<int> list = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => list.AsReadOnly());
-            ex.ParamName.Should().Be("list");
+            IList<int> list = new List<int>();
+            TestHelper.AssertThrowsWhenArgumentNull(() => list.AsReadOnly());
         }
 
         [Fact]

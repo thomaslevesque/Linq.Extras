@@ -8,12 +8,10 @@ namespace Linq.Extras.Tests.XListTests
     public class SwapTests
     {
         [Fact]
-        public void Swap_Throws_If_List_Is_Null()
+        public void Swap_Throws_If_Argument_Is_Null()
         {
-            IList<int> list = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => list.Swap(0, 1));
-            ex.ParamName.Should().Be("list");
+            IList<int> list = new List<int>();
+            TestHelper.AssertThrowsWhenArgumentNull(() => list.Swap(0, 1));
         }
 
         [Theory]

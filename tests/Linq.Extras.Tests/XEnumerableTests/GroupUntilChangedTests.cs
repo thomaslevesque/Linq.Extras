@@ -10,13 +10,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class GroupUntilChangedTests
     {
         [Fact]
-        public void GroupUntilChanged_Throws_If_Source_Is_Null()
+        public void GroupUntilChanged_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.GroupUntilChanged());
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.GroupUntilChanged(null));
         }
 
         [Fact]
@@ -69,24 +67,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void GroupUntilChangedBy_Throws_If_Source_Is_Null()
+        public void GroupUntilChangedBy_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.GroupUntilChangedBy(Math.Abs));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void GroupUntilChangedBy_Throws_If_KeySelector_Is_Null()
-        {
-            var source = Enumerable.Empty<int>().ForbidEnumeration();
-            Func<int, int> keySelector = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.GroupUntilChangedBy(keySelector));
-            ex.ParamName.Should().Be("keySelector");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.GroupUntilChangedBy(Math.Abs, null));
         }
 
         [Fact]

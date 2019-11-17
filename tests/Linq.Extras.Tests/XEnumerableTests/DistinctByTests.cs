@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using FluentAssertions;
@@ -10,24 +9,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class DistinctByTests
     {
         [Fact]
-        public void DistinctBy_Throws_If_Source_Is_Null()
+        public void DistinctBy_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.DistinctBy(Math.Abs));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void DistinctBy_Throws_If_KeySelector_Is_Null()
-        {
-            var source = Enumerable.Empty<int>().ForbidEnumeration();
-            Func<int, string> keySelector = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.DistinctBy(keySelector));
-            ex.ParamName.Should().Be("keySelector");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.DistinctBy(Math.Abs, null));
         }
 
         [Fact]

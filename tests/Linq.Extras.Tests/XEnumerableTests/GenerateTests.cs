@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -8,21 +7,17 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class GenerateTests
     {
         [Fact]
-        public void Generate_Throws_If_Generator_Is_Null()
+        public void Generate_Throws_If_Argument_Is_Null()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => XEnumerable.Generate(0, null));
-            ex.ParamName.Should().Be("generator");
+            TestHelper.AssertThrowsWhenArgumentNull(() => XEnumerable.Generate(0, i => i));
         }
 
         [Fact]
-        public void Generate_By_Index_Throws_If_Generator_Is_Null()
+        public void Generate_By_Index_Throws_If_Argument_Is_Null()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => XEnumerable.Generate<int>(null));
-            ex.ParamName.Should().Be("generator");
+            TestHelper.AssertThrowsWhenArgumentNull(() => XEnumerable.Generate(i => i));
         }
 
         [Fact]

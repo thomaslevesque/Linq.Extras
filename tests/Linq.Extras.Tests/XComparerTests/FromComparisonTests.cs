@@ -9,8 +9,8 @@ namespace Linq.Extras.Tests.XComparerTests
         [Fact]
         public void FromComparison_Returns_A_Comparer_Based_On_A_Comparison()
         {
-            var a = new Foo { Name = "foo" };
-            var b = new Foo { Name = "bar" };
+            var a = new Foo("foo");
+            var b = new Foo("bar");
 
             var comparer = XComparer<Foo>.FromComparison((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
             
@@ -19,7 +19,12 @@ namespace Linq.Extras.Tests.XComparerTests
 
         class Foo
         {
-            public string Name { get; set; }
+            public Foo(string name)
+            {
+                Name = name;
+            }
+
+            public string Name { get; }
         }
     }
 }

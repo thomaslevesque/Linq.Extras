@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
@@ -9,21 +8,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class CommonPrefixTests
     {
         [Fact]
-        public void CommonPrefix_Throws_If_Source_Or_Other_Is_Null()
+        public void CommonPrefix_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            IEnumerable<int> other = Enumerable.Empty<int>().ForbidEnumeration();
-            // ReSharper disable AssignNullToNotNullAttribute
-            // ReSharper disable ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.CommonPrefix(other));
-            ex.ParamName.Should().Be("source");
-            
-            source = Enumerable.Empty<int>().ForbidEnumeration();
-            other = null;
-            ex = Assert.Throws<ArgumentNullException>(() => source.CommonPrefix(other));
-            ex.ParamName.Should().Be("other");
-            // ReSharper restore AssignNullToNotNullAttribute
-            // ReSharper restore ReturnValueOfPureMethodIsNotUsed
+            var source = Enumerable.Empty<int>();
+            var other = Enumerable.Empty<int>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.CommonPrefix(other, null));
         }
 
         [Fact]

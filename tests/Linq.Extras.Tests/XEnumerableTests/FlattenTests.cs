@@ -10,46 +10,27 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class FlattenTests
     {
         [Fact]
-        public void Flatten_Throws_If_Source_Is_Null()
+        public void Flatten_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<Foo> source = null;
+            var source = Enumerable.Empty<Foo>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst));
         }
 
         [Fact]
-        public void Flatten_Throws_If_ChildrenSelector_Is_Null()
+        public void FlattenWithResultSelector_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<Foo> source = Enumerable.Empty<Foo>().ForbidEnumeration();
-            Func<Foo, IEnumerable<Foo>> childrenSelector = null;
+            var source = Enumerable.Empty<Foo>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Flatten(childrenSelector, TreeTraversalMode.DepthFirst));
-            ex.ParamName.Should().Be("childrenSelector");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst, f => f.Id));
         }
 
         [Fact]
-        public void Flatten_Throws_If_ResultSelector_Is_Null()
+        public void FlattenWithResultSelectorWithLevel_Throws_If_Argument_Is_Null()
         {
             var source = Enumerable.Empty<Foo>().ForbidEnumeration();
-            Func<Foo, int> resultSelector = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst, resultSelector));
-            ex.ParamName.Should().Be("resultSelector");
-        }
-
-        [Fact]
-        public void Flatten_Throws_If_ResultSelector_With_Level_Is_Null()
-        {
-            var source = Enumerable.Empty<Foo>().ForbidEnumeration();
-            Func<Foo, int, int> resultSelector = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst, resultSelector));
-            ex.ParamName.Should().Be("resultSelector");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst, (f, level) => f.Id));
         }
 
         [Fact]

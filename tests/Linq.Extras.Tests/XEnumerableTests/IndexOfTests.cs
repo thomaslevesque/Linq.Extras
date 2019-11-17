@@ -9,13 +9,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class IndexOfTests
     {
         [Fact]
-        public void IndexOf_Throws_If_Source_Is_Null()
+        public void IndexOf_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.IndexOf(42));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.IndexOf(42, null));
         }
 
         [Fact]
@@ -35,14 +33,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void IndexOf_Throws_If_Predicate_Is_Null()
+        public void IndexOf_With_Predicate_Throws_If_Argument_Is_Null()
         {
-            var source = Enumerable.Empty<int>().ForbidEnumeration();
-            Func<int, bool> predicate = null;
+            var source = Enumerable.Empty<int>();
+            Func<int, bool> predicate = i => true;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.IndexOf(predicate));
-            ex.ParamName.Should().Be("predicate");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.IndexOf(i => true));
         }
 
         [Fact]
@@ -62,13 +58,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void LastIndexOf_Throws_If_Source_Is_Null()
+        public void LastIndexOf_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.LastIndexOf(42));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.LastIndexOf(42, null));
         }
 
         [Fact]
@@ -88,14 +82,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void LastIndexOf_Throws_If_Predicate_Is_Null()
+        public void LastIndexOf_With_Predicate_Throws_If_Argument_Is_Null()
         {
-            var source = Enumerable.Empty<int>().ForbidEnumeration();
-            Func<int, bool> predicate = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.LastIndexOf(predicate));
-            ex.ParamName.Should().Be("predicate");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.LastIndexOf(i => true));
         }
 
         [Fact]

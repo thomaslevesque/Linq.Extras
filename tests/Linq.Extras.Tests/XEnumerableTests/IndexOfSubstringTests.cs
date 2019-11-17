@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -9,25 +7,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class IndexOfSubstringTests
     {
         [Fact]
-        public void IndexOfSubstring_Throws_If_Source_Is_Null()
+        public void IndexOfSubstring_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             var substring = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.IndexOfSubstring(substring));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void IndexOfSubstring_Throws_If_Substring_Is_Null()
-        {
-            var source = Enumerable.Empty<int>().ForbidEnumeration();
-            IEnumerable<int> substring = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.IndexOfSubstring(substring));
-            ex.ParamName.Should().Be("substring");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.IndexOfSubstring(substring, null));
         }
 
         [Fact]

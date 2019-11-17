@@ -87,7 +87,7 @@ namespace Linq.Extras.Tests.XComparerTests
         {
             private readonly IComparer<T> _comparer;
 
-            public InterceptingComparer(IComparer<T> comparer = null)
+            public InterceptingComparer(IComparer<T>? comparer = null)
             {
                 _comparer = comparer ?? Comparer<T>.Default;
             }

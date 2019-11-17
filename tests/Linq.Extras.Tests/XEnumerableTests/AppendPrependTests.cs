@@ -1,7 +1,5 @@
 ﻿#if !FEATURE_APPEND_PREPEND
-using System;
-using System.Collections.Generic;
-using FluentAssertions;
+using System.Linq;
 using Xunit;
 
 namespace Linq.Extras.Tests.XEnumerableTests
@@ -9,13 +7,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class AppendPrependTests
     {
         [Fact]
-        public void Append_Throws_If_Source_Is_Null()
+        public void Append_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Append(42));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.Append(42));
         }
 
         [Fact]
@@ -29,13 +25,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void Prepend_Throws_If_Source_Is_Null()
+        public void Prepend_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Prepend(42));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.Prepend(42));
         }
 
         [Fact]

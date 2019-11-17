@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -8,13 +8,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class LastOrDefaultTests
     {
         [Fact]
-        public void LastOrDefault_Throws_If_Source_Is_Null()
+        public void LastOrDefault_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.LastOrDefault(42));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.LastOrDefault(42));
         }
 
         [Fact]
@@ -32,24 +30,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void LastOrDefault_With_Predicate_Throws_If_Source_Is_Null()
+        public void LastOrDefault_With_Predicate_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.LastOrDefault(42));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void LastOrDefault_With_Predicate_Throws_If_Predicate_Is_Null()
-        {
-            var source = XEnumerable.Empty<int>().ForbidEnumeration();
-            Func<int, bool> predicate = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.LastOrDefault(predicate, 42));
-            ex.ParamName.Should().Be("predicate");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.LastOrDefault(i => true, 42));
         }
 
         [Fact]

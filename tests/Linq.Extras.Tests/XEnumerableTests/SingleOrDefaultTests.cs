@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -8,13 +9,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class SingleOrDefaultTests
     {
         [Fact]
-        public void SingleOrDefault_Throws_If_Source_Is_Null()
+        public void SingleOrDefault_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.SingleOrDefault(42));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.SingleOrDefault(42));
         }
 
         [Fact]
@@ -40,24 +39,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void SingleOrDefault_With_Predicate_Throws_If_Source_Is_Null()
+        public void SingleOrDefault_With_Predicate_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.SingleOrDefault(42));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void SingleOrDefault_With_Predicate_Throws_If_Predicate_Is_Null()
-        {
-            var source = XEnumerable.Empty<int>().ForbidEnumeration();
-            Func<int, bool> predicate = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.SingleOrDefault(predicate, 42));
-            ex.ParamName.Should().Be("predicate");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.SingleOrDefault(i => false, 42));
         }
 
         [Fact]

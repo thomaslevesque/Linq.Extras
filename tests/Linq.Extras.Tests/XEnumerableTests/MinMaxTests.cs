@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -9,13 +10,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class MinMaxTests
     {
         [Fact]
-        public void MaxBy_Throws_If_Source_Is_Null()
+        public void MaxBy_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<Foo> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<Foo>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.MaxBy(_getFooValue));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.MaxBy(_getFooValue, null));
         }
 
         [Fact]
@@ -24,17 +23,6 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var foos = new Foo[] { }.ForbidMultipleEnumeration();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<InvalidOperationException>(() => foos.MaxBy(_getFooValue));
-        }
-
-        [Fact]
-        public void MaxBy_Throws_If_KeySelector_Is_Null()
-        {
-            var source = GetFoos().ForbidEnumeration();
-            Func<Foo, string> keySelector = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.MaxBy(keySelector));
-            ex.ParamName.Should().Be("keySelector");
         }
 
         [Fact]
@@ -58,24 +46,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void MinBy_Throws_If_Source_Is_Null()
+        public void MinBy_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<Foo> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<Foo>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.MinBy(_getFooValue));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void MinBy_Throws_If_KeySelector_Is_Null()
-        {
-            var source = GetFoos().ForbidEnumeration();
-            Func<Foo, string> keySelector = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.MinBy(keySelector));
-            ex.ParamName.Should().Be("keySelector");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.MinBy(_getFooValue, null));
         }
 
         [Fact]
@@ -107,25 +82,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void Max_Throws_If_Source_Is_Null()
+        public void Max_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<Foo> source = null;
+            var source = Enumerable.Empty<Foo>();
             var comparer = XComparer.By(_getFooValue);
-            // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Max(comparer));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void Max_Throws_If_Comparer_Is_Null()
-        {
-            var source = GetFoos().ForbidEnumeration();
-            IComparer<Foo> comparer = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Max(comparer));
-            ex.ParamName.Should().Be("comparer");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.Max(comparer));
         }
 
         [Fact]
@@ -147,25 +109,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void Min_Throws_If_Source_Is_Null()
+        public void Min_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<Foo> source = null;
+            var source = Enumerable.Empty<Foo>();
             var comparer = XComparer.By(_getFooValue);
-            // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Min(comparer));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void Min_Throws_If_Comparer_Is_Null()
-        {
-            var source = GetFoos().ForbidEnumeration();
-            IComparer<Foo> comparer = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.Min(comparer));
-            ex.ParamName.Should().Be("comparer");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.Min(comparer));
         }
 
         [Fact]
@@ -190,13 +139,13 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var foos = new List<Foo>
                    {
-                       new Foo { Value = "abcd" },
-                       new Foo { Value = "efgh" },
-                       new Foo { Value = "ijkl" },
-                       new Foo { Value = "mnop" },
-                       new Foo { Value = "qrst" },
-                       new Foo { Value = "uvw" },
-                       new Foo { Value = "xyz" }
+                       new Foo("abcd"),
+                       new Foo("efgh"),
+                       new Foo("ijkl"),
+                       new Foo("mnop"),
+                       new Foo("qrst"),
+                       new Foo("uvw"),
+                       new Foo("xyz")
                    };
             foos.Shuffle();
             return foos;
@@ -206,7 +155,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
 
         private class Foo
         {
-            public string Value { get; set; }
+            public Foo(string value)
+            {
+                Value = value;
+            }
+
+            public string Value { get; }
         }
 
         [ExcludeFromCodeCoverage]

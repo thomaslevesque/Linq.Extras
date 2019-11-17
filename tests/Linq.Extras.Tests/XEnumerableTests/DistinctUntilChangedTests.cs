@@ -10,13 +10,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class DistinctUntilChangedTests
     {
         [Fact]
-        public void DistinctUntilChanged_Throws_If_Source_Is_Null()
+        public void DistinctUntilChanged_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.DistinctUntilChanged());
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.DistinctUntilChanged(null));
         }
 
         [Fact]
@@ -45,24 +43,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void DistinctUntilChangedBy_Throws_If_Source_Is_Null()
+        public void DistinctUntilChangedBy_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.DistinctUntilChangedBy(Math.Abs));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void DistinctUntilChangedBy_Throws_If_KeySelector_Is_Null()
-        {
-            var source = Enumerable.Empty<int>().ForbidEnumeration();
-            Func<int, int> keySelector = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.DistinctUntilChangedBy(keySelector));
-            ex.ParamName.Should().Be("keySelector");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.DistinctUntilChangedBy(Math.Abs, null));
         }
 
         [Fact]

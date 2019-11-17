@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -8,13 +9,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class NoneTests
     {
         [Fact]
-        public void None_Throws_If_Source_Is_Null()
+        public void None_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.None());
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.None());
         }
 
         [Fact]
@@ -32,24 +31,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void None_With_Predicate_Throws_If_Source_Is_Null()
+        public void None_With_Predicate_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.None(x => x % 2 == 0));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void None_With_Predicate_Throws_If_Predicate_Is_Null()
-        {
-            IEnumerable<int> source = XEnumerable.Empty<int>().ForbidEnumeration();
-            Func<int, bool> predicate = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.None(predicate));
-            ex.ParamName.Should().Be("predicate");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.None(x => x % 2 == 0));
         }
 
         [Fact]

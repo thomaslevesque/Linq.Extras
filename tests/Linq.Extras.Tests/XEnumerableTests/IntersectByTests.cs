@@ -10,37 +10,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class IntersectByTests
     {
         [Fact]
-        public void IntersectBy_Throws_If_Source_Is_Null()
+        public void IntersectBy_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            IEnumerable<int> other = Enumerable.Empty<int>().ForbidEnumeration();
+            var source = Enumerable.Empty<int>();
+            var other = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.IntersectBy(other, Math.Abs));
-            ex.ParamName.Should().Be("source");
-        }
-
-        [Fact]
-        public void IntersectBy_Throws_If_Other_Is_Null()
-        {
-            IEnumerable<int> source = Enumerable.Empty<int>().ForbidEnumeration();
-            IEnumerable<int> other = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.IntersectBy(other, Math.Abs));
-            ex.ParamName.Should().Be("other");
-        }
-
-        [Fact]
-        public void IntersectBy_Throws_If_KeySelector_Is_Null()
-        {
-            var source = Enumerable.Empty<int>().ForbidEnumeration();
-            var other = Enumerable.Empty<int>().ForbidEnumeration();
-            Func<int, string> keySelector = null;
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.IntersectBy(other, keySelector));
-            ex.ParamName.Should().Be("keySelector");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.IntersectBy(other, Math.Abs, null));
         }
 
         [Fact]

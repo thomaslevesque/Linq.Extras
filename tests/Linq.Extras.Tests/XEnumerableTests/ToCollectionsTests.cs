@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
@@ -9,13 +8,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class ToCollectionsTests
     {
         [Fact]
-        public void ToQueue_Throws_If_Source_Is_Null()
+        public void ToQueue_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.ToQueue());
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.ToQueue());
         }
 
         [Fact]
@@ -28,13 +25,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void ToStack_Throws_If_Source_Is_Null()
+        public void ToStack_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.ToStack());
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.ToStack());
         }
 
         [Fact]
@@ -47,13 +42,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void ToHashSet_Throws_If_Source_Is_Null()
+        public void ToHashSet_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.ToHashSet());
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.ToHashSet(null));
         }
 
         [Fact]
@@ -76,13 +69,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void ToLinkedList_Throws_If_Source_Is_Null()
+        public void ToLinkedList_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.ToLinkedList());
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.ToLinkedList());
         }
 
         [Fact]
@@ -95,13 +86,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void ToArray_Throws_If_Source_Is_Null()
+        public void ToArray_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.ToArray(42));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.ToArray(42));
         }
 
         [Fact]
@@ -114,13 +103,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public void ToList_Throws_If_Source_Is_Null()
+        public void ToList_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
-            // ReSharper disable once AssignNullToNotNullAttribute
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            var ex = Assert.Throws<ArgumentNullException>(() => source.ToList(42));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.ToList(42));
         }
 
         [Fact]

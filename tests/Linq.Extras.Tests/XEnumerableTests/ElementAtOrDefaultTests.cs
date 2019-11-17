@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -8,13 +8,11 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class ElementAtOrDefaultTests
     {
         [Fact]
-        public void ElementAtOrDefault_Throws_If_Source_Is_Null()
+        public void ElementAtOrDefault_Throws_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            var source = Enumerable.Empty<int>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var ex = Assert.Throws<ArgumentNullException>(() => source.ElementAtOrDefault(0, 42));
-            ex.ParamName.Should().Be("source");
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.ElementAtOrDefault(0, 42));
         }
 
         [Fact]

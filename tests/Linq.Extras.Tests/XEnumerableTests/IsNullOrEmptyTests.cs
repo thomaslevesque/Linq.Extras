@@ -9,9 +9,9 @@ namespace Linq.Extras.Tests.XEnumerableTests
     public class IsNullOrEmptyTests
     {
         [Fact]
-        public static void IsNullOrEmpty_Generic_Returns_True_If_Source_Is_Null()
+        public static void IsNullOrEmpty_Generic_Returns_True_If_Argument_Is_Null()
         {
-            IEnumerable<int> source = null;
+            IEnumerable<int>? source = null;
             // ReSharper disable ConditionIsAlwaysTrueOrFalse
             bool result = source.IsNullOrEmpty();
             result.Should().BeTrue();
@@ -35,9 +35,9 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
-        public static void IsNullOrEmpty_NonGeneric_Returns_True_If_Source_Is_Null()
+        public static void IsNullOrEmpty_NonGeneric_Returns_True_If_Argument_Is_Null()
         {
-            IEnumerable source = null;
+            IEnumerable? source = null;
             // ReSharper disable ConditionIsAlwaysTrueOrFalse
             bool result = source.IsNullOrEmpty();
             result.Should().BeTrue();
