@@ -12,8 +12,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = XEnumerable.Empty<Foo>().ForbidEnumeration();
             TestHelper.AssertThrowsWhenArgumentNull(
                 // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                () => source.ToHierarchy(f => f.Id, f => f.ParentId, null),
-                "source", "idSelector", "parentIdSelector");
+                () => source.ToHierarchy(f => f.Id, f => f.ParentId, null));
         }
 
         [Fact]

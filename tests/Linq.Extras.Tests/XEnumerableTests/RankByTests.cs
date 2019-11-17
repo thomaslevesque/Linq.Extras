@@ -12,8 +12,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = XEnumerable.Empty<int>().ForbidEnumeration();
             TestHelper.AssertThrowsWhenArgumentNull(
                 // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                () => source.RankBy(x => x, (x, r) => x, null),
-                "source", "keySelector", "resultSelector");
+                () => source.RankBy(x => x, (x, r) => x, null));
         }
 
         [Fact]
@@ -86,8 +85,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = XEnumerable.Empty<int>().ForbidEnumeration();
             TestHelper.AssertThrowsWhenArgumentNull(
                 // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                () => source.RankByDescending(x => x, (x, r) => x, null),
-                "source", "keySelector", "resultSelector");
+                () => source.RankByDescending(x => x, (x, r) => x, null));
         }
 
         [Fact]
@@ -160,8 +158,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = XEnumerable.Empty<int>().ForbidEnumeration();
             TestHelper.AssertThrowsWhenArgumentNull(
                 // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                () => source.DenseRankBy(x => x, (x, r) => x, null),
-                "source", "keySelector", "resultSelector");
+                () => source.DenseRankBy(x => x, (x, r) => x, null));
         }
 
         [Fact]
@@ -234,8 +231,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var source = XEnumerable.Empty<int>().ForbidEnumeration();
             TestHelper.AssertThrowsWhenArgumentNull(
                 // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                () => source.DenseRankByDescending(x => x, (x, r) => x, null),
-                "source", "keySelector", "resultSelector");
+                () => source.DenseRankByDescending(x => x, (x, r) => x, null));
         }
 
         [Fact]

@@ -13,8 +13,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var right = XEnumerable.Empty<int>().ForbidEnumeration();
             TestHelper.AssertThrowsWhenArgumentNull(
                 // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                () => left.LeftOuterJoin(right, x => x, y => y, (x, y) => 0, 0, null),
-                "left", "right", "leftKeySelector", "rightKeySelector", "resultSelector");
+                () => left.LeftOuterJoin(right, x => x, y => y, (x, y) => 0, 0, null));
         }
 
         [Fact]

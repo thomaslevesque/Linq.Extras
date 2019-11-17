@@ -12,8 +12,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var other = XEnumerable.Empty<string>().ForbidEnumeration();
             TestHelper.AssertThrowsWhenArgumentNull(
                 // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                () => source.SequenceEqualBy(other, s => s.Length, null),
-                "source", "other", "keySelector");
+                () => source.SequenceEqualBy(other, s => s.Length, null));
         }
 
         [Fact]
