@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using Linq.Extras.Internal;
 
 namespace Linq.Extras
 {
@@ -30,6 +31,23 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<IIndexedItem<TSource>> source)
         {
             return source.Select(indexed => indexed.Item);
+        }
+
+        /// <summary>
+        /// Deconstructs an <see cref="IIndexedItem{T}"/> into its item and index.
+        /// </summary>
+        /// <typeparam name="T">The type of the item.</typeparam>
+        /// <param name="indexedItem">The <see cref="IIndexedItem{T}"/> to deconstruct.</param>
+        /// <param name="item">The item.</param>
+        /// <param name="index">The index.</param>
+        public static void Deconstruct<T>(
+            this IIndexedItem<T> indexedItem,
+            out T item,
+            out int index)
+        {
+            indexedItem.CheckArgumentNull(nameof(indexedItem));
+            item = indexedItem.Item;
+            index = indexedItem.Index;
         }
 
         sealed class IndexedItem<T> : IIndexedItem<T>

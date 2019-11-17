@@ -60,6 +60,24 @@ namespace Linq.Extras.Tests.XEnumerableTests
             result.Should().Equal(4, 8, 15, 16, 23, 42);
         }
 
+        [Fact]
+        public void Deconstruct_Throws_If_IndexedItem_Is_Null()
+        {
+            IIndexedItem<int> indexedItem = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            var ex = Assert.Throws<ArgumentNullException>(() => indexedItem.Deconstruct(out _, out _));
+            ex.ParamName.Should().Be(nameof(indexedItem));
+        }
+
+        [Fact]
+        public void Deconstruct_Returns_Item_And_Index()
+        {
+            var indexedItem = new Indexed<int>(42, 5);
+            var (item, index) = indexedItem;
+            item.Should().Be(42);
+            index.Should().Be(5);
+        }
+
         static bool HaveSameIndexAndItem<T>(IIndexedItem<T> x, IIndexedItem<T> y)
         {
             return x.Index == y.Index && EqualityComparer<T>.Default.Equals(x.Item, y.Item);
