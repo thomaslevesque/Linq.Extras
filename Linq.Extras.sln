@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0179FA49-AFDB-429D-823D-F895E4C3393D}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,11 +10,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		RELEASENOTES.md = RELEASENOTES.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras", "src\Linq.Extras\Linq.Extras.csproj", "{93E26A7D-E074-4B93-9B74-24414A12FB3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq.Extras", "src\Linq.Extras\Linq.Extras.csproj", "{93E26A7D-E074-4B93-9B74-24414A12FB3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras.Tests", "tests\Linq.Extras.Tests\Linq.Extras.Tests.csproj", "{B4C8C58A-33D3-4F6C-BA38-FFE8B6A6EE8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq.Extras.Tests", "tests\Linq.Extras.Tests\Linq.Extras.Tests.csproj", "{B4C8C58A-33D3-4F6C-BA38-FFE8B6A6EE8C}"
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "docs\Documentation.shfbproj", "{86E2B0AA-E343-4846-8661-E09365D68C99}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{777D6312-41D4-4837-9FC6-F548A9555F0C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "build", "tools\build\build.csproj", "{750F9598-6DAE-4036-B4D3-EFFA7A37FF74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,9 +36,17 @@ Global
 		{B4C8C58A-33D3-4F6C-BA38-FFE8B6A6EE8C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{86E2B0AA-E343-4846-8661-E09365D68C99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{86E2B0AA-E343-4846-8661-E09365D68C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{750F9598-6DAE-4036-B4D3-EFFA7A37FF74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{750F9598-6DAE-4036-B4D3-EFFA7A37FF74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{750F9598-6DAE-4036-B4D3-EFFA7A37FF74} = {777D6312-41D4-4837-9FC6-F548A9555F0C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AC5F1E6-BC9A-4EB9-BFD3-7F548BC6F652}
 	EndGlobalSection
 	GlobalSection(NDepend) = preSolution
 		Project = ".\Linq.Extras.ndproj"
