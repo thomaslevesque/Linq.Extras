@@ -23,7 +23,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TId> idSelector,
             [NotNull] Func<TSource, TId> parentIdSelector,
-            TId rootParentId = default(TId))
+            TId rootParentId = default)
         {
             source.CheckArgumentNull(nameof(source));
             idSelector.CheckArgumentNull(nameof(idSelector));
@@ -38,7 +38,7 @@ namespace Linq.Extras
             Func<TSource, TId> parentIdSelector,
             TId rootParentId)
         {
-            var lookup = source.ToLookup(parentIdSelector, item => new Node<TSource> { Item = item });
+            var lookup = source.ToLookup(parentIdSelector, item => new Node<TSource>(item));
             var roots = lookup[rootParentId].ToList();
             var queue = roots.ToQueue();
 
@@ -51,20 +51,25 @@ namespace Linq.Extras
                 {
                     childNode.Level = node.Level + 1;
                     childNode.Parent = node;
-                    children.Add(childNode);
+                    node.Children.Add(childNode);
                     queue.Enqueue(childNode);
                 }
-                node.Children = children;
             }
             return roots;
         }
 
         private sealed class Node<T> : INode<T>
         {
-            public T Item { get; set; }
-            public IList<INode<T>> Children { get; set; }
+            public Node(T item)
+            {
+                Item = item;
+                Children = new List<INode<T>>();
+            }
+
+            public T Item { get; }
+            public IList<INode<T>> Children { get; }
             public int Level { get; set; }
-            public INode<T> Parent { get; set; }
+            public INode<T>? Parent { get; set; }
         }
     }
 }

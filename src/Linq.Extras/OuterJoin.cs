@@ -32,8 +32,8 @@ namespace Linq.Extras
             [NotNull] Func<TLeft, TKey> leftKeySelector,
             [NotNull] Func<TRight, TKey> rightKeySelector,
             [NotNull] Func<TLeft, TRight, TResult> resultSelector,
-            TRight defaultRight = default(TRight),
-            IEqualityComparer<TKey> keyComparer = null)
+            TRight defaultRight = default,
+            IEqualityComparer<TKey>? keyComparer = null)
         {
             left.CheckArgumentNull(nameof(left));
             right.CheckArgumentNull(nameof(right));
@@ -72,8 +72,8 @@ namespace Linq.Extras
             [NotNull] Func<TLeft, TKey> leftKeySelector,
             [NotNull] Func<TRight, TKey> rightKeySelector,
             [NotNull] Func<TLeft, TRight, TResult> resultSelector,
-            TLeft defaultLeft = default(TLeft),
-            IEqualityComparer<TKey> keyComparer = null)
+            TLeft defaultLeft = default,
+            IEqualityComparer<TKey>? keyComparer = null)
         {
             left.CheckArgumentNull(nameof(left));
             right.CheckArgumentNull(nameof(right));
@@ -112,9 +112,9 @@ namespace Linq.Extras
             [NotNull] Func<TLeft, TKey> leftKeySelector,
             [NotNull] Func<TRight, TKey> rightKeySelector,
             [NotNull] Func<TKey, TLeft, TRight, TResult> resultSelector,
-            TLeft defaultLeft = default(TLeft),
-            TRight defaultRight = default(TRight),
-            IEqualityComparer<TKey> keyComparer = null)
+            TLeft defaultLeft = default,
+            TRight defaultRight = default,
+            IEqualityComparer<TKey>? keyComparer = null)
         {
             left.CheckArgumentNull(nameof(left));
             right.CheckArgumentNull(nameof(right));
@@ -133,7 +133,7 @@ namespace Linq.Extras
             Func<TKey, TLeft, TRight, TResult> resultSelector,
             TLeft defaultLeft,
             TRight defaultRight,
-            IEqualityComparer<TKey> keyComparer)
+            IEqualityComparer<TKey>? keyComparer)
         {
             // First gather items from right in a lookup by key to access them quickly
             var rightLookup = right.ToLookup(rightKeySelector, keyComparer);

@@ -25,6 +25,6 @@ namespace Linq.Extras
         /// <summary>
         /// The parent node of this node.
         /// </summary>
-        INode<T> Parent { get; }
+        INode<T>? Parent { get; }
     }
 }

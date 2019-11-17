@@ -16,7 +16,7 @@ namespace Linq.Extras
         [Pure]
         [ContractAnnotation("source:null => true")]
         public static bool IsNullOrEmpty<TSource>(
-            this IEnumerable<TSource> source)
+            this IEnumerable<TSource>? source)
         {
             if (source == null)
                 return true;
@@ -31,7 +31,7 @@ namespace Linq.Extras
         [Pure]
         [ContractAnnotation("source:null => true")]
         public static bool IsNullOrEmpty(
-            this IEnumerable source)
+            this IEnumerable? source)
         {
             if (source == null)
                 return true;

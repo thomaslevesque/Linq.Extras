@@ -23,7 +23,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IEnumerable<TSource> other,
             [NotNull] Func<TSource, TKey> keySelector,
-            IEqualityComparer<TKey> keyComparer = null)
+            IEqualityComparer<TKey>? keyComparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             other.CheckArgumentNull(nameof(other));

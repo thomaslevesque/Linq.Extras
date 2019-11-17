@@ -21,7 +21,7 @@ namespace Linq.Extras
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
-            IEqualityComparer<TKey> keyComparer = null)
+            IEqualityComparer<TKey>? keyComparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));

@@ -19,7 +19,7 @@ namespace Linq.Extras
         [Pure]
         public static IEnumerable<IGrouping<TSource, TSource>> GroupUntilChanged<TSource>(
             [NotNull] this IEnumerable<TSource> source,
-            IEqualityComparer<TSource> comparer = null)
+            IEqualityComparer<TSource>? comparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             return source.GroupUntilChangedByImpl(Identity, comparer);
@@ -38,7 +38,7 @@ namespace Linq.Extras
         public static IEnumerable<IGrouping<TKey, TSource>> GroupUntilChangedBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
-            IEqualityComparer<TKey> keyComparer = null)
+            IEqualityComparer<TKey>? keyComparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));
@@ -48,7 +48,7 @@ namespace Linq.Extras
         private static IEnumerable<IGrouping<TKey, TSource>> GroupUntilChangedByImpl<TSource, TKey>(
             this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector,
-            IEqualityComparer<TKey> keyComparer = null)
+            IEqualityComparer<TKey>? keyComparer = null)
         {
             keyComparer = keyComparer ?? EqualityComparer<TKey>.Default;
             using (var en = source.GetEnumerator())

@@ -20,7 +20,7 @@ namespace Linq.Extras
         public static int IndexOfSubstring<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IEnumerable<TSource> substring,
-            IEqualityComparer<TSource> comparer = null)
+            IEqualityComparer<TSource>? comparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             substring.CheckArgumentNull(nameof(substring));

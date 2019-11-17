@@ -50,7 +50,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
             [NotNull] Func<TSource, int, TResult> resultSelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));
@@ -77,7 +77,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
             [NotNull] Func<TSource, int, TResult> resultSelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));
@@ -89,7 +89,7 @@ namespace Linq.Extras
             this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector,
             Func<TSource, int, TResult> resultSelector,
-            IComparer<TKey> keyComparer,
+            IComparer<TKey>? keyComparer,
             bool descending)
         {
             keyComparer = keyComparer ?? Comparer<TKey>.Default;
@@ -154,7 +154,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
             [NotNull] Func<TSource, int, TResult> resultSelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));
@@ -181,7 +181,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
             [NotNull] Func<TSource, int, TResult> resultSelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));
@@ -194,7 +194,7 @@ namespace Linq.Extras
             this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector,
             Func<TSource, int, TResult> resultSelector,
-            IComparer<TKey> keyComparer,
+            IComparer<TKey>? keyComparer,
             bool descending)
         {
             keyComparer = keyComparer ?? Comparer<TKey>.Default;

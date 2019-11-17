@@ -20,7 +20,7 @@ namespace Linq.Extras
         /// <param name="random">A random number generator to use to shuffle the list. If null, a new random number generator will be used.</param>
         public static void Shuffle<T>(
             [NotNull] this IList<T> list,
-            Random random = null)
+            Random? random = null)
         {
             list.CheckArgumentNull(nameof(list));
             random = random ?? new Random();

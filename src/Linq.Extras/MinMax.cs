@@ -46,7 +46,7 @@ namespace Linq.Extras
         private static TSource Extreme<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer, int sign)
         {
             comparer = comparer ?? Comparer<TSource>.Default;
-            TSource extreme = default(TSource);
+            TSource extreme = default!;
             bool first = true;
             foreach (var item in source)
             {
@@ -85,7 +85,7 @@ namespace Linq.Extras
         public static TSource MaxBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));
@@ -106,7 +106,7 @@ namespace Linq.Extras
         public static TSource MinBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));

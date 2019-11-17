@@ -17,7 +17,7 @@ namespace Linq.Extras
         /// <param name="comparer">The comparer to use to test for equality between elements.</param>
         /// <returns>The zero-based index of the first occurrence of <c>item</c> if it is found; otherwise, -1.</returns>
         [Pure]
-        public static int IndexOf<TSource>([NotNull] this IEnumerable<TSource> source, TSource item, IEqualityComparer<TSource> comparer = null)
+        public static int IndexOf<TSource>([NotNull] this IEnumerable<TSource> source, TSource item, IEqualityComparer<TSource>? comparer = null)
         {
             comparer = comparer ?? EqualityComparer<TSource>.Default;
             return source.IndexOf(i => comparer.Equals(i, item));
@@ -50,7 +50,7 @@ namespace Linq.Extras
         /// <param name="comparer">The comparer to use to test for equality between elements.</param>
         /// <returns>The zero-based index of the last occurrence of <c>item</c> if it is found; otherwise, -1.</returns>
         [Pure]
-        public static int LastIndexOf<TSource>([NotNull] this IEnumerable<TSource> source, TSource item, IEqualityComparer<TSource> comparer = null)
+        public static int LastIndexOf<TSource>([NotNull] this IEnumerable<TSource> source, TSource item, IEqualityComparer<TSource>? comparer = null)
         {
             comparer = comparer ?? EqualityComparer<TSource>.Default;
             return source.LastIndexOf(i => comparer.Equals(i, item));

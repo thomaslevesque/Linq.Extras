@@ -23,7 +23,7 @@ namespace Linq.Extras
         [Pure]
         public static IEqualityComparer<T> By<T, TKey>(
             [NotNull] Func<T, TKey> keySelector,
-            IEqualityComparer<TKey> keyComparer = null)
+            IEqualityComparer<TKey>? keyComparer = null)
         {
             keySelector.CheckArgumentNull(nameof(keySelector));
             return new ByKeyEqualityComparer<T, TKey>(keySelector, keyComparer);
@@ -36,7 +36,7 @@ namespace Linq.Extras
             private readonly Func<TSource, TKey> _keySelector;
             private readonly IEqualityComparer<TKey> _keyComparer;
 
-            public ByKeyEqualityComparer(Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
+            public ByKeyEqualityComparer(Func<TSource, TKey> keySelector, IEqualityComparer<TKey>? keyComparer)
             {
                 _keySelector = keySelector;
                 _keyComparer = keyComparer ?? EqualityComparer<TKey>.Default;
@@ -72,7 +72,7 @@ namespace Linq.Extras
         /// <param name="keyComparer">An optional comparer used to test the keys for equality.</param>
         /// <returns>An equality comparer based on the specified comparison key and key comparer.</returns>
         [Pure]
-        public static IEqualityComparer<T> By<TKey>([NotNull] Func<T, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEqualityComparer<T> By<TKey>([NotNull] Func<T, TKey> keySelector, IEqualityComparer<TKey>? keyComparer = null)
         {
             return XEqualityComparer.By(keySelector, keyComparer);
         }

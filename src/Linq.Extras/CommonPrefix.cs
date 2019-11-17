@@ -19,7 +19,7 @@ namespace Linq.Extras
         public static IEnumerable<TSource> CommonPrefix<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IEnumerable<TSource> other,
-            IEqualityComparer<TSource> comparer = null)
+            IEqualityComparer<TSource>? comparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             other.CheckArgumentNull(nameof(other));
@@ -27,7 +27,7 @@ namespace Linq.Extras
             return source.CommonPrefixImpl(other, comparer);
         }
 
-        private static IEnumerable<TSource> CommonPrefixImpl<TSource>(this IEnumerable<TSource> source, IEnumerable<TSource> other, IEqualityComparer<TSource> comparer)
+        private static IEnumerable<TSource> CommonPrefixImpl<TSource>(this IEnumerable<TSource> source, IEnumerable<TSource> other, IEqualityComparer<TSource>? comparer)
         {
             comparer = comparer ?? EqualityComparer<TSource>.Default;
 

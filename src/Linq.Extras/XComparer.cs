@@ -64,7 +64,7 @@ namespace Linq.Extras
         [Pure]
         public static IComparer<T> By<T, TKey>(
             [NotNull] Func<T, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             keySelector.CheckArgumentNull(nameof(keySelector));
             return new ByKeyComparer<T, TKey>(keySelector, keyComparer);
@@ -81,7 +81,7 @@ namespace Linq.Extras
         [Pure]
         public static IComparer<T> ByDescending<T, TKey>(
             [NotNull] Func<T, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             return By(keySelector, keyComparer).Reverse();
         }
@@ -99,7 +99,7 @@ namespace Linq.Extras
         public static IComparer<T> ThenBy<T, TKey>(
             [NotNull] this IComparer<T> comparer,
             [NotNull] Func<T, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             comparer.CheckArgumentNull(nameof(comparer));
             return comparer.ChainWith(By(keySelector, keyComparer));
@@ -118,7 +118,7 @@ namespace Linq.Extras
         public static IComparer<T> ThenByDescending<T, TKey>(
             [NotNull] this IComparer<T> comparer,
             [NotNull] Func<T, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             comparer.CheckArgumentNull(nameof(comparer));
             return comparer.ChainWith(ByDescending(keySelector, keyComparer));
@@ -175,7 +175,7 @@ namespace Linq.Extras
             private readonly Func<T, TKey> _keySelector;
             private readonly IComparer<TKey> _keyComparer;
 
-            public ByKeyComparer(Func<T, TKey> keySelector, IComparer<TKey> keyComparer)
+            public ByKeyComparer(Func<T, TKey> keySelector, IComparer<TKey>? keyComparer)
             {
                 _keySelector = keySelector;
                 _keyComparer = keyComparer ?? Comparer<TKey>.Default;
@@ -256,7 +256,7 @@ namespace Linq.Extras
         [Pure]
         public static IComparer<T> By<TKey>(
             [NotNull] Func<T, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             return XComparer.By(keySelector, keyComparer);
         }
@@ -271,7 +271,7 @@ namespace Linq.Extras
         [Pure]
         public static IComparer<T> ByDescending<TKey>(
             [NotNull] Func<T, TKey> keySelector,
-            IComparer<TKey> keyComparer = null)
+            IComparer<TKey>? keyComparer = null)
         {
             return XComparer.ByDescending(keySelector, keyComparer);
         }

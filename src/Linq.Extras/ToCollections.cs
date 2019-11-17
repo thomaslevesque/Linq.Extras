@@ -43,7 +43,7 @@ namespace Linq.Extras
         /// <returns>A hash set containing the same elements as the <c>source</c> sequence.</returns>
         /// <remarks>Since a hash set cannot contain duplicates, duplicate elements from the <c>source</c> sequence will not be included in the hash set.</remarks>
         [Pure]
-        public static HashSet<TSource> ToHashSet<TSource>([NotNull] this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer = null)
+        public static HashSet<TSource> ToHashSet<TSource>([NotNull] this IEnumerable<TSource> source, IEqualityComparer<TSource>? comparer = null)
         {
             source.CheckArgumentNull(nameof(source));
             return new HashSet<TSource>(source, comparer);
