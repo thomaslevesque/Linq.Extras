@@ -7,3 +7,5 @@ obj/
 artifacts/
 
 _ReSharper.Caches/
+
+UpgradeLog*.htm
