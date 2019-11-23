@@ -80,7 +80,7 @@ namespace build
         }
 
         private static string GetSolutionDirectory() =>
-            Path.GetFullPath(Path.Combine(GetScriptDirectory(), @"..\.."));
+            Path.GetFullPath(Path.Combine(GetScriptDirectory(), "..", ".."));
 
         private static string GetScriptDirectory([CallerFilePath] string filename = null) => Path.GetDirectoryName(filename);
     }
