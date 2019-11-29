@@ -1,11 +1,8 @@
+api/
+artifacts/
 bin/
 obj/
 .vs/
 .vscode/
 *.user
 
-artifacts/
-
-_ReSharper.Caches/
-
-UpgradeLog*.htm
