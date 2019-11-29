@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="90a56c19-662e-4b18-bd2a-ff7b6b367b57" Title="Linq.Extras" Url="html/N_Linq_Extras.htm">
+    <HelpTOCNode Id="8d0296d7-9ff5-4bcc-acc1-3dc4191f079f" Title="IIndexedItem(T) Interface" Url="html/T_Linq_Extras_IIndexedItem_1.htm">
+      <HelpTOCNode Id="8cf52c0a-7cbe-464a-853d-b54038c37133" Title="IIndexedItem(T) Properties" Url="html/Properties_T_Linq_Extras_IIndexedItem_1.htm">
+        <HelpTOCNode Title="Index Property " Url="html/P_Linq_Extras_IIndexedItem_1_Index.htm" />
+        <HelpTOCNode Title="Item Property " Url="html/P_Linq_Extras_IIndexedItem_1_Item.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="769bc8c0-6bcd-4032-b9cf-2623b4b95406" Title="Infer Class" Url="html/T_Linq_Extras_Infer.htm">
+      <HelpTOCNode Id="d081ddf5-1926-430e-8b64-28dbd7f6b699" Title="Infer Methods" Url="html/Methods_T_Linq_Extras_Infer.htm">
+        <HelpTOCNode Id="3fcfa857-8bc2-4af6-a93f-517e9dcd6dfc" Title="Expr Method " Url="html/Overload_Linq_Extras_Infer_Expr.htm">
+          <HelpTOCNode Title="Expr(TResult) Method (Expression(Func(TResult)))" Url="html/M_Linq_Extras_Infer_Expr__1.htm" />
+          <HelpTOCNode Title="Expr(T1, TResult) Method (Expression(Func(T1, TResult)))" Url="html/M_Linq_Extras_Infer_Expr__2.htm" />
+          <HelpTOCNode Title="Expr(T1, T2, TResult) Method (Expression(Func(T1, T2, TResult)))" Url="html/M_Linq_Extras_Infer_Expr__3.htm" />
+          <HelpTOCNode Title="Expr(T1, T2, T3, TResult) Method (Expression(Func(T1, T2, T3, TResult)))" Url="html/M_Linq_Extras_Infer_Expr__4.htm" />
+          <HelpTOCNode Title="Expr(T1, T2, T3, T4, TResult) Method (Expression(Func(T1, T2, T3, T4, TResult)))" Url="html/M_Linq_Extras_Infer_Expr__5.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="5424d18f-bc2d-4fef-a170-27bcd52caf72" Title="Func Method " Url="html/Overload_Linq_Extras_Infer_Func.htm">
+          <HelpTOCNode Title="Func(TResult) Method (Func(TResult))" Url="html/M_Linq_Extras_Infer_Func__1.htm" />
+          <HelpTOCNode Title="Func(T1, TResult) Method (Func(T1, TResult))" Url="html/M_Linq_Extras_Infer_Func__2.htm" />
+          <HelpTOCNode Title="Func(T1, T2, TResult) Method (Func(T1, T2, TResult))" Url="html/M_Linq_Extras_Infer_Func__3.htm" />
+          <HelpTOCNode Title="Func(T1, T2, T3, TResult) Method (Func(T1, T2, T3, TResult))" Url="html/M_Linq_Extras_Infer_Func__4.htm" />
+          <HelpTOCNode Title="Func(T1, T2, T3, T4, TResult) Method (Func(T1, T2, T3, T4, TResult))" Url="html/M_Linq_Extras_Infer_Func__5.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="baa6e045-98d6-4b8c-9a2f-6305bed0766d" Title="INode(T) Interface" Url="html/T_Linq_Extras_INode_1.htm">
+      <HelpTOCNode Id="d1d6b78b-217c-47ec-90d7-e5c3ef5189a5" Title="INode(T) Properties" Url="html/Properties_T_Linq_Extras_INode_1.htm">
+        <HelpTOCNode Title="Children Property " Url="html/P_Linq_Extras_INode_1_Children.htm" />
+        <HelpTOCNode Title="Item Property " Url="html/P_Linq_Extras_INode_1_Item.htm" />
+        <HelpTOCNode Title="Level Property " Url="html/P_Linq_Extras_INode_1_Level.htm" />
+        <HelpTOCNode Title="Parent Property " Url="html/P_Linq_Extras_INode_1_Parent.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="TreeTraversalMode Enumeration" Url="html/T_Linq_Extras_TreeTraversalMode.htm" />
+    <HelpTOCNode Id="309acdf6-95b3-4fac-8825-22ac2e449d73" Title="XComparer Class" Url="html/T_Linq_Extras_XComparer.htm">
+      <HelpTOCNode Id="a422c3b1-067e-4341-9c89-3ecb38cd2f8f" Title="XComparer Methods" Url="html/Methods_T_Linq_Extras_XComparer.htm">
+        <HelpTOCNode Title="By(T, TKey) Method " Url="html/M_Linq_Extras_XComparer_By__2.htm" />
+        <HelpTOCNode Title="ByDescending(T, TKey) Method " Url="html/M_Linq_Extras_XComparer_ByDescending__2.htm" />
+        <HelpTOCNode Title="ChainWith(T) Method " Url="html/M_Linq_Extras_XComparer_ChainWith__1.htm" />
+        <HelpTOCNode Title="FromComparison(T) Method " Url="html/M_Linq_Extras_XComparer_FromComparison__1.htm" />
+        <HelpTOCNode Title="Max(T) Method " Url="html/M_Linq_Extras_XComparer_Max__1.htm" />
+        <HelpTOCNode Title="Min(T) Method " Url="html/M_Linq_Extras_XComparer_Min__1.htm" />
+        <HelpTOCNode Title="Reverse(T) Method " Url="html/M_Linq_Extras_XComparer_Reverse__1.htm" />
+        <HelpTOCNode Title="ThenBy(T, TKey) Method " Url="html/M_Linq_Extras_XComparer_ThenBy__2.htm" />
+        <HelpTOCNode Title="ThenByDescending(T, TKey) Method " Url="html/M_Linq_Extras_XComparer_ThenByDescending__2.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="119e0fb5-a758-4873-9c0b-23c606e6fe85" Title="XComparer(T) Class" Url="html/T_Linq_Extras_XComparer_1.htm">
+      <HelpTOCNode Id="82361543-786c-4054-908a-d06397a64833" Title="XComparer(T) Methods" Url="html/Methods_T_Linq_Extras_XComparer_1.htm">
+        <HelpTOCNode Title="By(TKey) Method " Url="html/M_Linq_Extras_XComparer_1_By__1.htm" />
+        <HelpTOCNode Title="ByDescending(TKey) Method " Url="html/M_Linq_Extras_XComparer_1_ByDescending__1.htm" />
+        <HelpTOCNode Title="FromComparison Method " Url="html/M_Linq_Extras_XComparer_1_FromComparison.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2ac523d9-6947-41e6-a602-935b8509e622" Title="XEnumerable Class" Url="html/T_Linq_Extras_XEnumerable.htm">
+      <HelpTOCNode Id="4aad280e-e6f8-481b-b4be-30ac91d65bd0" Title="XEnumerable Methods" Url="html/Methods_T_Linq_Extras_XEnumerable.htm">
+        <HelpTOCNode Title="Append(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Append__1.htm" />
+        <HelpTOCNode Title="Batch(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Batch__1.htm" />
+        <HelpTOCNode Title="CommonPrefix(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_CommonPrefix__1.htm" />
+        <HelpTOCNode Title="DenseRankBy(TSource, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_DenseRankBy__3.htm" />
+        <HelpTOCNode Title="DenseRankByDescending(TSource, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_DenseRankByDescending__3.htm" />
+        <HelpTOCNode Title="DistinctBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_DistinctBy__2.htm" />
+        <HelpTOCNode Title="DistinctUntilChanged(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_DistinctUntilChanged__1.htm" />
+        <HelpTOCNode Title="DistinctUntilChangedBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_DistinctUntilChangedBy__2.htm" />
+        <HelpTOCNode Title="ElementAtOrDefault(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_ElementAtOrDefault__1.htm" />
+        <HelpTOCNode Title="Empty(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Empty__1.htm" />
+        <HelpTOCNode Title="ExceptBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_ExceptBy__2.htm" />
+        <HelpTOCNode Id="d0ba4d29-06d5-4355-821b-33317fcf9a98" Title="FirstOrDefault Method " Url="html/Overload_Linq_Extras_XEnumerable_FirstOrDefault.htm">
+          <HelpTOCNode Title="FirstOrDefault(TSource) Method (IEnumerable(TSource), TSource)" Url="html/M_Linq_Extras_XEnumerable_FirstOrDefault__1_1.htm" />
+          <HelpTOCNode Title="FirstOrDefault(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean), TSource)" Url="html/M_Linq_Extras_XEnumerable_FirstOrDefault__1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="3d466d69-c9d7-4f75-bc02-2a2b543f0ba2" Title="Flatten Method " Url="html/Overload_Linq_Extras_XEnumerable_Flatten.htm">
+          <HelpTOCNode Title="Flatten(TNode) Method (IEnumerable(TNode), Func(TNode, IEnumerable(TNode)), TreeTraversalMode)" Url="html/M_Linq_Extras_XEnumerable_Flatten__1.htm" />
+          <HelpTOCNode Title="Flatten(TNode, TResult) Method (IEnumerable(TNode), Func(TNode, IEnumerable(TNode)), TreeTraversalMode, Func(TNode, TResult))" Url="html/M_Linq_Extras_XEnumerable_Flatten__2.htm" />
+          <HelpTOCNode Title="Flatten(TNode, TResult) Method (IEnumerable(TNode), Func(TNode, IEnumerable(TNode)), TreeTraversalMode, Func(TNode, Int32, TResult))" Url="html/M_Linq_Extras_XEnumerable_Flatten__2_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="FullOuterJoin(TLeft, TRight, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_FullOuterJoin__4.htm" />
+        <HelpTOCNode Id="500e766e-7969-478c-800a-113e82b85e10" Title="Generate Method " Url="html/Overload_Linq_Extras_XEnumerable_Generate.htm">
+          <HelpTOCNode Title="Generate(TElement) Method (Func(Int32, TElement))" Url="html/M_Linq_Extras_XEnumerable_Generate__1.htm" />
+          <HelpTOCNode Title="Generate(TElement) Method (TElement, Func(TElement, TElement))" Url="html/M_Linq_Extras_XEnumerable_Generate__1_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GroupUntilChanged(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_GroupUntilChanged__1.htm" />
+        <HelpTOCNode Title="GroupUntilChangedBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_GroupUntilChangedBy__2.htm" />
+        <HelpTOCNode Id="e4c17783-cb60-4fd4-b1ec-2aa156644bb6" Title="IndexOf Method " Url="html/Overload_Linq_Extras_XEnumerable_IndexOf.htm">
+          <HelpTOCNode Title="IndexOf(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean))" Url="html/M_Linq_Extras_XEnumerable_IndexOf__1.htm" />
+          <HelpTOCNode Title="IndexOf(TSource) Method (IEnumerable(TSource), TSource, IEqualityComparer(TSource))" Url="html/M_Linq_Extras_XEnumerable_IndexOf__1_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="IndexOfSubstring(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_IndexOfSubstring__1.htm" />
+        <HelpTOCNode Title="IntersectBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_IntersectBy__2.htm" />
+        <HelpTOCNode Id="97313365-2ec2-4632-b408-fc8d0329bb0e" Title="IsNullOrEmpty Method " Url="html/Overload_Linq_Extras_XEnumerable_IsNullOrEmpty.htm">
+          <HelpTOCNode Title="IsNullOrEmpty(TSource) Method (IEnumerable(TSource))" Url="html/M_Linq_Extras_XEnumerable_IsNullOrEmpty__1.htm" />
+          <HelpTOCNode Title="IsNullOrEmpty Method (IEnumerable)" Url="html/M_Linq_Extras_XEnumerable_IsNullOrEmpty.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="e0ffcc35-5496-4d4e-80ba-0a9f91f433ea" Title="LastIndexOf Method " Url="html/Overload_Linq_Extras_XEnumerable_LastIndexOf.htm">
+          <HelpTOCNode Title="LastIndexOf(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean))" Url="html/M_Linq_Extras_XEnumerable_LastIndexOf__1.htm" />
+          <HelpTOCNode Title="LastIndexOf(TSource) Method (IEnumerable(TSource), TSource, IEqualityComparer(TSource))" Url="html/M_Linq_Extras_XEnumerable_LastIndexOf__1_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="5b0a1081-b865-4952-b6d1-4ea2c67c13f2" Title="LastOrDefault Method " Url="html/Overload_Linq_Extras_XEnumerable_LastOrDefault.htm">
+          <HelpTOCNode Title="LastOrDefault(TSource) Method (IEnumerable(TSource), TSource)" Url="html/M_Linq_Extras_XEnumerable_LastOrDefault__1_1.htm" />
+          <HelpTOCNode Title="LastOrDefault(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean), TSource)" Url="html/M_Linq_Extras_XEnumerable_LastOrDefault__1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="LeftOuterJoin(TLeft, TRight, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_LeftOuterJoin__4.htm" />
+        <HelpTOCNode Title="Max(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Max__1.htm" />
+        <HelpTOCNode Title="MaxBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_MaxBy__2.htm" />
+        <HelpTOCNode Title="Min(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Min__1.htm" />
+        <HelpTOCNode Title="MinBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_MinBy__2.htm" />
+        <HelpTOCNode Id="58d15b59-09fe-4b93-88c6-5cc3b23f4b4a" Title="None Method " Url="html/Overload_Linq_Extras_XEnumerable_None.htm">
+          <HelpTOCNode Title="None(TSource) Method (IEnumerable(TSource))" Url="html/M_Linq_Extras_XEnumerable_None__1.htm" />
+          <HelpTOCNode Title="None(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean))" Url="html/M_Linq_Extras_XEnumerable_None__1_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Prepend(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Prepend__1.htm" />
+        <HelpTOCNode Title="RankBy(TSource, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_RankBy__3.htm" />
+        <HelpTOCNode Title="RankByDescending(TSource, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_RankByDescending__3.htm" />
+        <HelpTOCNode Title="RightOuterJoin(TLeft, TRight, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_RightOuterJoin__4.htm" />
+        <HelpTOCNode Title="SequenceEqualBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_SequenceEqualBy__2.htm" />
+        <HelpTOCNode Id="35f8dd38-bf5b-44d7-ad23-f2f5572291c4" Title="SingleOrDefault Method " Url="html/Overload_Linq_Extras_XEnumerable_SingleOrDefault.htm">
+          <HelpTOCNode Title="SingleOrDefault(TSource) Method (IEnumerable(TSource), TSource)" Url="html/M_Linq_Extras_XEnumerable_SingleOrDefault__1_1.htm" />
+          <HelpTOCNode Title="SingleOrDefault(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean), TSource)" Url="html/M_Linq_Extras_XEnumerable_SingleOrDefault__1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="ToArray(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_ToArray__1.htm" />
+        <HelpTOCNode Title="ToHashSet(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_ToHashSet__1.htm" />
+        <HelpTOCNode Title="ToHierarchy(TSource, TId) Method " Url="html/M_Linq_Extras_XEnumerable_ToHierarchy__2.htm" />
+        <HelpTOCNode Title="ToLinkedList(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_ToLinkedList__1.htm" />
+        <HelpTOCNode Title="ToList(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_ToList__1.htm" />
+        <HelpTOCNode Title="ToQueue(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_ToQueue__1.htm" />
+        <HelpTOCNode Title="ToStack(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_ToStack__1.htm" />
+        <HelpTOCNode Title="UnionBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_UnionBy__2.htm" />
+        <HelpTOCNode Title="Unit(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Unit__1.htm" />
+        <HelpTOCNode Title="WithIndex(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_WithIndex__1.htm" />
+        <HelpTOCNode Title="WithoutIndex(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_WithoutIndex__1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5b542776-0e84-4bda-bf4f-e0c9f2b50238" Title="XEqualityComparer Class" Url="html/T_Linq_Extras_XEqualityComparer.htm">
+      <HelpTOCNode Id="f1a169bb-a2c7-4759-b3d3-6eafdf1fbd3a" Title="XEqualityComparer Methods" Url="html/Methods_T_Linq_Extras_XEqualityComparer.htm">
+        <HelpTOCNode Title="By(T, TKey) Method " Url="html/M_Linq_Extras_XEqualityComparer_By__2.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="306eca9d-a80a-4fcb-aa88-2c7d482ec0e3" Title="XEqualityComparer(T) Class" Url="html/T_Linq_Extras_XEqualityComparer_1.htm">
+      <HelpTOCNode Id="bfb07e2a-8036-47f9-9ade-fe41aa6e0322" Title="XEqualityComparer(T) Methods" Url="html/Methods_T_Linq_Extras_XEqualityComparer_1.htm">
+        <HelpTOCNode Title="By(TKey) Method " Url="html/M_Linq_Extras_XEqualityComparer_1_By__1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f2467e50-1bd6-4760-9877-8c959e5cbc08" Title="XList Class" Url="html/T_Linq_Extras_XList.htm">
+      <HelpTOCNode Id="bf91e88d-30c8-4dea-9e7b-0dad80540901" Title="XList Methods" Url="html/Methods_T_Linq_Extras_XList.htm">
+        <HelpTOCNode Title="AsReadOnly(T) Method " Url="html/M_Linq_Extras_XList_AsReadOnly__1.htm" />
+        <HelpTOCNode Title="Shuffle(T) Method " Url="html/M_Linq_Extras_XList_Shuffle__1.htm" />
+        <HelpTOCNode Title="Swap(T) Method " Url="html/M_Linq_Extras_XList_Swap__1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

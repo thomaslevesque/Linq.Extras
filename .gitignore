@@ -1,0 +1,17 @@
+.vs/
+.vscode/
+artifacts/
+bin/
+obj/
+src/
+tests/
+tools/
+*.sln
+*.ndproj
+*.DotSettings
+*.snk
+*.user
+README.md
+LICENCE.md
+appveyor.yml
+build.cmd
