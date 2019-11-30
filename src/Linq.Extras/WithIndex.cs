@@ -14,10 +14,10 @@ namespace Linq.Extras
         /// <param name="source">The source sequence.</param>
         /// <returns>A sequence of elements paired with their index in the sequence.</returns>
         [Pure]
-        public static IEnumerable<IndexedItem<TSource>> WithIndex<TSource>(
+        public static IEnumerable<ItemWithIndex<TSource>> WithIndex<TSource>(
             [NotNull] this IEnumerable<TSource> source)
         {
-            return source.Select((item, index) => new IndexedItem<TSource>(item, index));
+            return source.Select((item, index) => new ItemWithIndex<TSource>(item, index));
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Linq.Extras
         /// <returns>A sequence of elements without their associated indexes.</returns>
         [Pure]
         public static IEnumerable<TSource> WithoutIndex<TSource>(
-            [NotNull] this IEnumerable<IndexedItem<TSource>> source)
+            [NotNull] this IEnumerable<ItemWithIndex<TSource>> source)
         {
             return source.Select(indexed => indexed.Item);
         }
