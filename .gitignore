@@ -2,6 +2,7 @@
 .vscode/
 artifacts/
 bin/
+docs/
 obj/
 src/
 tests/
