@@ -22,19 +22,67 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var result = source.WithIndex();
             result.Should().Equal(
                 new []{
-                new IndexedItem<int>(4, 0),
-                new IndexedItem<int>(8, 1),
-                new IndexedItem<int>(15, 2),
-                new IndexedItem<int>(16, 3),
-                new IndexedItem<int>(23, 4),
-                new IndexedItem<int>(42, 5)
+                new ItemWithIndex<int>(4, 0),
+                new ItemWithIndex<int>(8, 1),
+                new ItemWithIndex<int>(15, 2),
+                new ItemWithIndex<int>(16, 3),
+                new ItemWithIndex<int>(23, 4),
+                new ItemWithIndex<int>(42, 5)
+                }, HaveSameIndexAndItem);
+        }
+
+        [Fact]
+        public void WithIndexForArray_Throws_If_Argument_Is_Null()
+        {
+            var source = new int[0];
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.WithIndex());
+        }
+
+        [Fact]
+        public void WithIndexForArray_Associates_An_Index_With_Each_Item()
+        {
+            var source = new[] { 4, 8, 15, 16, 23, 42 };
+            var result = source.WithIndex();
+            result.Should().Equal(
+                new[]{
+                new ItemWithIndex<int>(4, 0),
+                new ItemWithIndex<int>(8, 1),
+                new ItemWithIndex<int>(15, 2),
+                new ItemWithIndex<int>(16, 3),
+                new ItemWithIndex<int>(23, 4),
+                new ItemWithIndex<int>(42, 5)
+                }, HaveSameIndexAndItem);
+        }
+
+        [Fact]
+        public void WithIndexForList_Throws_If_Argument_Is_Null()
+        {
+            var source = new List<int>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.WithIndex());
+        }
+
+        [Fact]
+        public void WithIndexForList_Associates_An_Index_With_Each_Item()
+        {
+            var source = new List<int> { 4, 8, 15, 16, 23, 42 };
+            var result = source.WithIndex();
+            result.Should().Equal(
+                new[]{
+                new ItemWithIndex<int>(4, 0),
+                new ItemWithIndex<int>(8, 1),
+                new ItemWithIndex<int>(15, 2),
+                new ItemWithIndex<int>(16, 3),
+                new ItemWithIndex<int>(23, 4),
+                new ItemWithIndex<int>(42, 5)
                 }, HaveSameIndexAndItem);
         }
 
         [Fact]
         public void WithoutIndex_Throws_If_Argument_Is_Null()
         {
-            var source = Enumerable.Empty<IndexedItem<int>>();
+            var source = Enumerable.Empty<ItemWithIndex<int>>();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             TestHelper.AssertThrowsWhenArgumentNull(() => source.WithoutIndex());
         }
@@ -44,12 +92,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var source = new[]
                          {
-                             new IndexedItem<int>(4, 0),
-                             new IndexedItem<int>(8, 1),
-                             new IndexedItem<int>(15, 2),
-                             new IndexedItem<int>(16, 3),
-                             new IndexedItem<int>(23, 4),
-                             new IndexedItem<int>(42, 5)
+                             new ItemWithIndex<int>(4, 0),
+                             new ItemWithIndex<int>(8, 1),
+                             new ItemWithIndex<int>(15, 2),
+                             new ItemWithIndex<int>(16, 3),
+                             new ItemWithIndex<int>(23, 4),
+                             new ItemWithIndex<int>(42, 5)
                          }.ForbidMultipleEnumeration();
             var result = source.WithoutIndex();
             result.Should().Equal(4, 8, 15, 16, 23, 42);
@@ -58,13 +106,13 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [Fact]
         public void Deconstruct_Returns_Item_And_Index()
         {
-            var indexedItem = new IndexedItem<int>(42, 5);
+            var indexedItem = new ItemWithIndex<int>(42, 5);
             var (item, index) = indexedItem;
             item.Should().Be(42);
             index.Should().Be(5);
         }
 
-        static bool HaveSameIndexAndItem<T>(IndexedItem<T> x, IndexedItem<T> y)
+        static bool HaveSameIndexAndItem<T>(ItemWithIndex<T> x, ItemWithIndex<T> y)
         {
             return x.Index == y.Index && EqualityComparer<T>.Default.Equals(x.Item, y.Item);
         }
