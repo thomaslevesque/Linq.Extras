@@ -32,11 +32,22 @@
   <HelpKINode Title="Children property" Url="html/P_Linq_Extras_INode_1_Children.htm" />
   <HelpKINode Title="CommonPrefix(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_CommonPrefix__1.htm" />
   <HelpKINode Title="CommonPrefix&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_CommonPrefix__1.htm" />
+  <HelpKINode Title="Current property">
+    <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(TSource).Enumerator.Current Property " Url="html/P_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_Current.htm" />
+    <HelpKINode Title="XEnumerable.WithIndexEnumerable(TSource).Enumerator.Current Property " Url="html/P_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_Current.htm" />
+    <HelpKINode Title="XEnumerable.WithIndexListEnumerable(TSource).Enumerator.Current Property " Url="html/P_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_Current.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Deconstruct method" Url="html/M_Linq_Extras_ItemWithIndex_1_Deconstruct.htm" />
   <HelpKINode Title="DenseRankBy(Of TSource, TKey, TResult) method" Url="html/M_Linq_Extras_XEnumerable_DenseRankBy__3.htm" />
   <HelpKINode Title="DenseRankBy&lt;TSource, TKey, TResult&gt; method" Url="html/M_Linq_Extras_XEnumerable_DenseRankBy__3.htm" />
   <HelpKINode Title="DenseRankByDescending(Of TSource, TKey, TResult) method" Url="html/M_Linq_Extras_XEnumerable_DenseRankByDescending__3.htm" />
   <HelpKINode Title="DenseRankByDescending&lt;TSource, TKey, TResult&gt; method" Url="html/M_Linq_Extras_XEnumerable_DenseRankByDescending__3.htm" />
   <HelpKINode Title="DepthFirst enumeration member" Url="html/T_Linq_Extras_TreeTraversalMode.htm" />
+  <HelpKINode Title="Dispose method">
+    <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(TSource).Enumerator.Dispose Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_Dispose.htm" />
+    <HelpKINode Title="XEnumerable.WithIndexEnumerable(TSource).Enumerator.Dispose Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_Dispose.htm" />
+    <HelpKINode Title="XEnumerable.WithIndexListEnumerable(TSource).Enumerator.Dispose Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_Dispose.htm" />
+  </HelpKINode>
   <HelpKINode Title="DistinctBy(Of TSource, TKey) method" Url="html/M_Linq_Extras_XEnumerable_DistinctBy__2.htm" />
   <HelpKINode Title="DistinctBy&lt;TSource, TKey&gt; method" Url="html/M_Linq_Extras_XEnumerable_DistinctBy__2.htm" />
   <HelpKINode Title="DistinctUntilChanged(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_DistinctUntilChanged__1.htm" />
@@ -47,6 +58,14 @@
   <HelpKINode Title="ElementAtOrDefault&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_ElementAtOrDefault__1.htm" />
   <HelpKINode Title="Empty(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_Empty__1.htm" />
   <HelpKINode Title="Empty&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_Empty__1.htm" />
+  <HelpKINode Title="Enumerator structure">
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
+  </HelpKINode>
   <HelpKINode Title="ExceptBy(Of TSource, TKey) method" Url="html/M_Linq_Extras_XEnumerable_ExceptBy__2.htm" />
   <HelpKINode Title="ExceptBy&lt;TSource, TKey&gt; method" Url="html/M_Linq_Extras_XEnumerable_ExceptBy__2.htm" />
   <HelpKINode Title="Expr method" Url="html/Overload_Linq_Extras_Infer_Expr.htm" />
@@ -59,38 +78,27 @@
   <HelpKINode Title="FullOuterJoin&lt;TLeft, TRight, TKey, TResult&gt; method" Url="html/M_Linq_Extras_XEnumerable_FullOuterJoin__4.htm" />
   <HelpKINode Title="Func method" Url="html/Overload_Linq_Extras_Infer_Func.htm" />
   <HelpKINode Title="Generate method" Url="html/Overload_Linq_Extras_XEnumerable_Generate.htm" />
+  <HelpKINode Title="GetEnumerator method">
+    <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(TSource).GetEnumerator Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_GetEnumerator.htm" />
+    <HelpKINode Title="XEnumerable.WithIndexEnumerable(TSource).GetEnumerator Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_GetEnumerator.htm" />
+    <HelpKINode Title="XEnumerable.WithIndexListEnumerable(TSource).GetEnumerator Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_GetEnumerator.htm" />
+  </HelpKINode>
   <HelpKINode Title="GroupUntilChanged(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_GroupUntilChanged__1.htm" />
   <HelpKINode Title="GroupUntilChanged&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_GroupUntilChanged__1.htm" />
   <HelpKINode Title="GroupUntilChangedBy(Of TSource, TKey) method" Url="html/M_Linq_Extras_XEnumerable_GroupUntilChangedBy__2.htm" />
   <HelpKINode Title="GroupUntilChangedBy&lt;TSource, TKey&gt; method" Url="html/M_Linq_Extras_XEnumerable_GroupUntilChangedBy__2.htm" />
-  <HelpKINode Title="IIndexedItem(Of T) interface">
-    <HelpKINode Title="IIndexedItem(T) Interface" Url="html/T_Linq_Extras_IIndexedItem_1.htm" />
-    <HelpKINode Title="about IIndexedItem(Of T) interface" Url="html/T_Linq_Extras_IIndexedItem_1.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_IIndexedItem_1.htm" />
-  </HelpKINode>
-  <HelpKINode Title="IIndexedItem(Of T).Index property" Url="html/P_Linq_Extras_IIndexedItem_1_Index.htm" />
-  <HelpKINode Title="IIndexedItem(Of T).Item property" Url="html/P_Linq_Extras_IIndexedItem_1_Item.htm" />
-  <HelpKINode Title="IIndexedItem&lt;T&gt; interface">
-    <HelpKINode Title="IIndexedItem(T) Interface" Url="html/T_Linq_Extras_IIndexedItem_1.htm" />
-    <HelpKINode Title="about IIndexedItem&lt;T&gt; interface" Url="html/T_Linq_Extras_IIndexedItem_1.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_IIndexedItem_1.htm" />
-  </HelpKINode>
-  <HelpKINode Title="IIndexedItem&lt;T&gt;.Index property" Url="html/P_Linq_Extras_IIndexedItem_1_Index.htm" />
-  <HelpKINode Title="IIndexedItem&lt;T&gt;.Item property" Url="html/P_Linq_Extras_IIndexedItem_1_Item.htm" />
-  <HelpKINode Title="Index property" Url="html/P_Linq_Extras_IIndexedItem_1_Index.htm" />
+  <HelpKINode Title="Index property" Url="html/P_Linq_Extras_ItemWithIndex_1_Index.htm" />
   <HelpKINode Title="IndexOf method" Url="html/Overload_Linq_Extras_XEnumerable_IndexOf.htm" />
   <HelpKINode Title="IndexOfSubstring(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_IndexOfSubstring__1.htm" />
   <HelpKINode Title="IndexOfSubstring&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_IndexOfSubstring__1.htm" />
   <HelpKINode Title="Infer class">
     <HelpKINode Title="Infer Class" Url="html/T_Linq_Extras_Infer.htm" />
-    <HelpKINode Title="about Infer class" Url="html/T_Linq_Extras_Infer.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_Infer.htm" />
   </HelpKINode>
   <HelpKINode Title="Infer.Expr method" Url="html/Overload_Linq_Extras_Infer_Expr.htm" />
   <HelpKINode Title="Infer.Func method" Url="html/Overload_Linq_Extras_Infer_Func.htm" />
   <HelpKINode Title="INode(Of T) interface">
     <HelpKINode Title="INode(T) Interface" Url="html/T_Linq_Extras_INode_1.htm" />
-    <HelpKINode Title="about INode(Of T) interface" Url="html/T_Linq_Extras_INode_1.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_INode_1.htm" />
   </HelpKINode>
   <HelpKINode Title="INode(Of T).Children property" Url="html/P_Linq_Extras_INode_1_Children.htm" />
@@ -99,7 +107,6 @@
   <HelpKINode Title="INode(Of T).Parent property" Url="html/P_Linq_Extras_INode_1_Parent.htm" />
   <HelpKINode Title="INode&lt;T&gt; interface">
     <HelpKINode Title="INode(T) Interface" Url="html/T_Linq_Extras_INode_1.htm" />
-    <HelpKINode Title="about INode&lt;T&gt; interface" Url="html/T_Linq_Extras_INode_1.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_INode_1.htm" />
   </HelpKINode>
   <HelpKINode Title="INode&lt;T&gt;.Children property" Url="html/P_Linq_Extras_INode_1_Children.htm" />
@@ -110,25 +117,57 @@
   <HelpKINode Title="IntersectBy&lt;TSource, TKey&gt; method" Url="html/M_Linq_Extras_XEnumerable_IntersectBy__2.htm" />
   <HelpKINode Title="IsNullOrEmpty method" Url="html/Overload_Linq_Extras_XEnumerable_IsNullOrEmpty.htm" />
   <HelpKINode Title="Item property">
-    <HelpKINode Title="IIndexedItem(T).Item Property " Url="html/P_Linq_Extras_IIndexedItem_1_Item.htm" />
     <HelpKINode Title="INode(T).Item Property " Url="html/P_Linq_Extras_INode_1_Item.htm" />
+    <HelpKINode Title="ItemWithIndex(T).Item Property " Url="html/P_Linq_Extras_ItemWithIndex_1_Item.htm" />
   </HelpKINode>
+  <HelpKINode Title="ItemWithIndex(Of T) structure">
+    <HelpKINode Title="ItemWithIndex(T) Structure" Url="html/T_Linq_Extras_ItemWithIndex_1.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Linq_Extras_ItemWithIndex_1__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_ItemWithIndex_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_ItemWithIndex_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ItemWithIndex(Of T).Deconstruct method" Url="html/M_Linq_Extras_ItemWithIndex_1_Deconstruct.htm" />
+  <HelpKINode Title="ItemWithIndex(Of T).Index property" Url="html/P_Linq_Extras_ItemWithIndex_1_Index.htm" />
+  <HelpKINode Title="ItemWithIndex(Of T).Item property" Url="html/P_Linq_Extras_ItemWithIndex_1_Item.htm" />
+  <HelpKINode Title="ItemWithIndex(Of T).ItemWithIndex constructor" Url="html/M_Linq_Extras_ItemWithIndex_1__ctor.htm" />
+  <HelpKINode Title="ItemWithIndex&lt;T&gt; structure">
+    <HelpKINode Title="ItemWithIndex(T) Structure" Url="html/T_Linq_Extras_ItemWithIndex_1.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Linq_Extras_ItemWithIndex_1__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_ItemWithIndex_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_ItemWithIndex_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ItemWithIndex&lt;T&gt;.Deconstruct method" Url="html/M_Linq_Extras_ItemWithIndex_1_Deconstruct.htm" />
+  <HelpKINode Title="ItemWithIndex&lt;T&gt;.Index property" Url="html/P_Linq_Extras_ItemWithIndex_1_Index.htm" />
+  <HelpKINode Title="ItemWithIndex&lt;T&gt;.Item property" Url="html/P_Linq_Extras_ItemWithIndex_1_Item.htm" />
+  <HelpKINode Title="ItemWithIndex&lt;T&gt;.ItemWithIndex constructor" Url="html/M_Linq_Extras_ItemWithIndex_1__ctor.htm" />
   <HelpKINode Title="LastIndexOf method" Url="html/Overload_Linq_Extras_XEnumerable_LastIndexOf.htm" />
   <HelpKINode Title="LastOrDefault method" Url="html/Overload_Linq_Extras_XEnumerable_LastOrDefault.htm" />
   <HelpKINode Title="LeftOuterJoin(Of TLeft, TRight, TKey, TResult) method" Url="html/M_Linq_Extras_XEnumerable_LeftOuterJoin__4.htm" />
   <HelpKINode Title="LeftOuterJoin&lt;TLeft, TRight, TKey, TResult&gt; method" Url="html/M_Linq_Extras_XEnumerable_LeftOuterJoin__4.htm" />
   <HelpKINode Title="Level property" Url="html/P_Linq_Extras_INode_1_Level.htm" />
   <HelpKINode Title="Linq.Extras namespace" Url="html/N_Linq_Extras.htm" />
-  <HelpKINode Title="Linq.Extras.IIndexedItem(Of T) interface" Url="html/T_Linq_Extras_IIndexedItem_1.htm" />
-  <HelpKINode Title="Linq.Extras.IIndexedItem&lt;T&gt; interface" Url="html/T_Linq_Extras_IIndexedItem_1.htm" />
   <HelpKINode Title="Linq.Extras.Infer class" Url="html/T_Linq_Extras_Infer.htm" />
   <HelpKINode Title="Linq.Extras.INode(Of T) interface" Url="html/T_Linq_Extras_INode_1.htm" />
   <HelpKINode Title="Linq.Extras.INode&lt;T&gt; interface" Url="html/T_Linq_Extras_INode_1.htm" />
+  <HelpKINode Title="Linq.Extras.ItemWithIndex(Of T) structure" Url="html/T_Linq_Extras_ItemWithIndex_1.htm" />
+  <HelpKINode Title="Linq.Extras.ItemWithIndex&lt;T&gt; structure" Url="html/T_Linq_Extras_ItemWithIndex_1.htm" />
   <HelpKINode Title="Linq.Extras.TreeTraversalMode enumeration" Url="html/T_Linq_Extras_TreeTraversalMode.htm" />
   <HelpKINode Title="Linq.Extras.XComparer class" Url="html/T_Linq_Extras_XComparer.htm" />
   <HelpKINode Title="Linq.Extras.XComparer(Of T) class" Url="html/T_Linq_Extras_XComparer_1.htm" />
   <HelpKINode Title="Linq.Extras.XComparer&lt;T&gt; class" Url="html/T_Linq_Extras_XComparer_1.htm" />
   <HelpKINode Title="Linq.Extras.XEnumerable class" Url="html/T_Linq_Extras_XEnumerable.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexArrayEnumerable(Of TSource) structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexArrayEnumerable(Of TSource).Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexArrayEnumerable&lt;TSource&gt; structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexArrayEnumerable&lt;TSource&gt;.Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexEnumerable(Of TSource) structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexEnumerable(Of TSource).Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexEnumerable&lt;TSource&gt; structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexEnumerable&lt;TSource&gt;.Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexListEnumerable(Of TSource) structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexListEnumerable(Of TSource).Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexListEnumerable&lt;TSource&gt; structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm" />
+  <HelpKINode Title="Linq.Extras.XEnumerable.WithIndexListEnumerable&lt;TSource&gt;.Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm" />
   <HelpKINode Title="Linq.Extras.XEqualityComparer class" Url="html/T_Linq_Extras_XEqualityComparer.htm" />
   <HelpKINode Title="Linq.Extras.XEqualityComparer(Of T) class" Url="html/T_Linq_Extras_XEqualityComparer_1.htm" />
   <HelpKINode Title="Linq.Extras.XEqualityComparer&lt;T&gt; class" Url="html/T_Linq_Extras_XEqualityComparer_1.htm" />
@@ -145,6 +184,11 @@
   <HelpKINode Title="Min&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_Min__1.htm" />
   <HelpKINode Title="MinBy(Of TSource, TKey) method" Url="html/M_Linq_Extras_XEnumerable_MinBy__2.htm" />
   <HelpKINode Title="MinBy&lt;TSource, TKey&gt; method" Url="html/M_Linq_Extras_XEnumerable_MinBy__2.htm" />
+  <HelpKINode Title="MoveNext method">
+    <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(TSource).Enumerator.MoveNext Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_MoveNext.htm" />
+    <HelpKINode Title="XEnumerable.WithIndexEnumerable(TSource).Enumerator.MoveNext Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_MoveNext.htm" />
+    <HelpKINode Title="XEnumerable.WithIndexListEnumerable(TSource).Enumerator.MoveNext Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_MoveNext.htm" />
+  </HelpKINode>
   <HelpKINode Title="None method" Url="html/Overload_Linq_Extras_XEnumerable_None.htm" />
   <HelpKINode Title="Parent property" Url="html/P_Linq_Extras_INode_1_Parent.htm" />
   <HelpKINode Title="Prepend(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_Prepend__1.htm" />
@@ -187,18 +231,33 @@
   <HelpKINode Title="UnionBy&lt;TSource, TKey&gt; method" Url="html/M_Linq_Extras_XEnumerable_UnionBy__2.htm" />
   <HelpKINode Title="Unit(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_Unit__1.htm" />
   <HelpKINode Title="Unit&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_Unit__1.htm" />
-  <HelpKINode Title="WithIndex(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_WithIndex__1.htm" />
-  <HelpKINode Title="WithIndex&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_WithIndex__1.htm" />
+  <HelpKINode Title="WithIndex method" Url="html/Overload_Linq_Extras_XEnumerable_WithIndex.htm" />
+  <HelpKINode Title="WithIndexArrayEnumerable(Of TSource) structure">
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithIndexArrayEnumerable&lt;TSource&gt; structure">
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithIndexEnumerable(Of TSource) structure">
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithIndexEnumerable&lt;TSource&gt; structure">
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithIndexListEnumerable(Of TSource) structure">
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithIndexListEnumerable&lt;TSource&gt; structure">
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm" />
+  </HelpKINode>
   <HelpKINode Title="WithoutIndex(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_WithoutIndex__1.htm" />
   <HelpKINode Title="WithoutIndex&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_WithoutIndex__1.htm" />
   <HelpKINode Title="XComparer class">
     <HelpKINode Title="XComparer Class" Url="html/T_Linq_Extras_XComparer.htm" />
-    <HelpKINode Title="about XComparer class" Url="html/T_Linq_Extras_XComparer.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XComparer.htm" />
   </HelpKINode>
   <HelpKINode Title="XComparer(Of T) class">
     <HelpKINode Title="XComparer(T) Class" Url="html/T_Linq_Extras_XComparer_1.htm" />
-    <HelpKINode Title="about XComparer(Of T) class" Url="html/T_Linq_Extras_XComparer_1.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XComparer_1.htm" />
   </HelpKINode>
   <HelpKINode Title="XComparer(Of T).By(Of TKey) method" Url="html/M_Linq_Extras_XComparer_1_By__1.htm" />
@@ -224,7 +283,6 @@
   <HelpKINode Title="XComparer.ThenByDescending&lt;T, TKey&gt; method" Url="html/M_Linq_Extras_XComparer_ThenByDescending__2.htm" />
   <HelpKINode Title="XComparer&lt;T&gt; class">
     <HelpKINode Title="XComparer(T) Class" Url="html/T_Linq_Extras_XComparer_1.htm" />
-    <HelpKINode Title="about XComparer&lt;T&gt; class" Url="html/T_Linq_Extras_XComparer_1.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XComparer_1.htm" />
   </HelpKINode>
   <HelpKINode Title="XComparer&lt;T&gt;.By&lt;TKey&gt; method" Url="html/M_Linq_Extras_XComparer_1_By__1.htm" />
@@ -232,7 +290,6 @@
   <HelpKINode Title="XComparer&lt;T&gt;.FromComparison method" Url="html/M_Linq_Extras_XComparer_1_FromComparison.htm" />
   <HelpKINode Title="XEnumerable class">
     <HelpKINode Title="XEnumerable Class" Url="html/T_Linq_Extras_XEnumerable.htm" />
-    <HelpKINode Title="about XEnumerable class" Url="html/T_Linq_Extras_XEnumerable.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable.htm" />
   </HelpKINode>
   <HelpKINode Title="XEnumerable.Append(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_Append__1.htm" />
@@ -314,18 +371,51 @@
   <HelpKINode Title="XEnumerable.UnionBy&lt;TSource, TKey&gt; method" Url="html/M_Linq_Extras_XEnumerable_UnionBy__2.htm" />
   <HelpKINode Title="XEnumerable.Unit(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_Unit__1.htm" />
   <HelpKINode Title="XEnumerable.Unit&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_Unit__1.htm" />
-  <HelpKINode Title="XEnumerable.WithIndex(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_WithIndex__1.htm" />
-  <HelpKINode Title="XEnumerable.WithIndex&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_WithIndex__1.htm" />
+  <HelpKINode Title="XEnumerable.WithIndex method" Url="html/Overload_Linq_Extras_XEnumerable_WithIndex.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(Of TSource) structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(Of TSource).Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(Of TSource).Enumerator.Current property" Url="html/P_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_Current.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(Of TSource).Enumerator.Dispose method" Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_Dispose.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(Of TSource).Enumerator.MoveNext method" Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_MoveNext.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable(Of TSource).GetEnumerator method" Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_GetEnumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable&lt;TSource&gt; structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable&lt;TSource&gt;.Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable&lt;TSource&gt;.Enumerator.Current property" Url="html/P_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_Current.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable&lt;TSource&gt;.Enumerator.Dispose method" Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_Dispose.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable&lt;TSource&gt;.Enumerator.MoveNext method" Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_MoveNext.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexArrayEnumerable&lt;TSource&gt;.GetEnumerator method" Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_GetEnumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable(Of TSource) structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable(Of TSource).Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable(Of TSource).Enumerator.Current property" Url="html/P_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_Current.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable(Of TSource).Enumerator.Dispose method" Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_Dispose.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable(Of TSource).Enumerator.MoveNext method" Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_MoveNext.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable(Of TSource).GetEnumerator method" Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_GetEnumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable&lt;TSource&gt; structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable&lt;TSource&gt;.Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable&lt;TSource&gt;.Enumerator.Current property" Url="html/P_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_Current.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable&lt;TSource&gt;.Enumerator.Dispose method" Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_Dispose.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable&lt;TSource&gt;.Enumerator.MoveNext method" Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_MoveNext.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexEnumerable&lt;TSource&gt;.GetEnumerator method" Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_GetEnumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable(Of TSource) structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable(Of TSource).Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable(Of TSource).Enumerator.Current property" Url="html/P_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_Current.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable(Of TSource).Enumerator.Dispose method" Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_Dispose.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable(Of TSource).Enumerator.MoveNext method" Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_MoveNext.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable(Of TSource).GetEnumerator method" Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_GetEnumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable&lt;TSource&gt; structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable&lt;TSource&gt;.Enumerator structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable&lt;TSource&gt;.Enumerator.Current property" Url="html/P_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_Current.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable&lt;TSource&gt;.Enumerator.Dispose method" Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_Dispose.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable&lt;TSource&gt;.Enumerator.MoveNext method" Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_MoveNext.htm" />
+  <HelpKINode Title="XEnumerable.WithIndexListEnumerable&lt;TSource&gt;.GetEnumerator method" Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_GetEnumerator.htm" />
   <HelpKINode Title="XEnumerable.WithoutIndex(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_WithoutIndex__1.htm" />
   <HelpKINode Title="XEnumerable.WithoutIndex&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_WithoutIndex__1.htm" />
   <HelpKINode Title="XEqualityComparer class">
     <HelpKINode Title="XEqualityComparer Class" Url="html/T_Linq_Extras_XEqualityComparer.htm" />
-    <HelpKINode Title="about XEqualityComparer class" Url="html/T_Linq_Extras_XEqualityComparer.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEqualityComparer.htm" />
   </HelpKINode>
   <HelpKINode Title="XEqualityComparer(Of T) class">
     <HelpKINode Title="XEqualityComparer(T) Class" Url="html/T_Linq_Extras_XEqualityComparer_1.htm" />
-    <HelpKINode Title="about XEqualityComparer(Of T) class" Url="html/T_Linq_Extras_XEqualityComparer_1.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEqualityComparer_1.htm" />
   </HelpKINode>
   <HelpKINode Title="XEqualityComparer(Of T).By(Of TKey) method" Url="html/M_Linq_Extras_XEqualityComparer_1_By__1.htm" />
@@ -333,13 +423,11 @@
   <HelpKINode Title="XEqualityComparer.By&lt;T, TKey&gt; method" Url="html/M_Linq_Extras_XEqualityComparer_By__2.htm" />
   <HelpKINode Title="XEqualityComparer&lt;T&gt; class">
     <HelpKINode Title="XEqualityComparer(T) Class" Url="html/T_Linq_Extras_XEqualityComparer_1.htm" />
-    <HelpKINode Title="about XEqualityComparer&lt;T&gt; class" Url="html/T_Linq_Extras_XEqualityComparer_1.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEqualityComparer_1.htm" />
   </HelpKINode>
   <HelpKINode Title="XEqualityComparer&lt;T&gt;.By&lt;TKey&gt; method" Url="html/M_Linq_Extras_XEqualityComparer_1_By__1.htm" />
   <HelpKINode Title="XList class">
     <HelpKINode Title="XList Class" Url="html/T_Linq_Extras_XList.htm" />
-    <HelpKINode Title="about XList class" Url="html/T_Linq_Extras_XList.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XList.htm" />
   </HelpKINode>
   <HelpKINode Title="XList.AsReadOnly(Of T) method" Url="html/M_Linq_Extras_XList_AsReadOnly__1.htm" />
