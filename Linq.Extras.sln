@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{777D6312
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "build", "tools\build\build.csproj", "{750F9598-6DAE-4036-B4D3-EFFA7A37FF74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Extras.Benchmarks", "tests\Linq.Extras.Benchmarks\Linq.Extras.Benchmarks.csproj", "{0FFABA2D-D2B5-48BF-B9A4-C4AA4A7D7C92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{86E2B0AA-E343-4846-8661-E09365D68C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{750F9598-6DAE-4036-B4D3-EFFA7A37FF74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{750F9598-6DAE-4036-B4D3-EFFA7A37FF74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FFABA2D-D2B5-48BF-B9A4-C4AA4A7D7C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FFABA2D-D2B5-48BF-B9A4-C4AA4A7D7C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FFABA2D-D2B5-48BF-B9A4-C4AA4A7D7C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FFABA2D-D2B5-48BF-B9A4-C4AA4A7D7C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

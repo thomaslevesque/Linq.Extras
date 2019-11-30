@@ -7,4 +7,4 @@ api/
 docs/api/
 *.user
 tools/build/ToolPaths.cs
-
+BenchmarkDotNet.Artifacts/
