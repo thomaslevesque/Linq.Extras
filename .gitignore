@@ -1,8 +1,9 @@
-api/
 artifacts/
 bin/
 obj/
 .vs/
 .vscode/
+docs/api/
 *.user
+tools/build/ToolPaths.cs
 

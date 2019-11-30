@@ -43,6 +43,7 @@ namespace build
             string solutionFile = "Linq.Extras.sln";
             string libraryProject = "src/Linq.Extras/Linq.Extras.csproj";
             string testProject = "tests/Linq.Extras.Tests/Linq.Extras.Tests.csproj";
+            string docProject = "docs/Documentation.shfbproj";
 
             Target(
                 "artifactDirectories",
@@ -74,14 +75,28 @@ namespace build
                     "dotnet",
                     $"pack -c \"{Configuration}\" --no-build -o \"{packagesDir}\" \"{libraryProject}\""));
 
+            Target(
+                "doc",
+                DependsOn("build"),
+                () =>
+                {
+                    var msbuild = GetMsBuildLocation();
+                    Console.WriteLine(msbuild);
+                    Run(msbuild, docProject);
+                });
+
             Target("default", DependsOn("test", "pack"));
 
             RunTargetsAndExit(RemainingArguments);
         }
 
         private static string GetSolutionDirectory() =>
-            Path.GetFullPath(Path.Combine(GetScriptDirectory(), @"..\.."));
+            Path.GetFullPath(Path.Combine(GetScriptDirectory(), @"../.."));
 
         private static string GetScriptDirectory([CallerFilePath] string filename = null) => Path.GetDirectoryName(filename);
+
+        private static string GetVsLocation() => Read(ToolPaths.VsWhere, "-property installationPath").Trim();
+
+        private static string GetMsBuildLocation() => Path.Combine(GetVsLocation(), @"MSBuild/Current/Bin/MSBuild.exe");
     }
 }
