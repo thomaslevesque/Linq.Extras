@@ -3,6 +3,7 @@ bin/
 obj/
 .vs/
 .vscode/
+api/
 docs/api/
 *.user
 tools/build/ToolPaths.cs
