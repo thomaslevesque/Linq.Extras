@@ -1,11 +1,10 @@
+artifacts/
 bin/
 obj/
 .vs/
 .vscode/
+api/
+docs/api/
 *.user
+tools/build/ToolPaths.cs
 
-artifacts/
-
-_ReSharper.Caches/
-
-UpgradeLog*.htm

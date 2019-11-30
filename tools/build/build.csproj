@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,6 +9,29 @@
     <PackageReference Include="Bullseye" Version="2.3.0" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.2.5" />
     <PackageReference Include="SimpleExec" Version="5.0.1" />
+    <PackageReference Include="vswhere" Version="2.8.4" />
   </ItemGroup>
+
+  <Target Name="GenerateVsWherePath" BeforeTargets="BeforeBuild">
+    <PropertyGroup>
+      <ClassName>ToolPaths</ClassName>
+      <OutputFile>$(ClassName).cs</OutputFile>
+      <Semicolon>%3B</Semicolon>
+      <FileContent>
+        <![CDATA[namespace $(RootNamespace)
+{
+    internal static class $(ClassName)
+    {
+        public const string VsWhere = @"$(VsWhereDir)vswhere.exe"$(Semicolon)
+    }
+}]]>
+      </FileContent>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="$(OutputFile)" />
+      <Compile Include="$(OutputFile)" />
+    </ItemGroup>
+    <WriteLinesToFile File="$(OutputFile)" Overwrite="true" Encoding="UTF-8" Lines="$(FileContent)" />
+  </Target>
 
 </Project>
