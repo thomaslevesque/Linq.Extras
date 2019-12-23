@@ -11,88 +11,85 @@ namespace build
 {
     class Build
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             var app = new CommandLineApplication();
             app.HelpOption();
-
-            // Add specific options
             var configurationOption = app.Option<string>("-c|--configuration", "The configuration to build", CommandOptionType.SingleValue);
 
-            // Add Bullseye options
-            app.Argument("targets", "The targets to run or list.", true);
+            // translate from Bullseye to McMaster.Extensions.CommandLineUtils
+            var targets = app.Argument("targets", "The targets to run or list.", true);
             foreach (var option in Options.Definitions)
             {
                 app.Option((option.ShortName != null && option.ShortName != "-c" ? $"{option.ShortName}|" : "") + option.LongName, option.Description, CommandOptionType.NoValue);
             }
 
-            try { app.Parse(args); }
-            catch (CommandParsingException)
+            app.OnExecute(() =>
             {
-                app.ShowHelp();
-                Environment.Exit(1);
-            }
+                // translate from McMaster.Extensions.CommandLineUtils to Bullseye
+                var targets = app.Arguments[0].Values;
+                var options = new Options(Options.Definitions.Select(d => (d.LongName, app.Options.Single(o => "--" + o.LongName == d.LongName).HasValue())));
 
-            var targets = app.Arguments[0].Values;
-            var options = new Options(Options.Definitions.Select(d => (d.LongName, app.Options.Single(o => "--" + o.LongName == d.LongName).HasValue())));
+                var configuration = configurationOption.Value() ?? "Release";
 
-            var configuration = configurationOption.Value() ?? "Release";
+                Directory.SetCurrentDirectory(GetSolutionDirectory());
 
-            Directory.SetCurrentDirectory(GetSolutionDirectory());
+                string artifactsDir = Path.GetFullPath("artifacts");
+                string logsDir = Path.Combine(artifactsDir, "logs");
+                string buildLogFile = Path.Combine(logsDir, "build.binlog");
+                string packagesDir = Path.Combine(artifactsDir, "packages");
 
-            string artifactsDir = Path.GetFullPath("artifacts");
-            string logsDir = Path.Combine(artifactsDir, "logs");
-            string buildLogFile = Path.Combine(logsDir, "build.binlog");
-            string packagesDir = Path.Combine(artifactsDir, "packages");
+                string solutionFile = "Linq.Extras.sln";
+                string libraryProject = "src/Linq.Extras/Linq.Extras.csproj";
+                string testProject = "tests/Linq.Extras.Tests/Linq.Extras.Tests.csproj";
+                string docProject = "docs/Documentation.shfbproj";
 
-            string solutionFile = "Linq.Extras.sln";
-            string libraryProject = "src/Linq.Extras/Linq.Extras.csproj";
-            string testProject = "tests/Linq.Extras.Tests/Linq.Extras.Tests.csproj";
-            string docProject = "docs/Documentation.shfbproj";
+                Target(
+                    "artifactDirectories",
+                    () =>
+                    {
+                        Directory.CreateDirectory(artifactsDir);
+                        Directory.CreateDirectory(logsDir);
+                        Directory.CreateDirectory(packagesDir);
+                    });
 
-            Target(
-                "artifactDirectories",
-                () =>
-                {
-                    Directory.CreateDirectory(artifactsDir);
-                    Directory.CreateDirectory(logsDir);
-                    Directory.CreateDirectory(packagesDir);
-                });
+                Target(
+                    "build",
+                    DependsOn("artifactDirectories"),
+                    () => Run(
+                        "dotnet",
+                        $"build -c \"{configuration}\" /bl:\"{buildLogFile}\" \"{solutionFile}\""));
 
-            Target(
-                "build",
-                DependsOn("artifactDirectories"),
-                () => Run(
-                    "dotnet",
-                    $"build -c \"{configuration}\" /bl:\"{buildLogFile}\" \"{solutionFile}\""));
+                Target(
+                    "test",
+                    DependsOn("build"),
+                    () => Run(
+                        "dotnet",
+                        $"test -c \"{configuration}\" --no-build \"{testProject}\""));
 
-            Target(
-                "test",
-                DependsOn("build"),
-                () => Run(
-                    "dotnet",
-                    $"test -c \"{configuration}\" --no-build \"{testProject}\""));
+                Target(
+                    "pack",
+                    DependsOn("artifactDirectories", "build"),
+                    () => Run(
+                        "dotnet",
+                        $"pack -c \"{configuration}\" --no-build -o \"{packagesDir}\" \"{libraryProject}\""));
 
-            Target(
-                "pack",
-                DependsOn("artifactDirectories", "build"),
-                () => Run(
-                    "dotnet",
-                    $"pack -c \"{configuration}\" --no-build -o \"{packagesDir}\" \"{libraryProject}\""));
+                Target(
+                    "doc",
+                    DependsOn("build"),
+                    () =>
+                    {
+                        var msbuild = GetMsBuildLocation();
+                        Console.WriteLine(msbuild);
+                        Run(msbuild, docProject);
+                    });
 
-            Target(
-                "doc",
-                DependsOn("build"),
-                () =>
-                {
-                    var msbuild = GetMsBuildLocation();
-                    Console.WriteLine(msbuild);
-                    Run(msbuild, docProject);
-                });
+                Target("default", DependsOn("test", "pack"));
 
-            Target("default", DependsOn("test", "pack"));
+                RunTargetsAndExit(targets, options);
+            });
 
-            RunTargetsAndExit(targets, options);
+            return app.Execute(args);
         }
 
         private static string GetSolutionDirectory() =>
