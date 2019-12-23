@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Bullseye;
 using McMaster.Extensions.CommandLineUtils;
@@ -17,29 +16,20 @@ namespace build
             var app = new CommandLineApplication();
             app.HelpOption();
             var configurationOption = app.Option<string>("-c|--configuration", "The configuration to build", CommandOptionType.SingleValue);
-
-            // translate from Bullseye to McMaster.Extensions.CommandLineUtils
-            var targets = app.Argument("targets", "The targets to run or list.", true);
-            foreach (var option in Options.Definitions)
-            {
-                app.Option((option.ShortName != null && option.ShortName != "-c" ? $"{option.ShortName}|" : "") + option.LongName, option.Description, CommandOptionType.NoValue);
-            }
+            app.AddBullseyeOptions(o => o.LongName != "--clear");
 
             app.OnExecute(() =>
             {
-                // translate from McMaster.Extensions.CommandLineUtils to Bullseye
-                var targets = app.Arguments[0].Values;
-                var options = new Options(Options.Definitions.Select(d => (d.LongName, app.Options.Single(o => "--" + o.LongName == d.LongName).HasValue())));
-
-                var configuration = configurationOption.Value() ?? "Release";
-
-                Main(targets, options, configuration);
+                RunTargets(
+                    app.GetBullseyeTargets(),
+                    app.GetBullseyeOptions(),
+                    configurationOption.Value() ?? "Release");
             });
 
             return app.Execute(args);
         }
 
-        private static void Main(List<string> targets, Options options, string configuration)
+        private static void RunTargets(IEnumerable<string> targets, Options options, string configuration)
         {
             Directory.SetCurrentDirectory(GetSolutionDirectory());
 
