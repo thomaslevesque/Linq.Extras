@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -32,64 +33,69 @@ namespace build
 
                 var configuration = configurationOption.Value() ?? "Release";
 
-                Directory.SetCurrentDirectory(GetSolutionDirectory());
-
-                string artifactsDir = Path.GetFullPath("artifacts");
-                string logsDir = Path.Combine(artifactsDir, "logs");
-                string buildLogFile = Path.Combine(logsDir, "build.binlog");
-                string packagesDir = Path.Combine(artifactsDir, "packages");
-
-                string solutionFile = "Linq.Extras.sln";
-                string libraryProject = "src/Linq.Extras/Linq.Extras.csproj";
-                string testProject = "tests/Linq.Extras.Tests/Linq.Extras.Tests.csproj";
-                string docProject = "docs/Documentation.shfbproj";
-
-                Target(
-                    "artifactDirectories",
-                    () =>
-                    {
-                        Directory.CreateDirectory(artifactsDir);
-                        Directory.CreateDirectory(logsDir);
-                        Directory.CreateDirectory(packagesDir);
-                    });
-
-                Target(
-                    "build",
-                    DependsOn("artifactDirectories"),
-                    () => Run(
-                        "dotnet",
-                        $"build -c \"{configuration}\" /bl:\"{buildLogFile}\" \"{solutionFile}\""));
-
-                Target(
-                    "test",
-                    DependsOn("build"),
-                    () => Run(
-                        "dotnet",
-                        $"test -c \"{configuration}\" --no-build \"{testProject}\""));
-
-                Target(
-                    "pack",
-                    DependsOn("artifactDirectories", "build"),
-                    () => Run(
-                        "dotnet",
-                        $"pack -c \"{configuration}\" --no-build -o \"{packagesDir}\" \"{libraryProject}\""));
-
-                Target(
-                    "doc",
-                    DependsOn("build"),
-                    () =>
-                    {
-                        var msbuild = GetMsBuildLocation();
-                        Console.WriteLine(msbuild);
-                        Run(msbuild, docProject);
-                    });
-
-                Target("default", DependsOn("test", "pack"));
-
-                RunTargetsAndExit(targets, options);
+                Main(targets, options, configuration);
             });
 
             return app.Execute(args);
+        }
+
+        private static void Main(List<string> targets, Options options, string configuration)
+        {
+            Directory.SetCurrentDirectory(GetSolutionDirectory());
+
+            string artifactsDir = Path.GetFullPath("artifacts");
+            string logsDir = Path.Combine(artifactsDir, "logs");
+            string buildLogFile = Path.Combine(logsDir, "build.binlog");
+            string packagesDir = Path.Combine(artifactsDir, "packages");
+
+            string solutionFile = "Linq.Extras.sln";
+            string libraryProject = "src/Linq.Extras/Linq.Extras.csproj";
+            string testProject = "tests/Linq.Extras.Tests/Linq.Extras.Tests.csproj";
+            string docProject = "docs/Documentation.shfbproj";
+
+            Target(
+                "artifactDirectories",
+                () =>
+                {
+                    Directory.CreateDirectory(artifactsDir);
+                    Directory.CreateDirectory(logsDir);
+                    Directory.CreateDirectory(packagesDir);
+                });
+
+            Target(
+                "build",
+                DependsOn("artifactDirectories"),
+                () => Run(
+                    "dotnet",
+                    $"build -c \"{configuration}\" /bl:\"{buildLogFile}\" \"{solutionFile}\""));
+
+            Target(
+                "test",
+                DependsOn("build"),
+                () => Run(
+                    "dotnet",
+                    $"test -c \"{configuration}\" --no-build \"{testProject}\""));
+
+            Target(
+                "pack",
+                DependsOn("artifactDirectories", "build"),
+                () => Run(
+                    "dotnet",
+                    $"pack -c \"{configuration}\" --no-build -o \"{packagesDir}\" \"{libraryProject}\""));
+
+            Target(
+                "doc",
+                DependsOn("build"),
+                () =>
+                {
+                    var msbuild = GetMsBuildLocation();
+                    Console.WriteLine(msbuild);
+                    Run(msbuild, docProject);
+                });
+
+            Target("default", DependsOn("test", "pack"));
+
+            RunTargetsAndExit(targets, options);
         }
 
         private static string GetSolutionDirectory() =>
