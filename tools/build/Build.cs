@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,33 +12,35 @@ namespace build
 {
     class Build
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             var app = new CommandLineApplication();
             app.HelpOption();
-
-            // Add specific options
             var configurationOption = app.Option<string>("-c|--configuration", "The configuration to build", CommandOptionType.SingleValue);
 
-            // Add Bullseye options
-            app.Argument("targets", "The targets to run or list.", true);
+            // translate from Bullseye to McMaster.Extensions.CommandLineUtils
+            var targets = app.Argument("targets", "The targets to run or list.", true);
             foreach (var option in Options.Definitions)
             {
                 app.Option((option.ShortName != null && option.ShortName != "-c" ? $"{option.ShortName}|" : "") + option.LongName, option.Description, CommandOptionType.NoValue);
             }
 
-            try { app.Parse(args); }
-            catch (CommandParsingException)
+            app.OnExecute(() =>
             {
-                app.ShowHelp();
-                Environment.Exit(1);
-            }
+                // translate from McMaster.Extensions.CommandLineUtils to Bullseye
+                var targets = app.Arguments[0].Values;
+                var options = new Options(Options.Definitions.Select(d => (d.LongName, app.Options.Single(o => "--" + o.LongName == d.LongName).HasValue())));
 
-            var targets = app.Arguments[0].Values;
-            var options = new Options(Options.Definitions.Select(d => (d.LongName, app.Options.Single(o => "--" + o.LongName == d.LongName).HasValue())));
+                var configuration = configurationOption.Value() ?? "Release";
 
-            var configuration = configurationOption.Value() ?? "Release";
+                Main(targets, options, configuration);
+            });
 
+            return app.Execute(args);
+        }
+
+        private static void Main(List<string> targets, Options options, string configuration)
+        {
             Directory.SetCurrentDirectory(GetSolutionDirectory());
 
             string artifactsDir = Path.GetFullPath("artifacts");
