@@ -21,7 +21,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var left = new[] { "hello", "!" };
             var right = new[] { "hello", "world", "!" };
-            var result = left.FullOuterJoin(right, x => x.Length, y => y.Length, (len, x, y) => x + y);
+            var result = left.FullOuterJoin(right, x => x.Length, y => y.Length, (len, x, y) => x + y, "", "");
             result.Should().Equal("hellohello", "helloworld", "!!");
         }
 
