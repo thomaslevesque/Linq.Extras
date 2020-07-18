@@ -39,7 +39,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMaxValue = foos.MaxBy(_getFooValue);
             var expected = "xyz";
-            var actual = fooWithMaxValue.Value;
+            var actual = fooWithMaxValue?.Value;
             actual.Should().Be(expected);
         }
 
@@ -49,7 +49,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMaxValue = foos.MaxBy(_getFooValue, Comparer<string>.Default.Reverse());
             var expected = "abcd";
-            var actual = fooWithMaxValue.Value;
+            var actual = fooWithMaxValue?.Value;
             actual.Should().Be(expected);
         }
 
@@ -83,7 +83,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMinValue = foos.MinBy(_getFooValue);
             var expected = "abcd";
-            var actual = fooWithMinValue.Value;
+            var actual = fooWithMinValue?.Value;
             actual.Should().Be(expected);
         }
 
@@ -93,7 +93,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMinValue = foos.MinBy(_getFooValue, Comparer<string>.Default.Reverse());
             var expected = "xyz";
-            var actual = fooWithMinValue.Value;
+            var actual = fooWithMinValue?.Value;
             actual.Should().Be(expected);
         }
 
@@ -108,7 +108,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             }.ForbidMultipleEnumeration();
             var fooWithMinValue = bars.MinBy(b => b.Value);
             var expected = "abcd";
-            var actual = fooWithMinValue.Value;
+            var actual = fooWithMinValue?.Value;
             actual.Should().Be(expected);
         }
 
@@ -121,7 +121,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
                 new Bar(null)
             }.ForbidMultipleEnumeration();
             var fooWithMinValue = bars.MinBy(b => b.Value);
-            var actual = fooWithMinValue.Value;
+            var actual = fooWithMinValue?.Value;
             actual.Should().BeNull();
         }
 
@@ -140,7 +140,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMaxValue = foos.Max(new FooComparer());
             var expected = "xyz";
-            var actual = fooWithMaxValue.Value;
+            var actual = fooWithMaxValue?.Value;
             actual.Should().Be(expected);
         }
 
@@ -175,7 +175,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var foos = GetFoos().ForbidMultipleEnumeration();
             var fooWithMinValue = foos.Min(new FooComparer());
             var expected = "abcd";
-            var actual = fooWithMinValue.Value;
+            var actual = fooWithMinValue?.Value;
             actual.Should().Be(expected);
         }
 

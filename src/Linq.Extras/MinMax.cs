@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
 using Linq.Extras.Properties;
@@ -22,6 +23,7 @@ namespace Linq.Extras
         /// If <c>TSource</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
         /// </remarks>
         [Pure]
+        [return: MaybeNull]
         public static TSource Max<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IComparer<TSource> comparer)
@@ -45,6 +47,7 @@ namespace Linq.Extras
         /// If <c>TSource</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
         /// </remarks>
         [Pure]
+        [return: MaybeNull]
         public static TSource Min<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IComparer<TSource> comparer)
@@ -134,6 +137,7 @@ namespace Linq.Extras
         /// If <c>TKey</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
         /// </remarks>
         [Pure]
+        [return: MaybeNull]
         public static TSource MaxBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -160,6 +164,7 @@ namespace Linq.Extras
         /// If <c>TKey</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
         /// </remarks>
         [Pure]
+        [return: MaybeNull]
         public static TSource MinBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
