@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
 using Linq.Extras.Properties;
@@ -15,7 +16,14 @@ namespace Linq.Extras
         /// <param name="source">The sequence to return the maximum element from.</param>
         /// <param name="comparer">The comparer used to compare elements.</param>
         /// <returns>The maximum element according to the specified comparer.</returns>
+        /// <remarks>
+        /// If <c>TSource</c> is a reference type or nullable value type, null values are ignored, unless the sequence consists
+        /// entirely of null values (in which case the method will return null).
+        /// If <c>TSource</c> is a reference type or nullable value type, and the sequence is empty, the method will return <c>null</c>.
+        /// If <c>TSource</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
+        /// </remarks>
         [Pure]
+        [return: MaybeNull]
         public static TSource Max<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IComparer<TSource> comparer)
@@ -32,7 +40,14 @@ namespace Linq.Extras
         /// <param name="source">The sequence to return the minimum element from.</param>
         /// <param name="comparer">The comparer used to compare elements.</param>
         /// <returns>The minimum element according to the specified comparer.</returns>
+        /// <remarks>
+        /// If <c>TSource</c> is a reference type or nullable value type, null values are ignored, unless the sequence consists
+        /// entirely of null values (in which case the method will return null).
+        /// If <c>TSource</c> is a reference type or nullable value type, and the sequence is empty, the method will return <c>null</c>.
+        /// If <c>TSource</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
+        /// </remarks>
         [Pure]
+        [return: MaybeNull]
         public static TSource Min<TSource>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] IComparer<TSource> comparer)
@@ -47,22 +62,56 @@ namespace Linq.Extras
         {
             comparer = comparer ?? Comparer<TSource>.Default;
             TSource extreme = default!;
-            bool first = true;
-            foreach (var item in source)
+
+            using var e = source.GetEnumerator();
+            if (extreme is null)
             {
-                int compare = 0;
-                if (!first)
-                    compare = comparer.Compare(item, extreme);
+                // For nullable types, return null if the sequence is empty
+                // or contains only null values.
 
-                if (Math.Sign(compare) == sign || first)
+                // First, skip until the first non-null value, if any
+                do
                 {
-                    extreme = item;
-                }
-                first = false;
-            }
+                    if (!e.MoveNext())
+                    {
+                        return extreme;
+                    }
 
-            if (first)
-                throw EmptySequenceException();
+                    extreme = e.Current;
+                } while (extreme is null);
+
+                while (e.MoveNext())
+                {
+                    if (e.Current is null)
+                    {
+                        continue;
+                    }
+
+                    if (Math.Sign(comparer.Compare(e.Current, extreme)) == sign)
+                    {
+                        extreme = e.Current;
+                    }
+                }
+            }
+            else
+            {
+                // For non-nullable types, throw an exception if the sequence is empty
+
+                if (!e.MoveNext())
+                {
+                    throw EmptySequenceException();
+                }
+
+                extreme = e.Current;
+
+                while (e.MoveNext())
+                {
+                    if (Math.Sign(comparer.Compare(e.Current, extreme)) == sign)
+                    {
+                        extreme = e.Current;
+                    }
+                }
+            }
 
             return extreme;
         }
@@ -81,7 +130,14 @@ namespace Linq.Extras
         /// <param name="keySelector">A delegate that returns the key used to compare elements.</param>
         /// <param name="keyComparer">A comparer to compare the keys.</param>
         /// <returns>The element of <c>source</c> that has the maximum value for the specified key.</returns>
+        /// <remarks>
+        /// If <c>TKey</c> is a reference type or nullable value type, null keys are ignored, unless the sequence consists
+        /// entirely of items with null keys (in which case the method will return null).
+        /// If <c>TKey</c> is a reference type or nullable value type, and the sequence is empty, the method will return <c>null</c>.
+        /// If <c>TKey</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
+        /// </remarks>
         [Pure]
+        [return: MaybeNull]
         public static TSource MaxBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -89,8 +145,7 @@ namespace Linq.Extras
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));
-            var comparer = XComparer.By(keySelector, keyComparer);
-            return source.Max(comparer);
+            return source.ExtremeBy(keySelector, keyComparer, 1);
         }
 
         /// <summary>
@@ -102,7 +157,14 @@ namespace Linq.Extras
         /// <param name="keySelector">A delegate that returns the key used to compare elements.</param>
         /// <param name="keyComparer">A comparer to compare the keys.</param>
         /// <returns>The element of <c>source</c> that has the minimum value for the specified key.</returns>
+        /// <remarks>
+        /// If <c>TKey</c> is a reference type or nullable value type, null keys are ignored, unless the sequence consists
+        /// entirely of items with null keys (in which case the method will return null).
+        /// If <c>TKey</c> is a reference type or nullable value type, and the sequence is empty, the method will return <c>null</c>.
+        /// If <c>TKey</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
+        /// </remarks>
         [Pure]
+        [return: MaybeNull]
         public static TSource MinBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector,
@@ -110,8 +172,78 @@ namespace Linq.Extras
         {
             source.CheckArgumentNull(nameof(source));
             keySelector.CheckArgumentNull(nameof(keySelector));
-            var comparer = XComparer.By(keySelector, keyComparer);
-            return source.Min(comparer);
+            return source.ExtremeBy(keySelector, keyComparer, -1);
+        }
+
+        [Pure]
+        private static TSource ExtremeBy<TSource, TKey>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector,
+            IComparer<TKey>? keyComparer,
+            int sign)
+        {
+            keyComparer = keyComparer ?? Comparer<TKey>.Default;
+            TSource extreme = default!;
+            TKey extremeKey = default!;
+
+            using var e = source.GetEnumerator();
+
+            if (extremeKey is null)
+            {
+                // For nullable types, return null if the sequence is empty
+                // or contains only values with null keys.
+
+                // First, skip until the first non-null key value, if any
+                do
+                {
+                    if (!e.MoveNext())
+                    {
+                        return extreme;
+                    }
+
+                    extreme = e.Current;
+                    extremeKey = keySelector(extreme);
+                } while (extremeKey is null);
+
+                while (e.MoveNext())
+                {
+                    var currentKey = keySelector(e.Current);
+                    if (currentKey is null)
+                    {
+                        continue;
+                    }
+
+                    if (Math.Sign(keyComparer.Compare(currentKey, extremeKey)) == sign)
+                    {
+                        extreme = e.Current;
+                        extremeKey = currentKey;
+                    }
+                }
+            }
+            else
+            {
+                // For non-nullable types, throw an exception if the sequence is empty
+
+                if (!e.MoveNext())
+                {
+                    throw EmptySequenceException();
+                }
+
+                extreme = e.Current;
+                extremeKey = keySelector(e.Current);
+
+                while (e.MoveNext())
+                {
+                    var currentKey = keySelector(e.Current);
+                    if (Math.Sign(keyComparer.Compare(currentKey, extremeKey)) == sign)
+                    {
+                        extreme = e.Current;
+                        extremeKey = currentKey;
+                    }
+                }
+            }
+
+            return extreme;
         }
     }
 }
