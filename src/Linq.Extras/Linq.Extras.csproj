@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;netstandard1.6;netstandard2.0;net45;net471</TargetFrameworks>
+    <TargetFrameworks>netstandard1.0;netstandard1.6;netstandard2.0;netstandard2.1;net45;net471;net472;netcoreapp2.0</TargetFrameworks>
     <Description>A set of helper and extension methods to complement the System.Linq namespace.</Description>
     <Authors>Thomas Levesque</Authors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -35,12 +35,24 @@
     <DefineConstants>$(DefineConstants);FEATURE_APPEND_PREPEND;FEATURE_ExcludeFromCodeCoverageAttribute</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <DefineConstants>$(DefineConstants);FEATURE_APPEND_PREPEND;FEATURE_TO_HASHSET;FEATURE_NULLABILITY_ATTRIBUTES;FEATURE_ExcludeFromCodeCoverageAttribute</DefineConstants>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(TargetFramework)' == 'net45'">
     <DefineConstants>$(DefineConstants);FEATURE_ExcludeFromCodeCoverageAttribute</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net471'">
     <DefineConstants>$(DefineConstants);FEATURE_APPEND_PREPEND;FEATURE_ExcludeFromCodeCoverageAttribute</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+    <DefineConstants>$(DefineConstants);FEATURE_APPEND_PREPEND;FEATURE_TO_HASHSET;FEATURE_ExcludeFromCodeCoverageAttribute</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <DefineConstants>$(DefineConstants);FEATURE_APPEND_PREPEND;FEATURE_TO_HASHSET;FEATURE_ExcludeFromCodeCoverageAttribute</DefineConstants>
   </PropertyGroup>
 
 </Project>

@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
 using Linq.Extras.Properties;
+using NotNullAttribute = JetBrains.Annotations.NotNullAttribute;
 
 namespace Linq.Extras
 {

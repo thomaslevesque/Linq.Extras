@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
+using NotNullAttribute = JetBrains.Annotations.NotNullAttribute;
 
 namespace Linq.Extras
 {
