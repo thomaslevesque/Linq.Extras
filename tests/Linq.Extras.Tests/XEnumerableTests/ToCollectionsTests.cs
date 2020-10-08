@@ -41,6 +41,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             stack.Should().Equal(items.Reverse());
         }
 
+#if !FEATURE_TO_HASHSET
         [Fact]
         public void ToHashSet_Throws_If_Argument_Is_Null()
         {
@@ -67,6 +68,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
             var hashSet = source.ToHashSet(comparer);
             hashSet.Should().Equal(items, comparer.Equals);
         }
+#endif
 
         [Fact]
         public void ToLinkedList_Throws_If_Argument_Is_Null()

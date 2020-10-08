@@ -34,6 +34,7 @@ namespace Linq.Extras
             return new Stack<TSource>(source);
         }
 
+#if !FEATURE_TO_HASHSET
         /// <summary>
         /// Creates a hash set from the elements in the source sequence.
         /// </summary>
@@ -48,6 +49,7 @@ namespace Linq.Extras
             source.CheckArgumentNull(nameof(source));
             return new HashSet<TSource>(source, comparer);
         }
+#endif
 
         /// <summary>
         /// Creates a linked list from the elements in the source sequence.
