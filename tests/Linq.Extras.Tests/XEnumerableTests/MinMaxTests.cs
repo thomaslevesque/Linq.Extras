@@ -236,7 +236,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         [ExcludeFromCodeCoverage]
         private class FooComparer : IComparer<Foo>
         {
-            public int Compare(Foo x, Foo y)
+            public int Compare(Foo? x, Foo? y)
             {
                 if (x == null && y == null)
                     return 0;

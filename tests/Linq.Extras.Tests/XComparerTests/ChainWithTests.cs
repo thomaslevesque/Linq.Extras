@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using Xunit;
+#if FEATURE_ICOMPARER_NULLABILITY
+using System.Diagnostics.CodeAnalysis;
+#endif
 
 namespace Linq.Extras.Tests.XComparerTests
 {
@@ -92,7 +95,11 @@ namespace Linq.Extras.Tests.XComparerTests
                 _comparer = comparer ?? Comparer<T>.Default;
             }
 
+#if FEATURE_ICOMPARER_NULLABILITY
+            public int Compare([AllowNull] T x, [AllowNull] T y)
+#else
             public int Compare(T x, T y)
+#endif
             {
                 CallCount++;
                 return _comparer.Compare(x, y);

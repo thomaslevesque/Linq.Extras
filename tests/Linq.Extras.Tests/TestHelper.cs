@@ -20,13 +20,13 @@ namespace Linq.Extras.Tests
                 method.CustomAttributes
                 .FirstOrDefault(a => a.AttributeType.FullName == "System.Runtime.CompilerServices.NullableContextAttribute")
                 ??
-                method.DeclaringType.GetTypeInfo().CustomAttributes
+                method.DeclaringType?.GetTypeInfo().CustomAttributes
                 .FirstOrDefault(a => a.AttributeType.FullName == "System.Runtime.CompilerServices.NullableContextAttribute");
 
             if (nullableContextAttribute is null)
-                throw new InvalidOperationException($"The method '{method}' is not in a nullable enable context. Can't determine non-nullable parameters.");
+                throw new InvalidOperationException($"The method '{method}' is not in a nullable enabled context. Can't determine non-nullable parameters.");
 
-            var defaultNullability = (Nullability)(byte)nullableContextAttribute.ConstructorArguments[0].Value;
+            var defaultNullability = (Nullability)(byte)nullableContextAttribute.ConstructorArguments[0].Value!;
 
             var realArgs = realCall.Arguments;
             var parameters = method.GetParameters();
@@ -70,19 +70,19 @@ namespace Linq.Extras.Tests
             var firstArgument = nullableAttribute.ConstructorArguments.First();
             if (firstArgument.ArgumentType == typeof(byte))
             {
-                var value = (byte)firstArgument.Value;
+                var value = (byte)firstArgument.Value!;
                 return (Nullability)value;
             }
             else
             {
-                var arguments = (ReadOnlyCollection<CustomAttributeTypedArgument>)firstArgument.Value;
+                var arguments = (ReadOnlyCollection<CustomAttributeTypedArgument>)firstArgument.Value!;
 
                 // Probably shouldn't happen
                 if (arguments.Count == 0)
                     return defaultNullability;
 
                 var arg = arguments[0];
-                var value = (byte)arg.Value;
+                var value = (byte)arg.Value!;
 
                 return (Nullability)value;
             }

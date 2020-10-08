@@ -30,7 +30,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-    <DefineConstants>$(DefineConstants);FEATURE_APPEND_PREPEND;FEATURE_TO_HASHSET</DefineConstants>
+    <DefineConstants>$(DefineConstants);FEATURE_APPEND_PREPEND;FEATURE_TO_HASHSET;FEATURE_ICOMPARER_NULLABILITY</DefineConstants>
   </PropertyGroup>
 
 </Project>
