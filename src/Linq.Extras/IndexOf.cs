@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
 
@@ -19,8 +18,17 @@ namespace Linq.Extras
         [Pure]
         public static int IndexOf<TSource>([NotNull] this IEnumerable<TSource> source, TSource item, IEqualityComparer<TSource>? comparer = null)
         {
+            source.CheckArgumentNull(nameof(source));
             comparer = comparer ?? EqualityComparer<TSource>.Default;
-            return source.IndexOf(i => comparer.Equals(i, item));
+
+            int i = 0;
+            foreach (var currentItem in source)
+            {
+                if (comparer.Equals(currentItem, item))
+                    return i;
+                i++;
+            }
+            return -1;
         }
 
         /// <summary>
@@ -35,10 +43,15 @@ namespace Linq.Extras
         {
             source.CheckArgumentNull(nameof(source));
             predicate.CheckArgumentNull(nameof(predicate));
-            return source.WithIndex()
-                .Where(i => predicate(i.Item))
-                .Select(i => i.Index)
-                .FirstOrDefault(-1);
+
+            int i = 0;
+            foreach (var item in source)
+            {
+                if (predicate(item))
+                    return i;
+                i++;
+            }
+            return -1;
         }
 
         /// <summary>
@@ -52,8 +65,18 @@ namespace Linq.Extras
         [Pure]
         public static int LastIndexOf<TSource>([NotNull] this IEnumerable<TSource> source, TSource item, IEqualityComparer<TSource>? comparer = null)
         {
+            source.CheckArgumentNull(nameof(source));
             comparer = comparer ?? EqualityComparer<TSource>.Default;
-            return source.LastIndexOf(i => comparer.Equals(i, item));
+
+            int i = 0;
+            int lastIndex = -1;
+            foreach (var currentItem in source)
+            {
+                if (comparer.Equals(currentItem, item))
+                    lastIndex = i;
+                i++;
+            }
+            return lastIndex;
         }
 
         /// <summary>
@@ -68,10 +91,16 @@ namespace Linq.Extras
         {
             source.CheckArgumentNull(nameof(source));
             predicate.CheckArgumentNull(nameof(predicate));
-            return source.WithIndex()
-                .Where(i => predicate(i.Item))
-                .Select(i => i.Index)
-                .LastOrDefault(-1);
+
+            int i = 0;
+            int lastIndex = -1;
+            foreach (var item in source)
+            {
+                if (predicate(item))
+                    lastIndex = i;
+                i++;
+            }
+            return lastIndex;
         }
     }
 }
