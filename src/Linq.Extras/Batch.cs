@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
 
@@ -22,10 +21,26 @@ namespace Linq.Extras
             source.CheckArgumentNull(nameof(source));
             size.CheckArgumentOutOfRange(nameof(size), 1, int.MaxValue);
 
-            return source
-                .WithIndex()
-                .GroupBy(x => x.Index / size)
-                .Select(g => g.WithoutIndex());
+            return BatchImpl(source, size);
+
+            static IEnumerable<IEnumerable<TSource>> BatchImpl(IEnumerable<TSource> source, int size)
+            {
+                var batch = new List<TSource>();
+                foreach (var item in source)
+                {
+                    batch.Add(item);
+                    if (batch.Count == size)
+                    {
+                        yield return batch;
+                        batch = new List<TSource>();
+                    }
+                }
+
+                if (batch.Count > 0)
+                {
+                    yield return batch;
+                }
+            }
         }
     }
 }
