@@ -182,9 +182,15 @@ namespace Linq.Extras
                 _keyComparer = keyComparer ?? Comparer<TKey>.Default;
             }
 
+#if FEATURE_COMPARER_NULLABILITY
+            public int Compare(T? x, T? y)
+#else
             public int Compare(T x, T y)
+#endif
             {
-                return _keyComparer.Compare(_keySelector(x), _keySelector(y));
+                return _keyComparer.Compare(
+                    x is null ? default! : _keySelector(x),
+                    y is null ? default! : _keySelector(y));
             }
         }
 
@@ -197,7 +203,11 @@ namespace Linq.Extras
                 _baseComparer = baseComparer;
             }
 
+#if FEATURE_COMPARER_NULLABILITY
+            public int Compare(T? x, T? y)
+#else
             public int Compare(T x, T y)
+#endif
             {
                 return _baseComparer.Compare(y, x);
             }
@@ -217,7 +227,11 @@ namespace Linq.Extras
                 Comparers = comparers.ToArray();
             }
 
+#if FEATURE_COMPARER_NULLABILITY
+            public int Compare(T? x, T? y)
+#else
             public int Compare(T x, T y)
+#endif
             {
                 return Comparers.Select(comparer => comparer.Compare(x, y)).FirstOrDefault(cmp => cmp != 0);
             }
@@ -232,10 +246,14 @@ namespace Linq.Extras
                 _comparison = comparison;
             }
 
+#if FEATURE_COMPARER_NULLABILITY
+            public int Compare(T? x, T? y) => _comparison(x!, y!);
+#else
             public int Compare(T x, T y) => _comparison(x, y);
+#endif
         }
 
-        #endregion
+#endregion
 
     }
 

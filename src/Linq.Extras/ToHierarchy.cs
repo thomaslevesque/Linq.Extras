@@ -23,7 +23,7 @@ namespace Linq.Extras
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TId> idSelector,
             [NotNull] Func<TSource, TId> parentIdSelector,
-            TId rootParentId = default)
+            TId rootParentId = default!)
         {
             source.CheckArgumentNull(nameof(source));
             idSelector.CheckArgumentNull(nameof(idSelector));

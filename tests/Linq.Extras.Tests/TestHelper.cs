@@ -32,16 +32,16 @@ namespace Linq.Extras.Tests
             var parameters = method.GetParameters();
             var paramIndexes = parameters
                 .Select((p, i) => new { p, i })
-                .ToDictionary(x => x.p.Name, x => x.i);
+                .ToDictionary(x => x.p.Name!, x => x.i);
             var paramTypes = parameters
-                .ToDictionary(p => p.Name, p => p.ParameterType);
+                .ToDictionary(p => p.Name!, p => p.ParameterType);
 
             var nonNullableRefParams = parameters
                 .Where(p => !p.ParameterType.GetTypeInfo().IsValueType && GetNullability(p, defaultNullability) == Nullability.NotNull);
 
             foreach (var param in nonNullableRefParams)
             {
-                var paramName = param.Name;
+                var paramName = param.Name!;
                 var args = realArgs.ToArray();
                 args[paramIndexes[paramName]] = Expression.Constant(null, paramTypes[paramName]);
                 var call = Expression.Call(realCall.Object, method, args);

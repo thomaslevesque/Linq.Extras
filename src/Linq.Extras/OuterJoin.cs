@@ -32,7 +32,7 @@ namespace Linq.Extras
             [NotNull] Func<TLeft, TKey> leftKeySelector,
             [NotNull] Func<TRight, TKey> rightKeySelector,
             [NotNull] Func<TLeft, TRight, TResult> resultSelector,
-            TRight defaultRight = default,
+            TRight defaultRight = default!,
             IEqualityComparer<TKey>? keyComparer = null)
         {
             left.CheckArgumentNull(nameof(left));
@@ -72,7 +72,7 @@ namespace Linq.Extras
             [NotNull] Func<TLeft, TKey> leftKeySelector,
             [NotNull] Func<TRight, TKey> rightKeySelector,
             [NotNull] Func<TLeft, TRight, TResult> resultSelector,
-            TLeft defaultLeft = default,
+            TLeft defaultLeft = default!,
             IEqualityComparer<TKey>? keyComparer = null)
         {
             left.CheckArgumentNull(nameof(left));
@@ -112,8 +112,8 @@ namespace Linq.Extras
             [NotNull] Func<TLeft, TKey> leftKeySelector,
             [NotNull] Func<TRight, TKey> rightKeySelector,
             [NotNull] Func<TKey, TLeft, TRight, TResult> resultSelector,
-            TLeft defaultLeft = default,
-            TRight defaultRight = default,
+            TLeft defaultLeft = default!,
+            TRight defaultRight = default!,
             IEqualityComparer<TKey>? keyComparer = null)
         {
             left.CheckArgumentNull(nameof(left));
