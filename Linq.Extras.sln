@@ -57,7 +57,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1AC5F1E6-BC9A-4EB9-BFD3-7F548BC6F652}
 	EndGlobalSection
-	GlobalSection(NDepend) = preSolution
-		Project = ".\Linq.Extras.ndproj"
-	EndGlobalSection
 EndGlobal
