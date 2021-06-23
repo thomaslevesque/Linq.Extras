@@ -34,23 +34,6 @@ namespace Linq.Extras
             return new Stack<TSource>(source);
         }
 
-#if !FEATURE_TO_HASHSET
-        /// <summary>
-        /// Creates a hash set from the elements in the source sequence.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
-        /// <param name="source">The sequence containing the elements to put in the hash set.</param>
-        /// <param name="comparer">A comparer to test for equality between elements.</param>
-        /// <returns>A hash set containing the same elements as the <c>source</c> sequence.</returns>
-        /// <remarks>Since a hash set cannot contain duplicates, duplicate elements from the <c>source</c> sequence will not be included in the hash set.</remarks>
-        [Pure]
-        public static HashSet<TSource> ToHashSet<TSource>([NotNull] this IEnumerable<TSource> source, IEqualityComparer<TSource>? comparer = null)
-        {
-            source.CheckArgumentNull(nameof(source));
-            return new HashSet<TSource>(source, comparer);
-        }
-#endif
-
         /// <summary>
         /// Creates a linked list from the elements in the source sequence.
         /// </summary>
