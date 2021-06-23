@@ -8,7 +8,7 @@
 
 A set of extension and helper methods to complement the ones from `System.Linq.Enumerable`.
 
-Some of these methods are just shortcuts for common Linq operations (e.g. `Append`, `IsNullOrEmpty`), or improvements to
+Some of these methods are just shortcuts for common Linq operations (e.g. `IsNullOrEmpty`), or improvements to
 existing Linq methods (e.g. specify default value for `FirstOrDefault`, specify comparer for `Max`). Others do more
 complex things that have no equivalent in standard Linq (`RankBy`, `DistinctUntilChanged`).
 

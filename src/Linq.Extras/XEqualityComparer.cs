@@ -43,18 +43,25 @@ namespace Linq.Extras
                 _keyComparer = keyComparer ?? EqualityComparer<TKey>.Default;
             }
 
+#if FEATURE_COMPARER_NULLABILITY
+            public bool Equals(TSource? x, TSource? y)
+#else
             public bool Equals(TSource x, TSource y)
+#endif
             {
-                return _keyComparer.Equals(_keySelector(x), _keySelector(y));
+                return _keyComparer.Equals(
+                    x is null ? default! : _keySelector(x),
+                    y is null ? default! : _keySelector(y));
             }
 
             public int GetHashCode(TSource obj)
             {
-                return _keyComparer.GetHashCode(_keySelector(obj));
+                var key = _keySelector(obj);
+                return key is null ? 0 : _keyComparer.GetHashCode(key);
             }
         }
 
-        #endregion
+#endregion
     }
 
     /// <summary>

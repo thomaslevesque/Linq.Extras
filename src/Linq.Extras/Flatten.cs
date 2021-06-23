@@ -102,7 +102,7 @@ namespace Linq.Extras
             var list = source.Select(n => new NodeWithLevel<TNode>(n, 0)).ToLinkedList();
             while (list.Count > 0)
             {
-                var current = list.First.Value;
+                var current = list.First!.Value;
                 list.RemoveFirst();
                 yield return resultSelector(current.Node, current.Level);
                 var llNode = list.First;
