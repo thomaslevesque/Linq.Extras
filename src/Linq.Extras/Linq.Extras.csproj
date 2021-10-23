@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net45;netcoreapp3.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net45;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
     <Description>A set of helper and extension methods to complement the System.Linq namespace.</Description>
     <Authors>Thomas Levesque</Authors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -34,6 +34,10 @@
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
     <DefineConstants>$(DefineConstants);FEATURE_NULLABILITY_ATTRIBUTES;FEATURE_COMPARER_NULLABILITY</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <DefineConstants>$(DefineConstants);FEATURE_NULLABILITY_ATTRIBUTES;FEATURE_COMPARER_NULLABILITY;FEATURE_BY_OPERATORS;FEATURE_MINMAX_COMPARER;FEATURE_ORDEFAULT_OVERLOADS;FEATURE_CHUNK</DefineConstants>
   </PropertyGroup>
 
 </Project>

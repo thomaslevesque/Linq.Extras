@@ -23,10 +23,17 @@ namespace Linq.Extras
         /// If <c>TSource</c> is a reference type or nullable value type, and the sequence is empty, the method will return <c>null</c>.
         /// If <c>TSource</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
         /// </remarks>
+#if FEATURE_MINMAX_COMPARER
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.Max instead")]
+#endif
         [Pure]
         [return: MaybeNull]
         public static TSource Max<TSource>(
+#if FEATURE_MINMAX_COMPARER
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] IComparer<TSource> comparer)
         {
             source.CheckArgumentNull(nameof(source));
@@ -47,10 +54,17 @@ namespace Linq.Extras
         /// If <c>TSource</c> is a reference type or nullable value type, and the sequence is empty, the method will return <c>null</c>.
         /// If <c>TSource</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
         /// </remarks>
+#if FEATURE_MINMAX_COMPARER
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.Min instead")]
+#endif
         [Pure]
         [return: MaybeNull]
         public static TSource Min<TSource>(
+#if FEATURE_MINMAX_COMPARER
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] IComparer<TSource> comparer)
         {
             source.CheckArgumentNull(nameof(source));
@@ -137,10 +151,17 @@ namespace Linq.Extras
         /// If <c>TKey</c> is a reference type or nullable value type, and the sequence is empty, the method will return <c>null</c>.
         /// If <c>TKey</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
         /// </remarks>
+#if FEATURE_BY_OPERATORS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.MaxBy instead")]
+#endif
         [Pure]
         [return: MaybeNull]
         public static TSource MaxBy<TSource, TKey>(
+#if FEATURE_BY_OPERATORS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] Func<TSource, TKey> keySelector,
             IComparer<TKey>? keyComparer = null)
         {
@@ -164,10 +185,17 @@ namespace Linq.Extras
         /// If <c>TKey</c> is a reference type or nullable value type, and the sequence is empty, the method will return <c>null</c>.
         /// If <c>TKey</c> is a value type, and the sequence is empty, the method will throw an <see cref="InvalidOperationException"/>.
         /// </remarks>
+#if FEATURE_BY_OPERATORS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.MinBy instead")]
+#endif
         [Pure]
         [return: MaybeNull]
         public static TSource MinBy<TSource, TKey>(
+#if FEATURE_BY_OPERATORS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] Func<TSource, TKey> keySelector,
             IComparer<TKey>? keyComparer = null)
         {

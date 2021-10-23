@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using Linq.Extras.Internal;
 
@@ -13,6 +14,9 @@ namespace Linq.Extras
         /// <param name="source">The sequence to split into batches.</param>
         /// <param name="size">The size of the batches</param>
         /// <returns>A sequence of batches of the specified size; the last batch can be shorter if there isn't enough elements remaining in the input sequence.</returns>
+#if FEATURE_CHUNK
+        [Obsolete("This feature is now implemented in System.Linq. Please use Enumerable.Chunk instead")]
+#endif
         [Pure]
         public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(
             [NotNull] this IEnumerable<TSource> source,

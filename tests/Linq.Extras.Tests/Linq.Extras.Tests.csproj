@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net461;net5.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net461;net5.0;net6.0</TargetFrameworks>
     <DebugType Condition="'$(TargetFramework)' != '' AND '$(TargetFramework)' != 'netcoreapp1.0'">Full</DebugType>
     <AssemblyOriginatorKeyFile>..\..\Linq.Extras.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <NoWarn>NETSDK1138</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
@@ -30,6 +31,10 @@
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
     <DefineConstants>$(DefineConstants);FEATURE_ICOMPARER_NULLABILITY</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <DefineConstants>$(DefineConstants);FEATURE_ICOMPARER_NULLABILITY;FEATURE_BY_OPERATORS;FEATURE_MINMAX_COMPARER;FEATURE_ORDEFAULT_OVERLOADS;FEATURE_CHUNK</DefineConstants>
   </PropertyGroup>
 
 </Project>

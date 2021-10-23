@@ -9,6 +9,8 @@ namespace Linq.Extras
 {
     partial class XEnumerable
     {
+        // TODO: exists in .NET 6
+        
         /// <summary>
         /// Returns the first element of a sequence or the specified default value if the sequence contains no elements.
         /// </summary>
@@ -16,9 +18,16 @@ namespace Linq.Extras
         /// <param name="source">The sequence to return the first element of.</param>
         /// <param name="defaultValue">The default value to return if the sequence is empty.</param>
         /// <returns><c>defaultValue</c> if <c>source</c> is empty; otherwise, the first element in <c>source</c>.</returns>
+#if FEATURE_ORDEFAULT_OVERLOADS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.FirstOrDefault instead")]
+#endif
         [Pure]
         public static TSource FirstOrDefault<TSource>(
+#if FEATURE_ORDEFAULT_OVERLOADS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             TSource defaultValue)
         {
             source.CheckArgumentNull(nameof(source));
@@ -33,9 +42,16 @@ namespace Linq.Extras
         /// <param name="predicate">A function to test each element for a condition.</param>
         /// <param name="defaultValue">The default value to return if no matching element is found.</param>
         /// <returns><c>defaultValue</c> if source is empty or if no element passes the test specified by <c>predicate</c>; otherwise, the first element in <c>source</c> that passes the test specified by <c>predicate</c>.</returns>
+#if FEATURE_ORDEFAULT_OVERLOADS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.FirstOrDefault instead")]
+#endif
         [Pure]
         public static TSource FirstOrDefault<TSource>(
+#if FEATURE_ORDEFAULT_OVERLOADS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] Func<TSource, bool> predicate,
             TSource defaultValue)
         {
@@ -51,9 +67,16 @@ namespace Linq.Extras
         /// <param name="source">The sequence to return the last element of.</param>
         /// <param name="defaultValue">The default value to return if the sequence is empty.</param>
         /// <returns><c>defaultValue</c> if <c>source</c> is empty; otherwise, the last element in <c>source</c>.</returns>
+#if FEATURE_ORDEFAULT_OVERLOADS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.LastOrDefault instead")]
+#endif
         [Pure]
         public static TSource LastOrDefault<TSource>(
+#if FEATURE_ORDEFAULT_OVERLOADS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] TSource defaultValue)
         {
             source.CheckArgumentNull(nameof(source));
@@ -68,9 +91,16 @@ namespace Linq.Extras
         /// <param name="predicate">A function to test each element for a condition.</param>
         /// <param name="defaultValue">The default value to return if no matching element is found.</param>
         /// <returns><c>defaultValue</c> if source is empty or if no element passes the test specified by <c>predicate</c>; otherwise, the last element in <c>source</c> that passes the test specified by <c>predicate</c>.</returns>
+#if FEATURE_ORDEFAULT_OVERLOADS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.LastOrDefault instead")]
+#endif
         [Pure]
         public static TSource LastOrDefault<TSource>(
+#if FEATURE_ORDEFAULT_OVERLOADS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] Func<TSource, bool> predicate,
             TSource defaultValue)
         {
@@ -107,9 +137,16 @@ namespace Linq.Extras
         /// <param name="source">The sequence to return the single element of.</param>
         /// <param name="defaultValue">The default value to return if the sequence is empty.</param>
         /// <returns>The single element of the input sequence, or <c>defaultValue</c> if the sequence contains no elements.</returns>
+#if FEATURE_ORDEFAULT_OVERLOADS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.SingleOrDefault instead")]
+#endif
         [Pure]
         public static TSource SingleOrDefault<TSource>(
+#if FEATURE_ORDEFAULT_OVERLOADS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             TSource defaultValue)
         {
             source.CheckArgumentNull(nameof(source));
@@ -138,9 +175,16 @@ namespace Linq.Extras
         /// <param name="predicate">A function to test an element for a condition.</param>
         /// <param name="defaultValue">The default value to return if the no element matches the predicate.</param>
         /// <returns>The single element of the input sequence that satisfies the condition, or <c>defaultValue</c> if no such element is found.</returns>
+#if FEATURE_ORDEFAULT_OVERLOADS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.SingleOrDefault instead")]
+#endif
         [Pure]
         public static TSource SingleOrDefault<TSource>(
+#if FEATURE_ORDEFAULT_OVERLOADS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] Func<TSource, bool> predicate,
             TSource defaultValue)
         {
