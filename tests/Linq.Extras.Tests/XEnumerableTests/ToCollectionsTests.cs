@@ -41,6 +41,36 @@ namespace Linq.Extras.Tests.XEnumerableTests
             stack.Should().Equal(items.Reverse());
         }
 
+#if LACKS_TO_HASHSET
+        [Fact]
+        public void ToHashSet_Throws_If_Argument_Is_Null()
+        {
+            var source = Enumerable.Empty<int>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            TestHelper.AssertThrowsWhenArgumentNull(() => source.ToHashSet(null));
+        }
+
+        [Fact]
+        public void ToHashSet_Returns_A_HashSet_With_The_Same_Items_As_Source()
+        {
+            var items = new[] { 4, 8, 15, 16, 23, 42 };
+            var source = items.ForbidMultipleEnumeration();
+            var hashSet = source.ToHashSet();
+            hashSet.Should().Equal(items);
+        }
+
+        [Fact]
+        public void ToHashSet_Uses_The_Provided_Comparer()
+        {
+            var items = new[] { 4, -8, 15, 16, -23, 42 };
+            var source = items.ForbidMultipleEnumeration();
+            var comparer = XEqualityComparer<int>.By(Math.Abs);
+            var hashSet = source.ToHashSet(comparer);
+            hashSet.Should().Equal(items, comparer.Equals);
+        }
+
+#endif
+
         [Fact]
         public void ToLinkedList_Throws_If_Argument_Is_Null()
         {

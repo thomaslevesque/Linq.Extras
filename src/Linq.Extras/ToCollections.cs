@@ -35,6 +35,30 @@ namespace Linq.Extras
         }
 
         /// <summary>
+        /// Creates a hash set from the elements in the source sequence.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
+        /// <param name="source">The sequence containing the elements to put in the hash set.</param>
+        /// <param name="comparer">A comparer to test for equality between elements.</param>
+        /// <returns>A hash set containing the same elements as the <c>source</c> sequence.</returns>
+        /// <remarks>Since a hash set cannot contain duplicates, duplicate elements from the <c>source</c> sequence will not be included in the hash set.</remarks>
+#if !LACKS_TO_HASHSET
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.ToHashSet instead")]
+#endif
+        [Pure]
+        public static HashSet<TSource> ToHashSet<TSource>(
+#if !LACKS_TO_HASHSET
+            [NotNull] IEnumerable<TSource> source,
+#else
+            [NotNull] this IEnumerable<TSource> source,
+#endif
+            IEqualityComparer<TSource>? comparer = null)
+        {
+            source.CheckArgumentNull(nameof(source));
+            return new HashSet<TSource>(source, comparer);
+        }
+
+        /// <summary>
         /// Creates a linked list from the elements in the source sequence.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <c>source</c>.</typeparam>
