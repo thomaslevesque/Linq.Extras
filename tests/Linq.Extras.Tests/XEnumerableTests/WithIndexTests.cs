@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
@@ -56,6 +57,23 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
+        public void WithIndexForArray_Resets_Works()
+        {
+            var source = new[] { 4, 8, 15, 16, 23, 42 };
+            var enumerator = source.WithIndex().GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+            }
+
+            Reset(ref enumerator);
+
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(new ItemWithIndex<int>(4, 0));
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(new ItemWithIndex<int>(8, 1));
+        }
+
+        [Fact]
         public void WithIndexForList_Throws_If_Argument_Is_Null()
         {
             var source = new List<int>();
@@ -88,6 +106,23 @@ namespace Linq.Extras.Tests.XEnumerableTests
         }
 
         [Fact]
+        public void WithIndexForList_Resets_Works()
+        {
+            var source = new List<int> { 4, 8, 15, 16, 23, 42 };
+            var enumerator = source.WithIndex().GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+            }
+
+            Reset(ref enumerator);
+
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(new ItemWithIndex<int>(4, 0));
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(new ItemWithIndex<int>(8, 1));
+        }
+        
+        [Fact]
         public void WithoutIndex_Removes_Index_From_Sequence()
         {
             var source = new[]
@@ -115,6 +150,12 @@ namespace Linq.Extras.Tests.XEnumerableTests
         static bool HaveSameIndexAndItem<T>(ItemWithIndex<T> x, ItemWithIndex<T> y)
         {
             return x.Index == y.Index && EqualityComparer<T>.Default.Equals(x.Item, y.Item);
+        }
+
+        private static void Reset<TEnumerator>(ref TEnumerator enumerator)
+            where TEnumerator : struct, IEnumerator
+        {
+            enumerator.Reset();
         }
     }
 }
