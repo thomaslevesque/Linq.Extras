@@ -17,7 +17,7 @@ namespace Linq.Extras
         /// <returns>The source sequence followed by the appended element.</returns>
         /// <remarks>
         /// Linq already has this method in .NET Core, .NET Framework 4.7.1 and higher, and .NET Standard 1.6 and higher,
-        /// so it's not included in Linq.Extras for these frameworks.
+        /// so for these frameworks, the method is not marked as an extension method to avoid name conflicts.
         /// </remarks>
 #if !LACKS_APPEND_PREPEND
         [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.Append instead")]
