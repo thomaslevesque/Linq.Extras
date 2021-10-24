@@ -25,27 +25,26 @@
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net45'">
-    <DefineConstants>$(DefineConstants);LACKS_APPEND_PREPEND;LACKS_TO_HASHSET</DefineConstants>
+    <DefineConstants>$(DefineConstants);LACKS_APPEND_PREPEND;LACKS_TO_HASHSET;LACKS_NULLABILITY_ATTRIBUTES</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net471'">
-    <DefineConstants>$(DefineConstants);LACKS_TO_HASHSET</DefineConstants>
+    <DefineConstants>$(DefineConstants);LACKS_TO_HASHSET;LACKS_NULLABILITY_ATTRIBUTES</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-    <DefineConstants>$(DefineConstants);FEATURE_NULLABILITY_ATTRIBUTES</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-    <DefineConstants>$(DefineConstants);FEATURE_NULLABILITY_ATTRIBUTES;FEATURE_COMPARER_NULLABILITY</DefineConstants>
+    <DefineConstants>$(DefineConstants);FEATURE_COMPARER_NULLABILITY</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
-    <DefineConstants>$(DefineConstants);FEATURE_NULLABILITY_ATTRIBUTES;FEATURE_COMPARER_NULLABILITY</DefineConstants>
+    <DefineConstants>$(DefineConstants);FEATURE_COMPARER_NULLABILITY</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
-    <DefineConstants>$(DefineConstants);FEATURE_NULLABILITY_ATTRIBUTES;FEATURE_COMPARER_NULLABILITY;FEATURE_BY_OPERATORS;FEATURE_MINMAX_COMPARER;FEATURE_ORDEFAULT_OVERLOADS;FEATURE_CHUNK</DefineConstants>
+    <DefineConstants>$(DefineConstants);FEATURE_COMPARER_NULLABILITY;FEATURE_BY_OPERATORS;FEATURE_MINMAX_COMPARER;FEATURE_ORDEFAULT_OVERLOADS;FEATURE_CHUNK</DefineConstants>
   </PropertyGroup>
 
 </Project>
