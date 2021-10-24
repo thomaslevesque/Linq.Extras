@@ -182,7 +182,7 @@ namespace Linq.Extras
                 _keyComparer = keyComparer ?? Comparer<TKey>.Default;
             }
 
-#if FEATURE_COMPARER_NULLABILITY
+#if !LACKS_COMPARER_NULLABILITY
             public int Compare(T? x, T? y)
 #else
             public int Compare(T x, T y)
@@ -203,7 +203,7 @@ namespace Linq.Extras
                 _baseComparer = baseComparer;
             }
 
-#if FEATURE_COMPARER_NULLABILITY
+#if !LACKS_COMPARER_NULLABILITY
             public int Compare(T? x, T? y)
 #else
             public int Compare(T x, T y)
@@ -227,7 +227,7 @@ namespace Linq.Extras
                 Comparers = comparers.ToArray();
             }
 
-#if FEATURE_COMPARER_NULLABILITY
+#if !LACKS_COMPARER_NULLABILITY
             public int Compare(T? x, T? y)
 #else
             public int Compare(T x, T y)
@@ -246,7 +246,7 @@ namespace Linq.Extras
                 _comparison = comparison;
             }
 
-#if FEATURE_COMPARER_NULLABILITY
+#if !LACKS_COMPARER_NULLABILITY
             public int Compare(T? x, T? y) => _comparison(x!, y!);
 #else
             public int Compare(T x, T y) => _comparison(x, y);

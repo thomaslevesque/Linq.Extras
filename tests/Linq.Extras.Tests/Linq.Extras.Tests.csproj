@@ -22,32 +22,37 @@
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net461'">
-    <DefineConstants>$(DefineConstants);LACKS_APPEND_PREPEND;LACKS_TO_HASHSET</DefineConstants>
+    <DefineConstants>$(DefineConstants);LACKS_APPEND_PREPEND;LACKS_TO_HASHSET;LACKS_COMPARER_NULLABILITY</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net471'">
-    <DefineConstants>$(DefineConstants);LACKS_TO_HASHSET</DefineConstants>
+    <DefineConstants>$(DefineConstants);LACKS_TO_HASHSET;LACKS_COMPARER_NULLABILITY</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <DefineConstants>$(DefineConstants);LACKS_COMPARER_NULLABILITY</DefineConstants>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
     <NoWarn>NETSDK1138</NoWarn>
+    <DefineConstants>$(DefineConstants);LACKS_COMPARER_NULLABILITY</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
-    <DefineConstants>$(DefineConstants);FEATURE_ICOMPARER_NULLABILITY</DefineConstants>
+    <DefineConstants>$(DefineConstants)</DefineConstants>
     <NoWarn>NETSDK1138</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-    <DefineConstants>$(DefineConstants);FEATURE_ICOMPARER_NULLABILITY</DefineConstants>
+    <DefineConstants>$(DefineConstants)</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
-    <DefineConstants>$(DefineConstants);FEATURE_ICOMPARER_NULLABILITY</DefineConstants>
+    <DefineConstants>$(DefineConstants)</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
-    <DefineConstants>$(DefineConstants);FEATURE_ICOMPARER_NULLABILITY;FEATURE_BY_OPERATORS;FEATURE_MINMAX_COMPARER;FEATURE_ORDEFAULT_OVERLOADS;FEATURE_CHUNK</DefineConstants>
+    <DefineConstants>$(DefineConstants);FEATURE_BY_OPERATORS;FEATURE_MINMAX_COMPARER;FEATURE_ORDEFAULT_OVERLOADS;FEATURE_CHUNK</DefineConstants>
   </PropertyGroup>
 
 </Project>
