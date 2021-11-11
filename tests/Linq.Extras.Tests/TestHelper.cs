@@ -47,7 +47,7 @@ namespace Linq.Extras.Tests
                 var call = Expression.Call(realCall.Object, method, args);
                 var lambda = Expression.Lambda<Action>(call);
                 var action = lambda.Compile();
-                action.ShouldThrow<ArgumentNullException>($"because parameter '{paramName}' is not nullable")
+                action.Should().Throw<ArgumentNullException>($"because parameter '{paramName}' is not nullable")
                     .And.ParamName.Should().Be(paramName);
             }
         }

@@ -1,4 +1,5 @@
-﻿#if !FEATURE_NULLABILITY_ATTRIBUTES
+﻿#if LACKS_NULLABILITY_ATTRIBUTES
+// ReSharper disable once CheckNamespace
 namespace System.Diagnostics.CodeAnalysis
 {
     /// <summary>Specifies that an output may be null even if the corresponding type disallows it.</summary>

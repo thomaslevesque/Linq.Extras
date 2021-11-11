@@ -18,9 +18,16 @@ namespace Linq.Extras
         /// <param name="keySelector">A delegate that returns the key used to test for equality between elements.</param>
         /// <param name="keyComparer">A comparer used to test for equality between keys.</param>
         /// <returns>The set union of <c>source</c> and <c>other</c>, based on the specified key and key comparer.</returns>
+#if FEATURE_BY_OPERATORS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.UnionBy instead")]
+#endif
         [Pure]
         public static IEnumerable<TSource> UnionBy<TSource, TKey>(
+#if FEATURE_BY_OPERATORS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] IEnumerable<TSource> other,
             [NotNull] Func<TSource, TKey> keySelector,
             IEqualityComparer<TKey>? keyComparer = null)

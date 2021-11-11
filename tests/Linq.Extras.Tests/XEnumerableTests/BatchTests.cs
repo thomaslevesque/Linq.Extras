@@ -3,8 +3,11 @@ using System.Linq;
 using FluentAssertions;
 using Xunit;
 
+#pragma warning disable CS0618
+
 namespace Linq.Extras.Tests.XEnumerableTests
 {
+
     public class BatchTests
     {
         [Fact]

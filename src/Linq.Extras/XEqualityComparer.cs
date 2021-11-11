@@ -43,7 +43,7 @@ namespace Linq.Extras
                 _keyComparer = keyComparer ?? EqualityComparer<TKey>.Default;
             }
 
-#if FEATURE_COMPARER_NULLABILITY
+#if !LACKS_COMPARER_NULLABILITY
             public bool Equals(TSource? x, TSource? y)
 #else
             public bool Equals(TSource x, TSource y)

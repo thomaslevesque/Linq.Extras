@@ -17,9 +17,16 @@ namespace Linq.Extras
         /// <param name="keySelector">A delegate that returns the key used to test equality between elements.</param>
         /// <param name="keyComparer">A comparer used to test equality between keys (can be null).</param>
         /// <returns>A sequence whose elements have distinct values for the specified key.</returns>
+#if FEATURE_BY_OPERATORS
+        [Obsolete("This feature is now implemented directly in System.Linq. Please use Enumerable.DistinctBy instead")]
+#endif
         [Pure]
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(
+#if FEATURE_BY_OPERATORS
+            [NotNull] IEnumerable<TSource> source,
+#else
             [NotNull] this IEnumerable<TSource> source,
+#endif
             [NotNull] Func<TSource, TKey> keySelector,
             IEqualityComparer<TKey>? keyComparer = null)
         {

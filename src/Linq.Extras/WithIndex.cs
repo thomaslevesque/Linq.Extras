@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using JetBrains.Annotations;
+using NotNullAttribute = JetBrains.Annotations.NotNullAttribute;
 using Linq.Extras.Internal;
 
 namespace Linq.Extras
@@ -85,6 +87,7 @@ namespace Linq.Extras
 
             IEnumerator<ItemWithIndex<TSource>> IEnumerable<ItemWithIndex<TSource>>.GetEnumerator() => GetEnumerator();
 
+            [ExcludeFromCodeCoverage]
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
             /// <summary>
@@ -116,7 +119,12 @@ namespace Linq.Extras
                     return false;
                 }
 
-                void IEnumerator.Reset() => _innerEnumerator.Reset();
+                [ExcludeFromCodeCoverage]
+                void IEnumerator.Reset()
+                {
+                    _index = -1;
+                    _innerEnumerator.Reset();
+                }
 
                 /// <summary>
                 /// Releases all resources used by the <see cref="Enumerator"/>.
@@ -128,6 +136,7 @@ namespace Linq.Extras
                 /// </summary>
                 public ItemWithIndex<TSource> Current => new ItemWithIndex<TSource>(_innerEnumerator.Current, _index);
 
+                [ExcludeFromCodeCoverage]
                 object IEnumerator.Current => Current;
             }
         }
@@ -153,6 +162,7 @@ namespace Linq.Extras
 
             IEnumerator<ItemWithIndex<TSource>> IEnumerable<ItemWithIndex<TSource>>.GetEnumerator() => GetEnumerator();
 
+            [ExcludeFromCodeCoverage]
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
             /// <summary>
@@ -201,7 +211,8 @@ namespace Linq.Extras
                 /// </summary>
                 public ItemWithIndex<TSource> Current => new ItemWithIndex<TSource>(_array[_index], _index);
 
-                object IEnumerator.Current => throw new NotImplementedException();
+                [ExcludeFromCodeCoverage]
+                object IEnumerator.Current => Current;
             }
         }
 
@@ -226,6 +237,7 @@ namespace Linq.Extras
 
             IEnumerator<ItemWithIndex<TSource>> IEnumerable<ItemWithIndex<TSource>>.GetEnumerator() => GetEnumerator();
 
+            [ExcludeFromCodeCoverage]
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
             /// <summary>
@@ -260,7 +272,13 @@ namespace Linq.Extras
                 void IEnumerator.Reset()
                 {
                     _index = -1;
-                    ((IEnumerator)_inner).Reset();
+                    Reset(ref _inner);
+                }
+                
+                private static void Reset<TEnumerator>(ref TEnumerator enumerator)
+                    where TEnumerator : struct, IEnumerator
+                {
+                    enumerator.Reset();
                 }
 
                 /// <summary>
@@ -273,7 +291,8 @@ namespace Linq.Extras
                 /// </summary>
                 public ItemWithIndex<TSource> Current => new ItemWithIndex<TSource>(_inner.Current, _index);
 
-                object IEnumerator.Current => throw new NotImplementedException();
+                [ExcludeFromCodeCoverage]
+                object IEnumerator.Current => Current;
             }
         }
     }
