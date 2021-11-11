@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
@@ -85,7 +84,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var source = GetFoos().ForbidMultipleEnumeration();
             var actual = source.Flatten(f => f.Children, TreeTraversalMode.DepthFirst, (f, level) => new { f.Id, Level = level});
-            IEnumerable expected = new[]
+            var expected = new[]
                            {
                                new { Id = 1, Level = 0 },
                                new { Id = 2, Level = 1 },
@@ -103,7 +102,7 @@ namespace Linq.Extras.Tests.XEnumerableTests
         {
             var source = GetFoos().ForbidMultipleEnumeration();
             var actual = source.Flatten(f => f.Children, TreeTraversalMode.BreadthFirst, (f, level) => new { f.Id, Level = level });
-            IEnumerable expected = new[]
+            var expected = new[]
                            {
                                new { Id = 1, Level = 0 },
                                new { Id = 6, Level = 0 },
