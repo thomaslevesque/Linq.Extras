@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder and Tools" version="2021.11.7.0" projectFile="C:\Git\Linq.Extras\docs\Documentation.shfbproj" started="11/11/2021 23:59:11">
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2021.11.7.0" projectFile="C:\Git\Linq.Extras\docs\Documentation.shfbproj" started="12/11/2021 00:28:11">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder&#39;
@@ -148,17 +148,17 @@ Copying XML comments files
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00,0231
+</plugIn>    Last step completed in 00:00:00,0250
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00,0150
+    Last step completed in 00:00:00,0100
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
-[C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe - GenerateRefInfo-e22344d7-599e-4790-a8ab-9d030b6c621c.proj]
-Build started 11/11/2021 23:59:13.
-Project &quot;C:\Git\Linq.Extras\docs\api\Working\GenerateRefInfo-e22344d7-599e-4790-a8ab-9d030b6c621c.proj&quot; on node 1 (default targets).
+[C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe - GenerateRefInfo-7dd61a7d-e0e9-443a-b09e-8ccbe8dcd7d3.proj]
+Build started 12/11/2021 00:28:14.
+Project &quot;C:\Git\Linq.Extras\docs\api\Working\GenerateRefInfo-7dd61a7d-e0e9-443a-b09e-8ccbe8dcd7d3.proj&quot; on node 1 (default targets).
 PrepareForBuild:
   Creating directory &quot;obj\Debug\&quot;.
 GenerateBindingRedirects:
@@ -171,12 +171,12 @@ GenerateRefInfo:
   Wrote information on 1 namespaces, 16 types, and 107 members
   Merging duplicate type and member information
   Merged 0 duplicate type(s) and 0 duplicate member(s)
-Done Building Project &quot;C:\Git\Linq.Extras\docs\api\Working\GenerateRefInfo-e22344d7-599e-4790-a8ab-9d030b6c621c.proj&quot; (default targets).
-    Last step completed in 00:00:01,5788
+Done Building Project &quot;C:\Git\Linq.Extras\docs\api\Working\GenerateRefInfo-7dd61a7d-e0e9-443a-b09e-8ccbe8dcd7d3.proj&quot; (default targets).
+    Last step completed in 00:00:01,4480
 </buildStep>
 <buildStep step="ApplyDocumentModel">
 Applying document model to reflection output...
-    Last step completed in 00:00:00,0832
+    Last step completed in 00:00:00,0850
 </buildStep>
 <buildStep step="AddApiTopicFilenames">
 Adding topic filenames to API members...
@@ -190,46 +190,46 @@ Adding topic filenames to API members...
     Unique name M_Linq_Extras_XEnumerable_SingleOrDefault__1_1 generated for M:Linq.Extras.XEnumerable.SingleOrDefault``1(System.Collections.Generic.IEnumerable{``0},``0)
     Unique name M_Linq_Extras_XEnumerable_WithIndex__1_1 generated for M:Linq.Extras.XEnumerable.WithIndex``1(System.Collections.Generic.List{``0})
     Unique name M_Linq_Extras_XEnumerable_WithIndex__1_2 generated for M:Linq.Extras.XEnumerable.WithIndex``1(``0[])
-    Last step completed in 00:00:00,0592
+    Last step completed in 00:00:00,0580
 </buildStep>
 <buildStep step="GenerateApiTopicManifest">
 Generating API topic manifest...
-    Last step completed in 00:00:00,0453
+    Last step completed in 00:00:00,0530
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00,0399
+    Last step completed in 00:00:00,0470
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00,0051
+    Last step completed in 00:00:00,0020
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00,0009
+    Last step completed in 00:00:00,0010
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file for API content...
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00,0320
+    Last step completed in 00:00:00,0420
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00,1470
+    Last step completed in 00:00:00,1860
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 C:\Git\Linq.Extras\docs\api\Working\sandcastle.config
   Updating reference topic configurations.
   No conceptual content.  Removing conceptual content components.
-    Last step completed in 00:00:00,0090
+    Last step completed in 00:00:00,0080
 </buildStep>
 <buildStep step="BuildTopics">
 Building help topics...
 [C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe - BuildTopics.proj]
-Build started 11/11/2021 23:59:15.
+Build started 12/11/2021 00:28:16.
 Project &quot;C:\Git\Linq.Extras\docs\api\Working\BuildTopics.proj&quot; on node 1 (default targets).
 BuildTopics:
   Microsoft.Build (v17.0.0+c9eb9dd64e9a2e8a433900a1a626d65a2bce4428)
@@ -240,16 +240,16 @@ BuildTopics:
   CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 7 of 15.
   CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 1 of 30.
 Done Building Project &quot;C:\Git\Linq.Extras\docs\api\Working\BuildTopics.proj&quot; (default targets).
-    Last step completed in 00:00:05,7763
+    Last step completed in 00:00:05,7080
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
-    Last step completed in 00:00:00,0060
+    Last step completed in 00:00:00,0050
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
 [C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe - ExtractHtmlInfo.proj]
-    Last step completed in 00:00:00,5900
+    Last step completed in 00:00:00,5770
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -393,11 +393,11 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\Components\VS2013
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\Components\VS2013\Web\scripts\branding-Website.js -&gt; C:\Git\Linq.Extras\docs\api\Working\Output\Website\scripts\branding-Website.js
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\Components\VS2013\Web\scripts\clipboard.min.js -&gt; C:\Git\Linq.Extras\docs\api\Working\Output\Website\scripts\clipboard.min.js
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\Components\VS2013\Web\scripts\jquery-3.5.1.min.js -&gt; C:\Git\Linq.Extras\docs\api\Working\Output\Website\scripts\jquery-3.5.1.min.js
-    Last step completed in 00:00:00,6270
+    Last step completed in 00:00:00,6100
 </buildStep>
 <buildStep step="GenerateHelpProject">
 Generating HTML Help 1 project file...
-    Last step completed in 00:00:00,0100
+    Last step completed in 00:00:00,0190
 </buildStep>
 <buildStep step="CompilingHelpFile">
 Compiling HTML Help 1 file...
@@ -412,7 +412,7 @@ Compiling HTML Help 1 file...
   
   
   
-  Compile time: 0 minutes, 23 seconds
+  Compile time: 0 minutes, 19 seconds
   
   155	Topics
   
@@ -426,32 +426,32 @@ Compiling HTML Help 1 file...
   
   
   
-  Created c:\Git\Linq.Extras\docs\api\Working\Output\HtmlHelp1\Linq.Extras.chm, 281,094 bytes
+  Created c:\Git\Linq.Extras\docs\api\Working\Output\HtmlHelp1\Linq.Extras.chm, 280,854 bytes
   
-  Compression decreased file by 2,062,799 bytes.
+  Compression decreased file by 2,061,829 bytes.
   
-    Last step completed in 00:00:23,7414
+    Last step completed in 00:00:20,1985
 </buildStep>
 <buildStep step="GenerateFullTextIndex">
 Generating full-text index for the website...
 
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
 Adding lightweight search and TOC elements to each topic...
-</plugIn>    Last step completed in 00:00:00,5440
+</plugIn>    Last step completed in 00:00:00,4610
 </buildStep>
 <buildStep step="CopyingWebsiteFiles">
 Copying website files to output folder...
 
 Copied 305 files for the website content
-    Last step completed in 00:00:00,5430
+    Last step completed in 00:00:00,5700
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00,2620
+    Last step completed in 00:00:00,2560
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 11/11/2021 23:59:47.  Total time: 00:00:36,2335
+Build completed successfully at 12/11/2021 00:28:44.  Total time: 00:00:32,5595
 
 </buildStep>
 </shfbBuild>

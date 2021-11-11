@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="54dc2db4-181c-4cf0-a1c6-34eea7b1c06d" Title="Linq.Extras" Url="html/N_Linq_Extras.htm">
-    <HelpTOCNode Id="f4ea5042-d23e-4ae1-9025-5abc58c01aa5" Title="Infer Class" Url="html/T_Linq_Extras_Infer.htm">
-      <HelpTOCNode Id="3c6110c2-f325-43fb-8d64-15b99b7e6396" Title="Infer Methods" Url="html/Methods_T_Linq_Extras_Infer.htm">
-        <HelpTOCNode Id="2874aa00-fc48-46f8-bed8-ddc38c9e9979" Title="Expr Method " Url="html/Overload_Linq_Extras_Infer_Expr.htm">
+  <HelpTOCNode Id="d0edf65d-fee4-40a3-ac08-b2370a5164e4" Title="Linq.Extras" Url="html/N_Linq_Extras.htm">
+    <HelpTOCNode Id="fb892501-8201-4576-8eae-c82828c08a98" Title="Infer Class" Url="html/T_Linq_Extras_Infer.htm">
+      <HelpTOCNode Id="0fc516c9-1086-4ad5-9b04-1fa5ea90dd75" Title="Infer Methods" Url="html/Methods_T_Linq_Extras_Infer.htm">
+        <HelpTOCNode Id="44c6f3a3-5dc0-43f8-91d9-67dd39a7e368" Title="Expr Method " Url="html/Overload_Linq_Extras_Infer_Expr.htm">
           <HelpTOCNode Title="Expr(TResult) Method (Expression(Func(TResult)))" Url="html/M_Linq_Extras_Infer_Expr__1.htm" />
           <HelpTOCNode Title="Expr(T1, TResult) Method (Expression(Func(T1, TResult)))" Url="html/M_Linq_Extras_Infer_Expr__2.htm" />
           <HelpTOCNode Title="Expr(T1, T2, TResult) Method (Expression(Func(T1, T2, TResult)))" Url="html/M_Linq_Extras_Infer_Expr__3.htm" />
           <HelpTOCNode Title="Expr(T1, T2, T3, TResult) Method (Expression(Func(T1, T2, T3, TResult)))" Url="html/M_Linq_Extras_Infer_Expr__4.htm" />
           <HelpTOCNode Title="Expr(T1, T2, T3, T4, TResult) Method (Expression(Func(T1, T2, T3, T4, TResult)))" Url="html/M_Linq_Extras_Infer_Expr__5.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="17c7f0b1-020b-4aef-bb68-9eeabd5d1980" Title="Func Method " Url="html/Overload_Linq_Extras_Infer_Func.htm">
+        <HelpTOCNode Id="a8c9b72f-6679-4269-a06b-e8204b6c8b2b" Title="Func Method " Url="html/Overload_Linq_Extras_Infer_Func.htm">
           <HelpTOCNode Title="Func(TResult) Method (Func(TResult))" Url="html/M_Linq_Extras_Infer_Func__1.htm" />
           <HelpTOCNode Title="Func(T1, TResult) Method (Func(T1, TResult))" Url="html/M_Linq_Extras_Infer_Func__2.htm" />
           <HelpTOCNode Title="Func(T1, T2, TResult) Method (Func(T1, T2, TResult))" Url="html/M_Linq_Extras_Infer_Func__3.htm" />
@@ -20,27 +20,27 @@
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="8eb4b0e6-6ff5-43c0-85e8-35a2d8dafc33" Title="INode(T) Interface" Url="html/T_Linq_Extras_INode_1.htm">
-      <HelpTOCNode Id="90bdf3bc-0669-4c71-b546-df976193ee94" Title="INode(T) Properties" Url="html/Properties_T_Linq_Extras_INode_1.htm">
+    <HelpTOCNode Id="9976da10-4b63-47ca-9fc1-c53354972f94" Title="INode(T) Interface" Url="html/T_Linq_Extras_INode_1.htm">
+      <HelpTOCNode Id="8417a5cf-9678-40a5-b97a-9a0cd6839673" Title="INode(T) Properties" Url="html/Properties_T_Linq_Extras_INode_1.htm">
         <HelpTOCNode Title="Children Property " Url="html/P_Linq_Extras_INode_1_Children.htm" />
         <HelpTOCNode Title="Item Property " Url="html/P_Linq_Extras_INode_1_Item.htm" />
         <HelpTOCNode Title="Level Property " Url="html/P_Linq_Extras_INode_1_Level.htm" />
         <HelpTOCNode Title="Parent Property " Url="html/P_Linq_Extras_INode_1_Parent.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="1658556c-e2d0-4c59-90f3-75020abd667e" Title="ItemWithIndex(T) Structure" Url="html/T_Linq_Extras_ItemWithIndex_1.htm">
+    <HelpTOCNode Id="99eb533c-987d-4579-aa74-0457ef0b1632" Title="ItemWithIndex(T) Structure" Url="html/T_Linq_Extras_ItemWithIndex_1.htm">
       <HelpTOCNode Title="ItemWithIndex(T) Constructor " Url="html/M_Linq_Extras_ItemWithIndex_1__ctor.htm" />
-      <HelpTOCNode Id="119a8d56-3ac8-48e3-bead-7b817bf9bc60" Title="ItemWithIndex(T) Properties" Url="html/Properties_T_Linq_Extras_ItemWithIndex_1.htm">
+      <HelpTOCNode Id="4a079084-9b0d-43c8-ab5e-bdd82846bb7b" Title="ItemWithIndex(T) Properties" Url="html/Properties_T_Linq_Extras_ItemWithIndex_1.htm">
         <HelpTOCNode Title="Index Property " Url="html/P_Linq_Extras_ItemWithIndex_1_Index.htm" />
         <HelpTOCNode Title="Item Property " Url="html/P_Linq_Extras_ItemWithIndex_1_Item.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e0b2c856-5155-4b6e-b41d-d8c4faf7c07d" Title="ItemWithIndex(T) Methods" Url="html/Methods_T_Linq_Extras_ItemWithIndex_1.htm">
+      <HelpTOCNode Id="39cc9307-b750-4821-81d0-378cc864eb01" Title="ItemWithIndex(T) Methods" Url="html/Methods_T_Linq_Extras_ItemWithIndex_1.htm">
         <HelpTOCNode Title="Deconstruct Method " Url="html/M_Linq_Extras_ItemWithIndex_1_Deconstruct.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="TreeTraversalMode Enumeration" Url="html/T_Linq_Extras_TreeTraversalMode.htm" />
-    <HelpTOCNode Id="0c7d0488-31bd-4955-9fcd-871f41213d98" Title="XComparer Class" Url="html/T_Linq_Extras_XComparer.htm">
-      <HelpTOCNode Id="48867e3f-6ab5-4062-bb74-4d244586b30f" Title="XComparer Methods" Url="html/Methods_T_Linq_Extras_XComparer.htm">
+    <HelpTOCNode Id="75f6d63b-8764-4d54-8bbf-61e019f07f02" Title="XComparer Class" Url="html/T_Linq_Extras_XComparer.htm">
+      <HelpTOCNode Id="48a1ac57-2dcf-456f-8a08-69133b875a5c" Title="XComparer Methods" Url="html/Methods_T_Linq_Extras_XComparer.htm">
         <HelpTOCNode Title="By(T, TKey) Method " Url="html/M_Linq_Extras_XComparer_By__2.htm" />
         <HelpTOCNode Title="ByDescending(T, TKey) Method " Url="html/M_Linq_Extras_XComparer_ByDescending__2.htm" />
         <HelpTOCNode Title="ChainWith(T) Method " Url="html/M_Linq_Extras_XComparer_ChainWith__1.htm" />
@@ -52,15 +52,15 @@
         <HelpTOCNode Title="ThenByDescending(T, TKey) Method " Url="html/M_Linq_Extras_XComparer_ThenByDescending__2.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="efdb2a0b-7107-4528-8593-41d593568258" Title="XComparer(T) Class" Url="html/T_Linq_Extras_XComparer_1.htm">
-      <HelpTOCNode Id="9b5f1ea0-1e1a-4d21-9526-f2a0275e1f95" Title="XComparer(T) Methods" Url="html/Methods_T_Linq_Extras_XComparer_1.htm">
+    <HelpTOCNode Id="85f64ebf-daa6-4620-bbc6-d391827c67a7" Title="XComparer(T) Class" Url="html/T_Linq_Extras_XComparer_1.htm">
+      <HelpTOCNode Id="42620773-1ba8-4c08-a86f-d4c6be2c596d" Title="XComparer(T) Methods" Url="html/Methods_T_Linq_Extras_XComparer_1.htm">
         <HelpTOCNode Title="By(TKey) Method " Url="html/M_Linq_Extras_XComparer_1_By__1.htm" />
         <HelpTOCNode Title="ByDescending(TKey) Method " Url="html/M_Linq_Extras_XComparer_1_ByDescending__1.htm" />
         <HelpTOCNode Title="FromComparison Method " Url="html/M_Linq_Extras_XComparer_1_FromComparison.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="2675f7e9-ba1d-416a-9a20-b7fdcfe5e653" Title="XEnumerable Class" Url="html/T_Linq_Extras_XEnumerable.htm">
-      <HelpTOCNode Id="174f24d6-6816-491b-9c72-5d0b4d6596e8" Title="XEnumerable Methods" Url="html/Methods_T_Linq_Extras_XEnumerable.htm">
+    <HelpTOCNode Id="19075cc8-25ae-4ba9-91ca-4992870c09ca" Title="XEnumerable Class" Url="html/T_Linq_Extras_XEnumerable.htm">
+      <HelpTOCNode Id="68c333cd-60e1-48a9-9c7a-b53a061d4fce" Title="XEnumerable Methods" Url="html/Methods_T_Linq_Extras_XEnumerable.htm">
         <HelpTOCNode Title="Append(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Append__1.htm" />
         <HelpTOCNode Title="Batch(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Batch__1.htm" />
         <HelpTOCNode Title="CommonPrefix(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_CommonPrefix__1.htm" />
@@ -72,37 +72,37 @@
         <HelpTOCNode Title="ElementAtOrDefault(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_ElementAtOrDefault__1.htm" />
         <HelpTOCNode Title="Empty(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Empty__1.htm" />
         <HelpTOCNode Title="ExceptBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_ExceptBy__2.htm" />
-        <HelpTOCNode Id="38ac1ec7-59a9-4a1b-a8c2-2cbf9f63a861" Title="FirstOrDefault Method " Url="html/Overload_Linq_Extras_XEnumerable_FirstOrDefault.htm">
+        <HelpTOCNode Id="853a48c9-2879-4d5e-a14d-4e450a96a941" Title="FirstOrDefault Method " Url="html/Overload_Linq_Extras_XEnumerable_FirstOrDefault.htm">
           <HelpTOCNode Title="FirstOrDefault(TSource) Method (IEnumerable(TSource), TSource)" Url="html/M_Linq_Extras_XEnumerable_FirstOrDefault__1_1.htm" />
           <HelpTOCNode Title="FirstOrDefault(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean), TSource)" Url="html/M_Linq_Extras_XEnumerable_FirstOrDefault__1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="8f59470d-b405-47c3-bc6a-aa3585441a91" Title="Flatten Method " Url="html/Overload_Linq_Extras_XEnumerable_Flatten.htm">
+        <HelpTOCNode Id="77938967-3576-46b7-bad3-b4a5692d673d" Title="Flatten Method " Url="html/Overload_Linq_Extras_XEnumerable_Flatten.htm">
           <HelpTOCNode Title="Flatten(TNode) Method (IEnumerable(TNode), Func(TNode, IEnumerable(TNode)), TreeTraversalMode)" Url="html/M_Linq_Extras_XEnumerable_Flatten__1.htm" />
           <HelpTOCNode Title="Flatten(TNode, TResult) Method (IEnumerable(TNode), Func(TNode, IEnumerable(TNode)), TreeTraversalMode, Func(TNode, TResult))" Url="html/M_Linq_Extras_XEnumerable_Flatten__2.htm" />
           <HelpTOCNode Title="Flatten(TNode, TResult) Method (IEnumerable(TNode), Func(TNode, IEnumerable(TNode)), TreeTraversalMode, Func(TNode, Int32, TResult))" Url="html/M_Linq_Extras_XEnumerable_Flatten__2_1.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="FullOuterJoin(TLeft, TRight, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_FullOuterJoin__4.htm" />
-        <HelpTOCNode Id="29cbc094-6d0a-42ed-8c56-b52f5dbbc3bf" Title="Generate Method " Url="html/Overload_Linq_Extras_XEnumerable_Generate.htm">
+        <HelpTOCNode Id="7546984a-8ddf-4720-aaed-e3545bd65eca" Title="Generate Method " Url="html/Overload_Linq_Extras_XEnumerable_Generate.htm">
           <HelpTOCNode Title="Generate(TElement) Method (Func(Int32, TElement))" Url="html/M_Linq_Extras_XEnumerable_Generate__1.htm" />
           <HelpTOCNode Title="Generate(TElement) Method (TElement, Func(TElement, TElement))" Url="html/M_Linq_Extras_XEnumerable_Generate__1_1.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="GroupUntilChanged(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_GroupUntilChanged__1.htm" />
         <HelpTOCNode Title="GroupUntilChangedBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_GroupUntilChangedBy__2.htm" />
-        <HelpTOCNode Id="5cbad25e-86ff-4155-b16f-e216f87eb1d3" Title="IndexOf Method " Url="html/Overload_Linq_Extras_XEnumerable_IndexOf.htm">
+        <HelpTOCNode Id="5dfd56f8-9c08-44aa-b436-0ab2f4e36423" Title="IndexOf Method " Url="html/Overload_Linq_Extras_XEnumerable_IndexOf.htm">
           <HelpTOCNode Title="IndexOf(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean))" Url="html/M_Linq_Extras_XEnumerable_IndexOf__1.htm" />
           <HelpTOCNode Title="IndexOf(TSource) Method (IEnumerable(TSource), TSource, IEqualityComparer(TSource))" Url="html/M_Linq_Extras_XEnumerable_IndexOf__1_1.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="IndexOfSubstring(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_IndexOfSubstring__1.htm" />
         <HelpTOCNode Title="IntersectBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_IntersectBy__2.htm" />
-        <HelpTOCNode Id="8a50b488-19d4-4ecd-9769-1afc5914bf96" Title="IsNullOrEmpty Method " Url="html/Overload_Linq_Extras_XEnumerable_IsNullOrEmpty.htm">
+        <HelpTOCNode Id="b3792a6d-8388-4ff8-906d-d2c787e64716" Title="IsNullOrEmpty Method " Url="html/Overload_Linq_Extras_XEnumerable_IsNullOrEmpty.htm">
           <HelpTOCNode Title="IsNullOrEmpty Method (IEnumerable)" Url="html/M_Linq_Extras_XEnumerable_IsNullOrEmpty.htm" />
           <HelpTOCNode Title="IsNullOrEmpty(TSource) Method (IEnumerable(TSource))" Url="html/M_Linq_Extras_XEnumerable_IsNullOrEmpty__1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="7aa6969a-7152-4cc1-9162-adf1ff90f200" Title="LastIndexOf Method " Url="html/Overload_Linq_Extras_XEnumerable_LastIndexOf.htm">
+        <HelpTOCNode Id="f3e8935c-4cc6-4f54-965e-e3f730f186a1" Title="LastIndexOf Method " Url="html/Overload_Linq_Extras_XEnumerable_LastIndexOf.htm">
           <HelpTOCNode Title="LastIndexOf(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean))" Url="html/M_Linq_Extras_XEnumerable_LastIndexOf__1.htm" />
           <HelpTOCNode Title="LastIndexOf(TSource) Method (IEnumerable(TSource), TSource, IEqualityComparer(TSource))" Url="html/M_Linq_Extras_XEnumerable_LastIndexOf__1_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="a515ae2b-193a-448c-b5f1-bea9b6559dce" Title="LastOrDefault Method " Url="html/Overload_Linq_Extras_XEnumerable_LastOrDefault.htm">
+        <HelpTOCNode Id="adf2c779-7e2c-45ed-af9f-fe82ef8e8725" Title="LastOrDefault Method " Url="html/Overload_Linq_Extras_XEnumerable_LastOrDefault.htm">
           <HelpTOCNode Title="LastOrDefault(TSource) Method (IEnumerable(TSource), TSource)" Url="html/M_Linq_Extras_XEnumerable_LastOrDefault__1_1.htm" />
           <HelpTOCNode Title="LastOrDefault(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean), TSource)" Url="html/M_Linq_Extras_XEnumerable_LastOrDefault__1.htm" />
         </HelpTOCNode>
@@ -111,7 +111,7 @@
         <HelpTOCNode Title="MaxBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_MaxBy__2.htm" />
         <HelpTOCNode Title="Min(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Min__1.htm" />
         <HelpTOCNode Title="MinBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_MinBy__2.htm" />
-        <HelpTOCNode Id="44ec3f01-e687-47f6-9771-1372b4db3e65" Title="None Method " Url="html/Overload_Linq_Extras_XEnumerable_None.htm">
+        <HelpTOCNode Id="426a6d57-4956-43b7-bc67-78da338d7ad0" Title="None Method " Url="html/Overload_Linq_Extras_XEnumerable_None.htm">
           <HelpTOCNode Title="None(TSource) Method (IEnumerable(TSource))" Url="html/M_Linq_Extras_XEnumerable_None__1.htm" />
           <HelpTOCNode Title="None(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean))" Url="html/M_Linq_Extras_XEnumerable_None__1_1.htm" />
         </HelpTOCNode>
@@ -120,7 +120,7 @@
         <HelpTOCNode Title="RankByDescending(TSource, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_RankByDescending__3.htm" />
         <HelpTOCNode Title="RightOuterJoin(TLeft, TRight, TKey, TResult) Method " Url="html/M_Linq_Extras_XEnumerable_RightOuterJoin__4.htm" />
         <HelpTOCNode Title="SequenceEqualBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_SequenceEqualBy__2.htm" />
-        <HelpTOCNode Id="1a5959eb-cf68-40e0-a9ef-5bf604a36d31" Title="SingleOrDefault Method " Url="html/Overload_Linq_Extras_XEnumerable_SingleOrDefault.htm">
+        <HelpTOCNode Id="c348029f-d2d1-4f38-a9a4-692ce1f84088" Title="SingleOrDefault Method " Url="html/Overload_Linq_Extras_XEnumerable_SingleOrDefault.htm">
           <HelpTOCNode Title="SingleOrDefault(TSource) Method (IEnumerable(TSource), TSource)" Url="html/M_Linq_Extras_XEnumerable_SingleOrDefault__1_1.htm" />
           <HelpTOCNode Title="SingleOrDefault(TSource) Method (IEnumerable(TSource), Func(TSource, Boolean), TSource)" Url="html/M_Linq_Extras_XEnumerable_SingleOrDefault__1.htm" />
         </HelpTOCNode>
@@ -133,7 +133,7 @@
         <HelpTOCNode Title="ToStack(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_ToStack__1.htm" />
         <HelpTOCNode Title="UnionBy(TSource, TKey) Method " Url="html/M_Linq_Extras_XEnumerable_UnionBy__2.htm" />
         <HelpTOCNode Title="Unit(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_Unit__1.htm" />
-        <HelpTOCNode Id="a35afa8e-e783-4783-84a2-fea8d7b8bdc0" Title="WithIndex Method " Url="html/Overload_Linq_Extras_XEnumerable_WithIndex.htm">
+        <HelpTOCNode Id="a12dc052-1c32-400f-b552-b367e9d2bbc4" Title="WithIndex Method " Url="html/Overload_Linq_Extras_XEnumerable_WithIndex.htm">
           <HelpTOCNode Title="WithIndex(TSource) Method (IEnumerable(TSource))" Url="html/M_Linq_Extras_XEnumerable_WithIndex__1.htm" />
           <HelpTOCNode Title="WithIndex(TSource) Method (List(TSource))" Url="html/M_Linq_Extras_XEnumerable_WithIndex__1_1.htm" />
           <HelpTOCNode Title="WithIndex(TSource) Method (TSource[])" Url="html/M_Linq_Extras_XEnumerable_WithIndex__1_2.htm" />
@@ -141,60 +141,60 @@
         <HelpTOCNode Title="WithoutIndex(TSource) Method " Url="html/M_Linq_Extras_XEnumerable_WithoutIndex__1.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="7e4a3417-c5c9-4ad9-96c8-39bde241a69e" Title="XEnumerable.WithIndexArrayEnumerable(TSource) Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm">
-      <HelpTOCNode Id="96e98932-c7b5-4672-b1de-2f7185842cd3" Title="WithIndexArrayEnumerable(TSource) Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm">
+    <HelpTOCNode Id="70cc19ab-533a-49fa-aff2-b235bfcfde26" Title="XEnumerable.WithIndexArrayEnumerable(TSource) Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm">
+      <HelpTOCNode Id="0bd15906-edf9-4bc6-8e66-e684706fbb63" Title="WithIndexArrayEnumerable(TSource) Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1.htm">
         <HelpTOCNode Title="GetEnumerator Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_GetEnumerator.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="bd4d03b0-a89f-4dda-a315-a643703d7b2d" Title="XEnumerable.WithIndexArrayEnumerable(TSource).Enumerator Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm">
-      <HelpTOCNode Id="aa5bb38e-7fb3-4011-a7d7-0566996b4eaf" Title="Enumerator Properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm">
+    <HelpTOCNode Id="df4bb5a9-9e2f-452c-a21e-be0cb11aa701" Title="XEnumerable.WithIndexArrayEnumerable(TSource).Enumerator Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm">
+      <HelpTOCNode Id="17160521-c034-4c3c-b7bf-ca69c92c344c" Title="Enumerator Properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm">
         <HelpTOCNode Title="Current Property " Url="html/P_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_Current.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ef5402d8-4eba-4193-b5c0-623c6360cdac" Title="Enumerator Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm">
+      <HelpTOCNode Id="b9fdd97c-3c89-402b-8ad5-7c64ea58a260" Title="Enumerator Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm">
         <HelpTOCNode Title="Dispose Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_Dispose.htm" />
         <HelpTOCNode Title="MoveNext Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator_MoveNext.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="18e2927f-b7f0-4727-acb1-1e988dee7a06" Title="XEnumerable.WithIndexEnumerable(TSource) Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm">
-      <HelpTOCNode Id="b3b16a8d-c0ee-4558-a031-14385caff01b" Title="WithIndexEnumerable(TSource) Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm">
+    <HelpTOCNode Id="e1d69b8e-6efe-47a2-b1f1-a52b96e04895" Title="XEnumerable.WithIndexEnumerable(TSource) Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm">
+      <HelpTOCNode Id="a4562f10-8e91-474a-835d-d989f56659e7" Title="WithIndexEnumerable(TSource) Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1.htm">
         <HelpTOCNode Title="GetEnumerator Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_GetEnumerator.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="4ffa444a-0ad1-49c4-a509-bc5d325ffb1e" Title="XEnumerable.WithIndexEnumerable(TSource).Enumerator Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm">
-      <HelpTOCNode Id="4169df57-55c3-4617-bab7-bda16c9c2085" Title="Enumerator Properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm">
+    <HelpTOCNode Id="23b3f35e-b037-4f18-ba22-0b7a28b9f440" Title="XEnumerable.WithIndexEnumerable(TSource).Enumerator Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm">
+      <HelpTOCNode Id="ab473873-d6ab-4cbc-8258-3cc82896f91f" Title="Enumerator Properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm">
         <HelpTOCNode Title="Current Property " Url="html/P_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_Current.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b2c7f523-5843-4a30-9e7b-c11ded5e31bf" Title="Enumerator Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm">
+      <HelpTOCNode Id="a9a4d6dd-bc85-4839-8898-5e2a76ba62d0" Title="Enumerator Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm">
         <HelpTOCNode Title="Dispose Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_Dispose.htm" />
         <HelpTOCNode Title="MoveNext Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator_MoveNext.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="2b33a531-a1ed-4465-a3af-58ef64363188" Title="XEnumerable.WithIndexListEnumerable(TSource) Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm">
-      <HelpTOCNode Id="601946ff-5e6a-4690-a2f1-4729067386d5" Title="WithIndexListEnumerable(TSource) Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm">
+    <HelpTOCNode Id="4d835f3f-f61e-44c4-91a9-36b69c458ad3" Title="XEnumerable.WithIndexListEnumerable(TSource) Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm">
+      <HelpTOCNode Id="2d43e3d6-83ab-4e85-8ac4-0cb73c1e02fa" Title="WithIndexListEnumerable(TSource) Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1.htm">
         <HelpTOCNode Title="GetEnumerator Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_GetEnumerator.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="0c79c76e-91a9-4b48-adf9-446ec2efc38a" Title="XEnumerable.WithIndexListEnumerable(TSource).Enumerator Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm">
-      <HelpTOCNode Id="7abcd64c-a144-4f7c-8a7c-d81b4801709d" Title="Enumerator Properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm">
+    <HelpTOCNode Id="f3b607c3-5b61-45f4-b4c1-b69cc7ab3483" Title="XEnumerable.WithIndexListEnumerable(TSource).Enumerator Structure" Url="html/T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm">
+      <HelpTOCNode Id="d3991967-7104-4569-9095-554ba2b51405" Title="Enumerator Properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm">
         <HelpTOCNode Title="Current Property " Url="html/P_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_Current.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="911e754c-66f9-4da7-b434-0884193ae9a8" Title="Enumerator Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm">
+      <HelpTOCNode Id="b57e5c90-c760-40a5-8bc4-15e8a9c32a22" Title="Enumerator Methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm">
         <HelpTOCNode Title="Dispose Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_Dispose.htm" />
         <HelpTOCNode Title="MoveNext Method " Url="html/M_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator_MoveNext.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="3476309d-8d6d-4375-b1ea-2a91877192de" Title="XEqualityComparer Class" Url="html/T_Linq_Extras_XEqualityComparer.htm">
-      <HelpTOCNode Id="75a325ee-9183-42be-ac21-22378105c774" Title="XEqualityComparer Methods" Url="html/Methods_T_Linq_Extras_XEqualityComparer.htm">
+    <HelpTOCNode Id="a9643d30-7e2f-408f-922a-b5071e39e781" Title="XEqualityComparer Class" Url="html/T_Linq_Extras_XEqualityComparer.htm">
+      <HelpTOCNode Id="b14246d3-3f8d-4157-bf02-a36aa9d64fdc" Title="XEqualityComparer Methods" Url="html/Methods_T_Linq_Extras_XEqualityComparer.htm">
         <HelpTOCNode Title="By(T, TKey) Method " Url="html/M_Linq_Extras_XEqualityComparer_By__2.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="94825ba1-ba58-4f86-bf9d-8ca14e46e396" Title="XEqualityComparer(T) Class" Url="html/T_Linq_Extras_XEqualityComparer_1.htm">
-      <HelpTOCNode Id="2d7392e4-e962-44aa-96bb-1f6abe2235e1" Title="XEqualityComparer(T) Methods" Url="html/Methods_T_Linq_Extras_XEqualityComparer_1.htm">
+    <HelpTOCNode Id="5c3e3d69-5868-45af-bb83-7bfe3d2b8b08" Title="XEqualityComparer(T) Class" Url="html/T_Linq_Extras_XEqualityComparer_1.htm">
+      <HelpTOCNode Id="1daaf0de-c134-4a63-8755-04e6b55a901a" Title="XEqualityComparer(T) Methods" Url="html/Methods_T_Linq_Extras_XEqualityComparer_1.htm">
         <HelpTOCNode Title="By(TKey) Method " Url="html/M_Linq_Extras_XEqualityComparer_1_By__1.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="6a7ad3b2-cf95-4208-90a6-c21cc8718f5f" Title="XList Class" Url="html/T_Linq_Extras_XList.htm">
-      <HelpTOCNode Id="753ae473-e8fe-46c9-b9b8-596b50dffffd" Title="XList Methods" Url="html/Methods_T_Linq_Extras_XList.htm">
+    <HelpTOCNode Id="6245fdf3-2396-4fdf-910d-0fdc6ba020ae" Title="XList Class" Url="html/T_Linq_Extras_XList.htm">
+      <HelpTOCNode Id="f79064be-184c-4735-a4b0-805d27b46fce" Title="XList Methods" Url="html/Methods_T_Linq_Extras_XList.htm">
         <HelpTOCNode Title="AsReadOnly(T) Method " Url="html/M_Linq_Extras_XList_AsReadOnly__1.htm" />
         <HelpTOCNode Title="Shuffle(T) Method " Url="html/M_Linq_Extras_XList_Shuffle__1.htm" />
         <HelpTOCNode Title="Swap(T) Method " Url="html/M_Linq_Extras_XList_Swap__1.htm" />

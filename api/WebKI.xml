@@ -59,12 +59,12 @@
   <HelpKINode Title="Empty(Of TSource) method" Url="html/M_Linq_Extras_XEnumerable_Empty__1.htm" />
   <HelpKINode Title="Empty&lt;TSource&gt; method" Url="html/M_Linq_Extras_XEnumerable_Empty__1.htm" />
   <HelpKINode Title="Enumerator structure">
-    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexListEnumerable_1_Enumerator.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexArrayEnumerable_1_Enumerator.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Linq_Extras_XEnumerable_WithIndexEnumerable_1_Enumerator.htm" />
   </HelpKINode>
   <HelpKINode Title="ExceptBy(Of TSource, TKey) method" Url="html/M_Linq_Extras_XEnumerable_ExceptBy__2.htm" />
   <HelpKINode Title="ExceptBy&lt;TSource, TKey&gt; method" Url="html/M_Linq_Extras_XEnumerable_ExceptBy__2.htm" />

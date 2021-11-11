@@ -1,4 +1,4 @@
 @echo off
 pushd %~dp0
-xcopy docs\api api /s /y
+xcopy ..\Linq.Extras\docs\api api /s /y
 popd
